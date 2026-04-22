@@ -16,6 +16,7 @@
       --muted:#64748b;
       --light:#f8fafc;
 
+      /* NEW THEME COLOR */
       --brand:#0E3A43;
       --brand2:#0E3A43;
 
@@ -113,6 +114,7 @@
       font-weight:900;
       letter-spacing:-1px;
     }
+    .hero-left h1 span{color:var(--brand2);}
 
     .hero-left p{
       color:rgba(255,255,255,0.82);
@@ -244,6 +246,7 @@
       line-height:1.5;
     }
 
+    /* SECTION */
     section{padding:70px 18px;}
     .container{max-width:1200px;margin:auto;}
     .sec-head{text-align:center;margin-bottom:40px;}
@@ -346,42 +349,54 @@
       line-height:1.6;
     }
 
-    /* PROJECTS GRID */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:16px;
+    /* ==============================
+       NEW GALLERY SLIDER SECTION
+    ============================== */
+
+    .gallery-buttons{
+      text-align:center;
+      margin-bottom:25px;
     }
 
-    .img-card{
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,0.08);
-      box-shadow: var(--shadow2);
-      position:relative;
-    }
-
-    .img-card img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-      display:block;
-      transition:0.35s;
-    }
-
-    .img-card:hover img{transform:scale(1.06);}
-
-    .img-label{
-      position:absolute;
-      left:14px;
-      bottom:14px;
-      background:rgba(14,58,67,0.82);
+    .gallery-buttons button{
+      padding:10px 16px;
+      margin:6px;
+      border:none;
+      cursor:pointer;
+      background:var(--brand);
       color:white;
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:12px;
       font-weight:800;
-      border:1px solid rgba(255,255,255,0.12);
+      border-radius:999px;
+      transition:0.2s;
+      font-size:13px;
+    }
+
+    .gallery-buttons button:hover{
+      background:#0b0f17;
+      transform:translateY(-1px);
+    }
+
+    .slider{
+      width:100%;
+      max-width:950px;
+      margin:auto;
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(0,0,0,0.08);
+      background:white;
+    }
+
+    .slider-track{
+      display:flex;
+      transition:transform 0.7s ease-in-out;
+    }
+
+    .slider-track img{
+      width:100%;
+      height:450px;
+      object-fit:cover;
+      flex-shrink:0;
     }
 
     /* PRICING */
@@ -664,18 +679,18 @@
       .hero-inner{grid-template-columns:1fr;}
       .trust-card{grid-template-columns:1fr 1fr;}
       .grid{grid-template-columns:1fr 1fr;}
-      .gallery{grid-template-columns:1fr 1fr;}
       .pricing{grid-template-columns:1fr;}
       .test-grid{grid-template-columns:1fr;}
       .contact-wrap{grid-template-columns:1fr;}
       .hero-left h1{font-size:38px;}
+      .slider-track img{height:320px;}
     }
 
     @media(max-width:560px){
       .trust-card{grid-template-columns:1fr;}
       .grid{grid-template-columns:1fr;}
-      .gallery{grid-template-columns:1fr;}
       .hero-left h1{font-size:32px;}
+      .slider-track img{height:260px;}
     }
   </style>
 </head>
@@ -704,7 +719,7 @@
     <div class="hero-inner">
 
       <div class="hero-left">
-        <h1>Premium Home Interior</h1>
+        <h1>Premium Home Interior<span></span></h1>
         <p>
           DGLV INTERIOR provides modern Home Interiors, Modular Kitchen, Wardrobe, False Ceiling,
           Painting and Office Interior Works with best quality materials and perfect finishing.
@@ -827,46 +842,188 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- OUR GALLERY (UPDATED WITH SLIDER) -->
   <section id="projects" style="background:#f8fafc;">
     <div class="container">
       <div class="sec-head">
-        <h2>Our Recent Projects</h2>
-        <p>Some premium interior designs and works completed by DGLV INTERIOR.</p>
+        <h2>Our Gallery</h2>
+        <p>Click category to view relevant interior photos with smooth sliding animation.</p>
       </div>
 
-      <div class="gallery">
-        <div class="img-card">
-          <img src="images/living1.jpg" alt="Living Room">
-          <div class="img-label">Living Room</div>
+      <div class="gallery-buttons">
+        <button onclick="showCategory('living')">Living Room</button>
+        <button onclick="showCategory('kitchen')">Modular Kitchen</button>
+        <button onclick="showCategory('bedroom')">Bedroom</button>
+        <button onclick="showCategory('wardrobe')">Wardrobe</button>
+        <button onclick="showCategory('ceiling')">False Ceiling</button>
+        <button onclick="showCategory('office')">Office Interior</button>
+      </div>
+
+      <div class="slider">
+        <div class="slider-track" id="sliderTrack">
+          <img src="living1.jpg">
+          <img src="living2.jpg">
+          <img src="living3.jpg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Interior Packages</h2>
+        <p>Choose best package for your budget. Contact us for exact quotation.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="plan">
+          <h3>Basic Package</h3>
+          <p>Affordable interiors for budget homes.</p>
+          <div class="price">₹ 1.5L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Simple Wardrobe</li>
+            <li>✔ Basic Kitchen Setup</li>
+            <li>✔ Basic False Ceiling</li>
+            <li>✔ Painting Works</li>
+          </ul>
+          <a href="#contact">Get Quote</a>
         </div>
 
-        <div class="img-card">
-          <img src="images/kitchen1.jpg" alt="Modular Kitchen">
-          <div class="img-label">Modular Kitchen</div>
+        <div class="plan featured">
+          <div class="tag">Most Popular</div>
+          <h3>Premium Package</h3>
+          <p>Modern interiors with premium finishing.</p>
+          <div class="price">₹ 3L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Modular Kitchen</li>
+            <li>✔ Premium Wardrobe</li>
+            <li>✔ Designer TV Unit</li>
+            <li>✔ False Ceiling + Lights</li>
+            <li>✔ Full Painting</li>
+          </ul>
+          <a href="#contact">Book Consultation</a>
         </div>
 
-        <div class="img-card">
-          <img src="images/bedroom1.jpg" alt="Bedroom Interior">
-          <div class="img-label">Bedroom</div>
+        <div class="plan">
+          <h3>Luxury Package</h3>
+          <p>High-end interiors for premium homes.</p>
+          <div class="price">₹ 6L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Complete Home Interiors</li>
+            <li>✔ Luxury Modular Kitchen</li>
+            <li>✔ Custom Furniture</li>
+            <li>✔ Premium Ceiling Design</li>
+            <li>✔ Designer Lighting</li>
+          </ul>
+          <a href="#contact">Get Luxury Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="background:#f8fafc;">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Customer Reviews</h2>
+        <p>Our clients trust DGLV INTERIOR for quality and finishing.</p>
+      </div>
+
+      <div class="test-grid">
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>Excellent modular kitchen work. Very clean finishing and on-time delivery. Highly recommended.</p>
+          <h4>- Customer Naveen</h4>
         </div>
 
-        <div class="img-card">
-          <img src="images/wardrobe1.jpg" alt="Wardrobe">
-          <div class="img-label">Wardrobe</div>
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>Wardrobe and TV unit work is super. Quality materials used and good support.</p>
+          <h4>- Customer Sai Krishna</h4>
         </div>
 
-        <div class="img-card">
-          <img src="images/ceiling1.jpg" alt="False Ceiling">
-          <div class="img-label">False Ceiling</div>
+        <div class="test">
+          <div class="stars">★★★★★</div>
+          <p>False ceiling design is beautiful. Lighting setup is very professional. Great work!</p>
+          <h4>- Customer Sathyanarayana</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Frequently Asked Questions</h2>
+        <p>Some common questions customers ask about interior works.</p>
+      </div>
+
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q">How long will it take to complete interior work? <span>+</span></div>
+          <div class="faq-a">Normally 20 to 45 days depending on design and work type. Modular kitchen may take 10-20 days.</div>
         </div>
 
-        <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/office1.jpg" alt="Office Interior">
-          </a>
-          <div class="img-label">Office Interior</div>
+        <div class="faq-item">
+          <div class="faq-q">Do you provide warranty for interior works? <span>+</span></div>
+          <div class="faq-a">Yes. We provide warranty depending on materials and service type. Contact us for details.</div>
         </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Do you provide free site visit and consultation? <span>+</span></div>
+          <div class="faq-a">Yes. Free consultation and site visit is available in and around BHEL / Hyderabad.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can I customize my design? <span>+</span></div>
+          <div class="faq-a">Yes. All our designs are fully customizable based on your space and requirements.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background:#0b0f17;">
+    <div class="container">
+      <div class="sec-head">
+        <h2 style="color:white;">Contact DGLV INTERIOR</h2>
+        <p style="color:rgba(255,255,255,0.75);">
+          Book your free design consultation today. We will call you back quickly.
+        </p>
+      </div>
+
+      <div class="contact-wrap">
+
+        <div class="contact-card">
+          <h3>DGLV INTERIOR</h3>
+          <p>Premium home interior solutions in BHEL & Hyderabad.</p>
+
+          <div class="info"><b>📍 Location:</b> BHEL, Hyderabad</div>
+          <div class="info"><b>📞 Phone:</b> 9666141369</div>
+          <div class="info"><b>📧 Email:</b>info@dglvinterior.com</div>
+          <div class="info"><b>⏰ Working Hours:</b> Mon - Sun (9AM - 9PM)</div>
+
+          <a class="btn btn-primary" style="width:100%;" href="tel:9666141369">Call Now</a>
+        </div>
+
+        <div class="contact-form">
+          <h3 style="font-weight:900;margin-bottom:12px;">Send Your Requirement</h3>
+
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="tel" placeholder="Mobile Number" required />
+            <input type="text" placeholder="Your Location" required />
+            <textarea rows="5" placeholder="Your Requirement (Kitchen / Wardrobe / Full Interiors)" required></textarea>
+            <button type="submit">Submit Request</button>
+            <p style="margin-top:10px;color:gray;font-size:12px;">
+              *This is demo form. For live form, connect with Google Form / Email integration.
+            </p>
+          </form>
+        </div>
+
       </div>
     </div>
   </section>
@@ -886,6 +1043,72 @@
      href="https://wa.me/919666141369?text=Hello%20DGLV%20INTERIORS,%20I%20need%20interior%20work%20details">
      💬 WhatsApp
   </a>
+
+  <script>
+    // FAQ Toggle
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+      item.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+
+    /* ==========================
+       GALLERY SLIDER SYSTEM
+    ========================== */
+
+    const galleryImages = {
+      living: ["living1.jpg", "living2.jpg", "living3.jpg"],
+      kitchen: ["kitchen1.jpg", "kitchen2.jpg", "kitchen3.jpg"],
+      bedroom: ["bedroom1.jpg", "bedroom2.jpg", "bedroom3.jpg"],
+      wardrobe: ["wardrobe1.jpg", "wardrobe2.jpg", "wardrobe3.jpg"],
+      ceiling: ["ceiling1.jpg", "ceiling2.jpg", "ceiling3.jpg"],
+      office: ["office1.jpg", "office2.jpg", "office3.jpg"]
+    };
+
+    let currentCategory = "living";
+    let currentIndex = 0;
+    let sliderInterval;
+
+    const sliderTrack = document.getElementById("sliderTrack");
+
+    function loadImages(category) {
+      sliderTrack.innerHTML = "";
+
+      galleryImages[category].forEach(img => {
+        const imageElement = document.createElement("img");
+        imageElement.src = img;
+        sliderTrack.appendChild(imageElement);
+      });
+
+      currentIndex = 0;
+      sliderTrack.style.transform = "translateX(0%)";
+    }
+
+    function nextSlide() {
+      const totalImages = galleryImages[currentCategory].length;
+      currentIndex++;
+
+      if (currentIndex >= totalImages) {
+        currentIndex = 0;
+      }
+
+      sliderTrack.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
+    }
+
+    function showCategory(category) {
+      currentCategory = category;
+      loadImages(category);
+
+      clearInterval(sliderInterval);
+      sliderInterval = setInterval(nextSlide, 2500);
+    }
+
+    // Default start
+    loadImages("living");
+    sliderInterval = setInterval(nextSlide, 2500);
+  </script>
 
 </body>
 </html>
