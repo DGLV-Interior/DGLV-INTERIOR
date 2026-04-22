@@ -47,14 +47,39 @@
       gap:15px;
     }
 
+    /* LOGO WITH IMAGE */
     .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
       color:#0f172a;
       font-weight:900;
       letter-spacing:1px;
       font-size:18px;
       text-decoration:none;
     }
-    .logo span{color:var(--brand);}
+
+    .logo-img{
+      width:50px;
+      height:50px;
+      object-fit:contain;
+    }
+
+    .logo-text{
+      display:flex;
+      align-items:baseline;
+      gap:3px;
+    }
+
+    .big-d{
+      font-size:30px;
+      font-weight:900;
+      color:var(--brand);
+    }
+
+    .logo .interior{
+      color:var(--brand);
+    }
 
     .menu{
       display:flex;
@@ -385,6 +410,7 @@
       font-size:12px;
       font-weight:800;
       border:1px solid rgba(255,255,255,0.12);
+      pointer-events:none;
     }
 
     /* PRICING */
@@ -688,7 +714,14 @@
   <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
-      <a class="logo" href="#">DGLV <span>INTERIOR</span></a>
+
+      <!-- LOGO LEFT SIDE -->
+      <a class="logo" href="#">
+        <img src="images/logo.png" alt="DGLV Logo" class="logo-img">
+        <span class="logo-text">
+          <span class="big-d">D</span>GLV <span class="interior">INTERIOR</span>
+        </span>
+      </a>
 
       <div class="menu">
         <a href="#services">Services</a>
