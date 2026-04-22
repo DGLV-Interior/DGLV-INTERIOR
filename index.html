@@ -57,23 +57,25 @@
   box-shadow: var(--shadow2);
 }
 .brand{
-  background: rgba(14,58,67,0.85);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  transition: 0.3s ease;
-  display: inline-block;
+  position:relative;
+  overflow:hidden;
 }
 
-/* HOVER EFFECT */
-.brand:hover{
-  background: #0E3A43;
-  transform: scale(1.08);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+.brand::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0.2;
+  transition:0.4s;
 }
-	  
+
+.brand:hover::after{
+  left:100%;
+}  
 .brand-track{
   display:flex;
   gap:40px;
