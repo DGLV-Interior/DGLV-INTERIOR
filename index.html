@@ -349,54 +349,42 @@
       line-height:1.6;
     }
 
-    /* ==============================
-       NEW GALLERY SLIDER SECTION
-    ============================== */
-
-    .gallery-buttons{
-      text-align:center;
-      margin-bottom:25px;
+    /* PROJECTS */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
     }
 
-    .gallery-buttons button{
-      padding:10px 16px;
-      margin:6px;
-      border:none;
-      cursor:pointer;
-      background:var(--brand);
-      color:white;
-      font-weight:800;
-      border-radius:999px;
-      transition:0.2s;
-      font-size:13px;
-    }
-
-    .gallery-buttons button:hover{
-      background:#0b0f17;
-      transform:translateY(-1px);
-    }
-
-    .slider{
-      width:100%;
-      max-width:950px;
-      margin:auto;
-      overflow:hidden;
+    .img-card{
       border-radius:22px;
-      box-shadow: var(--shadow2);
+      overflow:hidden;
       border:1px solid rgba(0,0,0,0.08);
-      background:white;
+      box-shadow: var(--shadow2);
+      position:relative;
     }
 
-    .slider-track{
-      display:flex;
-      transition:transform 0.7s ease-in-out;
-    }
-
-    .slider-track img{
+    .img-card img{
       width:100%;
-      height:450px;
+      height:250px;
       object-fit:cover;
-      flex-shrink:0;
+      display:block;
+      transition:0.35s;
+    }
+
+    .img-card:hover img{transform:scale(1.06);}
+
+    .img-label{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background:rgba(14,58,67,0.82);
+      color:white;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,0.12);
     }
 
     /* PRICING */
@@ -679,18 +667,18 @@
       .hero-inner{grid-template-columns:1fr;}
       .trust-card{grid-template-columns:1fr 1fr;}
       .grid{grid-template-columns:1fr 1fr;}
+      .gallery{grid-template-columns:1fr 1fr;}
       .pricing{grid-template-columns:1fr;}
       .test-grid{grid-template-columns:1fr;}
       .contact-wrap{grid-template-columns:1fr;}
       .hero-left h1{font-size:38px;}
-      .slider-track img{height:320px;}
     }
 
     @media(max-width:560px){
       .trust-card{grid-template-columns:1fr;}
       .grid{grid-template-columns:1fr;}
+      .gallery{grid-template-columns:1fr;}
       .hero-left h1{font-size:32px;}
-      .slider-track img{height:260px;}
     }
   </style>
 </head>
@@ -709,7 +697,7 @@
         <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a class="nav-btn" href="#quote">Get Free Quote</a>
+        <a class="nav-btn" href="gallery.html">Our Gallery</a>
       </div>
     </div>
   </div>
@@ -842,29 +830,58 @@
     </div>
   </section>
 
-  <!-- OUR GALLERY (UPDATED WITH SLIDER) -->
+  <!-- PROJECTS -->
   <section id="projects" style="background:#f8fafc;">
     <div class="container">
       <div class="sec-head">
-        <h2>Our Gallery</h2>
-        <p>Click category to view relevant interior photos with smooth sliding animation.</p>
+        <h2>Our Recent Projects</h2>
+        <p>Some premium interior designs and works completed by DGLV INTERIOR.</p>
       </div>
 
-      <div class="gallery-buttons">
-        <button onclick="showCategory('living')">Living Room</button>
-        <button onclick="showCategory('kitchen')">Modular Kitchen</button>
-        <button onclick="showCategory('bedroom')">Bedroom</button>
-        <button onclick="showCategory('wardrobe')">Wardrobe</button>
-        <button onclick="showCategory('ceiling')">False Ceiling</button>
-        <button onclick="showCategory('office')">Office Interior</button>
-      </div>
+      <div class="gallery">
 
-      <div class="slider">
-        <div class="slider-track" id="sliderTrack">
-          <img src="living1.jpg">
-          <img src="living2.jpg">
-          <img src="living3.jpg">
+        <div class="img-card">
+          <a href="gallery.html">
+            <img src="./images/living1.jpg" alt="Living Room">
+          </a>
+          <div class="img-label">Living Room</div>
         </div>
+
+        <div class="img-card">
+          <a href="gallery.html">
+            <img src="./images/kitchen1.jpg" alt="Modular Kitchen">
+          </a>
+          <div class="img-label">Modular Kitchen</div>
+        </div>
+
+        <div class="img-card">
+          <a href="gallery.html">
+            <img src="./images/bedroom1.jpg" alt="Bedroom Interior">
+          </a>
+          <div class="img-label">Bedroom</div>
+        </div>
+
+        <div class="img-card">
+          <a href="gallery.html">
+            <img src="./images/wardrobe1.jpg" alt="Wardrobe">
+          </a>
+          <div class="img-label">Wardrobe</div>
+        </div>
+
+        <div class="img-card">
+          <a href="gallery.html">
+            <img src="./images/ceiling1.jpg" alt="False Ceiling">
+          </a>
+          <div class="img-label">False Ceiling</div>
+        </div>
+
+        <div class="img-card">
+          <a href="gallery.html">
+            <img src="./images/office1.jpg" alt="Office Interior">
+          </a>
+          <div class="img-label">Office Interior</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1053,61 +1070,6 @@
         item.classList.toggle("active");
       });
     });
-
-    /* ==========================
-       GALLERY SLIDER SYSTEM
-    ========================== */
-
-    const galleryImages = {
-      living: ["living1.jpg", "living2.jpg", "living3.jpg"],
-      kitchen: ["kitchen1.jpg", "kitchen2.jpg", "kitchen3.jpg"],
-      bedroom: ["bedroom1.jpg", "bedroom2.jpg", "bedroom3.jpg"],
-      wardrobe: ["wardrobe1.jpg", "wardrobe2.jpg", "wardrobe3.jpg"],
-      ceiling: ["ceiling1.jpg", "ceiling2.jpg", "ceiling3.jpg"],
-      office: ["office1.jpg", "office2.jpg", "office3.jpg"]
-    };
-
-    let currentCategory = "living";
-    let currentIndex = 0;
-    let sliderInterval;
-
-    const sliderTrack = document.getElementById("sliderTrack");
-
-    function loadImages(category) {
-      sliderTrack.innerHTML = "";
-
-      galleryImages[category].forEach(img => {
-        const imageElement = document.createElement("img");
-        imageElement.src = img;
-        sliderTrack.appendChild(imageElement);
-      });
-
-      currentIndex = 0;
-      sliderTrack.style.transform = "translateX(0%)";
-    }
-
-    function nextSlide() {
-      const totalImages = galleryImages[currentCategory].length;
-      currentIndex++;
-
-      if (currentIndex >= totalImages) {
-        currentIndex = 0;
-      }
-
-      sliderTrack.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
-    }
-
-    function showCategory(category) {
-      currentCategory = category;
-      loadImages(category);
-
-      clearInterval(sliderInterval);
-      sliderInterval = setInterval(nextSlide, 2500);
-    }
-
-    // Default start
-    loadImages("living");
-    sliderInterval = setInterval(nextSlide, 2500);
   </script>
 
 </body>
