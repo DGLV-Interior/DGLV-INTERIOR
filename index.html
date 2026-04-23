@@ -1308,9 +1308,12 @@
 .brand-track img:hover{
   filter: grayscale(0%);
   opacity:1;
+  z-index:10;
   transform:scale(1.05);
 }
-
+.brand-track img{
+  position:relative;
+}
 @keyframes scrollBrands{
   0%{transform:translateX(0);}
   100%{transform:translateX(-50%);}
