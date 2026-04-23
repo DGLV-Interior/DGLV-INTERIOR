@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DGLV INTERIOR</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +16,6 @@
       --muted:#64748b;
       --light:#f8fafc;
 
-      /* THEME COLOR */
       --brand:#0E3A43;
       --brand2:#0E3A43;
 
@@ -22,18 +23,8 @@
       --shadow2: 0 10px 25px rgba(0,0,0,0.08);
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Inter, Arial, sans-serif;
-    }
-
-    body{
-      background:#fff;
-      color:var(--text);
-      overflow-x:hidden;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Inter, Arial, sans-serif;}
+    body{background:#fff;color:var(--text);overflow-x:hidden;}
 
     /* NAVBAR */
     .nav{
@@ -48,41 +39,30 @@
     .nav-inner{
       max-width:1200px;
       margin:auto;
-      padding:14px 18px;
+      padding:12px 18px;
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:15px;
     }
 
-    /* LOGO */
+    /* LOGO ONLY IMAGE */
     .logo{
       display:flex;
       align-items:center;
-      gap:10px;
-      color:#0f172a;
-      font-weight:900;
-      letter-spacing:1px;
-      font-size:18px;
       text-decoration:none;
     }
 
-    .logo-img{
-      width:75px;
-      height:75px;
+    .logo img{
+      width:110px;
+      height:auto;
       object-fit:contain;
+      transition:0.3s ease;
     }
 
-    .logo-text{
-      display:flex;
-      align-items:baseline;
-      gap:3px;
-      font-size:18px;
-      font-weight:900;
-    }
-
-    .logo .interior{
-      color:var(--brand);
+    .logo img:hover{
+      transform:scale(1.15);
+      filter:drop-shadow(0px 6px 10px rgba(0,0,0,0.25));
     }
 
     .menu{
@@ -257,10 +237,6 @@
       font-size:14px;
     }
 
-    .hero-form input::placeholder{
-      color:rgba(255,255,255,0.6);
-    }
-
     .hero-form button{
       width:100%;
       padding:12px;
@@ -287,19 +263,9 @@
     }
 
     /* SECTION */
-    section{
-      padding:70px 18px;
-    }
-
-    .container{
-      max-width:1200px;
-      margin:auto;
-    }
-
-    .sec-head{
-      text-align:center;
-      margin-bottom:40px;
-    }
+    section{padding:70px 18px;}
+    .container{max-width:1200px;margin:auto;}
+    .sec-head{text-align:center;margin-bottom:40px;}
 
     .sec-head h2{
       font-size:36px;
@@ -404,7 +370,7 @@
     .brand-slider{
       overflow:hidden;
       margin:20px 0 35px;
-      padding:14px 0;
+      padding:12px 0;
       background:#082E3B;
       border-radius:16px;
       border:1px solid rgba(0,0,0,0.08);
@@ -513,18 +479,8 @@
       color:white;
     }
 
-    .plan h3{
-      font-size:18px;
-      font-weight:900;
-      margin-bottom:6px;
-    }
-
-    .plan p{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-      margin-bottom:14px;
-    }
+    .plan h3{font-size:18px;font-weight:900;margin-bottom:6px;}
+    .plan p{color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:14px;}
 
     .price{
       font-size:26px;
@@ -538,11 +494,7 @@
       font-weight:700;
     }
 
-    .plan ul{
-      list-style:none;
-      margin-bottom:16px;
-    }
-
+    .plan ul{list-style:none;margin-bottom:16px;}
     .plan ul li{
       margin-bottom:10px;
       color:#0f172a;
@@ -567,7 +519,7 @@
       color:white;
     }
 
-    /* REVIEWS */
+    /* TESTIMONIALS */
     .test-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -740,7 +692,7 @@
       font-size:13px;
     }
 
-    /* WHATSAPP BUTTON */
+    /* WHATSAPP */
     .whatsapp{
       position:fixed;
       right:18px;
@@ -759,7 +711,6 @@
       background:#128C7E;
     }
 
-    /* CALL BUTTON */
     .call-btn{
       position:fixed;
       right:18px;
@@ -797,6 +748,7 @@
       .gallery{grid-template-columns:1fr;}
       .hero-left h1{font-size:32px;}
     }
+
   </style>
 </head>
 
@@ -806,12 +758,9 @@
   <div class="nav">
     <div class="nav-inner">
 
-      <!-- LOGO LEFT SIDE -->
+      <!-- LOGO IMAGE ONLY -->
       <a class="logo" href="#">
-        <img src="images/logo.png" alt="DGLV Logo" class="logo-img">
-        <span class="logo-text">
-          DGLV <span class="interior">INTERIOR</span>
-        </span>
+        <img src="images/logo.png" alt="DGLV Logo">
       </a>
 
       <div class="menu">
@@ -823,12 +772,11 @@
         <a href="#contact">Contact</a>
         <a class="nav-btn" href="gallery.html">Our Gallery</a>
       </div>
-
     </div>
   </div>
 
   <!-- HERO -->
-  <div class="hero" id="quote">
+  <div class="hero">
     <div class="hero-inner">
 
       <div class="hero-left">
@@ -955,51 +903,29 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- BRAND + PROJECTS -->
   <section id="projects" style="background:#f8fafc;">
     <div class="container">
 
       <div class="sec-head">
         <h2>Our Brand Partners</h2>
-        <p>We work with trusted branded materials for best quality finishing.</p>
       </div>
 
       <div class="brand-slider">
         <div class="brand-track">
-          <img src="images/brand1.png" alt="Brand">
-          <img src="images/brand2.png" alt="Brand">
-          <img src="images/brand3.png" alt="Brand">
-          <img src="images/brand4.png" alt="Brand">
-          <img src="images/brand5.png" alt="Brand">
-          <img src="images/brand6.png" alt="Brand">
-          <img src="images/brand7.png" alt="Brand">
-          <img src="images/brand8.png" alt="Brand">
-          <img src="images/brand9.png" alt="Brand">
-          <img src="images/brand10.png" alt="Brand">
-          <img src="images/brand11.png" alt="Brand">
-          <img src="images/brand12.png" alt="Brand">
-          <img src="images/brand13.png" alt="Brand">
-          <img src="images/brand14.png" alt="Brand">
-          <img src="images/brand15.png" alt="Brand">
-          <img src="images/brand16.png" alt="Brand">
+          <img src="images/brand1.png">
+          <img src="images/brand2.png">
+          <img src="images/brand3.png">
+          <img src="images/brand4.png">
+          <img src="images/brand5.png">
+          <img src="images/brand6.png">
 
-          <!-- DUPLICATE FOR SMOOTH SCROLL -->
-          <img src="images/brand1.png" alt="Brand">
-          <img src="images/brand2.png" alt="Brand">
-          <img src="images/brand3.png" alt="Brand">
-          <img src="images/brand4.png" alt="Brand">
-          <img src="images/brand5.png" alt="Brand">
-          <img src="images/brand6.png" alt="Brand">
-          <img src="images/brand7.png" alt="Brand">
-          <img src="images/brand8.png" alt="Brand">
-          <img src="images/brand9.png" alt="Brand">
-          <img src="images/brand10.png" alt="Brand">
-          <img src="images/brand11.png" alt="Brand">
-          <img src="images/brand12.png" alt="Brand">
-          <img src="images/brand13.png" alt="Brand">
-          <img src="images/brand14.png" alt="Brand">
-          <img src="images/brand15.png" alt="Brand">
-          <img src="images/brand16.png" alt="Brand">
+          <img src="images/brand1.png">
+          <img src="images/brand2.png">
+          <img src="images/brand3.png">
+          <img src="images/brand4.png">
+          <img src="images/brand5.png">
+          <img src="images/brand6.png">
         </div>
       </div>
 
@@ -1010,44 +936,32 @@
 
       <div class="gallery">
         <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/living1.jpg" alt="Living Room">
-          </a>
+          <a href="gallery.html"><img src="images/living1.jpg" alt="Living Room"></a>
           <div class="img-label">Living Room</div>
         </div>
 
         <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/kitchen1.jpg" alt="Modular Kitchen">
-          </a>
+          <a href="gallery.html"><img src="images/kitchen1.jpg" alt="Kitchen"></a>
           <div class="img-label">Modular Kitchen</div>
         </div>
 
         <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/bedroom1.jpg" alt="Bedroom Interior">
-          </a>
+          <a href="gallery.html"><img src="images/bedroom1.jpg" alt="Bedroom"></a>
           <div class="img-label">Bedroom</div>
         </div>
 
         <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/wardrobe1.jpg" alt="Wardrobe">
-          </a>
+          <a href="gallery.html"><img src="images/wardrobe1.jpg" alt="Wardrobe"></a>
           <div class="img-label">Wardrobe</div>
         </div>
 
         <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/ceiling1.jpg" alt="False Ceiling">
-          </a>
+          <a href="gallery.html"><img src="images/ceiling1.jpg" alt="Ceiling"></a>
           <div class="img-label">False Ceiling</div>
         </div>
 
         <div class="img-card">
-          <a href="gallery.html">
-            <img src="images/office1.jpg" alt="Office Interior">
-          </a>
+          <a href="gallery.html"><img src="images/office1.jpg" alt="Office"></a>
           <div class="img-label">Office Interior</div>
         </div>
       </div>
@@ -1150,12 +1064,12 @@
       <div class="faq">
         <div class="faq-item">
           <div class="faq-q">How long will it take to complete interior work? <span>+</span></div>
-          <div class="faq-a">Normally 20 to 45 days depending on design and work type. Modular kitchen may take 10-20 days.</div>
+          <div class="faq-a">Normally 20 to 45 days depending on design and work type.</div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Do you provide warranty for interior works? <span>+</span></div>
-          <div class="faq-a">Yes. We provide warranty depending on materials and service type. Contact us for details.</div>
+          <div class="faq-a">Yes. We provide warranty depending on materials and service type.</div>
         </div>
 
         <div class="faq-item">
@@ -1203,9 +1117,8 @@
             <input type="text" placeholder="Your Location" required />
             <textarea rows="5" placeholder="Your Requirement (Kitchen / Wardrobe / Full Interiors)" required></textarea>
             <button type="submit">Submit Request</button>
-
             <p style="margin-top:10px;color:gray;font-size:12px;">
-              *This is demo form. For live form, connect with Google Form / Email integration.
+              *This is demo form. For live form, connect with Email / Google Form.
             </p>
           </form>
         </div>
@@ -1225,7 +1138,7 @@
   <a class="call-btn" href="tel:9666141369">📞 Call</a>
 
   <a class="whatsapp" target="_blank"
-     href="https://wa.me/919666141369?text=Hello%20DGLV%20INTERIOR,%20I%20need%20interior%20work%20details">
+     href="https://wa.me/919666141369?text=Hello%20DGLV%20INTERIORS,%20I%20need%20interior%20work%20details">
      💬 WhatsApp
   </a>
 
