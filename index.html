@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DGLV INTERIOR</title>
+  <title>DGLV Interior</title>
 
-  <!-- FONT AWESOME ICONS -->
+  <!-- FONT AWESOME (SOCIAL ICONS WORKING) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- CUSTOM FONT -->
   <style>
-    /* YOUR FONT (DO NOT CHANGE) */
     @font-face{
-      font-family: "Kitamiw01";
-      src: url("kitamiw01-regular.ttf") format("truetype");
+      font-family: "kitamiw01";
+      src: url("fonts/kitamiw01-regular.ttf") format("truetype");
       font-weight: normal;
       font-style: normal;
     }
+  </style>
 
+  <style>
     :root{
-      --brand:#0E3A43;
-      --brand2:#082E3B;
+      --bg:#0b0f17;
       --text:#0f172a;
       --muted:#64748b;
+      --light:#f8fafc;
+
+      --brand:#0E3A43;
+      --brand2:#0E3A43;
+
       --shadow: 0 18px 60px rgba(0,0,0,0.35);
       --shadow2: 0 10px 25px rgba(0,0,0,0.08);
     }
@@ -30,22 +36,20 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:"Kitamiw01", Arial, sans-serif;
+      font-family:"kitamiw01", Arial, sans-serif;
     }
 
     body{
       background:#fff;
       color:var(--text);
       overflow-x:hidden;
-      animation: pageLoad 0.7s ease-in-out;
     }
 
-    @keyframes pageLoad{
-      from{opacity:0; transform:translateY(20px);}
-      to{opacity:1; transform:translateY(0);}
-    }
+    a{text-decoration:none;}
 
-    /* NAVBAR */
+    /* ===========================
+       NAVBAR
+    ============================ */
     .nav{
       position:sticky;
       top:0;
@@ -58,34 +62,37 @@
     .nav-inner{
       max-width:1400px;
       margin:auto;
-      padding:12px 18px;
+      padding:12px 22px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:20px;
+      gap:10px;
     }
 
     /* LOGO */
     .logo{
       display:flex;
       align-items:center;
-      gap:8px;
-      text-decoration:none;
+      gap:6px;
+      color:#0f172a;
+      font-weight:900;
+      font-size:20px;
+      letter-spacing:1px;
     }
 
     .logo-img{
-      width:55px;
-      height:55px;
+      width:60px;
+      height:60px;
       object-fit:contain;
-      border-radius:10px;
+      border-radius:12px;
     }
 
     .logo-text{
-      font-size:22px;
+      display:flex;
+      align-items:center;
+      gap:4px;
       font-weight:900;
-      color:#0f172a;
-      letter-spacing:0.5px;
-      white-space:nowrap;
+      font-size:22px;
     }
 
     .logo-text span{
@@ -96,134 +103,127 @@
     /* MENU */
     .menu{
       display:flex;
+      gap:18px;
       align-items:center;
-      gap:14px;
     }
 
-    /* DROPDOWN */
-    .dropdown{
-      position:relative;
-    }
-
-    .dropbtn{
-      background:transparent;
-      border:none;
+    .menu a{
+      color:#0f172a;
       font-size:15px;
-      font-weight:900;
-      cursor:pointer;
+      font-weight:800;
+      transition:0.2s;
+    }
+
+    .menu a:hover{
+      color:var(--brand);
+    }
+
+    .nav-btn{
       padding:10px 14px;
+      border-radius:999px;
+      background:white;
+      border:2px solid var(--brand);
+      color:var(--brand);
+      font-weight:900;
+      font-size:14px;
+      transition:0.2s;
+      white-space:nowrap;
+    }
+
+    .nav-btn:hover{
+      background:var(--brand);
+      color:white;
+    }
+
+    /* MOBILE MENU BUTTON */
+    .menu-btn{
+      display:none;
+      font-size:22px;
+      cursor:pointer;
+      color:var(--brand);
+    }
+
+    /* MOBILE DROPDOWN */
+    .mobile-menu{
+      display:none;
+      flex-direction:column;
+      background:white;
+      border-top:1px solid rgba(0,0,0,0.08);
+      padding:12px 18px;
+    }
+
+    .mobile-menu a{
+      padding:12px 10px;
       border-radius:12px;
-      display:flex;
-      align-items:center;
-      gap:8px;
+      font-weight:900;
       color:#0f172a;
       transition:0.2s;
     }
 
-    .dropbtn:hover{
+    .mobile-menu a:hover{
       background:rgba(14,58,67,0.08);
       color:var(--brand);
     }
 
-    .dropdown-content{
-      display:none;
-      position:absolute;
-      top:55px;
-      right:0;
-      min-width:200px;
-      background:white;
-      border-radius:16px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.18);
-      border:1px solid rgba(0,0,0,0.08);
-      padding:10px;
-      z-index:999;
-    }
-
-    .dropdown-content a{
-      display:block;
-      padding:12px 14px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:900;
-      font-size:14px;
-      color:#0f172a;
-      transition:0.2s;
-    }
-
-    .dropdown-content a:hover{
-      background:rgba(14,58,67,0.10);
-      color:var(--brand);
-    }
-
-    .dropdown.open .dropdown-content{
-      display:block;
-    }
-
-    /* HERO SECTION (BACKGROUND IMAGE REQUIRED) */
+    /* ===========================
+       HERO SECTION WITH IMAGE
+    ============================ */
     .hero{
-      background:url("images/hero.jpg") center center / cover no-repeat;
-      min-height:540px;
+      width:100%;
+      min-height:92vh;
       display:flex;
       align-items:center;
-      position:relative;
-      padding:70px 18px;
-      width:100%;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.55);
-      z-index:1;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.35)),
+        url("images/hero-bg.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:60px 0;
     }
 
     .hero-inner{
       max-width:1400px;
       margin:auto;
+      padding:0 22px;
       width:100%;
       display:grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap:30px;
-      position:relative;
-      z-index:2;
+      gap:35px;
       align-items:center;
     }
 
     .hero-left h1{
       color:white;
-      font-size:52px;
-      line-height:1.1;
+      font-size:54px;
+      line-height:1.05;
+      margin-bottom:14px;
       font-weight:900;
-      margin-bottom:15px;
     }
 
     .hero-left p{
-      color:rgba(255,255,255,0.88);
-      font-size:17px;
+      color:rgba(255,255,255,0.85);
+      font-size:18px;
       line-height:1.7;
-      max-width:620px;
-      margin-bottom:20px;
+      max-width:650px;
+      margin-bottom:18px;
       font-weight:600;
     }
 
     .hero-points{
       display:flex;
-      flex-wrap:wrap;
       gap:10px;
+      flex-wrap:wrap;
       margin-bottom:25px;
     }
 
     .pill{
       background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.2);
       color:white;
       padding:10px 14px;
       border-radius:999px;
-      font-size:13px;
+      font-size:14px;
       font-weight:900;
     }
 
@@ -234,18 +234,17 @@
     }
 
     .btn{
-      padding:13px 18px;
+      padding:14px 18px;
       border-radius:999px;
       font-weight:900;
-      font-size:14px;
-      text-decoration:none;
+      font-size:15px;
       transition:0.2s;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:8px;
-      border:none;
       cursor:pointer;
+      border:none;
     }
 
     .btn-primary{
@@ -254,62 +253,64 @@
     }
 
     .btn-primary:hover{
-      background:var(--brand2);
-      transform:translateY(-2px);
+      background:#06292f;
+      transform:translateY(-1px);
     }
 
     .btn-outline{
       background:transparent;
-      border:2px solid rgba(255,255,255,0.6);
+      border:2px solid rgba(255,255,255,0.35);
       color:white;
     }
 
     .btn-outline:hover{
-      border-color:white;
-      transform:translateY(-2px);
+      border:2px solid rgba(255,255,255,0.8);
+      transform:translateY(-1px);
     }
 
-    /* HERO FORM */
+    /* ===========================
+       HERO FORM
+    ============================ */
     .hero-form{
       background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.20);
       border-radius:22px;
       padding:22px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       color:white;
     }
 
     .hero-form h3{
-      font-size:18px;
+      font-size:20px;
+      margin-bottom:8px;
       font-weight:900;
-      margin-bottom:10px;
     }
 
     .hero-form p{
-      font-size:13px;
-      color:rgba(255,255,255,0.8);
+      font-size:14px;
+      color:rgba(255,255,255,0.85);
       margin-bottom:14px;
-      line-height:1.6;
-      font-weight:600;
+      line-height:1.5;
+      font-weight:700;
     }
 
     .hero-form input,
     .hero-form select{
       width:100%;
-      padding:12px;
+      padding:12px 12px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,0.18);
-      background:rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.25);
+      background:rgba(0,0,0,0.30);
       color:white;
       outline:none;
       margin-bottom:12px;
-      font-size:14px;
+      font-size:15px;
       font-weight:700;
     }
 
     .hero-form input::placeholder{
-      color:rgba(255,255,255,0.65);
+      color:rgba(255,255,255,0.75);
     }
 
     .hero-form button{
@@ -320,31 +321,34 @@
       background:var(--brand);
       font-weight:900;
       cursor:pointer;
-      font-size:14px;
+      font-size:15px;
       transition:0.2s;
       color:white;
     }
 
     .hero-form button:hover{
-      background:var(--brand2);
-      transform:translateY(-2px);
+      background:#06292f;
+      transform:translateY(-1px);
     }
 
     .note{
       font-size:13px;
       margin-top:12px;
-      color:rgba(255,255,255,0.85);
+      color:rgba(255,255,255,0.92);
       line-height:1.6;
       font-weight:700;
     }
 
     .note b{
-      color:#00c2ff;
+      color: #ffdf8a;
+      font-weight:900;
     }
 
-    /* SECTIONS */
+    /* ===========================
+       SECTION COMMON
+    ============================ */
     section{
-      padding:70px 18px;
+      padding:75px 22px;
     }
 
     .container{
@@ -358,22 +362,66 @@
     }
 
     .sec-head h2{
-      font-size:38px;
+      font-size:40px;
       font-weight:900;
       margin-bottom:10px;
-      letter-spacing:0.4px;
+      color:#0f172a;
     }
 
     .sec-head p{
       color:var(--muted);
       max-width:850px;
       margin:auto;
-      font-size:15px;
       line-height:1.7;
+      font-size:16px;
       font-weight:700;
     }
 
-    /* SERVICES GRID */
+    /* ===========================
+       TRUST SECTION
+    ============================ */
+    .trust{
+      padding:40px 22px;
+      background:#fff;
+      margin-top:-40px;
+    }
+
+    .trust-card{
+      max-width:1400px;
+      margin:auto;
+      background:#ffffff;
+      border-radius:22px;
+      padding:22px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(0,0,0,0.06);
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+    }
+
+    .trust-item{
+      padding:16px;
+      border-radius:18px;
+      background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border:1px solid rgba(0,0,0,0.05);
+    }
+
+    .trust-item h4{
+      font-size:18px;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .trust-item p{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.5;
+      font-weight:700;
+    }
+
+    /* ===========================
+       SERVICES
+    ============================ */
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -382,81 +430,94 @@
 
     .service{
       background:#fff;
-      border:1px solid rgba(0,0,0,0.08);
+      border:1px solid rgba(0,0,0,0.06);
       border-radius:22px;
-      padding:22px;
+      padding:24px;
       box-shadow: var(--shadow2);
       transition:0.25s;
     }
 
     .service:hover{
       transform:translateY(-6px);
-      border-color:rgba(14,58,67,0.6);
+      border-color:rgba(14,58,67,0.7);
     }
 
     .icon{
-      width:52px;
-      height:52px;
+      width:55px;
+      height:55px;
       border-radius:16px;
-      background:linear-gradient(135deg, rgba(14,58,67,0.25), rgba(14,58,67,0.12));
+      background:linear-gradient(135deg, rgba(14,58,67,0.22), rgba(14,58,67,0.14));
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:22px;
+      font-size:26px;
       margin-bottom:12px;
     }
 
     .service h3{
-      font-size:16px;
+      font-size:18px;
       margin-bottom:8px;
       font-weight:900;
     }
 
     .service p{
-      font-size:14px;
+      font-size:15px;
       color:var(--muted);
-      line-height:1.6;
+      line-height:1.7;
       font-weight:700;
     }
 
-    /* BRAND SLIDER */
-    .brand-box{
-      background:#f8fafc;
-      padding:50px 18px;
-    }
-
+    /* ===========================
+       BRAND SLIDER (SQUARE BOX)
+    ============================ */
     .brand-slider{
+      width:100%;
       overflow:hidden;
+      margin:30px auto 40px;
+      padding:16px 0;
       background:white;
       border-radius:18px;
-      padding:18px 0;
-      border:1px solid rgba(0,0,0,0.08);
+      border:1px solid rgba(0,0,0,0.10);
       box-shadow: var(--shadow2);
     }
 
     .brand-track{
       display:flex;
+      gap:20px;
       align-items:center;
-      gap:35px;
       width:max-content;
       animation: scrollBrands 22s linear infinite;
+      padding-left:20px;
     }
 
-    .brand-track img{
-      height:60px;
-      width:60px;
+    .brand-box{
+      width:95px;
+      height:95px;
+      border-radius:16px;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.08);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      transition:0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      overflow:hidden;
+    }
+
+    .brand-box img{
+      width:70px;
+      height:70px;
       object-fit:contain;
-      background:white;
-      padding:10px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,0.10);
-      box-shadow:0 8px 18px rgba(0,0,0,0.08);
       transition:0.3s;
     }
 
-    .brand-track img:hover{
-      transform:scale(1.4);
-      z-index:10;
+    .brand-box:hover{
+      transform:scale(1.15);
+      border-color:rgba(14,58,67,0.7);
+    }
+
+    .brand-box:hover img{
+      transform:scale(1.1);
     }
 
     @keyframes scrollBrands{
@@ -464,12 +525,13 @@
       100%{transform:translateX(-50%);}
     }
 
-    /* PROJECT GALLERY */
+    /* ===========================
+       PROJECTS GALLERY
+    ============================ */
     .gallery{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:16px;
-      margin-top:30px;
+      gap:18px;
     }
 
     .img-card{
@@ -478,11 +540,12 @@
       border:1px solid rgba(0,0,0,0.08);
       box-shadow: var(--shadow2);
       position:relative;
+      background:#fff;
     }
 
     .img-card img{
       width:100%;
-      height:260px;
+      height:270px;
       object-fit:cover;
       display:block;
       transition:0.35s;
@@ -498,15 +561,115 @@
       bottom:14px;
       background:rgba(14,58,67,0.88);
       color:white;
-      padding:8px 12px;
+      padding:9px 14px;
       border-radius:999px;
-      font-size:12px;
+      font-size:13px;
       font-weight:900;
-      border:1px solid rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.18);
       pointer-events:none;
     }
 
-    /* REVIEWS */
+    /* ===========================
+       PRICING
+    ============================ */
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .plan{
+      background:#fff;
+      border-radius:22px;
+      padding:26px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+      transition:0.25s;
+    }
+
+    .plan:hover{
+      transform:translateY(-6px);
+      border-color:rgba(14,58,67,0.6);
+    }
+
+    .plan.featured{
+      border:2px solid rgba(14,58,67,0.7);
+      transform:translateY(-8px);
+    }
+
+    .tag{
+      position:absolute;
+      top:14px;
+      right:14px;
+      background:var(--brand);
+      padding:7px 12px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:white;
+    }
+
+    .plan h3{
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .plan p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    .price{
+      font-size:30px;
+      font-weight:900;
+      margin-bottom:14px;
+      color:#0f172a;
+    }
+
+    .price span{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    .plan ul{
+      list-style:none;
+      margin-bottom:18px;
+    }
+
+    .plan ul li{
+      margin-bottom:11px;
+      color:#0f172a;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .plan a{
+      display:block;
+      text-align:center;
+      padding:13px;
+      border-radius:14px;
+      background:#0b0f17;
+      color:white;
+      font-weight:900;
+      transition:0.2s;
+    }
+
+    .plan a:hover{
+      background:var(--brand);
+      color:white;
+    }
+
+    /* ===========================
+       REVIEWS
+    ============================ */
     .test-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -517,20 +680,14 @@
       background:#fff;
       border:1px solid rgba(0,0,0,0.06);
       border-radius:22px;
-      padding:22px;
+      padding:24px;
       box-shadow: var(--shadow2);
+      transition:0.25s;
     }
 
-    .test p{
-      font-size:14px;
-      line-height:1.7;
-      margin-bottom:14px;
-      font-weight:700;
-    }
-
-    .test h4{
-      font-size:14px;
-      font-weight:900;
+    .test:hover{
+      transform:translateY(-6px);
+      border-color:rgba(14,58,67,0.6);
     }
 
     .stars{
@@ -540,13 +697,29 @@
       font-size:18px;
     }
 
-    /* FAQ */
+    .test p{
+      color:#0f172a;
+      font-size:15px;
+      line-height:1.7;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    .test h4{
+      font-size:14px;
+      font-weight:900;
+      color:var(--brand);
+    }
+
+    /* ===========================
+       FAQ
+    ============================ */
     .faq{
       max-width:950px;
       margin:auto;
       display:flex;
       flex-direction:column;
-      gap:12px;
+      gap:14px;
     }
 
     .faq-item{
@@ -558,32 +731,45 @@
     }
 
     .faq-q{
-      padding:16px 18px;
+      padding:18px 18px;
       cursor:pointer;
       display:flex;
       justify-content:space-between;
       align-items:center;
       font-weight:900;
-      font-size:14px;
+      font-size:15px;
+      color:#0f172a;
+    }
+
+    .faq-q span{
+      font-size:18px;
+      color:var(--brand);
+      font-weight:900;
     }
 
     .faq-a{
       padding:0 18px;
       max-height:0;
       overflow:hidden;
-      transition:0.3s;
+      transition:0.35s;
       color:var(--muted);
-      font-size:14px;
+      font-size:15px;
       line-height:1.7;
       font-weight:700;
     }
 
     .faq-item.active .faq-a{
-      padding:0 18px 16px;
-      max-height:250px;
+      padding:0 18px 18px;
+      max-height:300px;
     }
 
-    /* CONTACT */
+    /* ===========================
+       CONTACT
+    ============================ */
+    #contact{
+      background:#0b0f17;
+    }
+
     .contact-wrap{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -592,24 +778,26 @@
     }
 
     .contact-card{
-      background:#0b0f17;
+      background:rgba(255,255,255,0.06);
       color:white;
       border-radius:22px;
-      padding:26px;
+      padding:28px;
       box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,0.12);
     }
 
     .contact-card h3{
-      font-size:20px;
+      font-size:24px;
       font-weight:900;
       margin-bottom:10px;
+      color:white;
     }
 
     .contact-card p{
       color:rgba(255,255,255,0.75);
-      line-height:1.6;
-      margin-bottom:14px;
-      font-size:14px;
+      line-height:1.7;
+      margin-bottom:16px;
+      font-size:15px;
       font-weight:700;
     }
 
@@ -619,45 +807,23 @@
       padding:14px;
       border-radius:16px;
       margin-bottom:12px;
-      font-size:14px;
+      font-size:15px;
       font-weight:800;
-    }
-
-    /* SOCIAL LINKS */
-    .social-links{
-      display:flex;
-      gap:12px;
-      margin-top:16px;
-      flex-wrap:wrap;
-    }
-
-    .social-links a{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      background:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--brand);
-      font-size:18px;
-      text-decoration:none;
-      transition:0.3s;
-      border:2px solid var(--brand);
-    }
-
-    .social-links a:hover{
-      background:var(--brand);
-      color:white;
-      transform:scale(1.1);
     }
 
     .contact-form{
       background:#fff;
       border-radius:22px;
-      padding:24px;
+      padding:26px;
       border:1px solid rgba(0,0,0,0.06);
       box-shadow: var(--shadow2);
+    }
+
+    .contact-form h3{
+      font-size:22px;
+      font-weight:900;
+      margin-bottom:14px;
+      color:#0f172a;
     }
 
     .contact-form input,
@@ -668,7 +834,7 @@
       border:1px solid rgba(0,0,0,0.15);
       outline:none;
       margin-bottom:12px;
-      font-size:14px;
+      font-size:15px;
       font-weight:700;
     }
 
@@ -679,22 +845,51 @@
       border:none;
       background:var(--brand);
       font-weight:900;
-      font-size:14px;
+      font-size:15px;
       cursor:pointer;
       transition:0.2s;
       color:white;
     }
 
     .contact-form button:hover{
-      background:var(--brand2);
+      background:#06292f;
     }
 
-    /* FOOTER */
+    /* SOCIAL LINKS */
+    .social-links{
+      display:flex;
+      gap:14px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .social-links a{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--brand);
+      font-size:20px;
+      transition:0.3s;
+      border:2px solid var(--brand);
+    }
+
+    .social-links a:hover{
+      background:var(--brand);
+      color:white;
+      transform:scale(1.1);
+    }
+
+    /* ===========================
+       FOOTER
+    ============================ */
     footer{
       background:#0b0f17;
       color:white;
-      padding:30px 18px;
-      margin-top:50px;
+      padding:30px 22px;
       border-top:1px solid rgba(255,255,255,0.08);
     }
 
@@ -710,11 +905,13 @@
 
     .foot-inner p{
       color:rgba(255,255,255,0.7);
-      font-size:13px;
+      font-size:14px;
       font-weight:700;
     }
 
-    /* FIXED BUTTONS */
+    /* ===========================
+       WHATSAPP + CALL
+    ============================ */
     .whatsapp{
       position:fixed;
       right:18px;
@@ -727,8 +924,13 @@
       font-weight:900;
       box-shadow: var(--shadow2);
       z-index:999;
+      transition:0.2s;
     }
-    .whatsapp:hover{background:#128C7E;}
+
+    .whatsapp:hover{
+      background:#128C7E;
+      transform:scale(1.05);
+    }
 
     .call-btn{
       position:fixed;
@@ -742,73 +944,89 @@
       font-weight:900;
       box-shadow: var(--shadow2);
       z-index:999;
-    }
-    .call-btn:hover{
-      background:#0b0f17;
-      color:white;
+      transition:0.2s;
     }
 
-    /* RESPONSIVE */
+    .call-btn:hover{
+      background:#06292f;
+      transform:scale(1.05);
+    }
+
+    /* ===========================
+       RESPONSIVE
+    ============================ */
     @media(max-width:980px){
       .hero-inner{grid-template-columns:1fr;}
+      .trust-card{grid-template-columns:1fr 1fr;}
       .grid{grid-template-columns:1fr 1fr;}
       .gallery{grid-template-columns:1fr 1fr;}
+      .pricing{grid-template-columns:1fr;}
       .test-grid{grid-template-columns:1fr;}
       .contact-wrap{grid-template-columns:1fr;}
-      .hero-left h1{font-size:38px;}
-      .logo-text{font-size:18px;}
+      .hero-left h1{font-size:44px;}
+
+      .menu{display:none;}
+      .menu-btn{display:block;}
     }
 
     @media(max-width:560px){
+      .trust-card{grid-template-columns:1fr;}
       .grid{grid-template-columns:1fr;}
       .gallery{grid-template-columns:1fr;}
-      .hero-left h1{font-size:32px;}
-      .logo-img{width:48px;height:48px;}
+      .hero-left h1{font-size:36px;}
+      .logo-text{font-size:18px;}
+      .logo-img{width:52px;height:52px;}
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
 
-      <!-- LOGO LEFT -->
-      <a class="logo" href="index.html">
-        <img src="images/logo.png" alt="DGLV Logo" class="logo-img">
+      <!-- LOGO -->
+      <a class="logo" href="#">
+        <img src="images/logo.png" class="logo-img" alt="DGLV Logo">
         <div class="logo-text">
           DGLV <span>Interior</span>
         </div>
       </a>
 
-      <!-- MENU -->
+      <!-- DESKTOP MENU -->
       <div class="menu">
-        <div class="dropdown">
-          <button class="dropbtn" id="servicesBtn">
-            Services <i class="fa-solid fa-chevron-down"></i>
-          </button>
-
-          <div class="dropdown-content" id="servicesMenu">
-            <a href="#reviews">Reviews</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-            <a href="gallery.html">Our Gallery</a>
-          </div>
-        </div>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-btn" href="gallery.html">Our Gallery</a>
       </div>
 
+      <!-- MOBILE MENU ICON -->
+      <div class="menu-btn" id="menuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="gallery.html">Our Gallery</a>
     </div>
   </div>
 
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero" id="home">
     <div class="hero-inner">
 
       <div class="hero-left">
         <h1>Premium Home Interior</h1>
         <p>
-          DGLV INTERIOR provides modern Home Interiors, Modular Kitchen, Wardrobe, False Ceiling,
+          DGLV Interior provides modern Home Interiors, Modular Kitchen, Wardrobe, False Ceiling,
           Painting and Office Interior Works with best quality materials and perfect finishing.
         </p>
 
@@ -826,13 +1044,13 @@
       </div>
 
       <div class="hero-form">
-        <h3>Book Free Design Consultation</h3>
+        <h3>Get Free Design Consultation</h3>
         <p>Fill details. Our team will contact you within 24 hours.</p>
 
         <form>
-          <input type="text" placeholder="Full Name" required />
-          <input type="tel" placeholder="Mobile Number" required />
-          <input type="text" placeholder="Location (BHEL / Hyderabad)" required />
+          <input type="text" placeholder="Full Name" required>
+          <input type="tel" placeholder="Mobile Number" required>
+          <input type="text" placeholder="Location (BHEL / Hyderabad)" required>
 
           <select required>
             <option value="">Select Service</option>
@@ -848,11 +1066,33 @@
 
           <div class="note">
             📞 Call: <b>9666141369</b><br>
-            📧 Email: <b>info@dglvinterior.com</b>
+            📧 Email: <b>info@dglvInterior.com</b>
           </div>
         </form>
       </div>
 
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="trust-card">
+      <div class="trust-item">
+        <h4>Premium Quality</h4>
+        <p>We use best plywood, hardware & branded materials.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Custom Designs</h4>
+        <p>Modern Interior design ideas with customer preference.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Skilled Team</h4>
+        <p>Professional workers with best finishing.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Affordable Price</h4>
+        <p>Best packages with budget-friendly pricing.</p>
+      </div>
     </div>
   </div>
 
@@ -862,7 +1102,7 @@
       <div class="sec-head">
         <h2>Our Interior Services</h2>
         <p>
-          Complete interior solutions for your home and office.
+          Complete Interior solutions for your home and office.
           We deliver modern style with strong durability.
         </p>
       </div>
@@ -871,7 +1111,7 @@
         <div class="service">
           <div class="icon">🏠</div>
           <h3>Home Interior</h3>
-          <p>Living room, bedroom, TV unit, wall panels and full home interior works.</p>
+          <p>Living room, bedroom, TV unit, wall panels and full home Interior works.</p>
         </div>
 
         <div class="service">
@@ -901,63 +1141,65 @@
         <div class="service">
           <div class="icon">🏢</div>
           <h3>Office Interior</h3>
-          <p>Reception design, partitions, workspace interiors and office setup.</p>
+          <p>Reception design, partitions, workspace Interiors and office setup.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- BRANDS + PROJECTS -->
-  <div class="brand-box">
+  <section id="projects" style="background:#f8fafc;">
     <div class="container">
       <div class="sec-head">
         <h2>Our Brand Partners</h2>
-        <p>We work with premium brands and best quality materials.</p>
+        <p>We work with top quality brands and trusted partners.</p>
       </div>
 
       <div class="brand-slider">
         <div class="brand-track">
-          <!-- 16 BRANDS -->
-          <img src="images/brand1.png" alt="Brand">
-          <img src="images/brand2.png" alt="Brand">
-          <img src="images/brand3.png" alt="Brand">
-          <img src="images/brand4.png" alt="Brand">
-          <img src="images/brand5.png" alt="Brand">
-          <img src="images/brand6.png" alt="Brand">
-          <img src="images/brand7.png" alt="Brand">
-          <img src="images/brand8.png" alt="Brand">
-          <img src="images/brand9.png" alt="Brand">
-          <img src="images/brand10.png" alt="Brand">
-          <img src="images/brand11.png" alt="Brand">
-          <img src="images/brand12.png" alt="Brand">
-          <img src="images/brand13.png" alt="Brand">
-          <img src="images/brand14.png" alt="Brand">
-          <img src="images/brand15.png" alt="Brand">
-          <img src="images/brand16.png" alt="Brand">
 
-          <!-- DUPLICATE FOR LOOP -->
-          <img src="images/brand1.png" alt="Brand">
-          <img src="images/brand2.png" alt="Brand">
-          <img src="images/brand3.png" alt="Brand">
-          <img src="images/brand4.png" alt="Brand">
-          <img src="images/brand5.png" alt="Brand">
-          <img src="images/brand6.png" alt="Brand">
-          <img src="images/brand7.png" alt="Brand">
-          <img src="images/brand8.png" alt="Brand">
-          <img src="images/brand9.png" alt="Brand">
-          <img src="images/brand10.png" alt="Brand">
-          <img src="images/brand11.png" alt="Brand">
-          <img src="images/brand12.png" alt="Brand">
-          <img src="images/brand13.png" alt="Brand">
-          <img src="images/brand14.png" alt="Brand">
-          <img src="images/brand15.png" alt="Brand">
-          <img src="images/brand16.png" alt="Brand">
+          <!-- 16 BRANDS -->
+          <div class="brand-box"><img src="images/brand1.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand2.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand3.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand4.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand5.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand6.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand7.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand8.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand9.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand10.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand11.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand12.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand13.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand14.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand15.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand16.png" alt="Brand"></div>
+
+          <!-- DUPLICATE FOR SMOOTH SCROLL -->
+          <div class="brand-box"><img src="images/brand1.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand2.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand3.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand4.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand5.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand6.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand7.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand8.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand9.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand10.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand11.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand12.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand13.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand14.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand15.png" alt="Brand"></div>
+          <div class="brand-box"><img src="images/brand16.png" alt="Brand"></div>
+
         </div>
       </div>
 
       <div class="sec-head" style="margin-top:50px;">
         <h2>Our Recent Projects</h2>
-        <p>Some premium interior designs and works completed by DGLV INTERIOR.</p>
+        <p>Some premium Interior designs and works completed by DGLV Interior.</p>
       </div>
 
       <div class="gallery">
@@ -991,21 +1233,76 @@
           <div class="img-label">Office Interior</div>
         </div>
       </div>
+
     </div>
-  </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Interior Packages</h2>
+        <p>Choose best package for your budget. Contact us for exact quotation.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="plan">
+          <h3>Basic Package</h3>
+          <p>Affordable Interiors for budget homes.</p>
+          <div class="price">₹ 1.5L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Simple Wardrobe</li>
+            <li>✔ Basic Kitchen Setup</li>
+            <li>✔ Basic False Ceiling</li>
+            <li>✔ Painting Works</li>
+          </ul>
+          <a href="#contact">Get Quote</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="tag">Most Popular</div>
+          <h3>Premium Package</h3>
+          <p>Modern Interiors with premium finishing.</p>
+          <div class="price">₹ 3L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Modular Kitchen</li>
+            <li>✔ Premium Wardrobe</li>
+            <li>✔ Designer TV Unit</li>
+            <li>✔ False Ceiling + Lights</li>
+            <li>✔ Full Painting</li>
+          </ul>
+          <a href="#contact">Book Consultation</a>
+        </div>
+
+        <div class="plan">
+          <h3>Luxury Package</h3>
+          <p>High-end Interiors for premium homes.</p>
+          <div class="price">₹ 6L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Complete Home Interiors</li>
+            <li>✔ Luxury Modular Kitchen</li>
+            <li>✔ Custom Furniture</li>
+            <li>✔ Premium Ceiling Design</li>
+            <li>✔ Designer Lighting</li>
+          </ul>
+          <a href="#contact">Get Luxury Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- REVIEWS -->
-  <section id="reviews">
+  <section id="reviews" style="background:#f8fafc;">
     <div class="container">
       <div class="sec-head">
         <h2>Customer Reviews</h2>
-        <p>Our clients trust DGLV INTERIOR for quality and finishing.</p>
+        <p>Our clients trust DGLV Interior for quality and finishing.</p>
       </div>
 
       <div class="test-grid">
         <div class="test">
           <div class="stars">★★★★★</div>
-          <p>Excellent modular kitchen work. Very clean finishing and on-time delivery.</p>
+          <p>Excellent modular kitchen work. Very clean finishing and on-time delivery. Highly recommended.</p>
           <h4>- Customer Naveen</h4>
         </div>
 
@@ -1017,7 +1314,7 @@
 
         <div class="test">
           <div class="stars">★★★★★</div>
-          <p>False ceiling design is beautiful. Lighting setup is very professional.</p>
+          <p>False ceiling design is beautiful. Lighting setup is very professional. Great work!</p>
           <h4>- Customer Sathyanarayana</h4>
         </div>
       </div>
@@ -1025,42 +1322,52 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" style="background:#f8fafc;">
+  <section id="faq">
     <div class="container">
       <div class="sec-head">
         <h2>Frequently Asked Questions</h2>
-        <p>Some common questions customers ask about interior works.</p>
+        <p>Some common questions customers ask about Interior works.</p>
       </div>
 
       <div class="faq">
         <div class="faq-item">
-          <div class="faq-q">How long will it take to complete interior work? <span>+</span></div>
-          <div class="faq-a">Normally 20 to 45 days depending on design and work type.</div>
+          <div class="faq-q">How long will it take to complete Interior work? <span>+</span></div>
+          <div class="faq-a">
+            Normally 20 to 45 days depending on design and work type.
+            Modular kitchen may take 10-20 days.
+          </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Do you provide warranty for interior works? <span>+</span></div>
-          <div class="faq-a">Yes. We provide warranty depending on materials and service type.</div>
+          <div class="faq-q">Do you provide warranty for Interior works? <span>+</span></div>
+          <div class="faq-a">
+            Yes. We provide warranty depending on materials and service type.
+            Contact us for details.
+          </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Do you provide free site visit and consultation? <span>+</span></div>
-          <div class="faq-a">Yes. Free consultation and site visit is available in Hyderabad.</div>
+          <div class="faq-a">
+            Yes. Free consultation and site visit is available in and around BHEL / Hyderabad.
+          </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Can I customize my design? <span>+</span></div>
-          <div class="faq-a">Yes. All our designs are fully customizable based on your space.</div>
+          <div class="faq-a">
+            Yes. All our designs are fully customizable based on your space and requirements.
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" style="background:#0b0f17;">
+  <section id="contact">
     <div class="container">
       <div class="sec-head">
-        <h2 style="color:white;">Contact DGLV INTERIOR</h2>
+        <h2 style="color:white;">Contact DGLV Interior</h2>
         <p style="color:rgba(255,255,255,0.75);">
           Book your free design consultation today. We will call you back quickly.
         </p>
@@ -1069,25 +1376,33 @@
       <div class="contact-wrap">
 
         <div class="contact-card">
-          <h3>DGLV INTERIOR</h3>
-          <p>Premium home interior solutions in BHEL & Hyderabad.</p>
+          <h3>DGLV Interior</h3>
+          <p>Premium home Interior solutions in BHEL & Hyderabad.</p>
 
           <div class="info"><b>📍 Location:</b> BHEL, Hyderabad</div>
           <div class="info"><b>📞 Phone:</b> 9666141369</div>
-          <div class="info"><b>📧 Email:</b> info@dglvinterior.com</div>
+          <div class="info"><b>📧 Email:</b> info@dglvInterior.com</div>
           <div class="info"><b>⏰ Working Hours:</b> Mon - Sun (9AM - 9PM)</div>
 
+          <!-- SOCIAL ICONS -->
           <div class="social-links">
             <a href="https://www.facebook.com/share/17tZ4QPw8g/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/dglv.interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/Dglv_interior" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
+            <a href="https://www.instagram.com/dglv.Interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
+
+            <a href="https://x.com/Dglv_Interior" target="_blank"><i class="fab fa-x-twitter"></i></a>
+
+            <a href="https://youtube.com/@dglvInterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
+
+            <a href="https://www.linkedin.com/in/dglv-Interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </div>
+
+          <br>
+          <a class="btn btn-primary" style="width:100%;" href="tel:9666141369">Call Now</a>
         </div>
 
         <div class="contact-form">
-          <h3 style="font-weight:900;margin-bottom:12px;">Send Your Requirement</h3>
+          <h3>Send Your Requirement</h3>
 
           <form>
             <input type="text" placeholder="Your Name" required />
@@ -1096,8 +1411,8 @@
             <textarea rows="5" placeholder="Your Requirement (Kitchen / Wardrobe / Full Interiors)" required></textarea>
             <button type="submit">Submit Request</button>
 
-            <p style="margin-top:10px;color:gray;font-size:12px;font-weight:700;">
-              *This is demo form. For live form, connect with Email / Google Form integration.
+            <p style="margin-top:10px;color:gray;font-size:13px;font-weight:700;">
+              *This is demo form. For live form, connect with Google Form / Email integration.
             </p>
           </form>
         </div>
@@ -1109,8 +1424,8 @@
   <!-- FOOTER -->
   <footer>
     <div class="foot-inner">
-      <h3 style="font-size:16px;font-weight:900;">DGLV INTERIOR</h3>
-      <p>© 2011 DGLV INTERIOR | All Rights Reserved</p>
+      <h3 style="font-size:18px;font-weight:900;">DGLV Interior</h3>
+      <p>© 2011 DGLV Interior | All Rights Reserved</p>
     </div>
   </footer>
 
@@ -1118,32 +1433,38 @@
   <a class="call-btn" href="tel:9666141369">📞 Call</a>
 
   <a class="whatsapp" target="_blank"
-     href="https://wa.me/919666141369?text=Hello%20DGLV%20INTERIOR,%20I%20need%20interior%20work%20details">
+     href="https://wa.me/919666141369?text=Hello%20DGLV%20Interior,%20I%20need%20Interior%20work%20details">
      💬 WhatsApp
   </a>
 
+  <!-- SCRIPT -->
   <script>
-    // FAQ TOGGLE
-    document.querySelectorAll(".faq-item").forEach(item=>{
-      item.addEventListener("click", ()=>{
+    // FAQ Toggle
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+      item.addEventListener("click", () => {
         item.classList.toggle("active");
       });
     });
 
-    // SERVICES DROPDOWN CLICK (WORKS ON MOBILE + LAPTOP)
-    const dropdown = document.querySelector(".dropdown");
-    const btn = document.getElementById("servicesBtn");
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    btn.addEventListener("click", function(e){
-      e.preventDefault();
-      dropdown.classList.toggle("open");
+    menuBtn.addEventListener("click", () => {
+      if(mobileMenu.style.display === "flex"){
+        mobileMenu.style.display = "none";
+      } else {
+        mobileMenu.style.display = "flex";
+      }
     });
 
-    // CLOSE DROPDOWN IF CLICK OUTSIDE
-    document.addEventListener("click", function(e){
-      if(!dropdown.contains(e.target)){
-        dropdown.classList.remove("open");
-      }
+    // Close mobile menu when clicking link
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.style.display = "none";
+      });
     });
   </script>
 
