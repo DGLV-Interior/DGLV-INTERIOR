@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DGLV Interior</title>
 
-  <!-- FONT AWESOME (For Social + Navbar Icons only) -->
+  <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CUSTOM FONT (DO NOT CHANGE) -->
@@ -68,7 +68,7 @@
     .nav-inner{
       max-width:1400px;
       margin:auto;
-      height:60px;
+      height:60px; /* EXACT LOGO HEIGHT */
       padding:0 22px;
       display:flex;
       justify-content:space-between;
@@ -85,14 +85,32 @@
       font-weight:900;
       font-size:20px;
       letter-spacing:1px;
+      cursor:pointer;
     }
 
+    /* LOGO IMAGE (CIRCULAR + ROTATE ANIMATION) */
     .logo-img{
       width:60px;
       height:60px;
-      object-fit:contain;
-      border:none;
-      border-radius:0;
+      object-fit:cover;
+      border-radius:50%;
+      border:2px solid rgba(14,58,67,0.30);
+      transition:0.3s;
+    }
+
+    .logo:hover .logo-img{
+      transform:rotate(15deg) scale(1.05);
+      border-color:rgba(14,58,67,0.70);
+    }
+
+    .logo-img.rotate-open{
+      animation: logoSpin 0.9s ease-in-out;
+    }
+
+    @keyframes logoSpin{
+      0%{transform:rotate(0deg) scale(1);}
+      50%{transform:rotate(360deg) scale(1.15);}
+      100%{transform:rotate(720deg) scale(1);}
     }
 
     .logo-text{
@@ -106,7 +124,7 @@
     }
 
     .logo-text span{
-      color:#0f172a;
+      color:#0f172a; /* Interior also dark */
       font-weight:900;
     }
 
@@ -172,6 +190,7 @@
       color:var(--brand);
     }
 
+    /* Desktop hover */
     .dropdown:hover .dropdown-content{
       display:block;
     }
@@ -311,51 +330,11 @@
       cursor:pointer;
     }
 
+    /* PILL HOVER ZOOM */
     .pill:hover{
       transform:scale(1.10);
       background:rgba(255,255,255,0.20);
       border-color:rgba(255,255,255,0.45);
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:14px 18px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:15px;
-      transition:0.2s;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      cursor:pointer;
-      border:none;
-    }
-
-    .btn-primary{
-      background:var(--brand);
-      color:white;
-    }
-
-    .btn-primary:hover{
-      background:#06292f;
-      transform:translateY(-1px);
-    }
-
-    .btn-outline{
-      background:transparent;
-      border:2px solid rgba(255,255,255,0.35);
-      color:white;
-    }
-
-    .btn-outline:hover{
-      border:2px solid rgba(255,255,255,0.8);
-      transform:translateY(-1px);
     }
 
     /* ===========================
@@ -456,28 +435,28 @@
       border-color:rgba(14,58,67,0.7);
     }
 
-		/* ICON UPDATED (NO SQUARE BACKGROUND + BIG SIZE) */
-		.icon{
-		height:120px;
-		background:transparent;
-		display:flex;
-		width:120px;
-		align-items:center;
-		justify-content:center;
-		margin-bottom:16px;
-	}
-	
-	.icon img{
-		width:110px;
-		height:110px;
-		object-fit:contain;
-		filter: drop-shadow(0 10px 16px rgba(0,0,0,0.22));
-		transition:0.3s;
-	}
-	
-	.service:hover .icon img{
-	transform: scale(1.20);
-	}
+    /* BIG ICON (NO BACKGROUND BOX) */
+    .icon{
+      width:120px;
+      height:120px;
+      background:transparent;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:16px;
+    }
+
+    .icon img{
+      width:110px;
+      height:110px;
+      object-fit:contain;
+      filter: drop-shadow(0 10px 16px rgba(0,0,0,0.22));
+      transition:0.3s;
+    }
+
+    .service:hover .icon img{
+      transform: scale(1.20);
+    }
 
     .service h3{
       font-size:18px;
@@ -1100,8 +1079,8 @@
     <div class="nav-inner">
 
       <!-- LOGO -->
-      <a class="logo" href="#home">
-        <img src="images/logo.png" class="logo-img" alt="DGLV Logo">
+      <a class="logo" href="index.html" id="logoLink">
+        <img src="images/logo.png" class="logo-img" id="logoImg" alt="DGLV Logo">
         <div class="logo-text">
           DGLV <span>Interior</span>
         </div>
@@ -1212,49 +1191,37 @@
       <div class="grid">
 
         <div class="service">
-          <div class="icon">
-            <img src="images/icon-home.png" alt="Home Interior">
-          </div>
+          <div class="icon"><img src="images/icon-home.png" alt="Home Interior"></div>
           <h3>Home Interior</h3>
           <p>Living room, bedroom, TV unit, wall panels and full home interior works.</p>
         </div>
 
         <div class="service">
-          <div class="icon">
-            <img src="images/icon-kitchen.png" alt="Modular Kitchen">
-          </div>
+          <div class="icon"><img src="images/icon-kitchen.png" alt="Modular Kitchen"></div>
           <h3>Modular Kitchen</h3>
           <p>L-shape, U-shape, parallel kitchen with modern storage and accessories.</p>
         </div>
 
         <div class="service">
-          <div class="icon">
-            <img src="images/icon-wardrobe.png" alt="Wardrobe">
-          </div>
+          <div class="icon"><img src="images/icon-wardrobe.png" alt="Wardrobe"></div>
           <h3>Wardrobe</h3>
           <p>Sliding wardrobe, wooden wardrobe, loft storage and dressing unit designs.</p>
         </div>
 
         <div class="service">
-          <div class="icon">
-            <img src="images/icon-ceiling.png" alt="False Ceiling">
-          </div>
+          <div class="icon"><img src="images/icon-ceiling.png" alt="False Ceiling"></div>
           <h3>False Ceiling</h3>
           <p>POP, gypsum and PVC false ceiling with LED lighting & modern patterns.</p>
         </div>
 
         <div class="service">
-          <div class="icon">
-            <img src="images/icon-paint.png" alt="Painting Works">
-          </div>
+          <div class="icon"><img src="images/icon-paint.png" alt="Painting Works"></div>
           <h3>Painting Works</h3>
           <p>Interior, exterior, texture painting and waterproofing solutions.</p>
         </div>
 
         <div class="service">
-          <div class="icon">
-            <img src="images/icon-office.png" alt="Office Interior">
-          </div>
+          <div class="icon"><img src="images/icon-office.png" alt="Office Interior"></div>
           <h3>Office Interior</h3>
           <p>Reception design, partitions, workspace interiors and office setup.</p>
         </div>
@@ -1536,7 +1503,7 @@
     </div>
   </footer>
 
-  <!-- FLOAT ICONS -->
+  <!-- FLOAT ICONS (ONLY ICONS) -->
   <div class="float-icons">
     <a class="call-icon" href="tel:9666141369"><i class="fa-solid fa-phone"></i></a>
 
@@ -1554,10 +1521,16 @@
       <h3>Get Quote</h3>
       <p>Fill details. We will contact you quickly.</p>
 
+      <!-- FREE EMAIL SENDING (FormSubmit) -->
       <form action="https://formsubmit.co/info@dglvinterior.com" method="POST">
 
+        <!-- Disable Captcha -->
         <input type="hidden" name="_captcha" value="false">
+
+        <!-- Redirect after submit -->
         <input type="hidden" name="_next" value="https://dglv-interior.github.io/dglvinterior.github.io/">
+
+        <!-- Email subject -->
         <input type="hidden" name="_subject" value="New Quote Request - DGLV Interior">
 
         <input type="text" name="Full Name" placeholder="Full Name" required>
@@ -1662,6 +1635,20 @@
       link.addEventListener("click", () => {
         mobileMenu.style.display = "none";
       });
+    });
+
+    // LOGO CLICK ROTATE + OPEN WEBSITE
+    const logoLink = document.getElementById("logoLink");
+    const logoImg = document.getElementById("logoImg");
+
+    logoLink.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      logoImg.classList.add("rotate-open");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 900);
     });
   </script>
 
