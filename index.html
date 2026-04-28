@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DGLV Interior</title>
 
-  <!-- FONT AWESOME -->
+  <!-- FONT AWESOME (For Social + Navbar Icons only) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CUSTOM FONT (DO NOT CHANGE) -->
@@ -110,16 +110,6 @@
       font-weight:900;
     }
 
-    /* LOGO ROTATE ANIMATION ONLY (WHEN URL CLICKED) */
-    .logo-img.rotate-open{
-      animation: logoSpin 0.9s ease-in-out;
-    }
-
-    @keyframes logoSpin{
-      0%{transform:rotate(0deg);}
-      100%{transform:rotate(360deg);}
-    }
-
     /* MENU */
     .menu{
       display:flex;
@@ -182,7 +172,6 @@
       color:var(--brand);
     }
 
-    /* Desktop hover */
     .dropdown:hover .dropdown-content{
       display:block;
     }
@@ -328,6 +317,47 @@
       border-color:rgba(255,255,255,0.45);
     }
 
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:15px;
+      transition:0.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      cursor:pointer;
+      border:none;
+    }
+
+    .btn-primary{
+      background:var(--brand);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#06292f;
+      transform:translateY(-1px);
+    }
+
+    .btn-outline{
+      background:transparent;
+      border:2px solid rgba(255,255,255,0.35);
+      color:white;
+    }
+
+    .btn-outline:hover{
+      border:2px solid rgba(255,255,255,0.8);
+      transform:translateY(-1px);
+    }
+
     /* ===========================
        SECTION COMMON
     ============================ */
@@ -426,26 +456,28 @@
       border-color:rgba(14,58,67,0.7);
     }
 
-    /* BIG ICON */
-    .icon{
-      width:120px;
-      height:120px;
-      background:transparent;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:16px;
-    }
-
-    .icon i{
-      font-size:70px;
-      color:var(--brand);
-      transition:0.3s;
-    }
-
-    .service:hover .icon i{
-      transform:scale(1.2);
-    }
+		/* ICON UPDATED (NO SQUARE BACKGROUND + BIG SIZE) */
+		.icon{
+		height:120px;
+		background:transparent;
+		display:flex;
+		width:120px;
+		align-items:center;
+		justify-content:center;
+		margin-bottom:16px;
+	}
+	
+	.icon img{
+		width:110px;
+		height:110px;
+		object-fit:contain;
+		filter: drop-shadow(0 10px 16px rgba(0,0,0,0.22));
+		transition:0.3s;
+	}
+	
+	.service:hover .icon img{
+	transform: scale(1.20);
+	}
 
     .service h3{
       font-size:18px;
@@ -1069,7 +1101,7 @@
 
       <!-- LOGO -->
       <a class="logo" href="#home">
-        <img src="images/logo.png" class="logo-img" id="logoImg" alt="DGLV Logo">
+        <img src="images/logo.png" class="logo-img" alt="DGLV Logo">
         <div class="logo-text">
           DGLV <span>Interior</span>
         </div>
@@ -1180,37 +1212,49 @@
       <div class="grid">
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-house"></i></div>
+          <div class="icon">
+            <img src="images/icon-home.png" alt="Home Interior">
+          </div>
           <h3>Home Interior</h3>
           <p>Living room, bedroom, TV unit, wall panels and full home interior works.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-kitchen-set"></i></div>
+          <div class="icon">
+            <img src="images/icon-kitchen.png" alt="Modular Kitchen">
+          </div>
           <h3>Modular Kitchen</h3>
           <p>L-shape, U-shape, parallel kitchen with modern storage and accessories.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-door-open"></i></div>
+          <div class="icon">
+            <img src="images/icon-wardrobe.png" alt="Wardrobe">
+          </div>
           <h3>Wardrobe</h3>
           <p>Sliding wardrobe, wooden wardrobe, loft storage and dressing unit designs.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="icon">
+            <img src="images/icon-ceiling.png" alt="False Ceiling">
+          </div>
           <h3>False Ceiling</h3>
           <p>POP, gypsum and PVC false ceiling with LED lighting & modern patterns.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-paint-roller"></i></div>
+          <div class="icon">
+            <img src="images/icon-paint.png" alt="Painting Works">
+          </div>
           <h3>Painting Works</h3>
           <p>Interior, exterior, texture painting and waterproofing solutions.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-building"></i></div>
+          <div class="icon">
+            <img src="images/icon-office.png" alt="Office Interior">
+          </div>
           <h3>Office Interior</h3>
           <p>Reception design, partitions, workspace interiors and office setup.</p>
         </div>
@@ -1463,15 +1507,6 @@
             <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
             <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </div>
-
-          <!-- WEBSITE URL (CLICK HERE -> LOGO ROTATE -> OPEN WEBSITE) -->
-          <div style="margin-top:18px;">
-            <a href="https://dglvinterior.com" id="siteUrlLink"
-               style="color:white;font-weight:900;text-decoration:underline;">
-              dglvinterior.com
-            </a>
-          </div>
-
         </div>
 
         <div class="contact-form">
@@ -1501,7 +1536,7 @@
     </div>
   </footer>
 
-  <!-- FLOAT ICONS (ONLY ICONS) -->
+  <!-- FLOAT ICONS -->
   <div class="float-icons">
     <a class="call-icon" href="tel:9666141369"><i class="fa-solid fa-phone"></i></a>
 
@@ -1519,16 +1554,10 @@
       <h3>Get Quote</h3>
       <p>Fill details. We will contact you quickly.</p>
 
-      <!-- FREE EMAIL SENDING (FormSubmit) -->
       <form action="https://formsubmit.co/info@dglvinterior.com" method="POST">
 
-        <!-- Disable Captcha -->
         <input type="hidden" name="_captcha" value="false">
-
-        <!-- Redirect after submit -->
         <input type="hidden" name="_next" value="https://dglv-interior.github.io/dglvinterior.github.io/">
-
-        <!-- Email subject -->
         <input type="hidden" name="_subject" value="New Quote Request - DGLV Interior">
 
         <input type="text" name="Full Name" placeholder="Full Name" required>
@@ -1633,20 +1662,6 @@
       link.addEventListener("click", () => {
         mobileMenu.style.display = "none";
       });
-    });
-
-    // URL CLICK -> LOGO ROTATE 0.9 SEC -> OPEN WEBSITE
-    const siteUrlLink = document.getElementById("siteUrlLink");
-    const logoImg = document.getElementById("logoImg");
-
-    siteUrlLink.addEventListener("click", function(e){
-      e.preventDefault();
-
-      logoImg.classList.add("rotate-open");
-
-      setTimeout(() => {
-        window.location.href = siteUrlLink.href;
-      }, 900);
     });
   </script>
 
