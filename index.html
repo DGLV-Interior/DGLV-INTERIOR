@@ -8,8 +8,8 @@
   <!-- FONT AWESOME ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- YOUR CUSTOM FONT (DO NOT CHANGE) -->
   <style>
+    /* YOUR FONT (DO NOT CHANGE) */
     @font-face{
       font-family: "Kitamiw01";
       src: url("kitamiw01-regular.ttf") format("truetype");
@@ -19,7 +19,7 @@
 
     :root{
       --brand:#0E3A43;
-      --brand2:#0E3A43;
+      --brand2:#082E3B;
       --text:#0f172a;
       --muted:#64748b;
       --shadow: 0 18px 60px rgba(0,0,0,0.35);
@@ -30,7 +30,7 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: "Kitamiw01", Arial, sans-serif;
+      font-family:"Kitamiw01", Arial, sans-serif;
     }
 
     body{
@@ -85,6 +85,7 @@
       font-weight:900;
       color:#0f172a;
       letter-spacing:0.5px;
+      white-space:nowrap;
     }
 
     .logo-text span{
@@ -127,7 +128,7 @@
     .dropdown-content{
       display:none;
       position:absolute;
-      top:52px;
+      top:55px;
       right:0;
       min-width:200px;
       background:white;
@@ -158,14 +159,15 @@
       display:block;
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION (BACKGROUND IMAGE REQUIRED) */
     .hero{
-      background:url("images/hero.jpg") center/cover no-repeat;
-      min-height:520px;
+      background:url("images/hero.jpg") center center / cover no-repeat;
+      min-height:540px;
       display:flex;
       align-items:center;
       position:relative;
       padding:70px 18px;
+      width:100%;
     }
 
     .hero::after{
@@ -193,17 +195,17 @@
 
     .hero-left h1{
       color:white;
-      font-size:50px;
+      font-size:52px;
       line-height:1.1;
       font-weight:900;
       margin-bottom:15px;
     }
 
     .hero-left p{
-      color:rgba(255,255,255,0.85);
+      color:rgba(255,255,255,0.88);
       font-size:17px;
       line-height:1.7;
-      max-width:600px;
+      max-width:620px;
       margin-bottom:20px;
       font-weight:600;
     }
@@ -250,8 +252,9 @@
       background:var(--brand);
       color:white;
     }
+
     .btn-primary:hover{
-      background:#082E3B;
+      background:var(--brand2);
       transform:translateY(-2px);
     }
 
@@ -260,6 +263,7 @@
       border:2px solid rgba(255,255,255,0.6);
       color:white;
     }
+
     .btn-outline:hover{
       border-color:white;
       transform:translateY(-2px);
@@ -290,7 +294,8 @@
       font-weight:600;
     }
 
-    .hero-form input, .hero-form select{
+    .hero-form input,
+    .hero-form select{
       width:100%;
       padding:12px;
       border-radius:12px;
@@ -321,7 +326,7 @@
     }
 
     .hero-form button:hover{
-      background:#082E3B;
+      background:var(--brand2);
       transform:translateY(-2px);
     }
 
@@ -334,7 +339,7 @@
     }
 
     .note b{
-      color:var(--brand2);
+      color:#00c2ff;
     }
 
     /* SECTIONS */
@@ -681,7 +686,7 @@
     }
 
     .contact-form button:hover{
-      background:#082E3B;
+      background:var(--brand2);
     }
 
     /* FOOTER */
@@ -770,7 +775,7 @@
     <div class="nav-inner">
 
       <!-- LOGO LEFT -->
-      <a class="logo" href="#">
+      <a class="logo" href="index.html">
         <img src="images/logo.png" alt="DGLV Logo" class="logo-img">
         <div class="logo-text">
           DGLV <span>Interior</span>
@@ -930,7 +935,7 @@
           <img src="images/brand15.png" alt="Brand">
           <img src="images/brand16.png" alt="Brand">
 
-          <!-- DUPLICATE FOR SMOOTH LOOP -->
+          <!-- DUPLICATE FOR LOOP -->
           <img src="images/brand1.png" alt="Brand">
           <img src="images/brand2.png" alt="Brand">
           <img src="images/brand3.png" alt="Brand">
@@ -1040,7 +1045,7 @@
 
         <div class="faq-item">
           <div class="faq-q">Do you provide free site visit and consultation? <span>+</span></div>
-          <div class="faq-a">Yes. Free consultation and site visit is available in and around Hyderabad.</div>
+          <div class="faq-a">Yes. Free consultation and site visit is available in Hyderabad.</div>
         </div>
 
         <div class="faq-item">
@@ -1072,7 +1077,6 @@
           <div class="info"><b>📧 Email:</b> info@dglvinterior.com</div>
           <div class="info"><b>⏰ Working Hours:</b> Mon - Sun (9AM - 9PM)</div>
 
-          <!-- SOCIAL ICONS -->
           <div class="social-links">
             <a href="https://www.facebook.com/share/17tZ4QPw8g/" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/dglv.interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
