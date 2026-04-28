@@ -8,7 +8,7 @@
   <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- CUSTOM FONT (DONT CHANGE) -->
+  <!-- CUSTOM FONT (DO NOT CHANGE) -->
   <style>
     @font-face{
       font-family: "kitamiw01";
@@ -43,6 +43,12 @@
       background:#fff;
       color:var(--text);
       overflow-x:hidden;
+      animation: pageLoad 0.8s ease;
+    }
+
+    @keyframes pageLoad{
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
     }
 
     a{text-decoration:none;}
@@ -59,11 +65,10 @@
       box-shadow:0 4px 12px rgba(0,0,0,0.06);
     }
 
-    /* EXACT NAVBAR HEIGHT = 60PX */
     .nav-inner{
       max-width:1400px;
       margin:auto;
-      height:60px;
+      height:60px; /* EXACT LOGO HEIGHT */
       padding:0 22px;
       display:flex;
       justify-content:space-between;
@@ -87,89 +92,93 @@
       height:60px;
       object-fit:contain;
       border:none;
-      background:transparent;
       border-radius:0;
-      padding:0;
     }
 
     .logo-text{
       display:flex;
       align-items:center;
-      gap:4px;
+      gap:6px;
       font-weight:900;
-      font-size:22px;
+      font-size:20px;
+      color:#0f172a;
+      white-space:nowrap;
     }
 
     .logo-text span{
-		color:#0f172a;   /* same dark color as DGLV */
-		font-weight:900;
-	}
+      color:#0f172a; /* Interior also dark */
+      font-weight:900;
+    }
 
     /* MENU */
     .menu{
       display:flex;
-      gap:14px;
+      gap:18px;
       align-items:center;
     }
 
-    /* SERVICES DROPDOWN */
+    /* DROPDOWN */
     .dropdown{
       position:relative;
+      display:inline-block;
     }
 
-    .dropdown-btn{
+    .dropbtn{
       color:#0f172a;
+      text-decoration:none;
       font-size:15px;
       font-weight:900;
-      cursor:pointer;
-      padding:8px 12px;
-      border-radius:10px;
-      transition:0.2s;
+      padding:10px 12px;
+      border-radius:12px;
       display:flex;
       align-items:center;
       gap:6px;
-    }
-
-    .dropdown-btn:hover{
-      color:var(--brand);
-      background:rgba(14,58,67,0.06);
-    }
-
-    .dropdown-menu{
-      position:absolute;
-      top:48px;
-      left:0;
-      width:200px;
-      background:white;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,0.10);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      display:none;
-      flex-direction:column;
-      z-index:9999;
-    }
-
-    .dropdown-menu a{
-      padding:12px 14px;
-      color:#0f172a;
-      font-weight:900;
-      font-size:14px;
       transition:0.2s;
+      cursor:pointer;
     }
 
-    .dropdown-menu a:hover{
+    .dropbtn:hover{
       background:rgba(14,58,67,0.08);
       color:var(--brand);
     }
 
-    /* DESKTOP HOVER OPEN */
-    .dropdown:hover .dropdown-menu{
-      display:flex;
+    .dropdown-content{
+      display:none;
+      position:absolute;
+      top:48px;
+      left:0;
+      min-width:210px;
+      background:white;
+      border-radius:16px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+      border:1px solid rgba(0,0,0,0.08);
+      padding:10px;
+      z-index:999;
+    }
+
+    .dropdown-content a{
+      display:block;
+      padding:12px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:14px;
+      color:#0f172a;
+      transition:0.2s;
+    }
+
+    .dropdown-content a:hover{
+      background:rgba(14,58,67,0.10);
+      color:var(--brand);
+    }
+
+    /* Desktop hover */
+    .dropdown:hover .dropdown-content{
+      display:block;
     }
 
     /* GET QUOTE BUTTON */
-    .quote-btn{
+    .nav-btn{
       padding:10px 16px;
       border-radius:999px;
       background:white;
@@ -179,11 +188,13 @@
       font-size:14px;
       transition:0.2s;
       cursor:pointer;
+      white-space:nowrap;
     }
 
-    .quote-btn:hover{
+    .nav-btn:hover{
       background:var(--brand);
       color:white;
+      transform:translateY(-1px);
     }
 
     /* MOBILE MENU BUTTON */
@@ -194,7 +205,7 @@
       color:var(--brand);
     }
 
-    /* MOBILE DROPDOWN */
+    /* MOBILE MENU */
     .mobile-menu{
       display:none;
       flex-direction:column;
@@ -203,38 +214,42 @@
       padding:12px 18px;
     }
 
-    .mobile-menu .mobile-dropdown-btn{
-      padding:12px 10px;
-      border-radius:12px;
-      font-weight:900;
-      color:#0f172a;
-      cursor:pointer;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .mobile-menu .mobile-dropdown-links{
-      display:none;
-      flex-direction:column;
-      padding-left:10px;
-    }
-
-    .mobile-menu a{
+    .mobile-menu a,
+    .mobile-menu button{
       padding:12px 10px;
       border-radius:12px;
       font-weight:900;
       color:#0f172a;
       transition:0.2s;
+      border:none;
+      background:transparent;
+      text-align:left;
+      cursor:pointer;
+      font-size:15px;
     }
 
-    .mobile-menu a:hover{
+    .mobile-menu a:hover,
+    .mobile-menu button:hover{
       background:rgba(14,58,67,0.08);
       color:var(--brand);
     }
 
+    .mobile-submenu{
+      display:none;
+      flex-direction:column;
+      padding-left:15px;
+      margin-top:6px;
+      gap:6px;
+    }
+
+    .mobile-submenu a{
+      font-size:14px;
+      font-weight:900;
+      padding:10px 10px;
+    }
+
     /* ===========================
-       HERO SECTION WITH IMAGE
+       HERO SECTION
     ============================ */
     .hero{
       width:100%;
@@ -275,7 +290,7 @@
       line-height:1.7;
       max-width:650px;
       margin-bottom:18px;
-      font-weight:600;
+      font-weight:700;
     }
 
     .hero-points{
@@ -293,6 +308,15 @@
       border-radius:999px;
       font-size:14px;
       font-weight:900;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    /* PILL HOVER ZOOM */
+    .pill:hover{
+      transform:scale(1.10);
+      background:rgba(255,255,255,0.20);
+      border-color:rgba(255,255,255,0.45);
     }
 
     .hero-actions{
@@ -438,12 +462,13 @@
       width:55px;
       height:55px;
       border-radius:16px;
-      background:linear-gradient(135deg, rgba(14,58,67,0.22), rgba(14,58,67,0.14));
+      background:rgba(14,58,67,0.12);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:26px;
+      font-size:24px;
       margin-bottom:12px;
+      color:#0E3A43;
     }
 
     .service h3{
@@ -494,6 +519,7 @@
       transition:0.3s;
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
       overflow:hidden;
+      cursor:pointer;
     }
 
     .brand-box img{
@@ -504,7 +530,7 @@
     }
 
     .brand-box:hover{
-      transform:scale(1.15);
+      transform:scale(1.20);
       border-color:rgba(14,58,67,0.7);
     }
 
@@ -559,6 +585,104 @@
       font-weight:900;
       border:1px solid rgba(255,255,255,0.18);
       pointer-events:none;
+    }
+
+    /* ===========================
+       PRICING
+    ============================ */
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .plan{
+      background:#fff;
+      border-radius:22px;
+      padding:26px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+      transition:0.25s;
+    }
+
+    .plan:hover{
+      transform:translateY(-6px);
+      border-color:rgba(14,58,67,0.6);
+    }
+
+    .plan.featured{
+      border:2px solid rgba(14,58,67,0.7);
+      transform:translateY(-8px);
+    }
+
+    .tag{
+      position:absolute;
+      top:14px;
+      right:14px;
+      background:var(--brand);
+      padding:7px 12px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:white;
+    }
+
+    .plan h3{
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .plan p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    .price{
+      font-size:30px;
+      font-weight:900;
+      margin-bottom:14px;
+      color:#0f172a;
+    }
+
+    .price span{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    .plan ul{
+      list-style:none;
+      margin-bottom:18px;
+    }
+
+    .plan ul li{
+      margin-bottom:11px;
+      color:#0f172a;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .plan a{
+      display:block;
+      text-align:center;
+      padding:13px;
+      border-radius:14px;
+      background:#0b0f17;
+      color:white;
+      font-weight:900;
+      transition:0.2s;
+    }
+
+    .plan a:hover{
+      background:var(--brand);
+      color:white;
     }
 
     /* ===========================
@@ -702,10 +826,10 @@
       border-radius:16px;
       margin-bottom:12px;
       font-size:15px;
-      font-weight:800;
+      font-weight:900;
     }
 
-    /* SOCIAL ICONS */
+    /* SOCIAL LINKS */
     .social-links{
       display:flex;
       gap:14px;
@@ -731,6 +855,50 @@
       background:var(--brand);
       color:white;
       transform:scale(1.1);
+    }
+
+    .contact-form{
+      background:#fff;
+      border-radius:22px;
+      padding:26px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+    }
+
+    .contact-form h3{
+      font-size:22px;
+      font-weight:900;
+      margin-bottom:14px;
+      color:#0f172a;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.15);
+      outline:none;
+      margin-bottom:12px;
+      font-size:15px;
+      font-weight:700;
+    }
+
+    .contact-form button{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:none;
+      background:var(--brand);
+      font-weight:900;
+      font-size:15px;
+      cursor:pointer;
+      transition:0.2s;
+      color:white;
+    }
+
+    .contact-form button:hover{
+      background:#06292f;
     }
 
     /* ===========================
@@ -760,105 +928,63 @@
     }
 
     /* ===========================
-       WHATSAPP + CALL
-    ============================ */
-    .whatsapp{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      background:#25D366;
-      color:white;
-      padding:12px 18px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:900;
-      box-shadow: var(--shadow2);
-      z-index:999;
-      transition:0.2s;
-    }
-
-    .whatsapp:hover{
-      background:#128C7E;
-      transform:scale(1.05);
-    }
-
-    .call-btn{
-      position:fixed;
-      right:18px;
-      bottom:70px;
-      background:var(--brand);
-      color:white;
-      padding:12px 18px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:900;
-      box-shadow: var(--shadow2);
-      z-index:999;
-      transition:0.2s;
-    }
-
-    .call-btn:hover{
-      background:#06292f;
-      transform:scale(1.05);
-    }
-
-    /* ===========================
-       POPUP GET QUOTE FORM
+       POPUP GET QUOTE
     ============================ */
     .popup{
+      display:none;
       position:fixed;
       top:0;
       left:0;
       width:100%;
       height:100%;
-      background:rgba(0,0,0,0.65);
-      display:none;
+      background:rgba(0,0,0,0.75);
+      z-index:9999;
       justify-content:center;
       align-items:center;
-      z-index:99999;
       padding:20px;
     }
 
     .popup-box{
       width:100%;
-      max-width:420px;
+      max-width:480px;
       background:white;
-      border-radius:18px;
+      border-radius:22px;
       padding:22px;
       box-shadow: var(--shadow);
       position:relative;
-      animation: popIn 0.25s ease-in-out;
+      animation: popupOpen 0.3s ease;
     }
 
-    @keyframes popIn{
-      from{transform:scale(0.85);opacity:0;}
-      to{transform:scale(1);opacity:1;}
+    @keyframes popupOpen{
+      from{transform:scale(0.85); opacity:0;}
+      to{transform:scale(1); opacity:1;}
     }
 
     .popup-box h3{
       font-size:22px;
       font-weight:900;
       margin-bottom:10px;
-      color:var(--brand);
+      color:#0f172a;
     }
 
     .popup-box p{
       font-size:14px;
+      color:var(--muted);
       font-weight:700;
-      color:gray;
-      margin-bottom:14px;
+      margin-bottom:12px;
     }
 
     .popup-box input,
-    .popup-box select{
+    .popup-box select,
+    .popup-box textarea{
       width:100%;
       padding:12px;
       border-radius:12px;
-      border:1px solid rgba(0,0,0,0.2);
-      margin-bottom:12px;
+      border:1px solid rgba(0,0,0,0.15);
       outline:none;
-      font-size:14px;
-      font-weight:800;
+      margin-bottom:12px;
+      font-size:15px;
+      font-weight:700;
     }
 
     .popup-box button{
@@ -867,25 +993,67 @@
       border-radius:12px;
       border:none;
       background:var(--brand);
-      color:white;
       font-weight:900;
       font-size:15px;
       cursor:pointer;
       transition:0.2s;
+      color:white;
     }
 
     .popup-box button:hover{
       background:#06292f;
     }
 
-    .close-btn{
+    .close-popup{
       position:absolute;
-      top:10px;
-      right:12px;
+      top:12px;
+      right:14px;
       font-size:22px;
-      font-weight:900;
-      color:var(--brand);
+      color:#0f172a;
       cursor:pointer;
+      font-weight:900;
+    }
+
+    /* ===========================
+       FIXED ICONS (ONLY ICONS)
+    ============================ */
+    .float-icons{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      z-index:999;
+    }
+
+    .float-icons a{
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:24px;
+      color:white;
+      box-shadow: var(--shadow2);
+      transition:0.2s;
+    }
+
+    .float-icons a:hover{
+      transform:scale(1.1);
+    }
+
+    .call-icon{
+      background:var(--brand);
+    }
+
+    .whatsapp-icon{
+      background:#25D366;
+    }
+
+    .whatsapp-icon:hover{
+      background:#128C7E;
     }
 
     /* ===========================
@@ -896,6 +1064,7 @@
       .trust-card{grid-template-columns:1fr 1fr;}
       .grid{grid-template-columns:1fr 1fr;}
       .gallery{grid-template-columns:1fr 1fr;}
+      .pricing{grid-template-columns:1fr;}
       .test-grid{grid-template-columns:1fr;}
       .contact-wrap{grid-template-columns:1fr;}
       .hero-left h1{font-size:44px;}
@@ -909,8 +1078,9 @@
       .grid{grid-template-columns:1fr;}
       .gallery{grid-template-columns:1fr;}
       .hero-left h1{font-size:36px;}
-      .logo-text{font-size:18px;}
-      .logo-img{width:60px;height:60px;}
+      .logo-text{font-size:17px;}
+      .logo-img{width:55px;height:55px;}
+      .nav-inner{height:60px;}
     }
   </style>
 </head>
@@ -932,13 +1102,12 @@
       <!-- DESKTOP MENU -->
       <div class="menu">
 
-        <!-- SERVICES DROPDOWN -->
         <div class="dropdown">
-          <div class="dropdown-btn">
+          <div class="dropbtn" id="desktopServicesBtn">
             Services <i class="fa-solid fa-chevron-down"></i>
           </div>
 
-          <div class="dropdown-menu">
+          <div class="dropdown-content" id="desktopDropdown">
             <a href="#reviews">Reviews</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
@@ -946,8 +1115,8 @@
           </div>
         </div>
 
-        <!-- GET QUOTE BUTTON -->
-        <button class="quote-btn" id="openQuote">Get Quote</button>
+        <button class="nav-btn" id="quoteBtn">Get Quote</button>
+
       </div>
 
       <!-- MOBILE MENU ICON -->
@@ -959,18 +1128,18 @@
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
 
-      <div class="mobile-dropdown-btn" id="mobileServiceBtn">
+      <button id="mobileServicesBtn">
         Services <i class="fa-solid fa-chevron-down"></i>
-      </div>
+      </button>
 
-      <div class="mobile-dropdown-links" id="mobileServiceLinks">
+      <div class="mobile-submenu" id="mobileSubmenu">
         <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
         <a href="gallery.html">Our Gallery</a>
       </div>
 
-      <a href="#" id="openQuoteMobile">Get Quote</a>
+      <button id="quoteBtnMobile">Get Quote</button>
     </div>
   </div>
 
@@ -993,10 +1162,12 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Get Free Consultation</a>
+          <button class="btn btn-primary" id="heroQuoteBtn">Get Quote</button>
           <a class="btn btn-outline" href="tel:9666141369">Call Now</a>
         </div>
       </div>
+
+      <div style="display:none;"></div>
 
     </div>
   </div>
@@ -1035,41 +1206,43 @@
       </div>
 
       <div class="grid">
+
         <div class="service">
-          <div class="icon">🏠</div>
+          <div class="icon"><i class="fa-solid fa-house"></i></div>
           <h3>Home Interior</h3>
-          <p>Living room, bedroom, TV unit, wall panels and full home Interior works.</p>
+          <p>Living room, bedroom, TV unit, wall panels and full home interior works.</p>
         </div>
 
         <div class="service">
-          <div class="icon">🍽️</div>
+          <div class="icon"><i class="fa-solid fa-kitchen-set"></i></div>
           <h3>Modular Kitchen</h3>
           <p>L-shape, U-shape, parallel kitchen with modern storage and accessories.</p>
         </div>
 
         <div class="service">
-          <div class="icon">🚪</div>
+          <div class="icon"><i class="fa-solid fa-door-open"></i></div>
           <h3>Wardrobe</h3>
           <p>Sliding wardrobe, wooden wardrobe, loft storage and dressing unit designs.</p>
         </div>
 
         <div class="service">
-          <div class="icon">✨</div>
+          <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
           <h3>False Ceiling</h3>
           <p>POP, gypsum and PVC false ceiling with LED lighting & modern patterns.</p>
         </div>
 
         <div class="service">
-          <div class="icon">🎨</div>
+          <div class="icon"><i class="fa-solid fa-paint-roller"></i></div>
           <h3>Painting Works</h3>
           <p>Interior, exterior, texture painting and waterproofing solutions.</p>
         </div>
 
         <div class="service">
-          <div class="icon">🏢</div>
+          <div class="icon"><i class="fa-solid fa-building"></i></div>
           <h3>Office Interior</h3>
-          <p>Reception design, partitions, workspace Interiors and office setup.</p>
+          <p>Reception design, partitions, workspace interiors and office setup.</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -1085,6 +1258,7 @@
       <div class="brand-slider">
         <div class="brand-track">
 
+          <!-- 16 BRANDS -->
           <div class="brand-box"><img src="images/brand1.png" alt="Brand"></div>
           <div class="brand-box"><img src="images/brand2.png" alt="Brand"></div>
           <div class="brand-box"><img src="images/brand3.png" alt="Brand"></div>
@@ -1102,7 +1276,7 @@
           <div class="brand-box"><img src="images/brand15.png" alt="Brand"></div>
           <div class="brand-box"><img src="images/brand16.png" alt="Brand"></div>
 
-          <!-- DUPLICATE -->
+          <!-- DUPLICATE FOR SMOOTH SCROLL -->
           <div class="brand-box"><img src="images/brand1.png" alt="Brand"></div>
           <div class="brand-box"><img src="images/brand2.png" alt="Brand"></div>
           <div class="brand-box"><img src="images/brand3.png" alt="Brand"></div>
@@ -1160,6 +1334,60 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Interior Packages</h2>
+        <p>Choose best package for your budget. Contact us for exact quotation.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="plan">
+          <h3>Basic Package</h3>
+          <p>Affordable Interiors for budget homes.</p>
+          <div class="price">₹ 1.5L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Simple Wardrobe</li>
+            <li>✔ Basic Kitchen Setup</li>
+            <li>✔ Basic False Ceiling</li>
+            <li>✔ Painting Works</li>
+          </ul>
+          <a href="#contact">Get Quote</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="tag">Most Popular</div>
+          <h3>Premium Package</h3>
+          <p>Modern Interiors with premium finishing.</p>
+          <div class="price">₹ 3L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Modular Kitchen</li>
+            <li>✔ Premium Wardrobe</li>
+            <li>✔ Designer TV Unit</li>
+            <li>✔ False Ceiling + Lights</li>
+            <li>✔ Full Painting</li>
+          </ul>
+          <a href="#contact">Book Consultation</a>
+        </div>
+
+        <div class="plan">
+          <h3>Luxury Package</h3>
+          <p>High-end Interiors for premium homes.</p>
+          <div class="price">₹ 6L+ <span>(Approx)</span></div>
+          <ul>
+            <li>✔ Complete Home Interiors</li>
+            <li>✔ Luxury Modular Kitchen</li>
+            <li>✔ Custom Furniture</li>
+            <li>✔ Premium Ceiling Design</li>
+            <li>✔ Designer Lighting</li>
+          </ul>
+          <a href="#contact">Get Luxury Quote</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1261,18 +1489,23 @@
             <a href="https://www.instagram.com/dglv.interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://x.com/Dglv_interior" target="_blank"><i class="fab fa-x-twitter"></i></a>
             <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/in/dglv-interior-b3b103381?" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </div>
-
         </div>
 
-        <div class="contact-card">
-          <h3>Need Help?</h3>
-          <p>Click Get Quote button on top to send your requirement directly.</p>
+        <div class="contact-form">
+          <h3>Send Your Requirement</h3>
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="tel" placeholder="Mobile Number" required />
+            <input type="text" placeholder="Your Location" required />
+            <textarea rows="5" placeholder="Your Requirement (Kitchen / Wardrobe / Full Interiors)" required></textarea>
+            <button type="submit">Submit Request</button>
 
-          <a class="btn btn-primary" style="width:100%;" href="tel:9666141369">📞 Call Now</a>
-          <br><br>
-          <a class="btn btn-outline" style="width:100%;" href="gallery.html">📸 View Gallery</a>
+            <p style="margin-top:10px;color:gray;font-size:13px;font-weight:700;">
+              *This is demo form. Use Get Quote popup for email sending.
+            </p>
+          </form>
         </div>
 
       </div>
@@ -1287,33 +1520,35 @@
     </div>
   </footer>
 
-  <!-- FIXED BUTTONS -->
-  <a class="call-btn" href="tel:9666141369">📞 Call</a>
+  <!-- FLOAT ICONS (ONLY ICONS) -->
+  <div class="float-icons">
+    <a class="call-icon" href="tel:9666141369"><i class="fa-solid fa-phone"></i></a>
 
-  <a class="whatsapp" target="_blank"
-     href="https://wa.me/919666141369?text=Hello%20DGLV%20Interior,%20I%20need%20Interior%20work%20details">
-     💬 WhatsApp
-  </a>
+    <a class="whatsapp-icon" target="_blank"
+       href="https://wa.me/919666141369?text=Hello%20DGLV%20Interior,%20I%20need%20Interior%20work%20details">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
 
-  <!-- POPUP GET QUOTE FORM -->
+  <!-- POPUP GET QUOTE -->
   <div class="popup" id="quotePopup">
     <div class="popup-box">
-      <div class="close-btn" id="closeQuote">&times;</div>
+      <div class="close-popup" id="closePopup">&times;</div>
 
       <h3>Get Quote</h3>
-      <p>Fill details. We will contact you within 24 hours.</p>
+      <p>Fill details. We will contact you quickly.</p>
 
-      <!-- FORM SUBMIT EMAIL -->
+      <!-- FREE EMAIL SENDING (FormSubmit) -->
       <form action="https://formsubmit.co/info@dglvinterior.com" method="POST">
 
-        <!-- Disable captcha -->
+        <!-- Disable Captcha -->
         <input type="hidden" name="_captcha" value="false">
+
+        <!-- Redirect after submit -->
+        <input type="hidden" name="_next" value="https://dglv-interior.github.io/dglvinterior.github.io/">
 
         <!-- Email subject -->
         <input type="hidden" name="_subject" value="New Quote Request - DGLV Interior">
-
-        <!-- Thank you redirect page -->
-        <input type="hidden" name="_next" value="https://dglv-interior.github.io/dglvinterior.github.io/">
 
         <input type="text" name="Full Name" placeholder="Full Name" required>
         <input type="tel" name="Mobile Number" placeholder="Mobile Number" required>
@@ -1324,8 +1559,6 @@
           <option>1 BHK</option>
           <option>2 BHK</option>
           <option>3 BHK</option>
-          <option>Villa</option>
-          <option>Office</option>
         </select>
 
         <select name="Service" required>
@@ -1337,19 +1570,20 @@
           <option>Painting Works</option>
           <option>Office Interior</option>
         </select>
-		
-		<select name="Budget" required>
-			<option value="">Select Budget</option>
-			<option>2 Lakhs - 5 Lakhs</option>
-			<option>5 Lakhs - 8 Lakhs</option>
-			<option>8 Lakhs - 12 Lakhs</option>
-			<option>12 Lakhs - 15 Lakhs</option>
-			<option>15 Lakhs - 20 Lakhs</option>
-		</select>
+
+        <select name="Budget" required>
+          <option value="">Select Budget</option>
+          <option>2 Lakhs - 5 Lakhs</option>
+          <option>5 Lakhs - 8 Lakhs</option>
+          <option>8 Lakhs - 12 Lakhs</option>
+          <option>12 Lakhs - 15 Lakhs</option>
+          <option>15 Lakhs - 20 Lakhs</option>
+        </select>
+
+        <textarea name="Message" rows="4" placeholder="Your Requirement (Optional)"></textarea>
 
         <button type="submit">Submit Quote Request</button>
       </form>
-
     </div>
   </div>
 
@@ -1363,7 +1597,7 @@
       });
     });
 
-    // Mobile Menu Toggle
+    // MOBILE MENU Toggle
     const menuBtn = document.getElementById("menuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
 
@@ -1375,49 +1609,51 @@
       }
     });
 
-    // Mobile Services Dropdown
-    const mobileServiceBtn = document.getElementById("mobileServiceBtn");
-    const mobileServiceLinks = document.getElementById("mobileServiceLinks");
+    // MOBILE SERVICES DROPDOWN
+    const mobileServicesBtn = document.getElementById("mobileServicesBtn");
+    const mobileSubmenu = document.getElementById("mobileSubmenu");
 
-    mobileServiceBtn.addEventListener("click", () => {
-      if(mobileServiceLinks.style.display === "flex"){
-        mobileServiceLinks.style.display = "none";
+    mobileServicesBtn.addEventListener("click", () => {
+      if(mobileSubmenu.style.display === "flex"){
+        mobileSubmenu.style.display = "none";
       } else {
-        mobileServiceLinks.style.display = "flex";
+        mobileSubmenu.style.display = "flex";
+      }
+    });
+
+    // QUOTE POPUP
+    const quotePopup = document.getElementById("quotePopup");
+    const quoteBtn = document.getElementById("quoteBtn");
+    const quoteBtnMobile = document.getElementById("quoteBtnMobile");
+    const heroQuoteBtn = document.getElementById("heroQuoteBtn");
+    const closePopup = document.getElementById("closePopup");
+
+    function openPopup(){
+      quotePopup.style.display = "flex";
+    }
+
+    function closePopupFunc(){
+      quotePopup.style.display = "none";
+    }
+
+    quoteBtn.addEventListener("click", openPopup);
+    quoteBtnMobile.addEventListener("click", openPopup);
+    heroQuoteBtn.addEventListener("click", openPopup);
+    closePopup.addEventListener("click", closePopupFunc);
+
+    // Close popup when clicking outside
+    quotePopup.addEventListener("click", (e) => {
+      if(e.target === quotePopup){
+        closePopupFunc();
       }
     });
 
     // Close mobile menu when clicking link
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-    mobileLinks.forEach(link => {
+    const allMobileLinks = mobileMenu.querySelectorAll("a");
+    allMobileLinks.forEach(link => {
       link.addEventListener("click", () => {
         mobileMenu.style.display = "none";
       });
-    });
-
-    // Get Quote Popup
-    const openQuote = document.getElementById("openQuote");
-    const openQuoteMobile = document.getElementById("openQuoteMobile");
-    const quotePopup = document.getElementById("quotePopup");
-    const closeQuote = document.getElementById("closeQuote");
-
-    openQuote.addEventListener("click", () => {
-      quotePopup.style.display = "flex";
-    });
-
-    openQuoteMobile.addEventListener("click", (e) => {
-      e.preventDefault();
-      quotePopup.style.display = "flex";
-    });
-
-    closeQuote.addEventListener("click", () => {
-      quotePopup.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-      if(e.target === quotePopup){
-        quotePopup.style.display = "none";
-      }
     });
   </script>
 
