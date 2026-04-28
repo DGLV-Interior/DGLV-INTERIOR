@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DGLV Interior</title>
 
-  <!-- FONT AWESOME (SOCIAL ICONS WORKING) -->
+  <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- CUSTOM FONT -->
+  <!-- CUSTOM FONT (DO NOT CHANGE) -->
   <style>
     @font-face{
       font-family: "kitamiw01";
@@ -107,32 +107,68 @@
       align-items:center;
     }
 
-    .menu a{
+    /* SERVICES DROPDOWN */
+    .dropdown{
+      position:relative;
+    }
+
+    .dropbtn{
+      background:transparent;
+      border:none;
       color:#0f172a;
       font-size:15px;
-      font-weight:800;
+      font-weight:900;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
       transition:0.2s;
     }
 
-    .menu a:hover{
+    .dropbtn:hover{
+      background:rgba(14,58,67,0.08);
       color:var(--brand);
     }
 
-    .nav-btn{
-      padding:10px 14px;
-      border-radius:999px;
+    .dropdown-content{
+      display:none;
+      position:absolute;
+      top:52px;
+      right:0;
+      min-width:220px;
       background:white;
-      border:2px solid var(--brand);
-      color:var(--brand);
+      border-radius:18px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+      border:1px solid rgba(0,0,0,0.08);
+      padding:10px;
+      z-index:999;
+    }
+
+    .dropdown-content a{
+      display:block;
+      padding:12px 14px;
+      border-radius:14px;
       font-weight:900;
       font-size:14px;
+      color:#0f172a;
       transition:0.2s;
-      white-space:nowrap;
     }
 
-    .nav-btn:hover{
-      background:var(--brand);
-      color:white;
+    .dropdown-content a:hover{
+      background:rgba(14,58,67,0.10);
+      color:var(--brand);
+    }
+
+    /* Hover open for Desktop */
+    .dropdown:hover .dropdown-content{
+      display:block;
+    }
+
+    /* Click open (Mobile + Desktop) */
+    .dropdown.open .dropdown-content{
+      display:block;
     }
 
     /* MOBILE MENU BUTTON */
@@ -143,7 +179,7 @@
       color:var(--brand);
     }
 
-    /* MOBILE DROPDOWN */
+    /* MOBILE DROPDOWN MENU */
     .mobile-menu{
       display:none;
       flex-direction:column;
@@ -166,7 +202,7 @@
     }
 
     /* ===========================
-       HERO SECTION WITH IMAGE
+       HERO SECTION
     ============================ */
     .hero{
       width:100%;
@@ -268,9 +304,7 @@
       transform:translateY(-1px);
     }
 
-    /* ===========================
-       HERO FORM
-    ============================ */
+    /* HERO FORM */
     .hero-form{
       background:rgba(255,255,255,0.10);
       border:1px solid rgba(255,255,255,0.20);
@@ -344,9 +378,7 @@
       font-weight:900;
     }
 
-    /* ===========================
-       SECTION COMMON
-    ============================ */
+    /* SECTION COMMON */
     section{
       padding:75px 22px;
     }
@@ -377,9 +409,7 @@
       font-weight:700;
     }
 
-    /* ===========================
-       TRUST SECTION
-    ============================ */
+    /* TRUST SECTION */
     .trust{
       padding:40px 22px;
       background:#fff;
@@ -419,9 +449,7 @@
       font-weight:700;
     }
 
-    /* ===========================
-       SERVICES
-    ============================ */
+    /* SERVICES */
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -467,9 +495,7 @@
       font-weight:700;
     }
 
-    /* ===========================
-       BRAND SLIDER (SQUARE BOX)
-    ============================ */
+    /* BRAND SLIDER */
     .brand-slider{
       width:100%;
       overflow:hidden;
@@ -525,9 +551,7 @@
       100%{transform:translateX(-50%);}
     }
 
-    /* ===========================
-       PROJECTS GALLERY
-    ============================ */
+    /* PROJECTS GALLERY */
     .gallery{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -569,107 +593,7 @@
       pointer-events:none;
     }
 
-    /* ===========================
-       PRICING
-    ============================ */
-    .pricing{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:18px;
-      margin-top:10px;
-    }
-
-    .plan{
-      background:#fff;
-      border-radius:22px;
-      padding:26px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-      transition:0.25s;
-    }
-
-    .plan:hover{
-      transform:translateY(-6px);
-      border-color:rgba(14,58,67,0.6);
-    }
-
-    .plan.featured{
-      border:2px solid rgba(14,58,67,0.7);
-      transform:translateY(-8px);
-    }
-
-    .tag{
-      position:absolute;
-      top:14px;
-      right:14px;
-      background:var(--brand);
-      padding:7px 12px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:12px;
-      color:white;
-    }
-
-    .plan h3{
-      font-size:20px;
-      font-weight:900;
-      margin-bottom:6px;
-    }
-
-    .plan p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-      margin-bottom:14px;
-      font-weight:700;
-    }
-
-    .price{
-      font-size:30px;
-      font-weight:900;
-      margin-bottom:14px;
-      color:#0f172a;
-    }
-
-    .price span{
-      font-size:13px;
-      color:var(--muted);
-      font-weight:800;
-    }
-
-    .plan ul{
-      list-style:none;
-      margin-bottom:18px;
-    }
-
-    .plan ul li{
-      margin-bottom:11px;
-      color:#0f172a;
-      font-size:14px;
-      font-weight:800;
-    }
-
-    .plan a{
-      display:block;
-      text-align:center;
-      padding:13px;
-      border-radius:14px;
-      background:#0b0f17;
-      color:white;
-      font-weight:900;
-      transition:0.2s;
-    }
-
-    .plan a:hover{
-      background:var(--brand);
-      color:white;
-    }
-
-    /* ===========================
-       REVIEWS
-    ============================ */
+    /* REVIEWS */
     .test-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -711,9 +635,7 @@
       color:var(--brand);
     }
 
-    /* ===========================
-       FAQ
-    ============================ */
+    /* FAQ */
     .faq{
       max-width:950px;
       margin:auto;
@@ -763,9 +685,7 @@
       max-height:300px;
     }
 
-    /* ===========================
-       CONTACT
-    ============================ */
+    /* CONTACT */
     #contact{
       background:#0b0f17;
     }
@@ -883,9 +803,7 @@
       transform:scale(1.1);
     }
 
-    /* ===========================
-       FOOTER
-    ============================ */
+    /* FOOTER */
     footer{
       background:#0b0f17;
       color:white;
@@ -909,9 +827,7 @@
       font-weight:700;
     }
 
-    /* ===========================
-       WHATSAPP + CALL
-    ============================ */
+    /* WHATSAPP + CALL */
     .whatsapp{
       position:fixed;
       right:18px;
@@ -952,15 +868,12 @@
       transform:scale(1.05);
     }
 
-    /* ===========================
-       RESPONSIVE
-    ============================ */
+    /* RESPONSIVE */
     @media(max-width:980px){
       .hero-inner{grid-template-columns:1fr;}
       .trust-card{grid-template-columns:1fr 1fr;}
       .grid{grid-template-columns:1fr 1fr;}
       .gallery{grid-template-columns:1fr 1fr;}
-      .pricing{grid-template-columns:1fr;}
       .test-grid{grid-template-columns:1fr;}
       .contact-wrap{grid-template-columns:1fr;}
       .hero-left h1{font-size:44px;}
@@ -987,20 +900,27 @@
     <div class="nav-inner">
 
       <!-- LOGO -->
-      <a class="logo" href="#">
+      <a class="logo" href="#home">
         <img src="images/logo.png" class="logo-img" alt="DGLV Logo">
         <div class="logo-text">
           DGLV <span>Interior</span>
         </div>
       </a>
 
-      <!-- DESKTOP MENU -->
+      <!-- DESKTOP MENU (ONLY SERVICES) -->
       <div class="menu">
-        <a href="#services">Services</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-btn" href="gallery.html">Our Gallery</a>
+        <div class="dropdown" id="desktopDropdown">
+          <button class="dropbtn" id="servicesBtn">
+            Services <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <div class="dropdown-content" id="servicesMenu">
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="gallery.html">Our Gallery</a>
+          </div>
+        </div>
       </div>
 
       <!-- MOBILE MENU ICON -->
@@ -1237,60 +1157,6 @@
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="container">
-      <div class="sec-head">
-        <h2>Interior Packages</h2>
-        <p>Choose best package for your budget. Contact us for exact quotation.</p>
-      </div>
-
-      <div class="pricing">
-        <div class="plan">
-          <h3>Basic Package</h3>
-          <p>Affordable Interiors for budget homes.</p>
-          <div class="price">₹ 1.5L+ <span>(Approx)</span></div>
-          <ul>
-            <li>✔ Simple Wardrobe</li>
-            <li>✔ Basic Kitchen Setup</li>
-            <li>✔ Basic False Ceiling</li>
-            <li>✔ Painting Works</li>
-          </ul>
-          <a href="#contact">Get Quote</a>
-        </div>
-
-        <div class="plan featured">
-          <div class="tag">Most Popular</div>
-          <h3>Premium Package</h3>
-          <p>Modern Interiors with premium finishing.</p>
-          <div class="price">₹ 3L+ <span>(Approx)</span></div>
-          <ul>
-            <li>✔ Modular Kitchen</li>
-            <li>✔ Premium Wardrobe</li>
-            <li>✔ Designer TV Unit</li>
-            <li>✔ False Ceiling + Lights</li>
-            <li>✔ Full Painting</li>
-          </ul>
-          <a href="#contact">Book Consultation</a>
-        </div>
-
-        <div class="plan">
-          <h3>Luxury Package</h3>
-          <p>High-end Interiors for premium homes.</p>
-          <div class="price">₹ 6L+ <span>(Approx)</span></div>
-          <ul>
-            <li>✔ Complete Home Interiors</li>
-            <li>✔ Luxury Modular Kitchen</li>
-            <li>✔ Custom Furniture</li>
-            <li>✔ Premium Ceiling Design</li>
-            <li>✔ Designer Lighting</li>
-          </ul>
-          <a href="#contact">Get Luxury Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- REVIEWS -->
   <section id="reviews" style="background:#f8fafc;">
     <div class="container">
@@ -1384,17 +1250,12 @@
           <div class="info"><b>📧 Email:</b> info@dglvInterior.com</div>
           <div class="info"><b>⏰ Working Hours:</b> Mon - Sun (9AM - 9PM)</div>
 
-          <!-- SOCIAL ICONS -->
           <div class="social-links">
             <a href="https://www.facebook.com/share/17tZ4QPw8g/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="https://www.instagram.com/dglv.Interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
-
-            <a href="https://x.com/Dglv_Interior" target="_blank"><i class="fab fa-x-twitter"></i></a>
-
-            <a href="https://youtube.com/@dglvInterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
-
-            <a href="https://www.linkedin.com/in/dglv-Interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/dglv.interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/Dglv_interior" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </div>
 
           <br>
@@ -1465,6 +1326,22 @@
       link.addEventListener("click", () => {
         mobileMenu.style.display = "none";
       });
+    });
+
+    // SERVICES DROPDOWN CLICK (WORKS ON LAPTOP + MOBILE)
+    const dropdown = document.getElementById("desktopDropdown");
+    const servicesBtn = document.getElementById("servicesBtn");
+
+    servicesBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      dropdown.classList.toggle("open");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if(!dropdown.contains(e.target)){
+        dropdown.classList.remove("open");
+      }
     });
   </script>
 
