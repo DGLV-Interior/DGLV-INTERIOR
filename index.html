@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DGLV Interior</title>
 
-  <!-- FONT AWESOME -->
+  <!-- FONT AWESOME (For Social + Navbar Icons only) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CUSTOM FONT (DO NOT CHANGE) -->
@@ -68,7 +68,7 @@
     .nav-inner{
       max-width:1400px;
       margin:auto;
-      height:60px; /* EXACT LOGO HEIGHT */
+      height:60px;
       padding:0 22px;
       display:flex;
       justify-content:space-between;
@@ -106,7 +106,7 @@
     }
 
     .logo-text span{
-      color:#0f172a; /* Interior also dark */
+      color:#0f172a;
       font-weight:900;
     }
 
@@ -172,7 +172,6 @@
       color:var(--brand);
     }
 
-    /* Desktop hover */
     .dropdown:hover .dropdown-content{
       display:block;
     }
@@ -312,7 +311,6 @@
       cursor:pointer;
     }
 
-    /* PILL HOVER ZOOM */
     .pill:hover{
       transform:scale(1.10);
       background:rgba(255,255,255,0.20);
@@ -458,17 +456,27 @@
       border-color:rgba(14,58,67,0.7);
     }
 
+    /* ICON UPDATED (NO SQUARE BACKGROUND + BIG SIZE) */
     .icon{
-      width:55px;
-      height:55px;
-      border-radius:16px;
-      background:rgba(14,58,67,0.12);
+      width:90px;
+      height:90px;
+      background:transparent;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:24px;
-      margin-bottom:12px;
-      color:#0E3A43;
+      margin-bottom:14px;
+    }
+
+    .icon img{
+      width:80px;
+      height:80px;
+      object-fit:contain;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.18));
+      transition:0.3s;
+    }
+
+    .service:hover .icon img{
+      transform: scale(1.18);
     }
 
     .service h3{
@@ -1208,37 +1216,49 @@
       <div class="grid">
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-house"></i></div>
+          <div class="icon">
+            <img src="images/icon-home.png" alt="Home Interior">
+          </div>
           <h3>Home Interior</h3>
           <p>Living room, bedroom, TV unit, wall panels and full home interior works.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-kitchen-set"></i></div>
+          <div class="icon">
+            <img src="images/icon-kitchen.png" alt="Modular Kitchen">
+          </div>
           <h3>Modular Kitchen</h3>
           <p>L-shape, U-shape, parallel kitchen with modern storage and accessories.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-door-open"></i></div>
+          <div class="icon">
+            <img src="images/icon-wardrobe.png" alt="Wardrobe">
+          </div>
           <h3>Wardrobe</h3>
           <p>Sliding wardrobe, wooden wardrobe, loft storage and dressing unit designs.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="icon">
+            <img src="images/icon-ceiling.png" alt="False Ceiling">
+          </div>
           <h3>False Ceiling</h3>
           <p>POP, gypsum and PVC false ceiling with LED lighting & modern patterns.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-paint-roller"></i></div>
+          <div class="icon">
+            <img src="images/icon-paint.png" alt="Painting Works">
+          </div>
           <h3>Painting Works</h3>
           <p>Interior, exterior, texture painting and waterproofing solutions.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><i class="fa-solid fa-building"></i></div>
+          <div class="icon">
+            <img src="images/icon-office.png" alt="Office Interior">
+          </div>
           <h3>Office Interior</h3>
           <p>Reception design, partitions, workspace interiors and office setup.</p>
         </div>
@@ -1520,7 +1540,7 @@
     </div>
   </footer>
 
-  <!-- FLOAT ICONS (ONLY ICONS) -->
+  <!-- FLOAT ICONS -->
   <div class="float-icons">
     <a class="call-icon" href="tel:9666141369"><i class="fa-solid fa-phone"></i></a>
 
@@ -1538,16 +1558,10 @@
       <h3>Get Quote</h3>
       <p>Fill details. We will contact you quickly.</p>
 
-      <!-- FREE EMAIL SENDING (FormSubmit) -->
       <form action="https://formsubmit.co/info@dglvinterior.com" method="POST">
 
-        <!-- Disable Captcha -->
         <input type="hidden" name="_captcha" value="false">
-
-        <!-- Redirect after submit -->
         <input type="hidden" name="_next" value="https://dglv-interior.github.io/dglvinterior.github.io/">
-
-        <!-- Email subject -->
         <input type="hidden" name="_subject" value="New Quote Request - DGLV Interior">
 
         <input type="text" name="Full Name" placeholder="Full Name" required>
