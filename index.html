@@ -68,7 +68,7 @@
     .nav-inner{
       max-width:1400px;
       margin:auto;
-      height:60px; /* EXACT LOGO HEIGHT */
+      height:60px;
       padding:0 22px;
       display:flex;
       justify-content:space-between;
@@ -85,32 +85,14 @@
       font-weight:900;
       font-size:20px;
       letter-spacing:1px;
-      cursor:pointer;
     }
 
-    /* LOGO IMAGE (CIRCULAR + ROTATE ANIMATION) */
     .logo-img{
       width:60px;
       height:60px;
-      object-fit:cover;
-      border-radius:50%;
-      border:2px solid rgba(14,58,67,0.30);
-      transition:0.3s;
-    }
-
-    .logo:hover .logo-img{
-      transform:rotate(15deg) scale(1.05);
-      border-color:rgba(14,58,67,0.70);
-    }
-
-    .logo-img.rotate-open{
-      animation: logoSpin 0.9s ease-in-out;
-    }
-
-    @keyframes logoSpin{
-      0%{transform:rotate(0deg) scale(1);}
-      50%{transform:rotate(360deg) scale(1.15);}
-      100%{transform:rotate(720deg) scale(1);}
+      object-fit:contain;
+      border:none;
+      border-radius:0;
     }
 
     .logo-text{
@@ -124,8 +106,18 @@
     }
 
     .logo-text span{
-      color:#0f172a; /* Interior also dark */
+      color:#0f172a;
       font-weight:900;
+    }
+
+    /* LOGO ROTATE ANIMATION ONLY (WHEN URL CLICKED) */
+    .logo-img.rotate-open{
+      animation: logoSpin 0.9s ease-in-out;
+    }
+
+    @keyframes logoSpin{
+      0%{transform:rotate(0deg);}
+      100%{transform:rotate(360deg);}
     }
 
     /* MENU */
@@ -330,7 +322,6 @@
       cursor:pointer;
     }
 
-    /* PILL HOVER ZOOM */
     .pill:hover{
       transform:scale(1.10);
       background:rgba(255,255,255,0.20);
@@ -435,7 +426,7 @@
       border-color:rgba(14,58,67,0.7);
     }
 
-    /* BIG ICON (NO BACKGROUND BOX) */
+    /* BIG ICON */
     .icon{
       width:120px;
       height:120px;
@@ -446,16 +437,14 @@
       margin-bottom:16px;
     }
 
-    .icon img{
-      width:110px;
-      height:110px;
-      object-fit:contain;
-      filter: drop-shadow(0 10px 16px rgba(0,0,0,0.22));
+    .icon i{
+      font-size:70px;
+      color:var(--brand);
       transition:0.3s;
     }
 
-    .service:hover .icon img{
-      transform: scale(1.20);
+    .service:hover .icon i{
+      transform:scale(1.2);
     }
 
     .service h3{
@@ -1079,7 +1068,7 @@
     <div class="nav-inner">
 
       <!-- LOGO -->
-      <a class="logo" href="index.html" id="logoLink">
+      <a class="logo" href="#home">
         <img src="images/logo.png" class="logo-img" id="logoImg" alt="DGLV Logo">
         <div class="logo-text">
           DGLV <span>Interior</span>
@@ -1191,37 +1180,37 @@
       <div class="grid">
 
         <div class="service">
-          <div class="icon"><img src="images/icon-home.png" alt="Home Interior"></div>
+          <div class="icon"><i class="fa-solid fa-house"></i></div>
           <h3>Home Interior</h3>
           <p>Living room, bedroom, TV unit, wall panels and full home interior works.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><img src="images/icon-kitchen.png" alt="Modular Kitchen"></div>
+          <div class="icon"><i class="fa-solid fa-kitchen-set"></i></div>
           <h3>Modular Kitchen</h3>
           <p>L-shape, U-shape, parallel kitchen with modern storage and accessories.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><img src="images/icon-wardrobe.png" alt="Wardrobe"></div>
+          <div class="icon"><i class="fa-solid fa-door-open"></i></div>
           <h3>Wardrobe</h3>
           <p>Sliding wardrobe, wooden wardrobe, loft storage and dressing unit designs.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><img src="images/icon-ceiling.png" alt="False Ceiling"></div>
+          <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
           <h3>False Ceiling</h3>
           <p>POP, gypsum and PVC false ceiling with LED lighting & modern patterns.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><img src="images/icon-paint.png" alt="Painting Works"></div>
+          <div class="icon"><i class="fa-solid fa-paint-roller"></i></div>
           <h3>Painting Works</h3>
           <p>Interior, exterior, texture painting and waterproofing solutions.</p>
         </div>
 
         <div class="service">
-          <div class="icon"><img src="images/icon-office.png" alt="Office Interior"></div>
+          <div class="icon"><i class="fa-solid fa-building"></i></div>
           <h3>Office Interior</h3>
           <p>Reception design, partitions, workspace interiors and office setup.</p>
         </div>
@@ -1474,6 +1463,15 @@
             <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
             <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </div>
+
+          <!-- WEBSITE URL (CLICK HERE -> LOGO ROTATE -> OPEN WEBSITE) -->
+          <div style="margin-top:18px;">
+            <a href="https://dglvinterior.com" id="siteUrlLink"
+               style="color:white;font-weight:900;text-decoration:underline;">
+              dglvinterior.com
+            </a>
+          </div>
+
         </div>
 
         <div class="contact-form">
@@ -1637,17 +1635,17 @@
       });
     });
 
-    // LOGO CLICK ROTATE + OPEN WEBSITE
-    const logoLink = document.getElementById("logoLink");
+    // URL CLICK -> LOGO ROTATE 0.9 SEC -> OPEN WEBSITE
+    const siteUrlLink = document.getElementById("siteUrlLink");
     const logoImg = document.getElementById("logoImg");
 
-    logoLink.addEventListener("click", (e) => {
+    siteUrlLink.addEventListener("click", function(e){
       e.preventDefault();
 
       logoImg.classList.add("rotate-open");
 
       setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = siteUrlLink.href;
       }, 900);
     });
   </script>
