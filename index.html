@@ -1169,10 +1169,6 @@
           <div class="pill">✅ Affordable Pricing</div>
         </div>
 
-        <div class="hero-actions">
-          <button class="btn btn-primary" id="heroQuoteBtn">Get Quote</button>
-          <a class="btn btn-outline" href="tel:9666141369">Call Now</a>
-        </div>
       </div>
 
       <div style="display:none;"></div>
@@ -1639,7 +1635,6 @@
     const quotePopup = document.getElementById("quotePopup");
     const quoteBtn = document.getElementById("quoteBtn");
     const quoteBtnMobile = document.getElementById("quoteBtnMobile");
-    const heroQuoteBtn = document.getElementById("heroQuoteBtn");
     const closePopup = document.getElementById("closePopup");
 
     function openPopup(){
@@ -1652,7 +1647,6 @@
 
     quoteBtn.addEventListener("click", openPopup);
     quoteBtnMobile.addEventListener("click", openPopup);
-    heroQuoteBtn.addEventListener("click", openPopup);
     closePopup.addEventListener("click", closePopupFunc);
 
     // Close popup when clicking outside
