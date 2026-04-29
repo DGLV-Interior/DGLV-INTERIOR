@@ -815,9 +815,16 @@
     /* ===========================
        CONTACT
     ============================ */
-    #contact{
-      background:#0b0f17;
-    }
+	#contact .container{
+	position: relative;
+	z-index: 2;
+	}
+	
+	#contact{
+	position: relative;
+	background: url("images/hero-bg.jpg") center/cover no-repeat;
+	padding:80px 20px;
+}
 
     .contact-wrap{
       display:grid;
@@ -826,15 +833,34 @@
       align-items:start;
     }
 
-    .contact-card{
-      background:rgba(255,255,255,0.06);
-      color:white;
-      border-radius:22px;
-      padding:28px;
-      box-shadow: var(--shadow);
-      border:1px solid rgba(255,255,255,0.12);
-    }
+  .contact-card{
+	background: rgba(255,255,255,0.35);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-radius:22px;
+	padding:28px;
+	border:1px solid rgba(255,255,255,0.5);
+	box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+	color:#0f172a;
+}
+	.contact-form{
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
+  border-radius:22px;
+  padding:26px;
+  border:1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+	#contact .sec-head h2{
+  color:#0f172a;
+}
+
+	#contact .sec-head p{
+	color:#334155;
+}
     .contact-card h3{
       font-size:24px;
       font-weight:900;
@@ -859,6 +885,20 @@
       font-size:15px;
       font-weight:900;
     }
+	
+	#contact::before{
+	content: "";
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background: rgba(255,255,255,0.6);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+
+  z-index: 0;
+}
 
     /* SOCIAL LINKS */
     .social-links{
