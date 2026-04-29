@@ -181,6 +181,9 @@
       color:var(--brand);
     }
 
+    .dropdown:hover .dropdown-content{
+      display:block;
+    }
 
     /* GET QUOTE BUTTON */
     .nav-btn{
@@ -1045,10 +1048,6 @@
       cursor:pointer;
       font-weight:900;
     }
-	
-	.dropdown:hover .dropdown-content{
-	display:block;
-}	
 
     /* ===========================
        FIXED ICONS (ONLY ICONS)
@@ -1771,9 +1770,8 @@
       });
     });
   // JS code here
-
-
-<script type="application/ld+json">
+</script>
+	<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -1792,56 +1790,7 @@
   "areaServed": "Hyderabad",
   "priceRange": "₹₹"
 }
-
-</script>
-
-
-  // existing code...
-
-  // Close mobile menu when clicking link
-  const allMobileLinks = mobileMenu.querySelectorAll("a");
-  allMobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.style.display = "none";
-    });
-  });
-
-  
-  const desktopServicesBtn = document.getElementById("desktopServicesBtn");
-  const desktopDropdown = document.getElementById("desktopDropdown");
-
-  desktopServicesBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    if(desktopDropdown.style.display === "block"){
-      desktopDropdown.style.display = "none";
-    } else {
-      desktopDropdown.style.display = "block";
-    }
-  });
-
-  document.addEventListener("click", () => {
-    desktopDropdown.style.display = "none";
-  });
-  
-	const desktopServicesBtn = document.getElementById("desktopServicesBtn");
-	const desktopDropdown = document.getElementById("desktopDropdown");
-
-		desktopServicesBtn.addEventListener("click", function (e) {
-		e.stopPropagation();
-
-		if (desktopDropdown.style.display === "block") {
-		desktopDropdown.style.display = "none";
-	}	 else {
-		desktopDropdown.style.display = "block";
-	}
-	});
-
-	document.addEventListener("click", function () {
-  desktopDropdown.style.display = "none";
-});
-
 </script>
 
 </body>
-</html> 	
+</html>
