@@ -277,13 +277,16 @@
 		width:100%;
 		margin:0;
 		padding:0 20px;
-      width:100%;
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:35px;
-      align-items:center;
-    }
-
+		display:grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap:35px;
+		align-items:flex-end; /* UPDATED */
+	}
+		.hero-left{
+		display:flex;
+		flex-direction:column;
+		justify-content:flex-end;
+	}
     .hero-left h1{
       color:white;
       font-size:54px;
