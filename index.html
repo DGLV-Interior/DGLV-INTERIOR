@@ -816,7 +816,7 @@
        CONTACT
     ============================ */
     #contact{
-      background:#0b0f17;
+      background: linear-gradient(135deg, #0b0f17, #0E3A43);
     }
 
     .contact-wrap{
@@ -826,13 +826,11 @@
       align-items:start;
     }
 
-    .contact-card{
-      background:rgba(255,255,255,0.06);
-      color:white;
-      border-radius:22px;
-      padding:28px;
-      box-shadow: var(--shadow);
-      border:1px solid rgba(255,255,255,0.12);
+    .contact-card .info{
+	background: rgba(255,255,255,0.08);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255,255,255,0.15);
+		
     }
 
     .contact-card h3{
