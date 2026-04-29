@@ -1819,6 +1819,23 @@
   document.addEventListener("click", () => {
     desktopDropdown.style.display = "none";
   });
+  
+	const desktopServicesBtn = document.getElementById("desktopServicesBtn");
+	const desktopDropdown = document.getElementById("desktopDropdown");
+
+		desktopServicesBtn.addEventListener("click", function (e) {
+		e.stopPropagation();
+
+		if (desktopDropdown.style.display === "block") {
+		desktopDropdown.style.display = "none";
+	}	 else {
+		desktopDropdown.style.display = "block";
+	}
+	});
+
+	document.addEventListener("click", function () {
+  desktopDropdown.style.display = "none";
+});
 
 </script>
 
