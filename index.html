@@ -1291,7 +1291,10 @@
         </p>
       </div>
 
-      <div class="grid fade-up">
+		<div class="grid">
+			<div class="service fade-up">...</div>
+			<div class="service fade-up">...</div>
+		</div>
 
         <div class="service">
           <div class="icon">
@@ -1592,7 +1595,11 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="fade-up">
+    <section id="faq">
+		<div class="faq-item fade-up">...</div>
+		<div class="faq-item fade-up">...</div>
+	</section>
+
     <div class="container">
       <div class="sec-head">
         <h2>Frequently Asked Questions</h2>
@@ -1634,7 +1641,11 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="fade-up">
+   
+    <section id="contact">
+		<div class="contact-card fade-up">...</div>
+		<div class="contact-form fade-up">...</div>
+	</section>
     <div class="container">
       <div class="sec-head">
         <h2 style="color:white;">Contact DGLV Interior</h2>
@@ -1856,21 +1867,21 @@ document.addEventListener("click", () => {
 	 // SCROLL ANIMATION
   const fadeElements = document.querySelectorAll(".fade-up");
 
-function showOnScroll(){
-  const triggerBottom = window.innerHeight * 0.85;
+	function showOnScroll(){
+		const triggerBottom = window.innerHeight * 0.85;
 
-  fadeElements.forEach(el => {
-    const boxTop = el.getBoundingClientRect().top;
+	fadeElements.forEach(el => {
+		const boxTop = el.getBoundingClientRect().top;
 
-    if(boxTop < triggerBottom){
-      el.classList.add("show");
+		if(boxTop < triggerBottom){
+			el.classList.add("show");
     }
   });
 }
 
 // scroll + load
-window.addEventListener("scroll", showOnScroll);
-window.addEventListener("load", showOnScroll);
+	window.addEventListener("scroll", showOnScroll);
+	window.addEventListener("load", showOnScroll);
 
 // PARALLAX
 window.addEventListener("scroll", () => {
