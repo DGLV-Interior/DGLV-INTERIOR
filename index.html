@@ -256,18 +256,20 @@
        HERO SECTION
     ============================ */
     .hero{
-      width:100%;
-      min-height:92vh;
-      display:flex;
-      align-items:center;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.35)),
-        url("images/hero-bg.jpg");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      padding:60px 0;
-    }
+	width:100%;
+	min-height:92vh;
+	display:flex;
+		align-items:center;
+		background:
+		linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.35)),
+		url("images/hero-bg.jpg");
+			background-size:cover;
+		background-position:center;
+		background-repeat:no-repeat;
+
+
+		padding:60px 0;
+	}
 
 	.hero-inner{
 		width:100%;
@@ -1131,6 +1133,13 @@
     /* ===========================
        RESPONSIVE
     ============================ */
+	@media(max-width:768px){
+	.hero{
+    background-attachment: scroll;
+	}
+	}
+	
+	
     @media(max-width:980px){
       .hero-inner{grid-template-columns:1fr;}
       .trust-card{grid-template-columns:1fr 1fr;}
@@ -1860,11 +1869,17 @@ document.addEventListener("click", () => {
   }
 
   window.addEventListener("scroll", showOnScroll);
+	// page load ayyaka kuda run avvali
+		showOnScroll();
+		
+		window.addEventListener("scroll", function(){
+		const scrollY = window.scrollY;
+		const hero = document.querySelector(".hero");
 
-  // page load ayyaka kuda run avvali
-  showOnScroll();
+		hero.style.backgroundPosition = "center " + (scrollY * 0.5) + "px";
+});	
 
-</script>
+		</script>
 	  
 </script>
 
