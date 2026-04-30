@@ -1593,7 +1593,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section id="faq" class="fade-up">
     <div class="container">
       <div class="sec-head">
         <h2>Frequently Asked Questions</h2>
@@ -1635,7 +1635,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="fade-up">
     <div class="container">
       <div class="sec-head">
         <h2 style="color:white;">Contact DGLV Interior</h2>
@@ -1646,7 +1646,7 @@
 
       <div class="contact-wrap">
 
-        <div class="contact-card">
+        <div class="contact-card fade-up">
           <h3>DGLV Interior</h3>
           <p>Premium home Interior solutions in BHEL & Hyderabad.</p>
 
@@ -1672,7 +1672,7 @@
           </div>
         </div>
 
-        <div class="contact-form">
+        <div class="contact-form fade-up">
           <h3>Send Your Requirement</h3>
           <form>
             <input type="text" placeholder="Your Name" required />
@@ -1858,20 +1858,20 @@ document.addEventListener("click", () => {
   const fadeElements = document.querySelectorAll(".fade-up");
 
   function showOnScroll(){
-    const triggerBottom = window.innerHeight * 0.85;
+  
+    const fadeElements = document.querySelectorAll(".fade-up");
+	function showOnScroll(){
+	const triggerBottom = window.innerHeight;
+	fadeElements.forEach(el => {
+    const boxTop = el.getBoundingClientRect().top;
+	if(boxTop < triggerBottom){
+      el.classList.add("show");
+    }
+  });
+}
 
-    fadeElements.forEach(el => {
-      const boxTop = el.getBoundingClientRect().top;
-
-      if(boxTop < triggerBottom){
-        el.classList.add("show");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", showOnScroll);
-	// page load ayyaka kuda run avvali
-		showOnScroll();
+window.addEventListener("scroll", showOnScroll);
+window.addEventListener("load", showOnScroll);
 		window.addEventListener("scroll", () => {
 		const scroll = window.scrollY;
 		const hero = document.querySelector(".hero");
