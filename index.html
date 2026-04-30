@@ -1857,17 +1857,29 @@ document.addEventListener("click", () => {
 	 // SCROLL ANIMATION
   const fadeElements = document.querySelectorAll(".fade-up");
 
-  function showOnScroll(){
-  
-    const fadeElements = document.querySelectorAll(".fade-up");
-	function showOnScroll(){
-	const triggerBottom = window.innerHeight;
-	fadeElements.forEach(el => {
+function showOnScroll(){
+  const triggerBottom = window.innerHeight * 0.85;
+
+  fadeElements.forEach(el => {
     const boxTop = el.getBoundingClientRect().top;
-	if(boxTop < triggerBottom){
+
+    if(boxTop < triggerBottom){
       el.classList.add("show");
     }
   });
+}
+
+// scroll + load
+window.addEventListener("scroll", showOnScroll);
+window.addEventListener("load", showOnScroll);
+
+// PARALLAX
+window.addEventListener("scroll", () => {
+  const scroll = window.scrollY;
+  const hero = document.querySelector(".hero");
+
+  hero.style.backgroundPositionY = scroll * 0.5 + "px";
+});
 }
 
 window.addEventListener("scroll", showOnScroll);
@@ -1879,7 +1891,6 @@ window.addEventListener("load", showOnScroll);
 		hero.style.backgroundPositionY = scroll * 0.5 + "px";
 		});
 		
-		</script>
 	  
 </script>
 
