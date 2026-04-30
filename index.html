@@ -862,11 +862,12 @@
 	color:#334155;
 }
     .contact-card h3{
-      font-size:24px;
-      font-weight:900;
-      margin-bottom:10px;
-      color:white;
-    }
+  color:#0f172a;
+}
+
+.contact-card p{
+  color:#334155;
+}
 
     .contact-card p{
       color:rgba(255,255,255,0.75);
@@ -886,18 +887,16 @@
       font-weight:900;
     }
 	
-	#contact::before{
-	content: "";
-	position: absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background: rgba(255,255,255,0.6);
-	backdrop-filter: blur(18px);
-	-webkit-backdrop-filter: blur(18px);
-
-  z-index: 0;
+#contact::before{
+  content: "";
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(255,255,255,0.25); /* IMPORTANT change */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
     /* SOCIAL LINKS */
