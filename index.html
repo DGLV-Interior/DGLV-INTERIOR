@@ -1823,27 +1823,51 @@
 const btn = document.getElementById("desktopServicesBtn");
 const menu = document.getElementById("desktopDropdown");
 
-// click cheste toggle avvali
-btn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if(menu.style.display === "block"){
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "block";
-  }
-});
+		// click cheste toggle avvali
+		btn.addEventListener("click", (e) => {
+		e.stopPropagation();
+		if(menu.style.display === "block"){
+		menu.style.display = "none";
+	} else {
+		menu.style.display = "block";
+	}
+		});
 
 // outside click chesthe close avvali
 document.addEventListener("click", () => {
   menu.style.display = "none";
 });
 
-// dropdown lo click cheste close avvakudadhu
-menu.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
+// 		dropdown lo click cheste close avvakudadhu
+		menu.addEventListener("click", (e) => {
+		e.stopPropagation();
+	});
+
+
+	 // SCROLL ANIMATION
+  const fadeElements = document.querySelectorAll(".fade-up");
+
+  function showOnScroll(){
+    const triggerBottom = window.innerHeight * 0.85;
+
+    fadeElements.forEach(el => {
+      const boxTop = el.getBoundingClientRect().top;
+
+      if(boxTop < triggerBottom){
+        el.classList.add("show");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", showOnScroll);
+
+  // page load ayyaka kuda run avvali
+  showOnScroll();
+
+</script>
 	  
 </script>
+
 	<script type="application/ld+json">
 {
   "@context": "https://schema.org",
