@@ -2,7 +2,15 @@
 <html>
 <head>
   <script>
-    window.location.replace("/");
+    var path = window.location.pathname;
+
+    if (path.includes("services")) {
+      window.location.replace("/#services");
+    } else if (path.includes("about")) {
+      window.location.replace("/#contact");
+    } else {
+      window.location.replace("/");
+    }
   </script>
 </head>
 <body></body>
