@@ -835,9 +835,9 @@
 
 /* GLASS EFFECT DARK */
 	.contact-card{
-		background: rgba(8, 46, 59, 0.75);
-		backdrop-filter: blur(14px);
-		-webkit-backdrop-filter: blur(16px);
+		background: rgba(8, 46, 59, 0.65);
+		backdrop-filter: blur(18px);
+		-webkit-backdrop-filter: blur(18px);
 		border-radius:22px;
 		padding:28px;
 		border:1px solid rgba(255,255,255,0.2);
@@ -904,6 +904,7 @@
 
     /* SOCIAL LINKS */
     .social-links{
+	justify-content:center;
       display:flex;
       gap:14px;
       margin-top:18px;
@@ -973,6 +974,15 @@
     .contact-form button:hover{
       background:#06292f;
     }
+	
+	.contact-card:hover{
+		transform: translateY(-4px);
+		transition: 0.3s;
+	}
+	
+	#contact::before{
+  background: rgba(255,255,255,0.4);
+}
 
     /* ===========================
        FOOTER
