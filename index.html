@@ -1202,16 +1202,35 @@
 
 #about {
   background: #082e3b;
-  color: white;
-  padding: 40px 20px;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-#about h2 {
+.about-border {
+  display: inline-block;
+  max-width: 900px;
+
+  padding: 25px 30px;
+
+  border: 2.5px solid rgba(255,255,255,0.7);
+  border-radius: 60px; /* OVAL BORDER */
+
   color: white;
+
+  line-height: 1.8;
+  font-size: 15px;
+  font-weight: 700;
+
+  transition: 0.3s;
 }
 
-#about p {
-  color: rgba(255,255,255,0.85);
+.about-border:hover {
+  border-color: #ffffff;
+  transform: scale(1.02);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 </style>
@@ -1241,6 +1260,7 @@
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
             <a href="gallery.html">Our Gallery</a>
+			<a href="#about">About Us</a>
           </div>
         </div>
 
@@ -1249,6 +1269,7 @@
       </div>
 
       <!-- MOBILE MENU ICON -->
+	  <a href="/#about">About Us</a>
       <div class="menu-btn" id="menuBtn">
         <i class="fa-solid fa-bars"></i>
       </div>
@@ -1717,18 +1738,28 @@
     </div>
   </section>
   
-	<section id="about">
-	
-	<h2>About DGLV Interior</h2>
-	<p> DGLV Interior is one of the trusted interior design companies in Hyderabad, specializing in modern home interiors, 
-	modular kitchens, wardrobes, false ceilings, and complete interior solutions. With over 10+ years of experience, 
-	we focus on delivering high-quality craftsmanship, premium materials, and customized designs that perfectly match your lifestyle and space. 
-	Our expert team ensures every project is completed with attention to detail, on-time delivery, and affordable pricing. 
-	From concept to completion, DGLV Interior transforms your home into a stylish and functional living space,
-	making us a preferred choice for interior works in BHEL and across Hyderabad....</p>
-	
-	
-	</section>
+<section id="about">
+
+  <h2 style="color:white; margin-bottom:20px;">
+    About DGLV Interior
+  </h2>
+
+  <p class="about-border">
+    DGLV Interior is one of the trusted interior design companies in Hyderabad,
+    specializing in modern home interiors, modular kitchens, wardrobes, false ceilings,
+    and complete interior solutions.
+
+    With over 10+ years of experience, we focus on delivering high-quality craftsmanship,
+    premium materials, and customized designs that perfectly match your lifestyle and space.
+
+    Our expert team ensures every project is completed with attention to detail,
+    on-time delivery, and affordable pricing.
+
+    From concept to completion, DGLV Interior transforms your home into a stylish
+    and functional living space, making us a preferred choice for interior works in BHEL and across Hyderabad.
+  </p>
+
+</section>
 
   <!-- FOOTER -->
   <footer>
