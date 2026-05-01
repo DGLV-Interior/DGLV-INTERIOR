@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+meta<!DOCTYPE html>
 <html lang="en">
 <head>
 <link rel="canonical" href="https://dglvinterior.com/">
@@ -182,26 +182,12 @@
       color:var(--brand);
     }
 
-    /* GET QUOTE BUTTON */
-    .nav-btn{
-      padding:10px 16px;
-      border:2px solid #082e3b;
-      background:white;
-      border:2px solid var(--brand);
-      color:#082e3b;
-      font-weight:900;
-      font-size:14px;
-      transition:0.2s;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-
+   
     .nav-btn:hover{
-	background:#082e3b;
-	color:white;
-	}
-	
-	
+      background:var(--brand);
+      color:white;
+      transform:translateY(-1px);
+    }
 
     /* MOBILE MENU BUTTON */
     .menu-btn{
@@ -347,19 +333,7 @@
       flex-wrap:wrap;
     }
 
-    .btn{
-      padding:14px 18px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:15px;
-      transition:0.2s;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      cursor:pointer;
-      border:none;
-    }
+
 
     .btn-primary{
       background:var(--brand);
@@ -641,6 +615,68 @@
       overflow:hidden;
       transition:0.25s;
     }
+	
+	.btn,
+	.nav-btn,
+.plan a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 900;
+
+  background: #ffffff;
+  color: #082e3b;
+
+  border: 2px solid #082e3b;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover,
+.nav-btn:hover,
+.plan a:hover {
+  background: #082e3b;
+  color: #ffffff;
+
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(8, 46, 59, 0.4);
+}
+
+.btn,
+.nav-btn,
+.plan a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 900;
+
+  background: #ffffff;
+  color: #082e3b;
+
+  border: 2px solid #082e3b;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover,
+.nav-btn:hover,
+.plan a:hover {
+  background: #082e3b;
+  color: #ffffff;
+
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(8, 46, 59, 0.4);
+}
 
     .plan:hover{
       transform:translateY(-6px);
@@ -703,18 +739,8 @@
       font-weight:800;
     }
 
-    .plan a{
-		background:white;
-		color:#082e3b;
-		font-weight:900;
-		border:2px solid #082e3b;
-		transition:0.3s;
-	}
+   
 
-	.plan a:hover{
-	background:#082e3b;
-	color:white;
-}
     .plan a:hover{
       background:var(--brand);
       color:white;
@@ -985,7 +1011,7 @@
        FOOTER
     ============================ */
     footer{
-       background:#082e3b;
+      background:#0b0f17;
       color:white;
       padding:30px 22px;
       border-top:1px solid rgba(255,255,255,0.08);
@@ -1204,20 +1230,6 @@
   margin-bottom:10px;
 }
 
-#about {
-  background: #082e3b;
-  color: white;
-  padding: 40px 20px;
-}
-
-#about h2 {
-  color: white;
-}
-
-#about p {
-  color: rgba(255,255,255,0.85);
-}
-
 </style>
 </head>
 
@@ -1272,7 +1284,7 @@
 		<a href="/gallery.html">Our Gallery</a>
       </div>
 
-      <button id="quoteBtnMobile">Get Free Consultation</button>
+      <button id="quoteBtnMobile">Get Quote</button>
     </div>
   </div>
 
@@ -1720,19 +1732,6 @@
         </div>
     </div>
   </section>
-  
-	<section id="about">
-	
-	<h2>About DGLV Interior</h2>
-	<p> DGLV Interior is one of the trusted interior design companies in Hyderabad, specializing in modern home interiors, 
-	modular kitchens, wardrobes, false ceilings, and complete interior solutions. With over 10+ years of experience, 
-	we focus on delivering high-quality craftsmanship, premium materials, and customized designs that perfectly match your lifestyle and space. 
-	Our expert team ensures every project is completed with attention to detail, on-time delivery, and affordable pricing. 
-	From concept to completion, DGLV Interior transforms your home into a stylish and functional living space,
-	making us a preferred choice for interior works in BHEL and across Hyderabad....</p>
-	
-	
-	</section>
 
   <!-- FOOTER -->
   <footer>
