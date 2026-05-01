@@ -185,10 +185,10 @@
     /* GET QUOTE BUTTON */
     .nav-btn{
       padding:10px 16px;
-      border-radius:999px;
+      border:2px solid #082e3b;
       background:white;
       border:2px solid var(--brand);
-      color:var(--brand);
+      color:#082e3b;
       font-weight:900;
       font-size:14px;
       transition:0.2s;
@@ -197,10 +197,11 @@
     }
 
     .nav-btn:hover{
-      background:var(--brand);
-      color:white;
-      transform:translateY(-1px);
-    }
+	background:#082e3b;
+	color:white;
+	}
+	
+	
 
     /* MOBILE MENU BUTTON */
     .menu-btn{
@@ -703,16 +704,17 @@
     }
 
     .plan a{
-      display:block;
-      text-align:center;
-      padding:13px;
-      border-radius:14px;
-      background:#0b0f17;
-      color:white;
-      font-weight:900;
-      transition:0.2s;
-    }
+		background:white;
+		color:#082e3b;
+		font-weight:900;
+		border:2px solid #082e3b;
+		transition:0.3s;
+	}
 
+	.plan a:hover{
+	background:#082e3b;
+	color:white;
+}
     .plan a:hover{
       background:var(--brand);
       color:white;
@@ -983,7 +985,7 @@
        FOOTER
     ============================ */
     footer{
-      background:#0b0f17;
+       background:#082e3b;
       color:white;
       padding:30px 22px;
       border-top:1px solid rgba(255,255,255,0.08);
@@ -1202,6 +1204,20 @@
   margin-bottom:10px;
 }
 
+#about {
+  background: #082e3b;
+  color: white;
+  padding: 40px 20px;
+}
+
+#about h2 {
+  color: white;
+}
+
+#about p {
+  color: rgba(255,255,255,0.85);
+}
+
 </style>
 </head>
 
@@ -1232,7 +1248,7 @@
           </div>
         </div>
 
-        <button class="nav-btn" id="quoteBtn">Get Quote</button>
+        <button class="nav-btn" id="quoteBtn">Get Free Consultation</button>
 
       </div>
 
@@ -1256,7 +1272,7 @@
 		<a href="/gallery.html">Our Gallery</a>
       </div>
 
-      <button id="quoteBtnMobile">Get Quote</button>
+      <button id="quoteBtnMobile">Get Free Consultation</button>
     </div>
   </div>
 
