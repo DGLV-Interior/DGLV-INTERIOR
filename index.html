@@ -1253,8 +1253,15 @@ html {
 }
 
 .trust-item{
-  text-align:center;
+	text-align:center;
+	transition: all 0.3s ease;   /* 👈 add this */
+	cursor:pointer;              /* 👈 optional */
 }
+.trust-item:hover{
+  transform: scale(1.08);      /* 👈 zoom effect */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12); /* 👈 nice shadow */
+}
+
 
 .trust-item img{
   width:80px;
