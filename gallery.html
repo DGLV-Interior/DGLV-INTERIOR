@@ -141,7 +141,7 @@
     <img src="images/logo-full.png">
   </a>
 
-  <button class="nav-btn">Get Free Consultation</button>
+  <button class="nav-btn" onclick="goToPopup()">Get Free Consultation</button>
 </div>
 
 <!-- CATEGORY -->
@@ -211,6 +211,10 @@ function showCategory(cat){
 /* INIT */
 loadImages("living");
 sliderInterval = setInterval(nextSlide, 2500);
+
+function goToPopup(){
+  window.location.href = "index.html?openPopup=true";
+}
 
 </script>
 
