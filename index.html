@@ -1999,6 +1999,17 @@ window.addEventListener("load", () => {
   }, 15000); // 15 seconds
 });
 
+	window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("openPopup") === "true"){
+    openPopup();
+
+    // URL clean (optional but better)
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+});
+
 
   // WHATSAPP FUNCTION
   function sendToWhatsApp(e){
