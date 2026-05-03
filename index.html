@@ -1834,7 +1834,8 @@ html {
       <h3>Get Quote</h3>
       <p>Fill details. We will contact you quickly.</p>
 
-      <form action="https://formsubmit.co/info@dglvinterior.com" method="POST">
+      
+	  <form onsubmit="sendToWhatsApp(event)">
 
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://dglvinterior.com/">
@@ -1990,6 +1991,52 @@ document.addEventListener("click", () => {
 
   // page load ayyaka kuda run avvali
   showOnScroll();
+  
+  <script>
+function sendToWhatsApp(e){
+  e.preventDefault();
+
+  let name = document.querySelector('input[name="Full Name"]').value;
+  let phone = document.querySelector('input[name="Mobile Number"]').value;
+  let location = document.querySelector('input[name="Location"]').value;
+  let bhk = document.querySelector('select[name="BHK"]').value;
+  let service = document.querySelector('select[name="Service"]').value;
+  let budget = document.querySelector('select[name="Budget"]').value;
+  let message = document.querySelector('textarea[name="Message"]').value;
+
+  let text = `Hello DGLV Interior,%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Location: ${location}%0A
+BHK: ${bhk}%0A
+Service: ${service}%0A
+Budget: ${budget}%0A
+Message: ${message}`;
+
+  let whatsappURL = `https://wa.me/919666141369?text=${text}`;
+
+  window.open(whatsappURL, "_blank");
+}
+
+<script>
+setInterval(() => {
+  document.getElementById("quotePopup").style.display = "flex";
+}, 15000);
+</script>
+
+<script>
+let popupShown = false;
+
+setInterval(() => {
+  if(!popupShown){
+    document.getElementById("quotePopup").style.display = "flex";
+    popupShown = true;
+  }
+}, 15000);
+</script>
+
+
+</script>
 
 
 </script>
