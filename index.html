@@ -65,9 +65,7 @@
 
     /* ===========================
        NAVBAR
-    ============================ 
-	
-	<a href="#pro-calculator" class="nav-btn">Calculator</a>
+    ============================ */
     .nav{
       position:sticky;
       top:0;
@@ -78,18 +76,17 @@
     }
 
     .nav-inner{
-    width:100%;
-    padding:0 20px;
-    display:flex;
-    align-items:center;
-}
+		width:100%;
+		margin:0;
+		padding:0 20px;
+		display:flex;
+		align-items:center;
+		justify-content:flex-start;
+	}
+	
 	
 
     /* LOGO */
-	
-	.logo{
-	margin-right:auto;
-}
     .logo{
       display:flex;
       align-items:center;
@@ -124,9 +121,10 @@
     /* MENU */
 	
 	.menu{
-	display:flex;
-	gap:18px;
-	align-items:center;
+  margin-left:auto;
+  display:flex;
+  gap:18px;
+  align-items:center;
 }
 
     /* DROPDOWN */
@@ -717,55 +715,6 @@
       background:var(--brand);
       color:white;
     }
-	
-	/* ===== CALCULATOR ===== */
-.pro-calc{
-  max-width:450px;
-  margin:auto;
-  background:#fff;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.step{
-  display:none;
-  flex-direction:column;
-  gap:12px;
-}
-
-.step.active{
-  display:flex;
-}
-
-.pro-calc input,
-.pro-calc select{
-  padding:12px;
-  border-radius:12px;
-  border:1px solid rgba(0,0,0,0.15);
-  font-weight:700;
-}
-
-.pro-calc button{
-  padding:12px;
-  border:none;
-  border-radius:12px;
-  background:#0E3A43;
-  color:white;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.pro-calc button:hover{
-  background:#06292f;
-}
-
-#finalResult{
-  font-size:32px;
-  text-align:center;
-  margin-top:15px;
-}
-	
 
     /* ===========================
        REVIEWS
@@ -1723,47 +1672,6 @@ html {
       </div>
     </div>
   </section>
-  
-  <!-- 🔥 PRO CALCULATOR START -->
-<section id="pro-calculator" style="padding:70px 20px;background:#f8fafc;">
-  <div class="container">
-
-    <div class="sec-head">
-      <h2>Interior Cost Calculator</h2>
-      <p>Get instant estimate in 30 seconds</p>
-    </div>
-
-    <div class="pro-calc">
-
-      <div class="step active">
-        <h3>Enter your house size (sq.ft)</h3>
-        <input type="number" id="area" placeholder="Example: 1200">
-        <button onclick="nextStep()">Next</button>
-      </div>
-
-      <div class="step">
-        <h3>Select Package</h3>
-        <select id="package">
-          <option value="">Select</option>
-          <option value="1500">Basic</option>
-          <option value="2500">Premium</option>
-          <option value="4000">Luxury</option>
-        </select>
-        <button onclick="calculateFinal()">Calculate</button>
-      </div>
-
-      <div class="step">
-        <h3>Estimated Cost</h3>
-        <h2 id="finalResult">₹ 0</h2>
-        <button onclick="openPopup()">Get Exact Quote</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- 🔥 PRO CALCULATOR END -->
-
-
 
   <!-- REVIEWS -->
   <section id="reviews" style="background:#f8fafc;">
@@ -1777,19 +1685,19 @@ html {
         <div class="test">
           <div class="stars">★★★★★</div>
           <p>Excellent modular kitchen work. Very clean finishing and on-time delivery. Highly recommended.</p>
-          <h4>-  Naveen</h4>
+          <h4>- Customer Naveen</h4>
         </div>
 
         <div class="test">
           <div class="stars">★★★★★</div>
           <p>Wardrobe and TV unit work is super. Quality materials used and good support.</p>
-          <h4>- Sai Krishna</h4>
+          <h4>- Customer Sai Krishna</h4>
         </div>
 
         <div class="test">
           <div class="stars">★★★★★</div>
           <p>False ceiling design is beautiful. Lighting setup is very professional. Great work!</p>
-          <h4>-  Sathyanarayana</h4>
+          <h4>- Customer Sathyanarayana</h4>
         </div>
       </div>
     </div>
@@ -2083,46 +1991,6 @@ document.addEventListener("click", () => {
   // page load ayyaka kuda run avvali
   showOnScroll();
 
-document.addEventListener("DOMContentLoaded", function(){
-
-  let currentStep = 0;
-  const steps = document.querySelectorAll("#pro-calculator .step");
-
-  window.nextStep = function(){
-    steps[currentStep].classList.remove("active");
-    currentStep++;
-    steps[currentStep].classList.add("active");
-  }
-
-  window.calculateFinal = function(){
-    let area = document.getElementById("area").value;
-    let pkgValue = document.getElementById("package").value;
-    let pkgText = document.getElementById("package").selectedOptions[0].text;
-
-    if(area === "" || pkgValue === ""){
-      alert("Please enter details");
-      return;
-    }
-
-    let total = area * pkgValue;
-
-    document.getElementById("finalResult").innerText =
-      "₹ " + total.toLocaleString();
-
-    // WhatsApp message
-    let message = `Hello DGLV Interior,
-I used your calculator.
-
-Area: ${area} sq.ft
-Package: ${pkgText}
-Estimated Cost: ₹${total}`;
-
-    window.open(`https://wa.me/919666141369?text=${encodeURIComponent(message)}`);
-
-    nextStep();
-  }
-
-});
 
 </script>
 
