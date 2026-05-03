@@ -1345,6 +1345,14 @@ html {
   }
 }
 
+.service{
+  text-align:center;
+}
+
+.icon{
+  margin:auto;
+}
+
 </style>
 </head>
 
@@ -1510,7 +1518,11 @@ html {
 
         <div class="service">
           <div class="icon">
-            <img src="images/icon-paint.png" alt="Painting Works">
+            <div class="icon">
+<svg width="90" height="90" viewBox="0 0 24 24" fill="#082e3b">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v4h18V5c0-1.1-.9-2-2-2zM3 11v6c0 1.1.9 2 2 2h4v-6H3zm8 8h8c1.1 0 2-.9 2-2v-6h-10v8z"/>
+</svg>
+</div>
           </div>
           <h3>Painting Works</h3>
           <p>Interior, exterior, texture painting and waterproofing solutions.</p>
@@ -1693,9 +1705,7 @@ html {
   <h3>Custom Furniture</h3>
   <p>Fully customized interior solutions based on your needs.</p>
 </div>
-<div class="view-more-wrap">
-  <button id="viewMoreBtn">View More</button>
-</div>
+
 
       </div>
     </div>
@@ -2054,8 +2064,6 @@ html {
   
 <script>
 
-
-const viewMoreBtn = document.getElementById("viewMoreBtn");
 
 if(viewMoreBtn){
   viewMoreBtn.addEventListener("click", () => {
