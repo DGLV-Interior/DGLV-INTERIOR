@@ -721,14 +721,16 @@
       font-weight:800;
     }
 
-	.plan a:hover{
-	background:#082e3b;
-	color:white;
+	/* ✅ HOVER */
+	.btn:hover,
+	.nav-btn:hover,
+	.plan a:hover {
+	background: #ffffff;
+	color: #082e3b;
+
+  transform: scale(1.1);
+  border: 1px solid #082e3b;
 }
-    .plan a:hover{
-      background:var(--brand);
-      color:white;
-    }
 
     /* ===========================
        REVIEWS
@@ -1990,19 +1992,12 @@ html {
   showOnScroll();
   
   
-  // AUTO POPUP ON DEC 15 (ONLY ONCE)
+// AUTO POPUP AFTER 15 SECONDS
 window.addEventListener("load", () => {
-  const today = new Date();
-  const isDec15 = (today.getMonth() === 11 && today.getDate() === 15);
-
-  if(isDec15 && !localStorage.getItem("popupShown")){
-    setTimeout(() => {
-      openPopup();
-      localStorage.setItem("popupShown", "true");
-    }, 2000);
-  }
+  setTimeout(() => {
+    openPopup();
+  }, 15000); // 15 seconds
 });
-
 
 
   // WHATSAPP FUNCTION
