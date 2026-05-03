@@ -10,20 +10,19 @@
 
 <style>
 
-/* FONT */
+/* ===== FONT ===== */
 @font-face{
   font-family:"kitamiw01";
   src:url("fonts/kitamiw01-regular.ttf") format("truetype");
 }
 
-/* GLOBAL */
 body{
   margin:0;
   font-family:"kitamiw01", Arial, sans-serif;
   background:#f8fafc;
 }
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .nav{
   position:sticky;
   top:0;
@@ -40,7 +39,7 @@ body{
   height:55px;
 }
 
-/* CONSULT BUTTON */
+/* ===== BUTTON STYLE ===== */
 .nav-btn{
   padding:12px 22px;
   border-radius:999px;
@@ -52,14 +51,13 @@ body{
   transition:0.3s;
 }
 
-/* ✅ CORRECT HOVER */
 .nav-btn:hover{
   background:white;
   color:#082e3b;
   transform:scale(1.08);
 }
 
-/* CATEGORY BUTTONS */
+/* ===== CATEGORY BUTTONS ===== */
 .gallery-buttons{
   text-align:center;
   margin:25px 0;
@@ -70,21 +68,20 @@ body{
   margin:6px;
   border-radius:25px;
   border:2px solid #082e3b;
-  background:#082e3b;   /* DEFAULT BLUE */
+  background:#082e3b;
   color:white;
   font-weight:bold;
   cursor:pointer;
   transition:0.3s;
 }
 
-/* ✅ CORRECT HOVER */
 .gallery-buttons button:hover{
   background:white;
   color:#082e3b;
   transform:scale(1.1);
 }
 
-/* SLIDER */
+/* ===== SLIDER ===== */
 .slider{
   width:90%;
   max-width:950px;
@@ -107,7 +104,7 @@ body{
   flex-shrink:0;
 }
 
-/* BACK BUTTON */
+/* ===== BACK BUTTON ===== */
 .back-btn{
   display:block;
   width:220px;
@@ -134,7 +131,7 @@ body{
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ===== NAVBAR ===== -->
 <div class="nav">
   <a href="index.html" class="logo">
     <img src="images/logo-full.png">
@@ -143,7 +140,7 @@ body{
   <button class="nav-btn">Get Free Consultation</button>
 </div>
 
-<!-- CATEGORY BUTTONS -->
+<!-- ===== CATEGORY BUTTONS ===== -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
@@ -153,7 +150,7 @@ body{
   <button onclick="showCategory('office')">Office Interior</button>
 </div>
 
-<!-- SLIDER -->
+<!-- ===== SLIDER ===== -->
 <div class="slider">
   <div class="slider-track" id="sliderTrack"></div>
 </div>
@@ -162,7 +159,7 @@ body{
 
 <script>
 
-/* IMAGE PATHS FIXED */
+/* ===== IMAGE PATHS (FINAL FIXED) ===== */
 const galleryImages = {
   living: [
     "images/living1.jpg",
@@ -207,7 +204,7 @@ function loadImages(category){
 
   galleryImages[category].forEach(src=>{
     let img = document.createElement("img");
-    img.src = src.trim(); // fix spaces issue
+    img.src = src.trim(); // important fix
     sliderTrack.appendChild(img);
   });
 
@@ -215,14 +212,14 @@ function loadImages(category){
   sliderTrack.style.transform = "translateX(0%)";
 }
 
-/* SLIDE */
+/* NEXT SLIDE */
 function nextSlide(){
   let total = galleryImages[currentCategory].length;
   currentIndex = (currentIndex + 1) % total;
   sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-/* CATEGORY SWITCH */
+/* SWITCH CATEGORY */
 function showCategory(cat){
   currentCategory = cat;
   loadImages(cat);
