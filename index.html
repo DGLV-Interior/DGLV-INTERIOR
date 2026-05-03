@@ -1280,56 +1280,6 @@ html {
   }
 }
 
-.cost-calculator{
-  text-align:center;
-  margin-top:50px;
-}
-
-.cost-calculator h2{
-  font-size:32px;
-  font-weight:900;
-  margin-bottom:10px;
-}
-
-.calc-box{
-  max-width:400px;
-  margin:20px auto;
-  background:#fff;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-.calc-box select,
-.calc-box button{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:10px;
-  border:1px solid #ccc;
-  font-weight:700;
-}
-
-.calc-box button{
-  background:#0E3A43;
-  color:white;
-  border:none;
-  cursor:pointer;
-}
-
-.calc-box button:hover{
-  background:#082e3b;
-}
-
-#result{
-  margin-top:15px;
-  font-size:20px;
-  font-weight:900;
-  color:#0E3A43;
-}
-
-<a href="#contact" class="btn">Get Exact Quote</a>
-
 </style>
 </head>
 
@@ -1855,44 +1805,8 @@ html {
           </div>
         </div>
     </div>
-	
-	<!-- COST CALCULATOR -->
-<div class="cost-calculator fade-up">
-
-  <h2>Calculate Your Interior Cost</h2>
-  <p>Get instant estimate for your home interior</p>
-
-  <div class="calc-box">
-
-    <select id="bhk">
-      <option value="">Select BHK</option>
-      <option value="1">1 BHK</option>
-      <option value="2">2 BHK</option>
-      <option value="3">3 BHK</option>
-    </select>
-
-    <select id="package">
-      <option value="">Select Package</option>
-      <option value="150000">Basic</option>
-      <option value="300000">Premium</option>
-      <option value="600000">Luxury</option>
-    </select>
-
-    <select id="kitchen">
-      <option value="0">Kitchen Type</option>
-      <option value="50000">Basic Kitchen</option>
-      <option value="100000">Modular Kitchen</option>
-    </select>
-
-    <button onclick="calculateCost()">Calculate Cost</button>
-
-    <div id="result"></div>
-
-  </div>
-</div>
-	
   </section>
-
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -2076,30 +1990,6 @@ document.addEventListener("click", () => {
 
   // page load ayyaka kuda run avvali
   showOnScroll();
-  
-  <script>
-function calculateCost(){
-
-  const bhk = document.getElementById("bhk").value;
-  const packagePrice = parseInt(document.getElementById("package").value || 0);
-  const kitchen = parseInt(document.getElementById("kitchen").value || 0);
-
-  if(!bhk || !packagePrice){
-    document.getElementById("result").innerHTML = "Please select all options";
-    return;
-  }
-
-  let multiplier = 1;
-
-  if(bhk == "2") multiplier = 1.5;
-  if(bhk == "3") multiplier = 2;
-
-  let total = (packagePrice * multiplier) + kitchen;
-
-  document.getElementById("result").innerHTML =
-    "Estimated Cost: ₹ " + total.toLocaleString();
-}
-</script>
 
 
 </script>
