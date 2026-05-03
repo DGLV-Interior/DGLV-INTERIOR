@@ -475,10 +475,10 @@
        SERVICES
     ============================ */
     .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:18px;
-    }
+	display:grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap:18px;
+}
 
     .service{
       background:#fff;
@@ -1305,6 +1305,32 @@ html {
   border:1px solid #082e3b;
 }
 
+
+.more-service{
+  display:block;
+}
+
+@media(max-width:560px){
+  .more-service{
+    display:none;
+  }
+
+  .view-more-wrap{
+    text-align:center;
+    margin-top:20px;
+  }
+
+  #viewMoreBtn{
+    padding:12px 24px;
+    border-radius:999px;
+    border:none;
+    background:#082e3b;
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+  }
+}
+
 </style>
 </head>
 
@@ -1500,6 +1526,8 @@ html {
   <p>Space-saving bunk beds with safety design and stylish look for kids rooms.</p>
 </div>
 
+<div class="service more-service">
+
 <div class="service">
   <div class="icon">
     <img src="images/icon-crockery.png" alt="Crockery Unit">
@@ -1555,6 +1583,107 @@ html {
   <h3>Wallpapers</h3>
   <p>Designer wallpapers with modern textures and premium wall decor finishes.</p>
 </div> 
+
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-shoerack.png" alt="Shoe Rack">
+  </div>
+  <h3>Shoe Rack</h3>
+  <p>Modern shoe racks with smart storage and stylish entrance designs.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-barunit.png" alt="Bar Unit">
+  </div>
+  <h3>Bar Unit</h3>
+  <p>Elegant home bar units with glass finish and premium storage.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-sliding.png" alt="Sliding Doors">
+  </div>
+  
+  <h3>PVC Sliding Doors</h3>
+  <p>Smooth sliding door designs for wardrobes and space-saving interiors.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-partion.png" alt="Partition">
+  </div>
+  <h3>Partitions</h3>
+  <p>Wooden and glass partitions for stylish space separation.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-curtains.png" alt="Curtains">
+  </div>
+  <h3>Curtains</h3>
+  <p>Designer curtains and blinds for elegant and modern interiors.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-cladding.png" alt="Wall Cladding">
+  </div>
+  <h3>Wall Cladding</h3>
+  <p>Decorative wall cladding designs for premium look and finish.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-floormat.png" alt="Floor Mats">
+  </div>
+  <h3>Floor Mats</h3>
+  <p>Stylish and durable floor mats for comfort and interior beauty.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-tiles-grainte.png" alt="Tiles & Granite">
+  </div>
+  <h3>Tiles & Granite</h3>
+  <p>High-quality tiles and granite work for flooring and walls.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-stair.png" alt="Staircase">
+  </div>
+  <h3>Wooden Staircase Design</h3>
+  <p>Modern staircase designs with wood, steel and glass finish.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-smart.png" alt="Smart Home">
+  </div>
+  <h3>Smart Home</h3>
+  <p>Smart automation systems for lighting, security and comfort.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-plumb.png" alt="Plumbing">
+  </div>
+  <h3>Plumbing</h3>
+  <p>Complete plumbing solutions for kitchen, bathroom and interiors.</p>
+</div>
+
+<div class="service">
+  <div class="icon">
+    <img src="images/icon-custom.png" alt="Custom Work">
+  </div>
+  <h3>Custom Furniture</h3>
+  <p>Fully customized interior solutions based on your needs.</p>
+</div>
+<div class="view-more-wrap">
+  <button id="viewMoreBtn">View More</button>
+</div>
 
       </div>
     </div>
@@ -1912,6 +2041,21 @@ html {
   <!-- SCRIPT -->
   
 <script>
+
+
+const viewMoreBtn = document.getElementById("viewMoreBtn");
+
+if(viewMoreBtn){
+  viewMoreBtn.addEventListener("click", () => {
+    const hiddenServices = document.querySelectorAll(".more-service");
+
+    hiddenServices.forEach(el => {
+      el.style.display = "block";
+    });
+
+    viewMoreBtn.style.display = "none";
+  });
+}
 
   // FAQ Toggle
   const faqItems = document.querySelectorAll(".faq-item");
