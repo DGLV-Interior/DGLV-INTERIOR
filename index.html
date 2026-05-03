@@ -1306,8 +1306,16 @@ html {
 }
 
 
+/* DESKTOP lo anni visible */
 .more-service{
-  display:none;
+  display:block;
+}
+
+/* MOBILE lo matrame hide */
+@media(max-width:560px){
+  .more-service{
+    display:none;
+  }
 }
 
 @media(max-width:560px){
@@ -1681,8 +1689,6 @@ html {
   <h3>Custom Furniture</h3>
   <p>Fully customized interior solutions based on your needs.</p>
 </div>
-<div class="view-more-wrap">
-  <button id="viewMoreBtn">View More</button>
 </div>
 
       </div>
