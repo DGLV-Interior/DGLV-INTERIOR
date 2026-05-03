@@ -361,29 +361,37 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 26px;
 
+  padding: 14px 26px;
   border-radius: 999px;
+
   font-size: 15px;
   font-weight: 900;
 
-  background: #082e3b;
+  background: rgba(8, 46, 59, 0.75); /* GLASS DARK BLUE */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   color: #ffffff;
 
-  border: 2px solid #082e3b;
+  border: 1px solid rgba(255,255,255,0.25);
 
   cursor: pointer;
   transition: all 0.3s ease;
-}
+  }
 
 .btn:hover,
 .nav-btn:hover,
 .plan a:hover {
   background: #ffffff;
   color: #082e3b;
-  transform: scale(1.08);
-  box-shadow: 0 8px 20px rgba(8, 46, 59, 0.4);
+
+  transform: scale(1.1);   /* ZOOM */
+  box-shadow: 0 0 20px rgba(8, 46, 59, 0.4);
+
+  border: 1px solid #082e3b;
 }
+
 
     /* ===========================
        SECTION COMMON
