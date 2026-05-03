@@ -83,7 +83,7 @@
 		padding:0 20px;
 		display:flex;
 		align-items:center;
-		justify-content:flex-start;
+		justify-content:space-between;
 	}
 	
 	
@@ -2083,43 +2083,47 @@ document.addEventListener("click", () => {
   // page load ayyaka kuda run avvali
   showOnScroll();
 
+document.addEventListener("DOMContentLoaded", function(){
 
-let currentStep = 0;
-const steps = document.querySelectorAll("#pro-calculator .step");
+  let currentStep = 0;
+  const steps = document.querySelectorAll("#pro-calculator .step");
 
-function nextStep(){
-  steps[currentStep].classList.remove("active");
-  currentStep++;
-  steps[currentStep].classList.add("active");
-}
-
-function calculateFinal(){
-let pkgValue = document.getElementById("package").value;
-let pkgText = document.getElementById("package").selectedOptions[0].text;
-
-  if(area === "" || pkg === ""){
-    alert("Please enter details");
-    return;
+  window.nextStep = function(){
+    steps[currentStep].classList.remove("active");
+    currentStep++;
+    steps[currentStep].classList.add("active");
   }
 
-  let total = area * pkg;
+  window.calculateFinal = function(){
+    let area = document.getElementById("area").value;
+    let pkgValue = document.getElementById("package").value;
+    let pkgText = document.getElementById("package").selectedOptions[0].text;
 
-  document.getElementById("finalResult").innerText =
-    "₹ " + total.toLocaleString();
+    if(area === "" || pkgValue === ""){
+      alert("Please enter details");
+      return;
+    }
 
-  // 👉 WhatsApp message create
-  let message = `Hello DGLV Interior,
+    let total = area * pkgValue;
+
+    document.getElementById("finalResult").innerText =
+      "₹ " + total.toLocaleString();
+
+    // WhatsApp message
+    let message = `Hello DGLV Interior,
 I used your calculator.
 
 Area: ${area} sq.ft
-Package: ${pkg}
+Package: ${pkgText}
 Estimated Cost: ₹${total}`;
 
-  // 👉 WhatsApp open
-  window.open(`https://wa.me/919666141369?text=${encodeURIComponent(message)}`);
+    window.open(`https://wa.me/919666141369?text=${encodeURIComponent(message)}`);
 
-  nextStep();
-}
+    nextStep();
+  }
+
+});
+
 </script>
 
 	<script type="application/ld+json">
