@@ -3,94 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DGLV INTERIOR - Gallery</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
+/* FONT */
 @font-face{
   font-family:"kitamiw01";
   src:url("fonts/kitamiw01-regular.ttf") format("truetype");
 }
 
+/* GLOBAL */
 body{
   margin:0;
   font-family:"kitamiw01", Arial, sans-serif;
   background:#f8fafc;
 }
 
-/* ================= NAVBAR (SAME AS HOME) ================= */
+/* NAVBAR */
 .nav{
   position:sticky;
   top:0;
-  z-index:999;
   background:white;
-  border-bottom:1px solid rgba(0,0,0,0.08);
-}
-
-.nav-inner{
+  padding:12px 20px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  padding:10px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  z-index:999;
 }
 
-.main-logo{
+.logo img{
   height:55px;
 }
 
-.menu{
-  margin-left:auto;
-  display:flex;
-  gap:15px;
-  align-items:center;
-}
-
+/* CONSULT BUTTON */
 .nav-btn{
   padding:12px 22px;
   border-radius:999px;
-  background:white;
-  color:#082e3b;
   border:2px solid #082e3b;
-  font-weight:900;
-  cursor:pointer;
-  transition:all 0.3s ease;
-}
-
-.nav-btn:hover{
   background:#082e3b;
   color:white;
+  font-weight:900;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* ✅ CORRECT HOVER */
+.nav-btn:hover{
+  background:white;
+  color:#082e3b;
   transform:scale(1.08);
 }
 
-/* ================= GALLERY BUTTONS ================= */
+/* CATEGORY BUTTONS */
 .gallery-buttons{
   text-align:center;
-  margin:30px 0;
+  margin:25px 0;
 }
 
 .gallery-buttons button{
-  padding:12px 22px;
+  padding:10px 18px;
   margin:6px;
-  border-radius:999px;
-  background:transparent;
-  color:#082e3b;
+  border-radius:25px;
   border:2px solid #082e3b;
-  font-weight:900;
-  cursor:pointer;
-  transition:all 0.3s ease;
-}
-
-.gallery-buttons button:hover{
-  background:#082e3b;
+  background:#082e3b;   /* DEFAULT BLUE */
   color:white;
-  transform:scale(1.08);
-  box-shadow:0 8px 20px rgba(8,46,59,0.4);
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-/* ================= SLIDER ================= */
+/* ✅ CORRECT HOVER */
+.gallery-buttons button:hover{
+  background:white;
+  color:#082e3b;
+  transform:scale(1.1);
+}
+
+/* SLIDER */
 .slider{
   width:90%;
-  max-width:900px;
+  max-width:950px;
   margin:auto;
   overflow:hidden;
   border-radius:20px;
@@ -105,57 +102,48 @@ body{
 
 .slider-track img{
   width:100%;
-  height:450px;
+  height:500px;
   object-fit:cover;
-  flex:0 0 100%;
+  flex-shrink:0;
 }
 
 /* BACK BUTTON */
 .back-btn{
   display:block;
-  text-align:center;
-  margin:25px auto;
   width:220px;
-  padding:14px;
-  border-radius:999px;
-  background:transparent;
-  color:#082e3b;
-  border:2px solid #082e3b;
-  font-weight:900;
+  margin:30px auto;
+  padding:12px;
+  text-align:center;
+  border-radius:30px;
   text-decoration:none;
+  font-weight:bold;
+  border:2px solid #082e3b;
+  background:#082e3b;
+  color:white;
   transition:0.3s;
 }
 
 .back-btn:hover{
-  background:#082e3b;
-  color:white;
+  background:white;
+  color:#082e3b;
   transform:scale(1.08);
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ✅ HEADER (SAME AS HOME) -->
+<!-- NAVBAR -->
 <div class="nav">
-  <div class="nav-inner">
+  <a href="index.html" class="logo">
+    <img src="images/logo-full.png">
+  </a>
 
-    <a href="index.html">
-      <img src="images/logo-full.png" class="main-logo">
-    </a>
-
-    <div class="menu">
-      <a href="index.html#services">Services</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="gallery.html">Gallery</a>
-
-      <button class="nav-btn">Get Free Consultation</button>
-    </div>
-
-  </div>
+  <button class="nav-btn">Get Free Consultation</button>
 </div>
 
-<!-- GALLERY BUTTONS -->
+<!-- CATEGORY BUTTONS -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
@@ -173,51 +161,80 @@ body{
 <a href="index.html" class="back-btn">⬅ Back to Home</a>
 
 <script>
+
+/* IMAGE PATHS FIXED */
 const galleryImages = {
-  living: ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
-  kitchen: ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
-  bedroom: ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
-  wardrobe: ["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
-  ceiling: ["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
-  office: ["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
+  living: [
+    "images/living1.jpg",
+    "images/living2.jpg",
+    "images/living3.jpg"
+  ],
+  kitchen: [
+    "images/kitchen1.jpg",
+    "images/kitchen2.jpg",
+    "images/kitchen3.jpg"
+  ],
+  bedroom: [
+    "images/bedroom1.jpg",
+    "images/bedroom2.jpg",
+    "images/bedroom3.jpg"
+  ],
+  wardrobe: [
+    "images/wardrobe1.jpg",
+    "images/wardrobe2.jpg",
+    "images/wardrobe3.jpg"
+  ],
+  ceiling: [
+    "images/ceiling1.jpg",
+    "images/ceiling2.jpg",
+    "images/ceiling3.jpg"
+  ],
+  office: [
+    "images/office1.jpg",
+    "images/office2.jpg",
+    "images/office3.jpg"
+  ]
 };
 
-let currentCategory="living";
-let currentIndex=0;
-let interval;
+let currentCategory = "living";
+let currentIndex = 0;
+let sliderTrack = document.getElementById("sliderTrack");
+let sliderInterval;
 
-const sliderTrack=document.getElementById("sliderTrack");
-
+/* LOAD IMAGES */
 function loadImages(category){
-  sliderTrack.innerHTML="";
+  sliderTrack.innerHTML = "";
 
   galleryImages[category].forEach(src=>{
-    const img=document.createElement("img");
-    img.src=src;
+    let img = document.createElement("img");
+    img.src = src.trim(); // fix spaces issue
     sliderTrack.appendChild(img);
   });
 
-  currentIndex=0;
+  currentIndex = 0;
+  sliderTrack.style.transform = "translateX(0%)";
 }
 
+/* SLIDE */
 function nextSlide(){
-  const total=galleryImages[currentCategory].length;
-  currentIndex++;
-  if(currentIndex>=total) currentIndex=0;
-
-  sliderTrack.style.transform="translateX(-"+(currentIndex*100)+"%)";
+  let total = galleryImages[currentCategory].length;
+  currentIndex = (currentIndex + 1) % total;
+  sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-function showCategory(category){
-  currentCategory=category;
-  loadImages(category);
+/* CATEGORY SWITCH */
+function showCategory(cat){
+  currentCategory = cat;
+  loadImages(cat);
 
-  clearInterval(interval);
-  interval=setInterval(nextSlide,2500);
+  clearInterval(sliderInterval);
+  sliderInterval = setInterval(nextSlide, 2500);
 }
 
+/* INIT */
 loadImages("living");
-interval=setInterval(nextSlide,2500);
+sliderInterval = setInterval(nextSlide, 2500);
+
 </script>
 
 </body>
