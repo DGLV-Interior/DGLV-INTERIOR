@@ -610,19 +610,26 @@
       transform:scale(1.08);
     }
 
-    .img-label{
-      position:absolute;
-      left:14px;
-      bottom:14px;
-      background:rgba(14,58,67,0.88);
-      color:white;
-      padding:9px 14px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,0.18);
-      pointer-events:none;
-    }
+  .img-label{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+
+  background: rgba(8, 46, 59, 0.75); /* GLASS DARK BLUE */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  color:white;
+  padding:9px 14px;
+  border-radius:999px;
+
+  font-size:13px;
+  font-weight:900;
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  transition: all 0.3s ease;
+}
 
     /* ===========================
        PRICING
@@ -1279,6 +1286,14 @@ html {
   }
 }
 
+.img-card:hover .img-label{
+  background:white;
+  color:#082e3b;
+
+  transform: scale(1.15);   /* ZOOM */
+  border:1px solid #082e3b;
+}
+
 </style>
 </head>
 
@@ -1879,8 +1894,8 @@ html {
 
   <!-- SCRIPT -->
   
-  
-    <script>
+<script>
+
   // FAQ Toggle
   const faqItems = document.querySelectorAll(".faq-item");
   faqItems.forEach(item => {
@@ -1965,8 +1980,24 @@ html {
 
   window.addEventListener("scroll", showOnScroll);
   showOnScroll();
+  
+  
+  // AUTO POPUP ON DEC 15 (ONLY ONCE)
+window.addEventListener("load", () => {
+  const today = new Date();
+  const isDec15 = (today.getMonth() === 11 && today.getDate() === 15);
 
-  // ✅ WHATSAPP FUNCTION (same script lo undali)
+  if(isDec15 && !localStorage.getItem("popupShown")){
+    setTimeout(() => {
+      openPopup();
+      localStorage.setItem("popupShown", "true");
+    }, 2000);
+  }
+});
+
+
+
+  // WHATSAPP FUNCTION
   function sendToWhatsApp(e){
     e.preventDefault();
 
@@ -1990,7 +2021,7 @@ Message: ${message}`;
     let whatsappURL = `https://wa.me/919666141369?text=${text}`;
     window.open(whatsappURL, "_blank");
   }
-</script>
+</script>  
 
 	<script type="application/ld+json">
 {
