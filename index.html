@@ -1317,22 +1317,26 @@ html {
 
 .services-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 per row */
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  text-align: center;
 }
 
-.service-card {
-  border: 1px solid #082e3b;
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
+.service-item img {
+  width: 60px;
+  margin-bottom: 10px;
+}
 
-  aspect-ratio: 1 / 1; /* square shape */
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.service-item p {
+  color: #082e3b;
+  font-size: 16px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 
@@ -1455,8 +1459,10 @@ html {
 </div>
 
   <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
+  
+  
+ <div class="services-container">
+      <div class="service-item"
       <div class="sec-head">
         <h2>Our Interior Services</h2>
         <p>
