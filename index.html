@@ -341,30 +341,27 @@
       transform:translateY(-1px);
     }
 	
+/* DEFAULT BUTTON */
 .btn,
 .nav-btn,
-.plan a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 26px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 900;
-
+.plan a,
+.contact-form button,
+.popup-box button {
   background: #082e3b;
-  color: #ffffff !important;   /* 👈 FORCE */
-
-  border: none;
-  cursor: pointer;
+  color: #ffffff;
+  border: 2px solid #082e3b;
   transition: all 0.3s ease;
 }
 
+/* HOVER EFFECT (WHITE POPUP STYLE) */
 .btn:hover,
 .nav-btn:hover,
-.plan a:hover {
-  background: #ffffff !important;  /* 👈 WHITE BG */
-  color: #082e3b !important;      /* 👈 TEXT COLOR */
+.plan a:hover,
+.contact-form button:hover,
+.popup-box button:hover {
+  background: #ffffff;      /* white popup */
+  color: #082e3b;           /* dark blue text */
+  border: 2px solid #082e3b;
   transform: scale(1.05);
 }
 
@@ -696,15 +693,7 @@
       font-weight:800;
     }
 
-	/* ✅ HOVER */
-.btn:hover,
-.nav-btn:hover,
-.plan a:hover {
-  background: #0e3a43;
-  color: #ffffff;
-  transform: scale(1.05);
-}
-    /* ===========================
+  /* ===========================
        REVIEWS
     ============================ */
     .test-grid{
