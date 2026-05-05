@@ -182,10 +182,14 @@
       color:var(--brand);
     }
 
-    .nav-btn:hover{
-	background:#082e3b;
-	color:white;
-	}
+.btn:hover,
+.nav-btn:hover,
+.plan a:hover {
+  background: #ffffff;
+  color: #082e3b;
+  transform: scale(1.05);
+  border: 1px solid #082e3b;
+}
 	
 	
 
@@ -595,26 +599,25 @@
       transform:scale(1.08);
     }
 
-  .img-label{
+.img-label{
   position:absolute;
   left:14px;
   bottom:14px;
 
-  background: rgba(8, 46, 59, 0.75); /* GLASS DARK BLUE */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
+  background: #082e3b;   /* solid */
   color:white;
+
   padding:9px 14px;
   border-radius:999px;
 
   font-size:13px;
   font-weight:900;
 
-  border:1px solid rgba(255,255,255,0.2);
+  border:none;
 
   transition: all 0.3s ease;
 }
+
 
     /* ===========================
        PRICING
