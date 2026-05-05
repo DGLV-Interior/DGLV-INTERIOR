@@ -2132,27 +2132,35 @@ if(viewMoreBtn){
     });
   }
 
-  window.addEventListener("scroll", showOnScroll);
-  showOnScroll();
-  
-  
-// AUTO POPUP AFTER 15 SECONDS
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    openPopup();
-  }, 15000); // 15 seconds
-});
-
-	window.addEventListener("load", () => {
   const params = new URLSearchParams(window.location.search);
 
   if(params.get("openPopup") === "true"){
     openPopup();
-
-    // URL clean (optional but better)
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 });
+  
+  
+// AUTO POPUP REPEAT AFTER 15 SECONDS (SMART)
+let popupClosed = false;
+
+function closePopupFunc(){
+  quotePopup.style.display = "none";
+  popupClosed = true;
+
+  // 15 sec tarvata malli allow avvali
+  setTimeout(() => {
+    popupClosed = false;
+  }, 15000);
+}
+
+setInterval(() => {
+  if (!popupClosed && quotePopup.style.display !== "flex") {
+    openPopup();
+  }
+}, 15000);
+
 
 
   // WHATSAPP FUNCTION
