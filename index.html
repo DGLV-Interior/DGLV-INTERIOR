@@ -1369,6 +1369,85 @@ html {
   }
 }
 
+/* ===========================
+   NAV BUTTON FINAL STYLE
+=========================== */
+.nav-btn {
+  background: transparent;
+  color: #082e3b;
+  border: 2px solid #082e3b;
+
+  border-radius: 999px;
+  padding: 10px 26px;
+
+  font-weight: 900;
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  transition: all 0.3s ease;
+}
+
+.nav-btn i {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #082e3b;
+  color: #ffffff;
+}
+
+.nav-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* ===========================
+   EXPLORE BUTTON STYLE
+=========================== */
+.explore-btn {
+  background: transparent;
+  color: #082e3b;
+  border: 2px solid #082e3b;
+
+  border-radius: 999px;
+  padding: 10px 22px;
+
+  font-weight: 900;
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ICON STYLE */
+.explore-btn i {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+/* HOVER */
+.explore-btn:hover {
+  background: #082e3b;
+  color: #ffffff;
+}
+
+/* ICON ANIMATION */
+.explore-btn:hover i {
+  transform: translateY(2px);
+}
+
+.dropbtn.explore-btn {
+  border-radius: 999px !important;
+  padding: 10px 22px !important;
+  background: transparent !important;
+}
 
 </style>
 </head>
@@ -1401,7 +1480,10 @@ html {
           </div>
         </div>
 
-        <button class="nav-btn" id="quoteBtn">Get Free Consultation</button>
+        <button class="nav-btn" id="quoteBtn">
+			Get Free Consultation
+			<i class="fa-solid fa-arrow-right"></i>
+		</button>
 
       </div>
 
