@@ -70,28 +70,23 @@
     /* ===========================
        NAVBAR
     ============================ */
-  .nav{
-  width:100%;
-  background:#ffffff;
-  border-bottom:1px solid rgba(0,0,0,0.08);
-  position:sticky;
-  top:0;
-  z-index:999;
-}
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:white;
+      border-bottom:1px solid rgba(0,0,0,0.08);
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    }
 
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 20px;
-}
-
-/* LEFT */
-.nav-left{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
+    .nav-inner{
+		width:100%;
+		margin:0;
+		padding:0 20px;
+		display:flex;
+		align-items:center;
+		justify-content:flex-start;
+	}
 	
 	
 
@@ -129,21 +124,11 @@
 
     /* MENU */
 	
-.menu-icon{
-  font-size:22px;
-  color:#082e3b;
-  cursor:pointer;
-}
-
-
-.explore{
-  font-size:18px;
-  font-weight:800;
-  color:#082e3b;
+	.menu{
+  margin-left:auto;
   display:flex;
+  gap:18px;
   align-items:center;
-  gap:6px;
-  cursor:pointer;
 }
 
     /* DROPDOWN */
@@ -1391,26 +1376,34 @@ html {
 <body>
 
   <!-- NAV -->
-<div class="nav">
-  <div class="nav-inner">
+  <div class="nav">
+    <div class="nav-inner">
 
-    <!-- LEFT -->
-    <div class="nav-left">
-      <i class="fa-solid fa-bars menu-icon"></i>
+		<!-- LOGO -->
+      <a class="logo" href="/">
+		<img src="images/logo-full.png" class="main-logo" alt="DGLV Interior Logo">
+	</a>
 
-      <div class="explore">
-        Explore Menu <i class="fa-solid fa-chevron-down"></i>
+      <!-- DESKTOP MENU -->
+      <div class="menu">
+
+        <div class="dropdown">
+         <div class="dropbtn explore-btn" id="desktopServicesBtn">
+			Explore <i class="fa-solid fa-chevron-down"></i>
+          </div>
+
+          <div class="dropdown-content" id="desktopDropdown">
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="gallery.html">Our Gallery</a>
+		
+          </div>
+        </div>
+
+        <button class="nav-btn" id="quoteBtn">Get Free Consultation</button>
+
       </div>
-    </div>
-
-    <!-- RIGHT BUTTON -->
-    <button class="nav-btn" id="quoteBtn">
-      Get Free Consultation <i class="fa-solid fa-arrow-right"></i>
-    </button>
-
-  </div>
-</div>
-
 
       <!-- MOBILE MENU ICON -->
 	 
@@ -2118,6 +2111,9 @@ if(viewMoreBtn){
     }
   });
 
+  // DROPDOWN
+  const btn = document.getElementById("desktopServicesBtn");
+  const menu = document.getElementById("desktopDropdown");
 
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
