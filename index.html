@@ -455,28 +455,29 @@
     /* ===========================
        SERVICES
     ============================ */
-.grid{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  justify-items: center;
   gap: 20px;
 }
 
 .service{
-  border: none;   /* full remove */
+  border: none;
   border-radius: 18px;
-  padding: 18px;
+  padding: 12px;              /* 👈 tagginchu */
   text-align: center;
 
-  aspect-ratio: 1 / 1;
+  width: 140px;               /* 👈 IMPORTANT (size control) */
+  height: 140px;              /* 👈 IMPORTANT */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  gap: 8px;
+  gap: 6px;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08); /* optional */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .service:hover{
