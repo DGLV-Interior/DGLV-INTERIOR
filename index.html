@@ -347,20 +347,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   padding: 14px 26px;
   border-radius: 999px;
-
   font-size: 15px;
   font-weight: 900;
 
   background: #082e3b;
-  color: #ffffff;
+  color: #ffffff !important;   /* 👈 FORCE */
 
   border: none;
-
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.btn:hover,
+.nav-btn:hover,
+.plan a:hover {
+  background: #ffffff !important;  /* 👈 WHITE BG */
+  color: #082e3b !important;      /* 👈 TEXT COLOR */
+  transform: scale(1.05);
 }
 
     /* ===========================
