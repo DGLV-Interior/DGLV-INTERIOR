@@ -1217,12 +1217,10 @@
 }
 
 #about{
-  background: linear-gradient(
-    rgba(0,0,0,0.5),
-    rgba(0,0,0,0.5)
-  ), url("images/about-bg.jpg") center/cover no-repeat;
-  padding:60px 20px;
-  text-align:center;
+  background: url("images/about-bg.jpg") no-repeat center center;
+  background-size: contain;  /* 👈 full image visible */
+
+  background-color: #000;    /* empty space black */
 }
 
 .about-box{
