@@ -26,6 +26,10 @@
       font-weight: normal;
       font-style: normal;
     }
+	
+	.explore-btn{
+		color:#082e3b !important;
+	}
   </style>
 
   <style>
@@ -424,7 +428,7 @@
       box-shadow: var(--shadow2);
       border:1px solid rgba(0,0,0,0.06);
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap:14px;
     }
 
@@ -1346,8 +1350,8 @@ html {
       <div class="menu">
 
         <div class="dropdown">
-          <div class="dropbtn" id="desktopServicesBtn">
-            Services <i class="fa-solid fa-chevron-down"></i>
+         <div class="dropbtn explore-btn" id="desktopServicesBtn">
+			Explore <i class="fa-solid fa-chevron-down"></i>
           </div>
 
           <div class="dropdown-content" id="desktopDropdown">
@@ -1373,9 +1377,9 @@ html {
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
 
-      <button id="mobileServicesBtn">
-        Services <i class="fa-solid fa-chevron-down"></i>
-      </button>
+      <button id="mobileServicesBtn" class="explore-btn">
+		Explore <i class="fa-solid fa-chevron-down"></i>
+		</button>
 
       <div class="mobile-submenu" id="mobileSubmenu">
         <a href="/#reviews">Reviews</a>
