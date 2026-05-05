@@ -421,7 +421,7 @@
 
     .trust-card{
 		width:100%;
-		margin:0;
+		margin:auto;
       background:#ffffff;
       border-radius:22px;
       padding:22px;
@@ -462,29 +462,29 @@
 }
 
     .service{
-      background:#fff;
-      border:1px solid rgba(0,0,0,0.06);
-      border-radius:22px;
-      padding:16px;
-      box-shadow: var(--shadow2);
-      transition:0.25s;
-    }
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:18px;
 
-    .service:hover{
-      transform:translateY(-6px);
-      border-color:rgba(14,58,67,0.7);
-    }
+  padding:14px;
+  box-shadow: var(--shadow2);
 
-		/* ICON UPDATED (NO SQUARE BACKGROUND + BIG SIZE) */
-		.icon{
-		height:70px;
-		background:transparent;
-		display:flex;
-		width:70px;
-		align-items:center;
-		justify-content:center;
-		margin-bottom:16px;
-	}
+  transition:0.25s;
+
+  aspect-ratio: 1 / 1;   /* 👈 KEY: square shape */
+  
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+	.icon{
+		height:60px;
+		width:60px;
+		margin-bottom:10px;
+}
 	
 	.icon img{
 		width:50px;
