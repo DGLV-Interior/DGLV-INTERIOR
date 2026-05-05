@@ -462,16 +462,26 @@
 }
 
 .service{
-  border: 1.5px solid #082e3b;
+  border: none;   /* full remove */
   border-radius: 18px;
   padding: 18px;
   text-align: center;
-aspect-ratio: 1 / 1;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
- gap: 8px; /* spacing */
+
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08); /* optional */
+}
+
+.service:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .icon{
