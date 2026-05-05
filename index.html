@@ -596,19 +596,27 @@
   left:14px;
   bottom:14px;
 
-  background: #082e3b;   /* solid */
+  background:#082e3b;
   color:white;
 
-  padding:9px 14px;
+  padding:10px 18px;   /* 👈 balanced padding */
   border-radius:999px;
 
   font-size:13px;
   font-weight:900;
 
-  border:none;
-
   transition: all 0.3s ease;
 }
+
+/* HOVER PERFECT OVAL */
+.img-card:hover .img-label{
+  background:white;
+  color:#082e3b;
+
+  transform: scale(1.08);  /* 👈 small zoom only */
+  box-shadow:0 4px 12px rgba(0,0,0,0.15); /* 👈 instead of border */
+}
+
 
 
     /* ===========================
@@ -693,14 +701,6 @@
       font-weight:800;
     }
 
-	/* ✅ HOVER */
-.btn:hover,
-.nav-btn:hover,
-.plan a:hover {
-  background: #0e3a43;
-  color: #ffffff;
-  transform: scale(1.05);
-}
     /* ===========================
        REVIEWS
     ============================ */
