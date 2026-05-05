@@ -701,7 +701,15 @@
       font-weight:800;
     }
 
-   /* ===========================
+	/* ✅ HOVER */
+.btn:hover,
+.nav-btn:hover,
+.plan a:hover {
+  background: #0e3a43;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+    /* ===========================
        REVIEWS
     ============================ */
     .test-grid{
@@ -2123,15 +2131,10 @@ if(viewMoreBtn){
     });
   }
 
-window.addEventListener("load", () => {
-  const params = new URLSearchParams(window.location.search);
 
-  if(params.get("openPopup") === "true"){
-    openPopup();
-    window.history.replaceState({}, document.title, window.location.pathname);
-  }
-});
   
+ window.addEventListener("scroll", showOnScroll);
+window.addEventListener("load", showOnScroll);
   
 // AUTO POPUP REPEAT AFTER 15 SECONDS (SMART)
 let popupClosed = false;
