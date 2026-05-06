@@ -457,35 +457,53 @@
 
 /* SERVICES */
 
-
-.grid{
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 28px;
   justify-items: center;
-  gap: 20px;
 }
-.service{
-  border: none;
-  border-radius: 18px;
-  padding: 12px;              /* 👈 tagginchu */
-  text-align: center;
 
-  width: 140px;               /* 👈 IMPORTANT (size control) */
-  height: 140px;              /* 👈 IMPORTANT */
+#services {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f1f5f9 100%
+  );
+}
+
+.service {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 22px;
+  padding: 16px;
+
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0,0,0,0.05);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 
-  gap: 6px;
+  transition: all 0.35s ease;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
-.service:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+.service:hover {
+  transform: translateY(-8px) scale(1.05);
+
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.15);
+
+  background: #ffffff;
 }
 
 .icon{
@@ -497,10 +515,18 @@
 }
 
 
-.icon img{
-  width:75px;
-  height:75px;
-  object-fit:contain;
+.icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.service:hover .icon img {
+  transform: scale(1.15);
+  opacity: 1;
 }
 
 .icon{
@@ -511,11 +537,12 @@
 	transform: scale(1.20);
 	}
 
-    .service h3{
-      font-size:16px;
-      margin-top:8px;
-      font-weight:900;
-    }
+	.service h3 {
+		font-size: 14px;
+		font-weight: 800;
+		color: #0f172a;
+		letter-spacing: 0.3px;
+	}
 
     .service p{
       font-size:15px;
