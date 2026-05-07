@@ -507,32 +507,34 @@
 }
 
 .icon{
-  width:auto;
-  height:auto;
+  width:70px;
+  height:70px;
+
+  border-radius:50%;   /* 🔵 circle */
+
+  background:#082e3b;  /* your brand color */
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  margin:0 auto 10px;  /* center + space */
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 
-.icon img {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
+.icon img{
+  width:32px;
+  height:32px;
 
-  opacity: 0.9;
-  transition: all 0.3s ease;
+  filter: brightness(0) invert(1);  /* 🔥 white icon */
 }
-
 .service:hover .icon img {
   transform: scale(1.15);
   opacity: 1;
 }
 
-.icon{
-  background:transparent;   /* circle remove */
-}
-	
 	.service:hover .icon img{
 	transform: scale(1.20);
 	}
@@ -1311,14 +1313,16 @@ html {
 
 .trust-item{
   text-align:center;
-  transition: all 0.3s ease;
-  cursor:pointer;
-}
-.trust-item:hover{
-  transform: scale(1.08);      /* 👈 zoom effect */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12); /* 👈 nice shadow */
+  padding:20px;
+  border-radius:18px;
+  background:#ffffff;
+  transition:0.3s;
 }
 
+.trust-item:hover .icon{
+  transform:scale(1.1);
+  background:#0E3A43; /* slight change */
+}
 
 .trust-item img{
   width:80px;
@@ -1570,6 +1574,7 @@ html {
 	</div>
 
   <div class="trust-card">
+   <div class="icon">
 
     <div class="trust-item">
       <img src="images/premium.png" alt="Premium Quality">
