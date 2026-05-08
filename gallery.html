@@ -108,15 +108,15 @@ body{
     <img src="images/logo-full.png" alt="DGLV Interior">
   </div>
 
-  <!-- ✅ CLICK → INDEX FORM OPEN -->
-<button onclick="window.location.href='/?openPopup=true'">
-  Get Free Consultation
-</button>
+  <!-- ✅ FIXED BUTTON -->
+  <button class="consult-btn" onclick="openConsultation()">
+    Get Free Consultation
+  </button>
 </div>
 
 <div class="title">Our Gallery</div>
 
-<!-- ✅ ALL CATEGORIES BACK -->
+<!-- CATEGORY BUTTONS -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
@@ -173,9 +173,8 @@ function showCategory(category){
   sliderInterval=setInterval(nextSlide,2500);
 }
 
-/* 🔥 IMPORTANT PART */
+/* ✅ FINAL FIX */
 function openConsultation(){
-  // 👉 index page ki velthundi + form open avvali
   window.location.href = "index.html?openForm=true";
 }
 
