@@ -1470,13 +1470,7 @@ html {
   border-radius:10px;
 }
 
-window.onload = function() {
-  const params = new URLSearchParams(window.location.search);
 
-  if(params.get("openPopup") === "true") {
-    openPopup();   // 🔥 correct function
-  }
-};
 
 </style>
 </head>
@@ -2207,17 +2201,19 @@ const quoteBtn = document.getElementById("quoteBtn");
 const quoteBtnMobile = document.getElementById("quoteBtnMobile");
 const closePopupBtn = document.getElementById("closePopup");
 
-function openPopup(){
+openPopup();(){
   if(quotePopup){
     quotePopup.style.display = "flex";
   }
 }
 
-function closePopupFunc(){
-  if(quotePopup){
-    quotePopup.style.display = "none";
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("openPopup") === "true") {
+   openPopup();()   // 🔥 correct function
   }
-}
+};
 
 // SAFE EVENT LISTENERS
 if(quoteBtn){
@@ -2304,7 +2300,7 @@ function closePopupFunc(){
 
 setInterval(() => {
   if (!popupClosed && quotePopup.style.display !== "flex") {
-    openPopup();
+    openPopup();()
   }
 }, 15000);
 
@@ -2336,12 +2332,6 @@ Message: ${message}`;
     window.open(whatsappURL, "_blank");
   }
   
-  // OPEN POPUP FROM GALLERY
-const params = new URLSearchParams(window.location.search);
-if(params.get("openPopup") === "true"){
-  openPopup();
-}
-
 </script>  
 
 <script type="application/ld+json">
@@ -2365,25 +2355,6 @@ if(params.get("openPopup") === "true"){
 }
 </script>
 
-<script>
-window.onload = function(){
-  const params = new URLSearchParams(window.location.search);
-
-  if(params.get("openForm") === "true"){
-    // 👉 ఇక్కడ నీ existing function name పెట్టాలి
-    openQuoteForm(); // లేదా openModal() / showForm()
-  }
-};
-</script>
-<script>
-window.onload = function() {
-  const params = new URLSearchParams(window.location.search);
-
-  if(params.get("open") === "true") {
-    openForm(); // SAME function call
-  }
-};
-</script>
 
 </body>
 </html>
