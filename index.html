@@ -278,7 +278,7 @@
 	
 	}
     .hero-left h1{
-      color: # 
+      color:#ffffff;
       font-size:54px;
       line-height:1.05;
       margin-bottom:14px;
@@ -507,8 +507,7 @@
 }
 
 .icon{
-  width:auto;
-  height:auto;
+  background:transparent;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1181,7 +1180,7 @@
 
     @media(max-width:560px){
       .trust-card{grid-template-columns:1fr;}
-      grid-template-columns: repeat(2, 1fr);
+      .grid-template-columns: repeat(2, 1fr);
       .gallery{grid-template-columns:1fr;}
       .hero-left h1{font-size:36px;}
       .logo-text{font-size:17px;}
@@ -1347,9 +1346,7 @@ html {
 
 /* MOBILE lo matrame hide */
 @media(max-width:560px){
-  .more-service{
-    display:none;
-  }
+
 }
 
 @media(max-width:560px){
@@ -1381,9 +1378,12 @@ html {
   text-align: center;
 }
 
-.service-item img {
-  width: 60px;
-  margin-bottom: 10px;
+.service-item img{
+  width:55px;
+  height:55px;
+  background:#fff;
+  padding:12px;
+  border-radius:50%;
 }
 
 .service-item p {
@@ -1474,6 +1474,108 @@ html {
 .explore-btn:hover * {
   color: #ffffff !important;
   fill: #ffffff !important;
+}
+
+.services-radial{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 650px;
+  margin: 60px auto;
+}
+
+/* CENTER LOGO */
+.center-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  transition:0.4s;
+  z-index:2;
+}
+
+.center-logo img{
+  width:95px;
+}
+
+/* LOGO HOVER */
+.center-logo:hover{
+  transform:translate(-50%,-50%) scale(1.15);
+  box-shadow:0 25px 60px rgba(0,0,0,0.35);
+}
+/* ITEMS */
+.service-item{
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  transform:
+  rotate(calc(var(--i) * 13.85deg))
+  translate(250px)
+  rotate(calc(var(--i) * -13.85deg));
+
+  text-align:center;
+  width:95px;
+}
+
+@media(max-width:768px){
+  .service-item{
+    transform:
+      rotate(calc(var(--i) * 13.85deg))
+      translate(180px)
+      rotate(calc(var(--i) * -13.85deg));
+  }
+}
+
+/* ICON */
+.service-item img{
+  width:55px;
+  height:55px;
+  background:#fff;
+  padding:12px;
+  border-radius:50%;
+}
+
+/* HOVER ZOOM */
+.service-item:hover img{
+  transform:scale(1.25);
+}
+
+/* TEXT */
+.service-item span{
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+  font-weight:800;
+  color:#082e3b;
+}
+
+/* RAYS */
+.services-radial::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:
+    repeating-conic-gradient(
+      #082e3b 0deg 1deg,
+      transparent 1deg 13.85deg
+    );
+  border-radius:50%;
+  opacity:0.15;
+}
+
+.service-item:hover span{
+  transform:scale(1.1);
+  color:#082e3b;
 }
 
 </style>
@@ -1604,204 +1706,43 @@ html {
       We deliver modern style with strong durability.
     </p>
       </div>
+<	div class="services-radial fade-up">
 
-      <div class="grid fade-up">
-	  
-	        <div class="service">
-          <div class="icon">
-            <img src="images/icon-home.png" alt="Home Interior">
-          </div>
-          <h3>Home Interior</h3>
-        </div>
+  <!-- CENTER LOGO -->
+  
+  <div class="center-logo">
+    <img src="images/logo-icon.png" alt="DGLV Logo">
+  </div>
 
-        <div class="service">
-          <div class="icon">
-            <img src="images/icon-kitchen.png" alt="Modular Kitchen">
-          </div>
-          <h3>Modular Kitchen</h3>
-        </div>
+  <!-- SERVICES -->
+  <div class="service-item" style="--i:0"><img src="images/icon-home.png"><span>Home Interior</span></div>
+  <div class="service-item" style="--i:1"><img src="images/icon-kitchen.png"><span>Kitchen</span></div>
+  <div class="service-item" style="--i:2"><img src="images/icon-wardrobe.png"><span>Wardrobe</span></div>
+  <div class="service-item" style="--i:3"><img src="images/icon-bed.png"><span>Beds</span></div>
+  <div class="service-item" style="--i:4"><img src="images/icon-bunkbed.png"><span>Bunk Beds</span></div>
+  <div class="service-item" style="--i:5"><img src="images/icon-study.png"><span>Study</span></div>
+  <div class="service-item" style="--i:6"><img src="images/icon-dressing.png"><span>Dressing</span></div>
+  <div class="service-item" style="--i:7"><img src="images/icon-crockery.png"><span>Crockery</span></div>
+  <div class="service-item" style="--i:8"><img src="images/icon-vanity.png"><span>Vanity</span></div>
+  <div class="service-item" style="--i:9"><img src="images/icon-pooja.png"><span>Pooja</span></div>
+  <div class="service-item" style="--i:10"><img src="images/icon-partion.png"><span>Partition</span></div>
+  <div class="service-item" style="--i:11"><img src="images/icon-shoerack.png"><span>Shoe Rack</span></div>
+  <div class="service-item" style="--i:12"><img src="images/icon-barunit.png"><span>Bar</span></div>
+  <div class="service-item" style="--i:13"><img src="images/icon-stair.png"><span>Staircase</span></div>
+  <div class="service-item" style="--i:14"><img src="images/icon-office.png"><span>Office</span></div>
+  <div class="service-item" style="--i:15"><img src="images/icon-custom.png"><span>Custom</span></div>
+  <div class="service-item" style="--i:16"><img src="images/icon-sliding.png"><span>Sliding</span></div>
+  <div class="service-item" style="--i:17"><img src="images/icon-curtains.png"><span>Curtains</span></div>
+  <div class="service-item" style="--i:18"><img src="images/icon-wallpaper.png"><span>Wallpaper</span></div>
+  <div class="service-item" style="--i:19"><img src="images/icon-ceiling.png"><span>Ceiling</span></div>
+  <div class="service-item" style="--i:20"><img src="images/icon-smart.png"><span>Smart</span></div>
+  <div class="service-item" style="--i:21"><img src="images/icon-lights.png"><span>Lighting</span></div>
+  <div class="service-item" style="--i:22"><img src="images/icon-paint.png"><span>Painting</span></div>
+  <div class="service-item" style="--i:23"><img src="images/icon-cladding.png"><span>Cladding</span></div>
+  <div class="service-item" style="--i:24"><img src="images/icon-tiles-grainte.png"><span>Tiles</span></div>
+  <div class="service-item" style="--i:25"><img src="images/icon-plumb.png"><span>Plumbing</span></div>
 
-        <div class="service">
-          <div class="icon">
-            <img src="images/icon-wardrobe.png" alt="Wardrobe">
-          </div>
-          <h3>Wardrobe</h3>
-        </div>
-		
-		
-		 <div class="service">
-			<div class="icon">
-			<img src="images/icon-bed.png" alt="Beds">
-			</div>
-			<h3>Beds</h3>
-		</div>
-		
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-bunkbed.png" alt="Kids Bunk Beds">
-			</div>
-			<h3>Kids Bunk Beds</h3>
-		</div>
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-study.png" alt="Study Tables">
-			</div>
-			<h3>Study Tables</h3>
-		</div>
-
-				
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-dressing.png" alt="Dressing Unit">
-			</div>
-			<h3>Dressing Unit</h3>
-		</div>
-		
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-crockery.png" alt="Crockery Unit">
-			</div>
-			<h3>Crockery Unit</h3>
-		</div>
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-vanity.png" alt="Vanity">
-			</div>
-			<h3>Vanity</h3>
-		</div>
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-pooja.png" alt="Pooja Unit">
-			</div>
-			<h3>Pooja Unit</h3>
-		</div>
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-partion.png" alt="Partition">
-			</div>
-			<h3>Partitions</h3>
-			</div>
-			
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-shoerack.png" alt="Shoe Rack">
-			</div>
-			<h3>Shoe Rack</h3>
-		</div>	
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-barunit.png" alt="Bar Unit">
-			</div>
-			<h3>Bar Unit</h3>
-		</div>
-		
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-stair.png" alt="Staircase">
-			</div>
-			<h3>Wooden Staircase Design</h3>
-			</div>
-			
-		<div class="service">
-          <div class="icon">
-            <img src="images/icon-office.png" alt="Office Interior">
-          </div>
-          <h3>Office Interior</h3>
-        </div>	
-			
-			
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-custom.png" alt="Custom Work">
-			</div>
-			<h3>Custom Furniture</h3>
-			</div>
-			
-			
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-sliding.png" alt="Sliding Doors">
-			</div>
-			<h3>PVC Sliding Doors</h3>
-		</div>	
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-curtains.png" alt="Curtains">
-			</div>
-			<h3>Curtains</h3>
-		</div>
-		
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-wallpaper.png" alt="Wallpapers">
-			</div>
-			<h3>Wallpapers</h3>
-		</div> 
-		
-		
-        <div class="service">
-          <div class="icon">
-            <img src="images/icon-ceiling.png" alt="False Ceiling">
-          </div>
-          <h3>False Ceiling</h3>
-        </div>
-		
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-smart.png" alt="Smart Home">
-			</div>
-			<h3>Smart Home</h3>
-			</div>
-		
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-lights.png" alt="Lighting">
-			</div>
-			<h3>Lighting</h3>
-		</div>
-
-        <div class="service">
-          <div class="icon">
-            <img src="images/icon-paint.png" alt="Painting Works">
-          </div>
-          <h3>Painting Works</h3>
-        </div>
-
-        <div class="service">
-			<div class="icon">
-			<img src="images/icon-cladding.png" alt="Wall Cladding">
-			</div>
-		<h3>Wall Cladding</h3>
-		</div>
-
-		 
-		<div class="service">
-			<div class="icon">
-			<img src="images/icon-tiles-grainte.png" alt="Tiles & Granite">
-			</div>
-			<h3>Tiles & Granite</h3>
-		</div>
-		
-       <div class="service">
-			<div class="icon">
-			<img src="images/icon-plumb.png" alt="Plumbing">
-			</div>
-			<h3>Plumbing</h3>
-		</div>
-		</div>
-      </div>
-    </div>
+</div>
   </section>
 
   <!-- BRANDS + PROJECTS -->
