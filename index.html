@@ -2303,11 +2303,14 @@ Message: ${message}`;
     window.open(whatsappURL, "_blank");
   }
   
-  // OPEN POPUP FROM GALLERY
-const params = new URLSearchParams(window.location.search);
-if(params.get("openPopup") === "true"){
-  openPopup();
-}
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
+  
+  if(params.get("openPopup") === "true"){
+    openPopup();
+  }
+});
+
 
 </script>  
 
