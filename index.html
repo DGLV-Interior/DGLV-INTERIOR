@@ -2331,8 +2331,26 @@ if(params.get("openPopup") === "true"){
   "priceRange": "₹₹"
 }
 
+<script>
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  
+  if (params.get("openForm") === "true") {
+    const formSection = document.getElementById("contact");
+    
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // If you already have popup form, open it
+    if (typeof openForm === "function") {
+      openForm();
+    }
+  }
+};
 
 </script>
+
 
 </body>
 </html>
