@@ -55,7 +55,7 @@ body{
   color:#0E3A43;
 }
 
-/* CATEGORY */
+/* CATEGORY BUTTONS */
 .gallery-buttons{
   text-align:center;
   margin:15px 0;
@@ -71,9 +71,14 @@ body{
   border-radius:20px;
 }
 
+.gallery-buttons button:hover{
+  background:black;
+}
+
+/* SLIDER */
 .slider{
   width:90%;
-  max-width:900px;
+  max-width:950px;
   margin:auto;
   overflow:hidden;
   border-radius:20px;
@@ -88,53 +93,9 @@ body{
 
 .slider-track img{
   width:100%;
-  height:420px;
+  height:450px;
   object-fit:cover;
-}
-
-/* POPUP */
-.popup{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  display:none;
-  justify-content:center;
-  align-items:center;
-}
-
-.popup-content{
-  background:white;
-  width:350px;
-  padding:20px;
-  border-radius:15px;
-}
-
-.popup-content input,
-.popup-content select,
-.popup-content textarea{
-  width:100%;
-  margin:6px 0;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-.submit-btn{
-  width:100%;
-  padding:12px;
-  background:#0E3A43;
-  color:white;
-  border:none;
-  border-radius:30px;
-}
-
-.close{
-  float:right;
-  cursor:pointer;
-  font-size:20px;
+  flex-shrink:0;
 }
 </style>
 </head>
@@ -144,99 +105,82 @@ body{
 <!-- HEADER -->
 <div class="header">
   <div class="logo">
-    <img src="images/logo-full.png">
+    <img src="images/logo-full.png" alt="DGLV Interior">
   </div>
 
-  <button class="consult-btn" onclick="openPopup()">
-    Get Free Consultation
-  </button>
+  <!-- ✅ CLICK → INDEX FORM OPEN -->
+<button onclick="window.location.href='/?openPopup=true'">
+  Get Free Consultation
+</button>
 </div>
 
 <div class="title">Our Gallery</div>
 
+<!-- ✅ ALL CATEGORIES BACK -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
   <button onclick="showCategory('bedroom')">Bedroom</button>
   <button onclick="showCategory('wardrobe')">Wardrobe</button>
+  <button onclick="showCategory('ceiling')">False Ceiling</button>
+  <button onclick="showCategory('office')">Office Interior</button>
 </div>
 
+<!-- SLIDER -->
 <div class="slider">
   <div class="slider-track" id="sliderTrack"></div>
 </div>
 
-<!-- 🔥 POPUP FORM -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">×</span>
-    <h3>Get Quote</h3>
-
-    <input type="text" placeholder="Full Name">
-    <input type="text" placeholder="Mobile Number">
-    <input type="text" placeholder="Location">
-
-    <select>
-      <option>Select BHK</option>
-    </select>
-
-    <select>
-      <option>Select Service</option>
-    </select>
-
-    <select>
-      <option>Select Budget</option>
-    </select>
-
-    <textarea placeholder="Your Requirement"></textarea>
-
-    <button class="submit-btn">Submit Quote Request</button>
-  </div>
-</div>
-
 <script>
 const galleryImages = {
-  living:["images/living1.jpg","images/living2.jpg"],
-  kitchen:["images/kitchen1.jpg","images/kitchen2.jpg"],
-  bedroom:["images/bedroom1.jpg","images/bedroom2.jpg"],
-  wardrobe:["images/wardrobe1.jpg","images/wardrobe2.jpg"]
+  living: ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
+  kitchen: ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
+  bedroom: ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
+  wardrobe: ["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
+  ceiling: ["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
+  office: ["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
 };
 
-let current="living";
-let index=0;
+let currentCategory="living";
+let currentIndex=0;
+let sliderInterval;
 
-const track=document.getElementById("sliderTrack");
+const sliderTrack=document.getElementById("sliderTrack");
 
-function load(cat){
-  track.innerHTML="";
-  galleryImages[cat].forEach(img=>{
-    let i=document.createElement("img");
-    i.src=img;
-    track.appendChild(i);
+function loadImages(category){
+  sliderTrack.innerHTML="";
+  galleryImages[category].forEach(img=>{
+    let image=document.createElement("img");
+    image.src=img;
+    sliderTrack.appendChild(image);
   });
+
+  currentIndex=0;
+  sliderTrack.style.transform="translateX(0%)";
 }
 
-function slide(){
-  index++;
-  if(index>=galleryImages[current].length){index=0;}
-  track.style.transform="translateX(-"+(index*100)+"%)";
+function nextSlide(){
+  let total=galleryImages[currentCategory].length;
+  currentIndex++;
+  if(currentIndex>=total){currentIndex=0;}
+  sliderTrack.style.transform="translateX(-"+(currentIndex*100)+"%)";
 }
 
-function showCategory(cat){
-  current=cat;
-  load(cat);
+function showCategory(category){
+  currentCategory=category;
+  loadImages(category);
+  clearInterval(sliderInterval);
+  sliderInterval=setInterval(nextSlide,2500);
 }
 
-setInterval(slide,2500);
-load("living");
-
-/* 🔥 POPUP FUNCTIONS */
-function openPopup(){
-  document.getElementById("popup").style.display="flex";
+/* 🔥 IMPORTANT PART */
+function openConsultation(){
+  // 👉 index page ki velthundi + form open avvali
+  window.location.href = "index.html?openForm=true";
 }
 
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
+loadImages("living");
+sliderInterval=setInterval(nextSlide,2500);
 </script>
 
 </body>
