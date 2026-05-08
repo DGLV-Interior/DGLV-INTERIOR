@@ -7,29 +7,24 @@
 
 <style>
 
-@font-face{
-  font-family: "kitamiw01";
-  src: url("fonts/kitamiw01-regular.ttf") format("truetype");
-}
-
 body{
   margin:0;
-  font-family:"kitamiw01", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background:#f8fafc;
 }
 
-/* ✅ HEADER (WHITE + SMALL PADDING) */
+/* HEADER */
 .header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:10px 25px; /* 🔥 reduced padding */
+  padding:10px 25px;
   background:white;
   border-bottom:1px solid #eee;
 }
 
 .logo img{
-  height:40px;
+  height:45px;
 }
 
 .title{
@@ -45,8 +40,7 @@ body{
   text-decoration:none;
   color:#0E3A43;
   font-weight:bold;
-  font-size:14px;
-  transition:0.3s;
+  cursor:pointer;
 }
 
 .consult-btn:hover{
@@ -54,7 +48,40 @@ body{
   color:white;
 }
 
-/* GALLERY BUTTONS */
+/* POPUP FORM */
+.popup{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-content{
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  width:300px;
+}
+
+.popup-content input,
+.popup-content textarea{
+  width:100%;
+  margin:8px 0;
+  padding:8px;
+}
+
+.close-btn{
+  float:right;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* GALLERY */
 .gallery-buttons{
   text-align:center;
   margin:25px 0;
@@ -64,19 +91,12 @@ body{
   padding:8px 14px;
   margin:5px;
   border:none;
-  cursor:pointer;
   background:#0E3A43;
   color:white;
-  font-weight:bold;
-  border-radius:25px;
-  font-family:"kitamiw01", Arial, sans-serif;
+  border-radius:20px;
+  cursor:pointer;
 }
 
-.gallery-buttons button:hover{
-  background:black;
-}
-
-/* SLIDER */
 .slider{
   width:90%;
   max-width:950px;
@@ -84,37 +104,17 @@ body{
   overflow:hidden;
   border-radius:20px;
   background:white;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
 .slider-track{
   display:flex;
-  transition:transform 0.7s ease-in-out;
+  transition:0.5s;
 }
 
 .slider-track img{
   width:100%;
   height:480px;
   object-fit:cover;
-  flex-shrink:0;
-}
-
-/* BACK BUTTON */
-.back-btn{
-  display:block;
-  text-align:center;
-  margin:25px auto;
-  width:180px;
-  padding:10px;
-  border-radius:30px;
-  background:black;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.back-btn:hover{
-  background:#0E3A43;
 }
 
 </style>
@@ -122,30 +122,39 @@ body{
 
 <body>
 
-<!-- ✅ NEW HEADER -->
+<!-- HEADER -->
 <div class="header">
 
   <div class="logo">
-    <img src="images/logo.png" alt="DGLV Interior">
+    <!-- ✅ FULL LOGO -->
+    <img src="images/logo-full.png">
   </div>
 
   <div class="title">Our Gallery</div>
 
-  <!-- ✅ Button works -->
-  <a href="index.html#contact" class="consult-btn">
+  <!-- ✅ POPUP BUTTON -->
+  <div class="consult-btn" onclick="openForm()">
     Get Free Consultation
-  </a>
+  </div>
 
 </div>
 
-<!-- CATEGORY BUTTONS -->
+<!-- POPUP FORM -->
+<div class="popup" id="popupForm">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closeForm()">✖</span>
+    <h3>Get Free Consultation</h3>
+    <input type="text" placeholder="Your Name">
+    <input type="tel" placeholder="Phone Number">
+    <textarea placeholder="Your Requirement"></textarea>
+    <button>Submit</button>
+  </div>
+</div>
+
+<!-- GALLERY BUTTONS -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
-  <button onclick="showCategory('kitchen')">Modular Kitchen</button>
-  <button onclick="showCategory('bedroom')">Bedroom</button>
-  <button onclick="showCategory('wardrobe')">Wardrobe</button>
-  <button onclick="showCategory('ceiling')">False Ceiling</button>
-  <button onclick="showCategory('office')">Office Interior</button>
+  <button onclick="showCategory('kitchen')">Kitchen</button>
 </div>
 
 <!-- SLIDER -->
@@ -153,17 +162,11 @@ body{
   <div class="slider-track" id="sliderTrack"></div>
 </div>
 
-<a class="back-btn" href="index.html">⬅ Back to Home</a>
-
 <script>
 
 const galleryImages = {
-  living: ["images/living1.jpg", "images/living2.jpg", "images/living3.jpg"],
-  kitchen: ["images/kitchen1.jpg", "images/kitchen2.jpg", "images/kitchen3.jpg"],
-  bedroom: ["images/bedroom1.jpg", "images/bedroom2.jpg", "images/bedroom3.jpg"],
-  wardrobe: ["images/wardrobe1.jpg", "images/wardrobe2.jpg", "images/wardrobe3.jpg"],
-  ceiling: ["images/ceiling1.jpg", "images/ceiling2.jpg", "images/ceiling3.jpg"],
-  office: ["images/office1.jpg", "images/office2.jpg", "images/office3.jpg"]
+  living: ["images/living1.jpg","images/living2.jpg"],
+  kitchen: ["images/kitchen1.jpg","images/kitchen2.jpg"]
 };
 
 let currentCategory="living";
@@ -174,38 +177,35 @@ const sliderTrack=document.getElementById("sliderTrack");
 
 function loadImages(category){
   sliderTrack.innerHTML="";
-
   galleryImages[category].forEach(img=>{
-    let imageElement=document.createElement("img");
-    imageElement.src=img;
-    sliderTrack.appendChild(imageElement);
+    let image=document.createElement("img");
+    image.src=img;
+    sliderTrack.appendChild(image);
   });
-
-  currentIndex=0;
-  sliderTrack.style.transform="translateX(0%)";
 }
 
 function nextSlide(){
-  let totalImages=galleryImages[currentCategory].length;
-  currentIndex++;
-
-  if(currentIndex>=totalImages){
-    currentIndex=0;
-  }
-
+  let total=galleryImages[currentCategory].length;
+  currentIndex=(currentIndex+1)%total;
   sliderTrack.style.transform="translateX(-"+(currentIndex*100)+"%)";
 }
 
-function showCategory(category){
-  currentCategory=category;
-  loadImages(category);
-
-  clearInterval(sliderInterval);
-  sliderInterval=setInterval(nextSlide,2500);
+function showCategory(cat){
+  currentCategory=cat;
+  loadImages(cat);
 }
 
+setInterval(nextSlide,2500);
 loadImages("living");
-sliderInterval=setInterval(nextSlide,2500);
+
+/* POPUP FUNCTIONS */
+function openForm(){
+  document.getElementById("popupForm").style.display="flex";
+}
+
+function closeForm(){
+  document.getElementById("popupForm").style.display="none";
+}
 
 </script>
 
