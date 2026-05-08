@@ -22,7 +22,7 @@
 }
 
 body{
-  background:#f8fafc;
+  background:#f1f3f4;
   text-align:center;
 }
 
@@ -30,8 +30,8 @@ body{
 .categories{
   display:flex;
   justify-content:center;
-  flex-wrap:wrap;
   gap:12px;
+  flex-wrap:wrap;
   padding:20px;
 }
 
@@ -51,18 +51,19 @@ body{
   border:2px solid #082e3b;
 }
 
-/* SLIDER CONTAINER */
-.slider-container{
-  width:90%;
+/* MAIN IMAGE BOX */
+.main-box{
+  width:85%;
+  max-width:1000px;
   margin:20px auto;
-  overflow:hidden;
   border-radius:20px;
+  overflow:hidden;
   position:relative;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 .slider{
   display:flex;
-  transition:0.6s ease;
 }
 
 .slide{
@@ -73,36 +74,23 @@ body{
   width:100%;
   height:420px;
   object-fit:cover;
-  border-radius:20px;
 }
 
 /* HOVER SLIDE */
-.slider-container:hover .slider{
-  animation:slideMove 6s infinite;
+.main-box:hover .slider{
+  animation:slide 6s infinite;
 }
 
-@keyframes slideMove{
+@keyframes slide{
   0%{transform:translateX(0);}
   33%{transform:translateX(-100%);}
   66%{transform:translateX(-200%);}
   100%{transform:translateX(0);}
 }
 
-/* BACK BUTTON */
-.back-btn{
-  margin:20px;
-  display:inline-block;
-  padding:12px 26px;
-  border-radius:999px;
-  background:#082e3b;
-  color:#fff;
-  text-decoration:none;
-  font-weight:900;
-}
-
 /* BUTTON */
 .btn{
-  margin:30px;
+  margin-top:20px;
   padding:12px 28px;
   border-radius:999px;
   background:#082e3b;
@@ -110,6 +98,18 @@ body{
   border:none;
   font-weight:900;
   cursor:pointer;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  margin:20px auto;
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:999px;
+  background:#082e3b;
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
 }
 
 /* POPUP */
@@ -141,8 +141,8 @@ body{
 
 .close{
   float:right;
-  cursor:pointer;
   font-size:22px;
+  cursor:pointer;
 }
 </style>
 
@@ -150,28 +150,32 @@ body{
 
 <body>
 
-<a href="/" class="back-btn">← Back to Home</a>
-
 <!-- CATEGORY BUTTONS -->
 <div class="categories">
-  <button onclick="showCategory(0)" class="active">Living Room</button>
-  <button onclick="showCategory(1)">Modular Kitchen</button>
-  <button onclick="showCategory(2)">Bedroom</button>
+  <button onclick="changeCategory(0)" class="active">Living Room</button>
+  <button onclick="changeCategory(1)">Modular Kitchen</button>
+  <button onclick="changeCategory(2)">Bedroom</button>
+  <button onclick="changeCategory(3)">Wardrobe</button>
+  <button onclick="changeCategory(4)">False Ceiling</button>
+  <button onclick="changeCategory(5)">Office Interior</button>
 </div>
 
 <!-- SLIDER -->
-<div class="slider-container">
+<div class="main-box">
   <div class="slider" id="slider">
-
-    <!-- LIVING -->
     <div class="slide"><img src="images/living1.jpg"></div>
     <div class="slide"><img src="images/living2.jpg"></div>
     <div class="slide"><img src="images/living3.jpg"></div>
-
   </div>
 </div>
 
+<!-- BUTTON -->
 <button class="btn" onclick="openPopup()">Get Free Consultation</button>
+
+<br>
+
+<!-- BACK -->
+<a href="https://dglvinterior.com/" class="back-btn">← Back to Home</a>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
@@ -189,18 +193,21 @@ body{
 
 <script>
 
-/* CATEGORY IMAGES */
-const data = [
+/* ALL CATEGORY IMAGES */
+const images = [
   ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
   ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
-  ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"]
+  ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
+  ["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
+  ["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
+  ["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
 ];
 
-function showCategory(index){
+function changeCategory(index){
   const slider = document.getElementById("slider");
   slider.innerHTML = "";
 
-  data[index].forEach(img=>{
+  images[index].forEach(img=>{
     slider.innerHTML += `<div class="slide"><img src="${img}"></div>`;
   });
 
@@ -223,9 +230,7 @@ function closePopup(){
 /* WHATSAPP */
 function sendToWhatsApp(e){
   e.preventDefault();
-
-  let text = "Hello DGLV Interior, I need details";
-  window.open("https://wa.me/919666141369?text="+encodeURIComponent(text));
+  window.open("https://wa.me/919666141369?text=Hello I need interior details");
 }
 
 </script>
