@@ -26,6 +26,10 @@
       font-weight: normal;
       font-style: normal;
     }
+	
+	.explore-btn{
+		color:#082e3b !important;
+	}
   </style>
 
   <style>
@@ -242,20 +246,19 @@
     /* ===========================
        HERO SECTION
     ============================ */
-.hero{
-  width:100%;
-  min-height:92vh;
-  display:flex;
-  align-items:center;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.10)),
-    url("images/hero-bg.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  padding:60px 0;
-  filter: brightness(1.05) contrast(1.05);
-}
+    .hero{
+      width:100%;
+      min-height:92vh;
+      display:flex;
+      align-items:center;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.35)),
+        url("images/hero-bg.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:60px 0;
+    }
 
 	.hero-inner{
 		width:100%;
@@ -278,7 +281,7 @@
 	
 	}
     .hero-left h1{
-      color: # 
+      color:white;
       font-size:54px;
       line-height:1.05;
       margin-bottom:14px;
@@ -434,21 +437,12 @@
       gap:14px;
     }
 
-.trust-item{
-  padding:16px;
-  border-radius:18px;
-  background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  border:1px solid rgba(0,0,0,0.05);
-  transition: all 0.4s ease;
-}
-
-/* 🔥 MAIN MAGIC */
-.trust-item:hover{
-border-radius:40px;
-  transform: scale(1.08);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-  color:#ffffff;
-}
+    .trust-item{
+      padding:16px;
+      border-radius:18px;
+      background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border:1px solid rgba(0,0,0,0.05);
+    }
 
     .trust-item h4{
       font-size:18px;
@@ -466,53 +460,35 @@ border-radius:40px;
 
 /* SERVICES */
 
-.grid {
+
+.grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   justify-items: center;
+  gap: 20px;
 }
+.service{
+  border: none;
+  border-radius: 18px;
+  padding: 12px;              /* 👈 tagginchu */
+  text-align: center;
 
-#services {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #f1f5f9 100%
-  );
-}
-
-.service {
-  width: 150px;
-  height: 150px;
-
-  border-radius: 22px;
-  padding: 16px;
-
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(0,0,0,0.05);
+  width: 140px;               /* 👈 IMPORTANT (size control) */
+  height: 140px;              /* 👈 IMPORTANT */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
 
-  transition: all 0.35s ease;
+  gap: 6px;
 
-  box-shadow: 
-    0 4px 12px rgba(0,0,0,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.service:hover {
-  transform: translateY(-8px) scale(1.05);
-
-  box-shadow: 
-    0 20px 40px rgba(0,0,0,0.15);
-
-  background: #ffffff;
+.service:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .icon{
@@ -524,18 +500,10 @@ border-radius:40px;
 }
 
 
-.icon img {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
-
-  opacity: 0.9;
-  transition: all 0.3s ease;
-}
-
-.service:hover .icon img {
-  transform: scale(1.15);
-  opacity: 1;
+.icon img{
+  width:75px;
+  height:75px;
+  object-fit:contain;
 }
 
 .icon{
@@ -546,12 +514,11 @@ border-radius:40px;
 	transform: scale(1.20);
 	}
 
-	.service h3 {
-		font-size: 14px;
-		font-weight: 800;
-		color: #0f172a;
-		letter-spacing: 0.3px;
-	}
+    .service h3{
+      font-size:16px;
+      margin-top:8px;
+      font-weight:900;
+    }
 
     .service p{
       font-size:15px;
@@ -1318,6 +1285,17 @@ html {
   scroll-behavior: smooth;
 }
 
+.trust-item{
+  text-align:center;
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
+.trust-item:hover{
+  transform: scale(1.08);      /* 👈 zoom effect */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12); /* 👈 nice shadow */
+}
+
+
 .trust-item img{
   width:80px;
   height:80px;
@@ -1542,9 +1520,12 @@ html {
     <div class="hero-inner">
 
       <div class="hero-left">
-     <h1 style="color:#ffffff;">
-  Best Interior Designers in Hyderabad – DGLV Interior
-</h1>
+       <h1>Best Interior Designers in Hyderabad – DGLV Interior</h1>
+        <p>
+          DGLV Interior provides modern Home Interiors, Modular Kitchen, Wardrobe, False Ceiling,
+          Painting and Office Interior Works with best quality materials and perfect finishing.
+        </p>
+
         <div class="hero-points">
           <div class="pill">✅ 10+ Years Experience</div>
           <div class="pill">✅ Premium Materials</div>
