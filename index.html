@@ -270,13 +270,15 @@
 	.hero{
 		position:relative;
 	}
-		.hero-left{
-		position:absolute;
-		bottom:20px;
-		left:20px;
-		max-width:650px;
-	
-	}
+
+@media(max-width:768px){
+  .hero-left{
+    position:relative;
+    bottom:auto;
+    left:auto;
+  }
+}
+
     .hero-left h1{
       color:#ffffff;
       font-size:54px;
@@ -1476,13 +1478,27 @@ html {
   fill: #ffffff !important;
 }
 
+.services-radial .center-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.services-radial .item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+
 .services-radial{
   position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 650px;
-  margin: 60px auto;
+  width: 500px;
+  height: 500px;
+  margin: auto;
 }
+
 
 /* CENTER LOGO */
 .center-logo{
@@ -1711,7 +1727,7 @@ html {
   <!-- CENTER LOGO -->
   
   <div class="center-logo">
-    <img src="images/logo-icon.png" alt="DGLV Logo">
+    <img src="images/logo.png" alt="DGLV Logo">
   </div>
 
   <!-- SERVICES -->
