@@ -7,10 +7,8 @@
 
 <title>DGLV Interior Gallery</title>
 
-<!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- SAME FONT (NO CHANGE) -->
 <style>
 @font-face{
   font-family: "kitamiw01";
@@ -38,7 +36,6 @@ body{
   color:#082e3b;
   font-weight:900;
   text-decoration:none;
-  transition:0.3s;
 }
 .back-btn:hover{
   background:#082e3b;
@@ -48,11 +45,10 @@ body{
 /* HEADER */
 .header{
   text-align:center;
-  padding:20px;
+  padding:10px 20px;
 }
 .header h1{
   font-size:32px;
-  margin-bottom:10px;
 }
 
 /* GALLERY */
@@ -64,6 +60,7 @@ body{
 }
 
 .card{
+  position:relative;
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 6px 20px rgba(0,0,0,0.1);
@@ -80,7 +77,30 @@ body{
   transform:scale(1.08);
 }
 
-/* BUTTON (OVAL FIX) */
+/* LABEL STYLE (🔥 NEW) */
+.label{
+  position:absolute;
+  bottom:12px;
+  left:12px;
+
+  background:#082e3b;
+  color:#fff;
+
+  padding:8px 16px;
+  border-radius:999px;
+
+  font-size:13px;
+  font-weight:900;
+
+  transition:0.3s;
+}
+
+.card:hover .label{
+  background:#fff;
+  color:#082e3b;
+}
+
+/* BUTTON */
 .btn{
   display:inline-block;
   margin:30px auto;
@@ -91,7 +111,6 @@ body{
   border:2px solid #082e3b;
   font-weight:900;
   cursor:pointer;
-  transition:0.3s;
 }
 .btn:hover{
   background:#fff;
@@ -131,7 +150,7 @@ body{
 .close{
   float:right;
   cursor:pointer;
-  font-size:20px;
+  font-size:22px;
 }
 </style>
 
@@ -140,7 +159,7 @@ body{
 <body>
 
 <!-- BACK BUTTON -->
-<a href="/" class="back-btn">
+<a href="https://dglvinterior.com/" class="back-btn">
   <i class="fa-solid fa-arrow-left"></i> Back to Main Menu
 </a>
 
@@ -152,12 +171,35 @@ body{
 <!-- GALLERY -->
 <div class="gallery">
 
-  <div class="card"><img src="images/living1.jpg"></div>
-  <div class="card"><img src="images/kitchen1.jpg"></div>
-  <div class="card"><img src="images/bedroom1.jpg"></div>
-  <div class="card"><img src="images/wardrobe1.jpg"></div>
-  <div class="card"><img src="images/ceiling1.jpg"></div>
-  <div class="card"><img src="images/office1.jpg"></div>
+  <div class="card">
+    <img src="images/living1.jpg">
+    <div class="label">Living Room</div>
+  </div>
+
+  <div class="card">
+    <img src="images/kitchen1.jpg">
+    <div class="label">Modular Kitchen</div>
+  </div>
+
+  <div class="card">
+    <img src="images/bedroom1.jpg">
+    <div class="label">Bedroom</div>
+  </div>
+
+  <div class="card">
+    <img src="images/wardrobe1.jpg">
+    <div class="label">Wardrobe</div>
+  </div>
+
+  <div class="card">
+    <img src="images/ceiling1.jpg">
+    <div class="label">False Ceiling</div>
+  </div>
+
+  <div class="card">
+    <img src="images/office1.jpg">
+    <div class="label">Office Interior</div>
+  </div>
 
 </div>
 
@@ -178,14 +220,13 @@ body{
     <select>
       <option>Select Service</option>
       <option>Home Interior</option>
-      <option>Kitchen</option>
+      <option>Modular Kitchen</option>
     </select>
 
     <button class="btn">Submit</button>
   </div>
 </div>
 
-<!-- SCRIPT -->
 <script>
 function openPopup(){
   document.getElementById("popup").style.display="flex";
