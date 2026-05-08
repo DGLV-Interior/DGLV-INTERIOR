@@ -17,7 +17,7 @@ body{
   background:#f8fafc;
 }
 
-/* HEADER (INDEX STYLE) */
+/* HEADER */
 .header{
   display:flex;
   justify-content:space-between;
@@ -55,7 +55,7 @@ body{
   color:#0E3A43;
 }
 
-/* CATEGORY BUTTONS */
+/* BUTTONS */
 .gallery-buttons{
   text-align:center;
   margin:20px 0;
@@ -99,7 +99,7 @@ body{
   flex-shrink:0;
 }
 
-/* BACK BUTTON */
+/* BACK */
 .back-btn{
   display:block;
   text-align:center;
@@ -124,22 +124,17 @@ body{
 <!-- HEADER -->
 <div class="header">
   <div class="logo">
-    <!-- IMPORTANT: full logo image use cheyyi -->
     <img src="images/logo-full.png" alt="DGLV Interior">
   </div>
 
-  <!-- 👉 CLICK → INDEX FORM OPEN -->
+  <!-- ✅ FIXED BUTTON -->
   <button class="consult-btn" onclick="openConsultation()">
     Get Free Consultation
-	<a href="index.html?open=true" class="consult-btn">
-  Get Free Consultation
-</a>
   </button>
 </div>
 
 <div class="title">Our Gallery</div>
 
-<!-- CATEGORY BUTTONS -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
@@ -149,7 +144,6 @@ body{
   <button onclick="showCategory('office')">Office Interior</button>
 </div>
 
-<!-- SLIDER -->
 <div class="slider">
   <div class="slider-track" id="sliderTrack"></div>
 </div>
@@ -198,16 +192,14 @@ function showCategory(category){
   sliderInterval=setInterval(nextSlide,2500);
 }
 
-/* 🔥 MAIN PART */
+/* 🔥 FINAL FIX */
 function openConsultation(){
-  // 👉 index.html lo form id = "contact" undali
-  window.location.href = "index.html#contact";
+  window.location.href = "index.html?open=true";
 }
 
 loadImages("living");
 sliderInterval=setInterval(nextSlide,2500);
 </script>
-
 
 </body>
 </html>
