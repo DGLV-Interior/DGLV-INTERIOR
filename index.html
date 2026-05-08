@@ -434,18 +434,21 @@
       gap:14px;
     }
 
-  .trust-item{
-  padding:20px;
+.trust-item{
+  padding:16px;
   border-radius:18px;
-  background:#ffffff;
+  background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border:1px solid rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+}
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  transition:all 0.35s ease;
+/* 🔥 MAIN MAGIC */
+.trust-item:hover{
+border-radius:40px;
+  transform: scale(1.08);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  background:#082e3b;
+  color:#ffffff;
 }
 
     .trust-item h4{
@@ -1315,23 +1318,6 @@
 html {
   scroll-behavior: smooth;
 }
-
-.trust-item{
-  text-align:center;
-  transition: all 0.3s ease;
-  cursor:pointer;
-}
-.trust-item:hover{
-
-	filter: brightness(0) invert(1);
-  background:#082e3b;
-  color:#ffffff;
-
-  border-radius:50%;   /* 👈 IKADA MAGIC (circle) */
-
-  transform:scale(1.1);
-}
-
 
 .trust-item img{
   width:80px;
