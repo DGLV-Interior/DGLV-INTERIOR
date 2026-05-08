@@ -2391,7 +2391,15 @@ window.onload = function() {
 };
 
 </script>
+<script>
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
 
+  if(params.get("open") === "true") {
+    openForm(); // SAME function call
+  }
+};
+</script>
 
 </body>
 </html>
