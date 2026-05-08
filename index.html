@@ -271,13 +271,7 @@
 		position:relative;
 	}
 
-@media(max-width:768px){
-  .hero-left{
-    position:relative;
-    bottom:auto;
-    left:auto;
-  }
-}
+@media
 
     .hero-left h1{
       color:#ffffff;
@@ -1494,10 +1488,9 @@ html {
 
 .services-radial{
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 850px;
+  height: 850px;
   margin: auto;
-  transition: 0.5s ease;
 }
 
 /* HOVER APPUDU FULL EXPAND */
@@ -1505,11 +1498,20 @@ html {
   transform: scale(1.15);
 }
 
-.services-radial:hover .service-item{
+.service-item{
+  position:absolute;
+  top:50%;
+  left:50%;
+
   transform:
     rotate(calc(var(--i) * 13.85deg))
-    translate(290px)
+    translate(360px)
     rotate(calc(var(--i) * -13.85deg));
+
+  text-align:center;
+  width:130px;
+
+  transition: all 0.4s ease;
 }
 
 
@@ -1570,10 +1572,11 @@ html {
 /* ICON */
 
 .service-item img{
-  width:60px;
-  height:60px;
+  width:85px;
+  height:85px;
+
   background:#fff;
-  padding:14px;
+  padding:18px;
   border-radius:50%;
 
   transition:0.4s;
@@ -1587,12 +1590,10 @@ html {
 
 .service-item span{
   display:block;
-  margin-top:8px;
-  font-size:13px;
+  margin-top:10px;
+  font-size:16px;
   font-weight:900;
   color:#082e3b;
-
-  transition:0.3s;
 }
 
 /* HOVER TEXT POP */
