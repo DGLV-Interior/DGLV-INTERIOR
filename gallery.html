@@ -12,66 +12,60 @@
   src: url("fonts/kitamiw01-regular.ttf") format("truetype");
 }
 
-/* BODY */
 body{
   margin:0;
   font-family:"kitamiw01", Arial, sans-serif;
   background:#f8fafc;
 }
 
-/* 🔥 HEADER NEW */
-.gallery-header{
+/* ✅ HEADER (WHITE + SMALL PADDING) */
+.header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:15px 25px;
-  background:#082e3b;
+  justify-content:space-between;
+  padding:10px 25px; /* 🔥 reduced padding */
+  background:white;
+  border-bottom:1px solid #eee;
 }
 
-/* LOGO */
-.gallery-left img{
-  height:50px;
+.logo img{
+  height:40px;
 }
 
-/* BUTTON SAME STYLE */
-.nav-btn{
-  background:transparent;
-  color:#ffffff;
-  border:2px solid #ffffff;
-  border-radius:999px;
-  padding:10px 22px;
-  font-weight:900;
-  cursor:pointer;
+.title{
+  font-size:24px;
+  font-weight:bold;
+  color:#0E3A43;
+}
+
+.consult-btn{
+  padding:8px 18px;
+  border:2px solid #0E3A43;
+  border-radius:25px;
+  text-decoration:none;
+  color:#0E3A43;
+  font-weight:bold;
+  font-size:14px;
   transition:0.3s;
 }
 
-.nav-btn:hover{
-  background:#ffffff;
-  color:#082e3b;
-}
-
-/* TITLE */
-.gallery-title{
-  text-align:center;
+.consult-btn:hover{
+  background:#0E3A43;
   color:white;
-  background:#082e3b;
-  margin:0;
-  padding-bottom:15px;
-  font-size:28px;
 }
 
-/* CATEGORY BUTTONS */
+/* GALLERY BUTTONS */
 .gallery-buttons{
   text-align:center;
-  margin:30px 0;
+  margin:25px 0;
 }
 
 .gallery-buttons button{
-  padding:10px 16px;
-  margin:6px;
+  padding:8px 14px;
+  margin:5px;
   border:none;
   cursor:pointer;
-  background:#082e3b;
+  background:#0E3A43;
   color:white;
   font-weight:bold;
   border-radius:25px;
@@ -89,7 +83,6 @@ body{
   margin:auto;
   overflow:hidden;
   border-radius:20px;
-  border:1px solid rgba(0,0,0,0.1);
   background:white;
   box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
@@ -101,7 +94,7 @@ body{
 
 .slider-track img{
   width:100%;
-  height:500px;
+  height:480px;
   object-fit:cover;
   flex-shrink:0;
 }
@@ -111,8 +104,8 @@ body{
   display:block;
   text-align:center;
   margin:25px auto;
-  width:200px;
-  padding:12px;
+  width:180px;
+  padding:10px;
   border-radius:30px;
   background:black;
   color:white;
@@ -121,7 +114,7 @@ body{
 }
 
 .back-btn:hover{
-  background:#082e3b;
+  background:#0E3A43;
 }
 
 </style>
@@ -129,27 +122,23 @@ body{
 
 <body>
 
-<!-- 🔥 HEADER -->
-<div class="gallery-header">
+<!-- ✅ NEW HEADER -->
+<div class="header">
 
-  <div class="gallery-left">
-    <a href="/">
-      <img src="images/logo-full.png">
-    </a>
+  <div class="logo">
+    <img src="images/logo.png" alt="DGLV Interior">
   </div>
 
-  <div class="gallery-right">
-    <!-- 👉 CLICK → INDEX + POPUP -->
-    <button class="nav-btn" onclick="window.location.href='/?openPopup=true'">
-      Get Free Consultation
-    </button>
-  </div>
+  <div class="title">Our Gallery</div>
+
+  <!-- ✅ Button works -->
+  <a href="index.html#contact" class="consult-btn">
+    Get Free Consultation
+  </a>
 
 </div>
 
-<h1 class="gallery-title">Our Gallery</h1>
-
-<!-- BUTTONS -->
+<!-- CATEGORY BUTTONS -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
@@ -169,12 +158,12 @@ body{
 <script>
 
 const galleryImages = {
-  living: ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
-  kitchen: ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
-  bedroom: ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
-  wardrobe: ["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
-  ceiling: ["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
-  office: ["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
+  living: ["images/living1.jpg", "images/living2.jpg", "images/living3.jpg"],
+  kitchen: ["images/kitchen1.jpg", "images/kitchen2.jpg", "images/kitchen3.jpg"],
+  bedroom: ["images/bedroom1.jpg", "images/bedroom2.jpg", "images/bedroom3.jpg"],
+  wardrobe: ["images/wardrobe1.jpg", "images/wardrobe2.jpg", "images/wardrobe3.jpg"],
+  ceiling: ["images/ceiling1.jpg", "images/ceiling2.jpg", "images/ceiling3.jpg"],
+  office: ["images/office1.jpg", "images/office2.jpg", "images/office3.jpg"]
 };
 
 let currentCategory="living";
@@ -187,9 +176,9 @@ function loadImages(category){
   sliderTrack.innerHTML="";
 
   galleryImages[category].forEach(img=>{
-    let image=document.createElement("img");
-    image.src=img;
-    sliderTrack.appendChild(image);
+    let imageElement=document.createElement("img");
+    imageElement.src=img;
+    sliderTrack.appendChild(imageElement);
   });
 
   currentIndex=0;
@@ -197,10 +186,10 @@ function loadImages(category){
 }
 
 function nextSlide(){
-  let total=galleryImages[currentCategory].length;
+  let totalImages=galleryImages[currentCategory].length;
   currentIndex++;
 
-  if(currentIndex>=total){
+  if(currentIndex>=totalImages){
     currentIndex=0;
   }
 
