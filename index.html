@@ -117,7 +117,6 @@
       color:#0f172a;
       white-space:nowrap;
     }
-x`
     .logo-text span{
       color:#0f172a;
       font-weight:900;
@@ -1471,28 +1470,13 @@ html {
   border-radius:10px;
 }
 
-<script>
-
-// open form
-function openForm(){
-  document.getElementById("quoteForm").style.display="flex";
-}
-
-// close form
-function closeForm(){
-  document.getElementById("quoteForm").style.display="none";
-}
-
-// 🔥 AUTO OPEN WHEN COMING FROM GALLERY
-window.onload = function(){
+window.onload = function() {
   const params = new URLSearchParams(window.location.search);
 
-  if(params.get("openQuote") === "true"){
-    openForm();   // 👉 THIS LINE IS KEY
+  if(params.get("openPopup") === "true") {
+    openPopup();   // 🔥 correct function
   }
 };
-
-</script>
 
 </style>
 </head>
@@ -2289,14 +2273,22 @@ if(quotePopup){
     });
   }
 
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
 
-  
- window.addEventListener("scroll", showOnScroll);
-window.addEventListener("load", showOnScroll);
-window.addEventListener("scroll", () => {
-  menu.style.display = "none";
+  if(params.get("openPopup") === "true"){
+    openPopup();
+  }
+
+  if(params.get("openForm") === "true"){
+    openPopup();
+  }
+
+  if(params.get("open") === "true"){
+    openPopup();
+  }
 });
-  
+
 // AUTO POPUP REPEAT AFTER 15 SECONDS (SMART)
 let popupClosed = false;
 
@@ -2352,7 +2344,7 @@ if(params.get("openPopup") === "true"){
 
 </script>  
 
-	<script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -2371,25 +2363,17 @@ if(params.get("openPopup") === "true"){
   "areaServed": "Hyderabad",
   "priceRange": "₹₹"
 }
+</script>
 
 <script>
-window.onload = function() {
+window.onload = function(){
   const params = new URLSearchParams(window.location.search);
-  
-  if (params.get("openForm") === "true") {
-    const formSection = document.getElementById("contact");
-    
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: "smooth" });
-    }
 
-    // If you already have popup form, open it
-    if (typeof openForm === "function") {
-      openForm();
-    }
+  if(params.get("openForm") === "true"){
+    // 👉 ఇక్కడ నీ existing function name పెట్టాలి
+    openQuoteForm(); // లేదా openModal() / showForm()
   }
 };
-
 </script>
 <script>
 window.onload = function() {
