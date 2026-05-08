@@ -31,6 +31,77 @@
 	.explore-btn{
 		color:#082e3b !important;
 	}
+	
+	
+	.services-circle{
+  padding:80px 20px;
+  background:#f8fafc;
+}
+
+.circle-container{
+  width:500px;
+  height:500px;
+  margin:auto;
+  position:relative;
+}
+
+.center-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.center-logo img{
+  width:70px;
+}
+
+.lines-svg{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.lines-svg line{
+  stroke:#082e3b;
+  stroke-width:2;
+}
+
+/* ICON STYLE */
+.circle-icon{
+  position:absolute;
+  width:70px;
+  height:70px;
+  background:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.circle-icon img{
+  width:40px;
+}
+
+/* POSITIONS */
+.icon1{ top:0%; left:50%; transform:translateX(-50%);}
+.icon2{ top:15%; right:0;}
+.icon3{ top:50%; right:0; transform:translateY(-50%);}
+.icon4{ bottom:15%; right:0;}
+.icon5{ bottom:0; left:50%; transform:translateX(-50%);}
+.icon6{ bottom:15%; left:0;}
+.icon7{ top:50%; left:0; transform:translateY(-50%);}
+.icon8{ top:15%; left:0;}
+
   </style>
 
   <style>
@@ -1784,6 +1855,39 @@ html {
       </div>
     </div>
   </section>
+  
+  <section class="services-circle">
+  <div class="circle-container">
+
+    <!-- CENTER LOGO -->
+    <div class="center-logo">
+      <img src="images/logo.png" alt="DGLV Logo">
+    </div>
+
+    <!-- SVG LINES -->
+    <svg class="lines-svg" viewBox="0 0 500 500">
+      <line x1="250" y1="250" x2="250" y2="50" />
+      <line x1="250" y1="250" x2="400" y2="100" />
+      <line x1="250" y1="250" x2="450" y2="250" />
+      <line x1="250" y1="250" x2="400" y2="400" />
+      <line x1="250" y1="250" x2="250" y2="450" />
+      <line x1="250" y1="250" x2="100" y2="400" />
+      <line x1="250" y1="250" x2="50" y2="250" />
+      <line x1="250" y1="250" x2="100" y2="100" />
+    </svg>
+
+    <!-- ICONS -->
+    <div class="circle-icon icon1"><img src="images/icon-curtains.png"></div>
+    <div class="circle-icon icon2"><img src="images/icon-wallpaper.png"></div>
+    <div class="circle-icon icon3"><img src="images/icon-lights.png"></div>
+    <div class="circle-icon icon4"><img src="images/icon-paint.png"></div>
+    <div class="circle-icon icon5"><img src="images/icon-tiles-grainte.png"></div>
+    <div class="circle-icon icon6"><img src="images/icon-kitchen.png"></div>
+    <div class="circle-icon icon7"><img src="images/icon-wardrobe.png"></div>
+    <div class="circle-icon icon8"><img src="images/icon-bed.png"></div>
+
+  </div>
+</section>
 
   <!-- BRANDS + PROJECTS -->
   <section id="projects" style="background:#f8fafc;">
