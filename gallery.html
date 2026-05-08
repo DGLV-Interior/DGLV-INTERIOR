@@ -33,17 +33,18 @@ body{
 
 /* BUTTON */
 .consult-btn{
-  padding:8px 18px;
-  border:2px solid #0E3A43;
-  border-radius:30px;
+  padding:10px 22px;
+  border:2px solid #082e3b;
+  border-radius:999px;
   background:white;
-  color:#0E3A43;
-  font-weight:bold;
+  color:#082e3b;
+  font-weight:900;
   cursor:pointer;
+  transition:0.3s;
 }
 
 .consult-btn:hover{
-  background:#0E3A43;
+  background:#082e3b;
   color:white;
 }
 
@@ -52,7 +53,7 @@ body{
   text-align:center;
   font-size:26px;
   margin:10px 0;
-  color:#0E3A43;
+  color:#082e3b;
 }
 
 /* CATEGORY BUTTONS */
@@ -66,7 +67,7 @@ body{
   margin:4px;
   border:none;
   cursor:pointer;
-  background:#0E3A43;
+  background:#082e3b;
   color:white;
   border-radius:20px;
 }
@@ -108,16 +109,14 @@ body{
     <img src="images/logo-full.png" alt="DGLV Interior">
   </div>
 
-  <!-- ✅ CLICK → INDEX FORM OPEN -->
-  
-<button onclick="window.location.href='index.html?openPopup=true'">
-  Get Free Consultation
-</button>
+  <!-- ✅ FINAL WORKING BUTTON -->
+  <button class="consult-btn" onclick="goToHomeAndOpenForm()">
+    Get Free Consultation
+  </button>
 </div>
 
 <div class="title">Our Gallery</div>
 
-<!-- ✅ ALL CATEGORIES BACK -->
 <div class="gallery-buttons">
   <button onclick="showCategory('living')">Living Room</button>
   <button onclick="showCategory('kitchen')">Modular Kitchen</button>
@@ -127,7 +126,6 @@ body{
   <button onclick="showCategory('office')">Office Interior</button>
 </div>
 
-<!-- SLIDER -->
 <div class="slider">
   <div class="slider-track" id="sliderTrack"></div>
 </div>
@@ -174,10 +172,9 @@ function showCategory(category){
   sliderInterval=setInterval(nextSlide,2500);
 }
 
-/* 🔥 IMPORTANT PART */
-function openConsultation(){
-  // 👉 index page ki velthundi + form open avvali
-  window.location.href = "index.html?openForm=true";
+/* 🔥 FINAL REDIRECT FUNCTION */
+function goToHomeAndOpenForm(){
+  window.location.href = "https://dglvinterior.com/?openPopup=true";
 }
 
 loadImages("living");
