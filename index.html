@@ -1512,6 +1512,60 @@ html {
   fill: #ffffff !important;
 }
 
+.why-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Curve */
+.curve-line {
+  width: 100%;
+  height: 100px;
+  margin-bottom: -40px;
+}
+
+.curve-line svg {
+  width: 100%;
+  height: 100%;
+}
+
+.curve-line path {
+  fill: none;
+  stroke: #b99474; /* your color */
+  stroke-width: 2;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  padding: 25px;
+  width: 220px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* clean shadow */
+}
+
+.card img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+}
+
 </style>
 </head>
 
@@ -1598,13 +1652,15 @@ html {
     </div>
   </div>
 
-  <!-- TRUST -->
-	<div class="trust">
+<section class="why-section">
+  <h2 class="title">Why Choose DGLV Interior</h2>
 
-	<div class="sec-head">
-    <h2>Why Choose DGLV Interior</h2>
-    <p>We provide quality, trust and best interior solutions for your home.</p>
-	</div>
+  <!-- Curve Line -->
+  <div class="curve-line">
+    <svg viewBox="0 0 1000 120" preserveAspectRatio="none">
+      <path d="M0,60 C250,120 750,0 1000,60" />
+    </svg>
+  </div>
 
   <div class="trust-card">
 
@@ -1630,6 +1686,7 @@ html {
 
   </div>
 </div>
+</section>
 
 <!-- SERVICES -->
 <section id="services">
