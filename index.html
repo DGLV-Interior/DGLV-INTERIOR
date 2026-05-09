@@ -1512,6 +1512,106 @@ html {
   fill: #ffffff !important;
 }
 
+
+.trust-premium{
+  background: #f4efe9;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* HEADING */
+.trust-premium h2{
+  font-size: 38px;
+  font-weight: 900;
+  color: #2b2b2b;
+}
+
+.trust-premium h2 span{
+  color: #b99474;
+}
+
+/* LINE */
+.trust-line{
+  width: 200px;
+  height: 2px;
+  background: #b99474;
+  margin: 20px auto 50px;
+  position: relative;
+}
+
+.trust-line::before,
+.trust-line::after{
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #b99474;
+  border-radius: 50%;
+  position: absolute;
+  top: -3px;
+}
+
+.trust-line::before{ left: 0; }
+.trust-line::after{ right: 0; }
+
+/* GRID */
+.trust-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* BOX */
+.trust-box{
+  background: #f4efe9;
+  border-radius: 20px;
+  padding: 30px 20px;
+
+  box-shadow:
+    8px 8px 18px #d1c7bb,
+    -8px -8px 18px #ffffff;
+
+  transition: 0.3s;
+}
+
+/* ICON */
+.trust-box img{
+  width: 70px;
+  margin-bottom: 15px;
+
+  filter: sepia(1) saturate(5) hue-rotate(330deg);
+}
+
+/* TEXT */
+.trust-box p{
+  font-weight: 800;
+  color: #333;
+}
+
+/* HOVER */
+.trust-box:hover{
+  transform: translateY(-6px);
+
+  box-shadow:
+    inset 6px 6px 12px #d1c7bb,
+    inset -6px -6px 12px #ffffff;
+}
+
+/* MOBILE */
+@media(max-width: 768px){
+  .trust-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 480px){
+  .trust-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
 </style>
 </head>
 
@@ -1599,37 +1699,37 @@ html {
   </div>
 
   <!-- TRUST -->
-	<div class="trust">
+	<div class="trust-premium">
 
-	<div class="sec-head">
-    <h2>Why Choose DGLV Interior</h2>
-    <p>We provide quality, trust and best interior solutions for your home.</p>
-	</div>
+  <h2>Why Choose <span>DGLV Interior</span></h2>
 
-  <div class="trust-card">
+  <div class="trust-line"></div>
 
-    <div class="trust-item">
-      <img src="images/premium.png" alt="Premium Quality">
-      <h4>Premium Quality</h4>
+  <div class="trust-grid">
+
+    <div class="trust-box">
+      <img src="images/premium.png">
+      <p>Premium Quality</p>
     </div>
 
-    <div class="trust-item">
-      <img src="images/custom.png" alt="Custom Designs">
-      <h4>Custom Designs</h4>
+    <div class="trust-box">
+      <img src="images/custom.png">
+      <p>Custom Designs</p>
     </div>
 
-    <div class="trust-item">
-      <img src="images/skilled.png" alt="Skilled Team">
-      <h4>Skilled Team</h4>
+    <div class="trust-box">
+      <img src="images/skilled.png">
+      <p>Skilled Team</p>
     </div>
 
-    <div class="trust-item">
-      <img src="images/affordable.png" alt="Affordable Price">
-      <h4>Affordable Price</h4>
+    <div class="trust-box">
+      <img src="images/affordable.png">
+      <p>Affordable Price</p>
     </div>
 
   </div>
 </div>
+
 
 <!-- SERVICES -->
 <section id="services">
