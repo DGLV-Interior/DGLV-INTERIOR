@@ -4,173 +4,267 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gallery | DGLV Interior</title>
+<title>DGLV Interior Gallery</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body {
-    margin: 0;
-    font-family: inherit;
-    background: #f5f5f5;
+@font-face{
+  font-family:"kitamiw01";
+  src:url("fonts/kitamiw01-regular.ttf");
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"kitamiw01", Arial;
+}
+
+body{
+  background:#f1f3f4;
+  text-align:center;
 }
 
 /* HEADER */
-.header {
-    background: #082e3b;
-    padding: 15px;
-    text-align: center;
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 30px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
-.header img {
-    height: 60px;
+
+.logo img{
+  height:60px;
+}
+
+.header-btn{
+  padding:10px 22px;
+  border-radius:999px;
+  background:#082e3b;
+  color:#fff;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
 }
 
 /* CATEGORY BUTTONS */
-.categories {
-    text-align: center;
-    margin: 30px 0;
-}
-.categories button {
-    background: #082e3b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.categories button:hover {
-    background: #0b4456;
+.categories{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:20px;
 }
 
-/* GALLERY */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+.categories button{
+  padding:10px 18px;
+  border-radius:999px;
+  border:none;
+  background:#082e3b;
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
 }
 
-.item {
-    width: 300px;
-    overflow: hidden;
-    border-radius: 20px;
-    transition: 0.4s;
-    position: relative;
+.categories button.active{
+  background:#fff;
+  color:#082e3b;
+  border:2px solid #082e3b;
 }
 
-.item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: 0.4s;
+/* MAIN IMAGE BOX */
+.main-box{
+  width:85%;
+  max-width:1000px;
+  margin:20px auto;
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* HOVER EFFECT */
-.item:hover img {
-    transform: scale(1.1);
+.slider{
+  display:flex;
 }
 
-/* HIDE ITEMS */
-.hide {
-    display: none;
+.slide{
+  min-width:100%;
 }
 
-/* BUTTONS */
-.buttons {
-    text-align: center;
-    margin: 40px 0;
+.slide img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
 }
 
-.back-btn {
-    background: #082e3b;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
+/* HOVER SLIDE */
+.main-box:hover .slider{
+  animation:slide 6s infinite;
 }
 
-.consult-btn {
-    background: #082e3b;
-    color: white;
-    padding: 14px 35px;
-    border-radius: 40px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
+@keyframes slide{
+  0%{transform:translateX(0);}
+  33%{transform:translateX(-100%);}
+  66%{transform:translateX(-200%);}
+  100%{transform:translateX(0);}
 }
 
+/* BUTTON */
+.btn{
+  margin-top:20px;
+  padding:12px 28px;
+  border-radius:999px;
+  background:#082e3b;
+  color:#fff;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  margin:20px auto;
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:999px;
+  background:#082e3b;
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+}
+
+/* POPUP */
+.popup{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-box{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  width:90%;
+  max-width:400px;
+}
+
+.popup-box input{
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+}
+
+.close{
+  float:right;
+  font-size:22px;
+  cursor:pointer;
+}
 </style>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- HEADER (NEW) -->
 <div class="header">
-    <img src="logo.png" alt="DGLV Interior">
+  <div class="logo">
+    <img src="images/logo.png" alt="DGLV Interior">
+  </div>
+
+  <button class="header-btn" onclick="openPopup()">Get Free Consultation</button>
 </div>
 
 <!-- CATEGORY BUTTONS -->
 <div class="categories">
-    <button onclick="filterSelection('all')">All</button>
-    <button onclick="filterSelection('living')">Living Room</button>
-    <button onclick="filterSelection('kitchen')">Modular Kitchen</button>
-    <button onclick="filterSelection('bedroom')">Bedroom</button>
-    <button onclick="filterSelection('wardrobe')">Wardrobe</button>
-    <button onclick="filterSelection('ceiling')">False Ceiling</button>
-    <button onclick="filterSelection('office')">Office Interior</button>
+  <button onclick="changeCategory(0)" class="active">Living Room</button>
+  <button onclick="changeCategory(1)">Modular Kitchen</button>
+  <button onclick="changeCategory(2)">Bedroom</button>
+  <button onclick="changeCategory(3)">Wardrobe</button>
+  <button onclick="changeCategory(4)">False Ceiling</button>
+  <button onclick="changeCategory(5)">Office Interior</button>
 </div>
 
-<!-- GALLERY -->
-<div class="gallery">
-
-    <div class="item living"><img src="images/living1.jpg"></div>
-    <div class="item living"><img src="images/living2.jpg"></div>
-
-    <div class="item kitchen"><img src="images/kitchen1.jpg"></div>
-    <div class="item kitchen"><img src="images/kitchen2.jpg"></div>
-
-    <div class="item bedroom"><img src="images/bedroom1.jpg"></div>
-
-    <div class="item wardrobe"><img src="images/wardrobe1.jpg"></div>
-
-    <div class="item ceiling"><img src="images/ceiling1.jpg"></div>
-
-    <div class="item office"><img src="images/office1.jpg"></div>
-
+<!-- SLIDER -->
+<div class="main-box">
+  <div class="slider" id="slider">
+    <div class="slide"><img src="images/living1.jpg"></div>
+    <div class="slide"><img src="images/living2.jpg"></div>
+    <div class="slide"><img src="images/living3.jpg"></div>
+  </div>
 </div>
 
-<!-- BUTTONS -->
-<div class="buttons">
+<!-- CENTER BUTTON -->
+<button class="btn" onclick="openPopup()">Get Free Consultation</button>
 
-    <!-- BACK TO HOME -->
-    <a href="https://dglvinterior.com/" class="back-btn">← Back to Home</a>
+<br>
 
-    <!-- CONSULTATION -->
-    <a href="https://dglvinterior.com/?openPopup=true" class="consult-btn">
-        Get Free Consultation
-    </a>
+<!-- BACK -->
+<a href="https://dglvinterior.com/" class="back-btn">← Back to Home</a>
 
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h3>Get Quote</h3>
+
+    <form onsubmit="sendToWhatsApp(event)">
+      <input type="text" placeholder="Name" required>
+      <input type="tel" placeholder="Phone" required>
+      <button class="btn">Submit</button>
+    </form>
+  </div>
 </div>
 
 <script>
 
-/* FILTER FUNCTION */
-function filterSelection(category) {
-    let items = document.getElementsByClassName("item");
+/* IMAGES */
+const images = [
+  ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
+  ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
+  ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
+  ["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
+  ["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
+  ["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
+];
 
-    for (let i = 0; i < items.length; i++) {
-        items[i].classList.add("hide");
+function changeCategory(index){
+  const slider = document.getElementById("slider");
+  slider.innerHTML = "";
 
-        if (category === "all" || items[i].classList.contains(category)) {
-            items[i].classList.remove("hide");
-        }
-    }
+  images[index].forEach(img=>{
+    slider.innerHTML += `<div class="slide"><img src="${img}"></div>`;
+  });
+
+  document.querySelectorAll(".categories button").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  document.querySelectorAll(".categories button")[index].classList.add("active");
 }
 
-/* DEFAULT SHOW ALL */
-filterSelection("all");
+/* POPUP */
+function openPopup(){
+  document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+/* WHATSAPP */
+function sendToWhatsApp(e){
+  e.preventDefault();
+  window.open("https://wa.me/919666141369?text=Hello I need interior details");
+}
 
 </script>
 
