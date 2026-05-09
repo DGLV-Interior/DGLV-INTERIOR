@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+A<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -180,7 +180,7 @@ body{
     <img src="images/logo-full.png" alt="DGLV Interior">
   </div>
 
-  <button class="header-btn" onclick="openPopup()">Get Free Consultation</button>
+ <button class="header-btn" onclick="goToHome()">Get Free Consultation</button>
 </div>
 
 <!-- CATEGORY BUTTONS -->
@@ -261,6 +261,10 @@ function sendToWhatsApp(e){
   window.open("https://wa.me/919666141369?text=Hello I need interior details");
 }
 
+function goToHome(){
+  sessionStorage.setItem("openPopup", "true");
+  window.location.href = "https://dglvinterior.com/";
+}
 </script>
 
 </body>
