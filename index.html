@@ -2311,15 +2311,18 @@ window.addEventListener("load", () => {
   }
 });
 
-<script>
-window.onload = function(){
-  if(sessionStorage.getItem("openPopup") === "true"){
-    openPopup(); // existing popup function
-    sessionStorage.removeItem("openPopup"); // once use ayyaka remove
-  }
-}
-</script>
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
 
+  if(params.get("openPopup") === "true"){
+    openPopup();
+  }
+
+  if(sessionStorage.getItem("openPopup") === "true"){
+    openPopup();
+    sessionStorage.removeItem("openPopup");
+  }
+});
 
 </script>  
 
