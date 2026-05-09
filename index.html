@@ -1415,6 +1415,70 @@ html {
   text-align: center;
 }
 
+/* SECTION BG */
+#services {
+  background: #eae6df;
+  padding: 60px 20px;
+}
+
+/* GRID */
+#services .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+/* EACH SERVICE BOX */
+#services .service {
+  width: 110px;
+  text-align: center;
+}
+
+/* ICON BOX (🔥 MAIN DESIGN) */
+#services .icon {
+  width: 85px;
+  height: 85px;
+  margin: auto;
+  border-radius: 20px;
+  background: #eae6df;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 🔥 SOFT 3D EFFECT */
+  box-shadow:
+    6px 6px 12px rgba(0,0,0,0.08),
+    -6px -6px 12px rgba(255,255,255,0.9);
+
+  transition: 0.3s;
+}
+
+/* ICON IMAGE */
+#services .icon img {
+  width: 42px;
+  height: 42px;
+
+  /* 🔥 GOLD COLOR (#b99474 look) */
+  filter: brightness(0) saturate(100%) 
+          invert(62%) sepia(22%) 
+          saturate(400%) hue-rotate(350deg);
+}
+
+/* TEXT */
+#services h3 {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* HOVER PRESS EFFECT */
+#services .icon:hover {
+  box-shadow:
+    inset 4px 4px 8px rgba(0,0,0,0.08),
+    inset -4px -4px 8px rgba(255,255,255,0.9);
+}
+
 .service-item img {
   width: 60px;
   margin-bottom: 10px;
