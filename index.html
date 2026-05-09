@@ -424,18 +424,38 @@ onload="this.onload=null;this.rel='stylesheet'">
 	  
     }
 
-    .trust-card{
-		width:100%;
-		margin:auto;
-      background:#ffffff;
-      border-radius:22px;
-      padding:22px;
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(0,0,0,0.06);
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:14px;
-    }
+.trust-card {
+  background: #e0e0e0;   /* 👈 base soft color */
+  padding: 25px;
+  border-radius: 30px;
+}
+
+.trust-item {
+  background: #e0e0e0;   /* same base color */
+
+  border-radius: 20px;
+  padding: 20px;
+
+  text-align: center;
+
+  /* 👇 Neumorphism shadows */
+  box-shadow: 
+    8px 8px 18px #bebebe,
+    -8px -8px 18px #ffffff;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* HOVER (pressed effect) */
+.trust-item:hover {
+  box-shadow: 
+    inset 6px 6px 12px #bebebe,
+    inset -6px -6px 12px #ffffff;
+
+  transform: scale(1.03);
+}
+
 
     .trust-item{
       padding:16px;
@@ -1290,15 +1310,20 @@ html {
   transition: all 0.3s ease;
   cursor:pointer;
 }
-.trust-item:hover{
-  transform: scale(1.08);      /* 👈 zoom effect */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12); /* 👈 nice shadow */
+/* HOVER (pressed effect) */
+.trust-item:hover {
+  box-shadow: 
+    inset 6px 6px 12px #bebebe,
+    inset -6px -6px 12px #ffffff;
+
+  transform: scale(1.03);
 }
 
 
 .trust-item img{
   width:80px;
   height:80px;
+  filter: sepia(1) saturate(4) hue-rotate(330deg);
   object-fit:contain;
   margin-bottom:10px;
 }
