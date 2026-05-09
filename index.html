@@ -1630,6 +1630,32 @@ html {
   stroke-width:2;
 }
 
+.trust-lines {
+  height: 140px;
+  margin-bottom: -60px; /* 🔥 very important */
+}
+
+.trust-cards {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.trust-card {
+  position: relative;
+}
+
+.trust-card::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #b99474;
+  border-radius: 50%;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 </style>
 </head>
@@ -1741,6 +1767,13 @@ html {
 
     <!-- RIGHT 2 -->
     <path d="M600 20 C700 50, 750 90, 800 130" />
+	
+<div class="trust-cards">
+  <div class="trust-card">Premium Quality</div>
+  <div class="trust-card">Custom Designs</div>
+  <div class="trust-card">Skilled Team</div>
+  <div class="trust-card">Affordable Price</div>
+</div>
 
   </svg>
 </div>
