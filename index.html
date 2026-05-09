@@ -1559,6 +1559,82 @@ html {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+
+body {
+  background: #f5efe7;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* SECTION */
+.why {
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+/* TITLE */
+.why h2 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.why h2 span {
+  color: #b99474;
+}
+
+/* SVG CONNECTOR */
+.connector {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  pointer-events: none;
+}
+
+.connector svg {
+  width: 100%;
+  height: 100%;
+}
+
+.connector path {
+  fill: none;
+  stroke: #b99474;
+  stroke-width: 2;
+}
+
+.connector circle {
+  fill: #b99474;
+}
+
+/* CARDS */
+.cards {
+  margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card {
+  width: 230px;
+  height: 200px;
+  background: #f3ece3;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  font-size: 16px;
+
+  /* PREMIUM SHADOW */
+  box-shadow: 
+    10px 10px 25px rgba(0,0,0,0.1),
+    -5px -5px 15px rgba(255,255,255,0.6);
+
+  border: 1px solid rgba(185,148,116,0.3);
+}
+
+
 </style>
 </head>
 
@@ -1645,17 +1721,30 @@ html {
     </div>
   </div>
 
-<section class="why-section">
-  <h2 class="title">Why Choose DGLV Interior</h2>
+<section class="why">
+  <h2>
+    Why Choose <span>DGLV Interior</span>
+  </h2>
 
-  <!-- SVG Lines -->
-  <div class="lines">
-    <svg viewBox="0 0 1000 200">
-      <!-- 4 connecting curves -->
-      <path d="M500,0 C400,80 250,120 125,180" />
-      <path d="M500,0 C450,80 400,120 375,180" />
-      <path d="M500,0 C550,80 600,120 625,180" />
-      <path d="M500,0 C600,80 750,120 875,180" />
+  <!-- CONNECTOR LINES -->
+  <div class="connector">
+    <svg viewBox="0 0 1200 260">
+      
+      <!-- center ornament -->
+      <circle cx="600" cy="40" r="4" />
+
+      <!-- curves -->
+      <path d="M600,40 C500,80 350,120 200,200" />
+      <path d="M600,40 C560,100 500,140 400,200" />
+      <path d="M600,40 C640,100 700,140 800,200" />
+      <path d="M600,40 C700,80 850,120 1000,200" />
+
+      <!-- dots above cards -->
+      <circle cx="200" cy="200" r="3" />
+      <circle cx="400" cy="200" r="3" />
+      <circle cx="800" cy="200" r="3" />
+      <circle cx="1000" cy="200" r="3" />
+
     </svg>
   </div>
   
