@@ -2311,6 +2311,15 @@ window.addEventListener("load", () => {
   }
 });
 
+<script>
+window.onload = function(){
+  if(sessionStorage.getItem("openPopup") === "true"){
+    openPopup(); // existing popup function
+    sessionStorage.removeItem("openPopup"); // once use ayyaka remove
+  }
+}
+</script>
+
 
 </script>  
 
