@@ -17,7 +17,9 @@
 
 
   <!-- FONT AWESOME (For Social + Navbar Icons only) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preload" as="style"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+onload="this.onload=null;this.rel='stylesheet'">
 
   <!-- CUSTOM FONT (DO NOT CHANGE) -->
   <style>
@@ -117,7 +119,6 @@
       color:#0f172a;
       white-space:nowrap;
     }
-x`
     .logo-text span{
       color:#0f172a;
       font-weight:900;
@@ -635,13 +636,11 @@ x`
   transition: all 0.3s ease;
 }
 
-/* HOVER PERFECT OVAL */
 .img-card:hover .img-label{
   background:white;
   color:#082e3b;
-
-  transform: scale(1.08);  /* 👈 small zoom only */
-  box-shadow:0 4px 12px rgba(0,0,0,0.15); /* 👈 instead of border */
+  transform: scale(1.08);
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
 
@@ -838,7 +837,7 @@ x`
 }
 
 /* GLASS EFFECT DARK */
-	.contact-card{;
+	.contact-card{
 		backdrop-filter: blur(18px);
 		-webkit-backdrop-filter: blur(18px);
 		border-radius:22px;
@@ -1308,15 +1307,6 @@ html {
   .trust-card{grid-template-columns:1fr;}
 }
 
-.img-card:hover .img-label{
-  background:white;
-  color:#082e3b;
-
-  transform: scale(1.15);   /* ZOOM */
-  border:1px solid #082e3b;
-}
-
-
 /* DESKTOP lo anni visible */
 .more-service{
   display:block;
@@ -1522,7 +1512,6 @@ html {
 
       <div class="hero-left">
        <h1>Best Interior Designers in Hyderabad</h1>
-	   <h2>DGLV Interior</h2>
         <p>
           DGLV Interior provides modern Home Interiors, Modular Kitchen, Wardrobe, False Ceiling,
           Painting and Office Interior Works with best quality materials and perfect finishing.
@@ -1536,8 +1525,6 @@ html {
         </div>
 
       </div>
-
-      <div style="display:none;"></div>
 
     </div>
   </div>
@@ -1779,9 +1766,6 @@ html {
 			<img src="images/icon-plumb.png" alt="Plumbing">
 			</div>
 			<h3>Plumbing</h3>
-		</div>
-		</div>
-      </div>
     </div>
   </section>
 
@@ -2188,12 +2172,6 @@ function openPopup(){
   }
 }
 
-function closePopupFunc(){
-  if(quotePopup){
-    quotePopup.style.display = "none";
-  }
-}
-
 // SAFE EVENT LISTENERS
 if(quoteBtn){
   quoteBtn.addEventListener("click", openPopup);
@@ -2299,18 +2277,11 @@ Service: ${service}%0A
 Budget: ${budget}%0A
 Message: ${message}`;
 
-    let whatsappURL = `https://wa.me/919666141369?text=${text}`;
-    window.open(whatsappURL, "_blank");
+    let whatsappURL =
+		`https://wa.me/919666141369?text=${encodeURIComponent(text)}`;
+		window.open(whatsappURL, "_blank");
   }
   
-window.addEventListener("load", () => {
-  const params = new URLSearchParams(window.location.search);
-  
-  if(params.get("openPopup") === "true"){
-    openPopup();
-  }
-});
-
 window.addEventListener("load", () => {
   const params = new URLSearchParams(window.location.search);
 
@@ -2326,7 +2297,7 @@ window.addEventListener("load", () => {
 
 </script>  
 
-	<script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -2345,8 +2316,6 @@ window.addEventListener("load", () => {
   "areaServed": "Hyderabad",
   "priceRange": "₹₹"
 }
-
-
 </script>
 
 </body>
