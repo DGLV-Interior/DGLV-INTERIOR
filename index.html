@@ -54,6 +54,18 @@ onload="this.onload=null;this.rel='stylesheet'">
   color: #082e3b !important;
 }
 
+/* 🔥 FINAL GRID FIX */
+#services .grid {
+  display: grid;
+  grid-template-columns: repeat(6, 140px);
+  justify-content: center;
+  gap: 25px;
+}
+
+/* HIDE EXTRA */
+.more-service {
+  display: none;
+}
 
   </style>
 
@@ -532,15 +544,6 @@ onload="this.onload=null;this.rel='stylesheet'">
 /* SERVICES */
 
 
-
-#services .grid {
-  grid-template-columns: repeat(6, 140px);
-  justify-content: center;
-}
-
-.more-service{
-  display:none;
-}
 
 
 .service{
@@ -1908,6 +1911,8 @@ html {
     <div class="service"><div class="icon"><img src="images/icon-shoerack.png"></div><h3>Shoe Rack</h3></div>
 
     <!-- MORE SERVICES (hidden initially) -->
+	
+	
     <div class="service more-service"><div class="icon"><img src="images/icon-barunit.png"></div><h3>Bar Unit</h3></div>
     <div class="service more-service"><div class="icon"><img src="images/icon-stair.png"></div><h3>Wooden Staircase Design</h3></div>
     <div class="service more-service"><div class="icon"><img src="images/icon-office.png"></div><h3>Office Interior</h3></div>
