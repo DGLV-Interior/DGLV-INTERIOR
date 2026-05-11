@@ -544,79 +544,180 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
 
-/* SERVICES */
+/* ===========================
+   OUR INTERIOR SERVICES — NEW DESIGN
+=========================== */
 
+#services {
+  background: #ffffff;
+  padding: 70px 20px 80px;
+}
 
+/* HEADING ORNAMENT */
+#services .sec-head h2 {
+  font-size: 48px;
+  font-weight: 900;
+  color: #082e3b;
+  margin-bottom: 8px;
+}
 
+#services .sec-head p {
+  color: #666;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
 
-.service{
-  border: none;
-  border-radius: 16px;
-  padding: 16px 10px 12px;
+.services-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 6px auto 40px;
+}
+
+.services-ornament .so-line {
+  display: block;
+  width: 60px;
+  height: 1.5px;
+  background: #b99474;
+}
+
+.services-ornament .so-diamond {
+  color: #b99474;
+  font-size: 14px;
+}
+
+/* SUB-LABEL ABOVE HEADING */
+.services-sublabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #b99474;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.services-sublabel::before,
+.services-sublabel::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1.5px;
+  background: #b99474;
+}
+
+/* GRID */
+#services .grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+/* EACH SERVICE CARD */
+.service {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.07);
+  padding: 22px 12px 18px;
   text-align: center;
-
-  width: 130px;
+  width: auto;
   height: auto;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
 
-  gap: 8px;
-  overflow: visible;
-  background: #ffffff;
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(8,46,59,0.12);
+  border-color: #b99474;
+}
 
-  box-shadow:
-    4px 4px 12px rgba(0,0,0,0.09),
-    -2px -2px 6px rgba(255,255,255,0.95);
+/* ICON HEXAGON SHAPE */
+.service .icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: #fdf3ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+
+.service:hover .icon {
+  background: #f0e4d7;
+}
+
+/* alternate soft bg colours per nth-child */
+.service:nth-child(2n) .icon { background: #edf4f0; }
+.service:nth-child(3n) .icon { background: #eef0f8; }
+.service:nth-child(4n) .icon { background: #fdf3ec; }
+.service:nth-child(5n) .icon { background: #f5eef8; }
+
+.service:nth-child(2n):hover .icon { background: #d8ede5; }
+.service:nth-child(3n):hover .icon { background: #d8ddf0; }
+.service:nth-child(5n):hover .icon { background: #e8d8f0; }
+
+/* ICON IMAGE */
+.service .icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: none;
   transition: 0.3s;
 }
 
-.service:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(8,46,59,0.13);
+.service:hover .icon img {
+  transform: scale(1.1);
 }
 
-#moreServices{
-  display: contents; /* 🔥 layout same untadi */
+/* NAME */
+.service h3 {
+  font-size: 13px;
+  font-weight: 900;
+  color: #082e3b;
+  margin-top: 0;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  text-align: center;
 }
 
-.icon{
-  width:auto;
-  height:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* UNDERLINE ACCENT */
+.service h3::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #b99474;
+  margin: 5px auto 0;
+  border-radius: 2px;
 }
 
+/* no .service p in current HTML so leave blank */
 
-.icon img{
-  width:75px;
-  height:75px;
-  object-fit:contain;
-}
+/* HOVER PRESS */
+.service:active { transform: scale(0.97); }
 
-.icon{
-  background:transparent;   /* circle remove */
-}
-	
-	.service:hover .icon img{
-	transform: scale(1.20);
-	}
 
-    .service h3{
-      font-size:16px;
-      margin-top:8px;
-      font-weight:900;
-    }
-
-    .service p{
-      font-size:15px;
-      color:var(--muted);
-      line-height:1.7;
-      font-weight:700;
-    }
 
     /* ===========================
        BRAND SLIDER
@@ -728,8 +829,8 @@ onload="this.onload=null;this.rel='stylesheet'">
 }
 
 .img-card:hover .img-label{
-  background:white;
-  color:#082e3b;
+  background:#b99474;
+  color:#ffffff;
   transform: scale(1.08);
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
@@ -842,10 +943,11 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .stars{
-      color:var(--brand);
+      color:#b99474;
       font-weight:900;
       margin-bottom:10px;
-      font-size:18px;
+      font-size:20px;
+      text-shadow: 0 1px 4px rgba(185,148,116,0.4);
     }
 
     .test p{
@@ -1157,21 +1259,21 @@ onload="this.onload=null;this.rel='stylesheet'">
   .popup-box button{
 	width:100%;
 	padding:12px;
-	border-radius:999px; /* oval shape */
+	border-radius:999px;
 	font-weight:900;
 	font-size:15px;
 	cursor:pointer;
 
-	background:#082e3b;
+	background:#b99474;
 	color:#fff;
-	border:2px solid #082e3b;
+	border:2px solid #b99474;
 
 	transition: all 0.3s ease;
 }
 
  .popup-box button:hover{
-	background:#ffffff;
-	color:#082e3b;
+	background:#082e3b;
+	color:#ffffff;
 	border:2px solid #082e3b;
 	transform:scale(1.05);
 }
@@ -1433,6 +1535,10 @@ html {
 }
 
 
+#moreServices{
+  display: contents;
+}
+
 .services-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1440,78 +1546,29 @@ html {
   text-align: center;
 }
 
-/* SECTION BG */
-#services {
-  background: #ffffff;
-  padding: 60px 20px;
-}
-
 /* EACH SERVICE BOX */
 #services .service {
-  width: 110px;
+  width: auto;
   text-align: center;
-}
-
-/* ICON BOX */
-#services .icon {
-  width: 80px;
-  height: 80px;
-  margin: auto;
-  border-radius: 16px;
-  background: #f5f5f5;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    4px 4px 10px rgba(0,0,0,0.07),
-    -3px -3px 8px rgba(255,255,255,0.9);
-
-  transition: 0.3s;
-}
-
-/* ICON IMAGE */
-#services .icon img {
-  width: 52px;
-  height: 52px;
-
-  filter: brightness(0) saturate(100%) 
-          invert(62%) sepia(22%) 
-          saturate(400%) hue-rotate(350deg);
-}
-
-/* TEXT — always visible below icon */
-#services h3 {
-  font-size: 12px;
-  font-weight: 900;
-  color: #082e3b;
-  margin-top: 8px;
-  line-height: 1.3;
-  text-align: center;
-}
-
-/* HOVER PRESS EFFECT */
-#services .icon:hover {
-  box-shadow:
-    inset 4px 4px 8px rgba(0,0,0,0.08),
-    inset -4px -4px 8px rgba(255,255,255,0.9);
-}
-
-.service-item img {
-  width: 60px;
-  margin-bottom: 10px;
-}
-
-.service-item p {
-  color: #082e3b;
-  font-size: 16px;
 }
 
 /* Mobile */
 @media (max-width: 600px) {
   .services-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  #services .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 900px) {
+  #services .grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  #services .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
@@ -1726,23 +1783,6 @@ html {
   .wc-grid{ grid-template-columns: 1fr; }
 }
 
-/* ===========================
-   SERVICE ICON — NAME ALWAYS VISIBLE BELOW
-=========================== */
-.service{
-  position: relative;
-}
-
-.service h3{
-  font-size: 12px;
-  font-weight: 900;
-  color: #082e3b;
-  margin-top: 6px;
-  text-align: center;
-  line-height: 1.3;
-}
-
-
 
 
 /* 🔥 HIDE EXTRA SERVICES FIRST */
@@ -1948,8 +1988,14 @@ html {
 <section id="services">
 
   <div class="sec-head">
+    <div class="services-sublabel">OUR INTERIOR SERVICES</div>
     <h2>Our Interior Services</h2>
-    <p>Complete Interior solutions for your home and office.</p>
+    <p>Complete interior solutions for your home and office.</p>
+    <div class="services-ornament">
+      <span class="so-line"></span>
+      <span class="so-diamond">&#9670;</span>
+      <span class="so-line"></span>
+    </div>
   </div>
 
     <div class="grid">
