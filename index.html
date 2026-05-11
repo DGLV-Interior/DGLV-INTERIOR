@@ -551,12 +551,12 @@ onload="this.onload=null;this.rel='stylesheet'">
 
 .service{
   border: none;
-  border-radius: 18px;
-  padding: 12px;
+  border-radius: 14px;
+  padding: 14px;
   text-align: center;
 
-  width: 140px;
-  height: 130px;
+  width: 130px;
+  height: 120px;
 
   display: flex;
   flex-direction: column;
@@ -565,13 +565,17 @@ onload="this.onload=null;this.rel='stylesheet'">
 
   gap: 6px;
   overflow: visible;
+  background: #ffffff;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow:
+    4px 4px 10px rgba(0,0,0,0.08),
+    -2px -2px 6px rgba(255,255,255,0.9);
+  transition: 0.3s;
 }
 
 .service:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(8,46,59,0.13);
 }
 
 #moreServices{
@@ -600,12 +604,6 @@ onload="this.onload=null;this.rel='stylesheet'">
 	.service:hover .icon img{
 	transform: scale(1.20);
 	}
-
-    .service h3{
-      font-size:16px;
-      margin-top:8px;
-      font-weight:900;
-    }
 
     .service p{
       font-size:15px;
@@ -724,8 +722,8 @@ onload="this.onload=null;this.rel='stylesheet'">
 }
 
 .img-card:hover .img-label{
-  background:white;
-  color:#082e3b;
+  background:#b99474;
+  color:#ffffff;
   transform: scale(1.08);
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
@@ -759,7 +757,7 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .plan.featured{
-      border:2px solid rgba(14,58,67,0.7);
+      border:2px solid #b99474;
       transform:translateY(-8px);
     }
 
@@ -838,10 +836,11 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .stars{
-      color:var(--brand);
+      color:#b99474;
       font-weight:900;
       margin-bottom:10px;
-      font-size:18px;
+      font-size:20px;
+      text-shadow: 0 1px 4px rgba(185,148,116,0.35);
     }
 
     .test p{
@@ -1153,21 +1152,21 @@ onload="this.onload=null;this.rel='stylesheet'">
   .popup-box button{
 	width:100%;
 	padding:12px;
-	border-radius:999px; /* oval shape */
+	border-radius:999px;
 	font-weight:900;
 	font-size:15px;
 	cursor:pointer;
 
-	background:#082e3b;
+	background:#b99474;
 	color:#fff;
-	border:2px solid #082e3b;
+	border:2px solid #b99474;
 
 	transition: all 0.3s ease;
 }
 
  .popup-box button:hover{
-	background:#ffffff;
-	color:#082e3b;
+	background:#082e3b;
+	color:#ffffff;
 	border:2px solid #082e3b;
 	transform:scale(1.05);
 }
@@ -1594,7 +1593,7 @@ html {
    WHY CHOOSE - NEW DESIGN
 =========================== */
 .trust-premium{
-  background: #f4efe9;
+  background: #ffffff;
   padding: 70px 20px 80px;
   text-align: center;
 }
@@ -1728,35 +1727,15 @@ html {
 }
 
 /* ===========================
-   SERVICE ICON — NAME ON HOVER TOOLTIP
+   SERVICE ICON — NAME ALWAYS HIDDEN
 =========================== */
 .service{
   position: relative;
 }
 
-/* HIDE the h3 below icon by default */
+/* Name always hidden — no tooltip */
 .service h3{
-  position: absolute;
-  bottom: -38px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  background: #082e3b;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 900;
-  padding: 5px 12px;
-  border-radius: 999px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease, bottom 0.25s ease;
-  z-index: 10;
-}
-
-/* SHOW on hover */
-.service:hover h3{
-  opacity: 1;
-  bottom: -34px;
+  display: none;
 }
 
 
