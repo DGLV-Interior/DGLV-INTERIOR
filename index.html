@@ -62,7 +62,7 @@ onload="this.onload=null;this.rel='stylesheet'">
   gap: 25px;
 }
 
-/* HIDE EXTRA */
+
 .more-service {
   display: none;
 }
@@ -1901,7 +1901,7 @@ html {
 
   <div class="grid">
 
-    <!-- ALL SERVICES -->
+    <!-- FIRST 12 -->
     <div class="service"><div class="icon"><img src="images/icon-home.png"></div><h3>Home Interior</h3></div>
     <div class="service"><div class="icon"><img src="images/icon-kitchen.png"></div><h3>Modular Kitchen</h3></div>
     <div class="service"><div class="icon"><img src="images/icon-wardrobe.png"></div><h3>Wardrobe</h3></div>
@@ -1915,21 +1915,21 @@ html {
     <div class="service"><div class="icon"><img src="images/icon-partion.png"></div><h3>Partitions</h3></div>
     <div class="service"><div class="icon"><img src="images/icon-shoerack.png"></div><h3>Shoe Rack</h3></div>
 
-    <!-- MORE -->
-    <div class="service"><div class="icon"><img src="images/icon-barunit.png"></div><h3>Bar Unit</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-stair.png"></div><h3>Wooden Staircase Design</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-office.png"></div><h3>Office Interior</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-custom.png"></div><h3>Custom Furniture</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-sliding.png"></div><h3>PVC Sliding Doors</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-curtains.png"></div><h3>Curtains</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-wallpaper.png"></div><h3>Wallpapers</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-ceiling.png"></div><h3>False Ceiling</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-smart.png"></div><h3>Smart Home</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-lights.png"></div><h3>Lighting</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-paint.png"></div><h3>Painting Works</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-cladding.png"></div><h3>Wall Cladding</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-tiles-grainte.png"></div><h3>Tiles & Granite</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-plumb.png"></div><h3>Plumbing</h3></div>
+    <!-- MORE SERVICES -->
+    <div class="service more-service"><div class="icon"><img src="images/icon-barunit.png"></div><h3>Bar Unit</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-stair.png"></div><h3>Wooden Staircase Design</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-office.png"></div><h3>Office Interior</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-custom.png"></div><h3>Custom Furniture</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-sliding.png"></div><h3>PVC Sliding Doors</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-curtains.png"></div><h3>Curtains</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-wallpaper.png"></div><h3>Wallpapers</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-ceiling.png"></div><h3>False Ceiling</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-smart.png"></div><h3>Smart Home</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-lights.png"></div><h3>Lighting</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-paint.png"></div><h3>Painting Works</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-cladding.png"></div><h3>Wall Cladding</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-tiles-grainte.png"></div><h3>Tiles & Granite</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-plumb.png"></div><h3>Plumbing</h3></div>
 
   </div>
 
@@ -1939,6 +1939,7 @@ html {
   </div>
 
 </section>
+
 
   <!-- BRANDS + PROJECTS -->
   <section id="projects" style="background:#f8fafc;">
@@ -2489,13 +2490,14 @@ window.addEventListener("load", () => {
 }
 </script>
 
+<!-- JS -->
 <script>
   const btn = document.getElementById("viewMoreBtn");
   const items = document.querySelectorAll(".more-service");
 
   let open = false;
 
-  btn.addEventListener("click", function () {
+  btn.onclick = () => {
     open = !open;
 
     items.forEach(el => {
@@ -2503,7 +2505,9 @@ window.addEventListener("load", () => {
     });
 
     btn.innerText = open ? "View Less" : "View More Services";
-  });
+  };
+</script>
+
 </script>
 
 </body>
