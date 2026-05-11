@@ -1450,8 +1450,8 @@ html {
 
 /* ICON BOX (🔥 MAIN DESIGN) */
 #services .icon {
-  width: 85px;
-  height: 85px;
+  width: 100px;
+  height: 100px;
   margin: auto;
   border-radius: 20px;
   background: #eae6df;
@@ -1735,6 +1735,11 @@ html {
 }
 
 
+/* 🔥 HIDE EXTRA SERVICES FIRST */
+.more-service {
+  display: none !important;
+}
+
 #viewMoreBtn {
   background: #082e3b;
   color: white;
@@ -1894,9 +1899,9 @@ html {
     <p>Complete Interior solutions for your home and office.</p>
   </div>
 
-  <div class="grid fade-up">
+  <div class="grid">
 
-    <!-- FIRST 12 -->
+    <!-- ALL SERVICES -->
     <div class="service"><div class="icon"><img src="images/icon-home.png"></div><h3>Home Interior</h3></div>
     <div class="service"><div class="icon"><img src="images/icon-kitchen.png"></div><h3>Modular Kitchen</h3></div>
     <div class="service"><div class="icon"><img src="images/icon-wardrobe.png"></div><h3>Wardrobe</h3></div>
@@ -1910,28 +1915,26 @@ html {
     <div class="service"><div class="icon"><img src="images/icon-partion.png"></div><h3>Partitions</h3></div>
     <div class="service"><div class="icon"><img src="images/icon-shoerack.png"></div><h3>Shoe Rack</h3></div>
 
-    <!-- MORE SERVICES (hidden initially) -->
-	
-	
-    <div class="service more-service"><div class="icon"><img src="images/icon-barunit.png"></div><h3>Bar Unit</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-stair.png"></div><h3>Wooden Staircase Design</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-office.png"></div><h3>Office Interior</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-custom.png"></div><h3>Custom Furniture</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-sliding.png"></div><h3>PVC Sliding Doors</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-curtains.png"></div><h3>Curtains</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-wallpaper.png"></div><h3>Wallpapers</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-ceiling.png"></div><h3>False Ceiling</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-smart.png"></div><h3>Smart Home</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-lights.png"></div><h3>Lighting</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-paint.png"></div><h3>Painting Works</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-cladding.png"></div><h3>Wall Cladding</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-tiles-grainte.png"></div><h3>Tiles & Granite</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-plumb.png"></div><h3>Plumbing</h3></div>
+    <!-- MORE -->
+    <div class="service"><div class="icon"><img src="images/icon-barunit.png"></div><h3>Bar Unit</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-stair.png"></div><h3>Wooden Staircase Design</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-office.png"></div><h3>Office Interior</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-custom.png"></div><h3>Custom Furniture</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-sliding.png"></div><h3>PVC Sliding Doors</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-curtains.png"></div><h3>Curtains</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-wallpaper.png"></div><h3>Wallpapers</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-ceiling.png"></div><h3>False Ceiling</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-smart.png"></div><h3>Smart Home</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-lights.png"></div><h3>Lighting</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-paint.png"></div><h3>Painting Works</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-cladding.png"></div><h3>Wall Cladding</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-tiles-grainte.png"></div><h3>Tiles & Granite</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-plumb.png"></div><h3>Plumbing</h3></div>
 
   </div>
 
   <!-- BUTTON -->
-  <div style="text-align:center; margin-top:20px;">
+  <div style="text-align:center; margin-top:25px;">
     <button id="viewMoreBtn">View More Services</button>
   </div>
 
