@@ -31,7 +31,7 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 	
 	.explore-btn{
-		color:#082e3b;
+		color:#ffffff;
 	}
 	
 	.icon img,
@@ -195,9 +195,9 @@ onload="this.onload=null;this.rel='stylesheet'">
 		color:var(--brand);
 }
 
-		.explore-btn:hover {
-			background: #082e3b;
-			color: #ffffff;
+	.explore-btn:hover {
+			background: #b99474 !important;
+			color: #ffffff !important;
 }
 
     .dropdown-content{
@@ -838,130 +838,425 @@ onload="this.onload=null;this.rel='stylesheet'">
 
 
     /* ===========================
-       PRICING
+       PRICING — NEW IMAGE DESIGN
     ============================ */
+    #pricing {
+      background: #f5ede2;
+      padding: 75px 22px;
+    }
+
+    #pricing .sec-head h2 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #082e3b;
+    }
+
+    #pricing .sec-head h2 span {
+      color: #b99474;
+    }
+
+    #pricing .sec-head p {
+      color: #666;
+      font-size: 16px;
+    }
+
     .pricing{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:18px;
+      gap:24px;
       margin-top:10px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .plan{
       background:#fff;
-      border-radius:22px;
-      padding:26px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
+      border-radius:24px;
+      padding:30px 26px;
+      border: 1.5px solid rgba(0,0,0,0.07);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
       position:relative;
       overflow:hidden;
       transition:0.25s;
+      display: flex;
+      flex-direction: column;
     }
 
     .plan:hover{
       transform:translateY(-6px);
-      border-color:rgba(14,58,67,0.6);
+      box-shadow: 0 16px 40px rgba(8,46,59,0.14);
     }
 
     .plan.featured{
-      border:2px solid rgba(14,58,67,0.7);
-      transform:translateY(-8px);
+      background: #082e3b;
+      border: 2px solid #b99474 !important;
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(8,46,59,0.25);
+    }
+
+    .plan.featured:hover {
+      transform: translateY(-18px);
+    }
+
+    /* PLAN ICON CIRCLE */
+    .plan-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      border: 2px solid #b99474;
+      background: #f5ede2;
+    }
+
+    .plan.featured .plan-icon-wrap {
+      background: #b99474;
+      border-color: #b99474;
+    }
+
+    .plan-icon-wrap i {
+      font-size: 28px;
+      color: #b99474;
+    }
+
+    .plan.featured .plan-icon-wrap i {
+      color: #ffffff;
     }
 
     .tag{
       position:absolute;
-      top:14px;
-      right:14px;
+      top: 0;
+      right: 0;
       background:#b99474;
-      padding:7px 12px;
-      border-radius:999px;
+      padding: 10px 18px 12px 22px;
+      border-radius: 0 24px 0 24px;
       font-weight:900;
-      font-size:12px;
+      font-size:11px;
       color:white;
+      text-align: center;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
     }
 
     .plan h3{
-      font-size:20px;
+      font-size: 18px;
       font-weight:900;
-      margin-bottom:6px;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #082e3b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .plan p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-      margin-bottom:14px;
-      font-weight:700;
+    .plan.featured h3 {
+      color: #b99474;
+    }
+
+    .plan > p {
+      color: #888;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .plan.featured > p {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .plan-divider {
+      width: 60%;
+      height: 1px;
+      background: rgba(185,148,116,0.35);
+      margin: 0 auto 16px;
     }
 
     .price{
-      font-size:30px;
+      font-size: 36px;
       font-weight:900;
-      margin-bottom:14px;
-      color:#0f172a;
+      margin-bottom: 4px;
+      color:#082e3b;
+      text-align: center;
+    }
+
+    .plan.featured .price {
+      color: #b99474;
     }
 
     .price span{
-      font-size:13px;
-      color:var(--muted);
-      font-weight:800;
+      font-size: 13px;
+      color: #888;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .plan.featured .price span {
+      color: rgba(255,255,255,0.6);
     }
 
     .plan ul{
       list-style:none;
-      margin-bottom:18px;
+      margin-bottom: 22px;
+      flex: 1;
     }
 
     .plan ul li{
-      margin-bottom:11px;
-      color:#0f172a;
-      font-size:14px;
-      font-weight:800;
+      margin-bottom: 11px;
+      color: #333;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plan.featured ul li {
+      color: rgba(255,255,255,0.88);
+    }
+
+    .plan ul li::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border-radius: 50%;
+      background: #b99474;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+      background-size: 13px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .plan a, .plan .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid #082e3b;
+      background: transparent;
+      color: #082e3b;
+      letter-spacing: 0.5px;
+    }
+
+    .plan a:hover {
+      background: #082e3b;
+      color: #ffffff;
+      transform: scale(1.03);
+    }
+
+    .plan.featured a, .plan.featured .plan-btn {
+      background: #b99474;
+      color: #ffffff;
+      border: 2px solid #b99474;
+    }
+
+    .plan.featured a:hover {
+      background: #a07d60;
+      border-color: #a07d60;
+      transform: scale(1.03);
+    }
+
+    /* TRUST BAR BELOW PRICING */
+    .pricing-trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: #fff;
+      border-radius: 16px;
+      margin-top: 40px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+
+    .ptb-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 24px;
+      border-right: 1px solid rgba(0,0,0,0.08);
+      justify-content: center;
+    }
+
+    .ptb-item:last-child {
+      border-right: none;
+    }
+
+    .ptb-item i {
+      font-size: 22px;
+      color: #b99474;
+    }
+
+    .ptb-item span {
+      font-size: 13px;
+      font-weight: 900;
+      color: #082e3b;
+      text-align: left;
+      line-height: 1.4;
+    }
+
+    @media(max-width: 900px){
+      .pricing-trust-bar { flex-wrap: wrap; }
+      .ptb-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); flex: 0 0 50%; }
+      .ptb-item:nth-child(3), .ptb-item:nth-child(4) { border-bottom: none; }
+    }
+
+    @media(max-width: 560px){
+      .ptb-item { flex: 0 0 100%; }
+      .ptb-item:last-child { border-bottom: none; }
     }
 
     /* ===========================
-       REVIEWS
+       REVIEWS — NEW IMAGE DESIGN
     ============================ */
+    #reviews {
+      background: #f5ede2;
+      padding: 75px 22px;
+    }
+
+    #reviews .sec-head h2 span {
+      color: #b99474;
+    }
+
     .test-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:18px;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .test{
       background:#fff;
-      border:1px solid rgba(0,0,0,0.06);
-      border-radius:22px;
-      padding:24px;
-      box-shadow: var(--shadow2);
-      transition:0.25s;
+      border: 1.5px solid rgba(0,0,0,0.07);
+      border-radius: 22px;
+      padding: 28px 26px 24px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+      transition: 0.25s;
+      position: relative;
     }
 
     .test:hover{
       transform:translateY(-6px);
-      border-color:rgba(14,58,67,0.6);
+      box-shadow: 0 16px 40px rgba(8,46,59,0.12);
+    }
+
+    .test.featured-review {
+      border-bottom: 3px solid #b99474;
+    }
+
+    /* QUOTE ICON */
+    .test-quote-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .test-quote-wrap::before,
+    .test-quote-wrap::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: rgba(8,46,59,0.15);
+    }
+
+    .test-quote-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #ffffff;
+      margin: 0 12px;
+      flex-shrink: 0;
+    }
+
+    .test:nth-child(2) .test-quote-icon {
+      background: #b99474;
+    }
+
+    .test:nth-child(1) .test-quote-icon,
+    .test:nth-child(3) .test-quote-icon {
+      background: #082e3b;
     }
 
     .stars{
-      color:#b99474;
+      color: #b99474;
       font-weight:900;
-      margin-bottom:10px;
-      font-size:20px;
-      text-shadow: 0 1px 4px rgba(185,148,116,0.4);
+      margin-bottom: 14px;
+      font-size: 18px;
+      text-align: center;
+      letter-spacing: 2px;
     }
 
     .test p{
-      color:#0f172a;
-      font-size:15px;
-      line-height:1.7;
-      margin-bottom:14px;
-      font-weight:700;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
     }
 
-    .test h4{
-      font-size:14px;
-      font-weight:900;
-      color:var(--brand);
+    /* REVIEWER ROW */
+    .test-reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 16px;
+    }
+
+    .test-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .test:nth-child(2) .test-avatar {
+      background: #b99474;
+    }
+
+    .test:nth-child(1) .test-avatar,
+    .test:nth-child(3) .test-avatar {
+      background: #082e3b;
+    }
+
+    .test-reviewer-info h4 {
+      font-size: 14px;
+      font-weight: 900;
+      color: #082e3b;
+      margin-bottom: 2px;
+    }
+
+    .test-reviewer-info span {
+      font-size: 12px;
+      color: #888;
+      font-weight: 700;
     }
 
     /* ===========================
@@ -1017,158 +1312,367 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     /* ===========================
-       CONTACT
+       CONTACT — NEW DARK IMAGE DESIGN
     ============================ */
-	#contact .container{
-	position: relative;
-	z-index: 2;
-	}
-    .contact-wrap{
-		display:grid;
-		grid-template-columns: 1fr 1fr;
-		gap:20px;
-}
-
-/* GLASS EFFECT DARK */
-	.contact-card{
-		backdrop-filter: blur(18px);
-		-webkit-backdrop-filter: blur(18px);
-		border-radius:22px;
-		padding:28px;
-		border:1px solid rgba(255,255,255,0.2);
-		box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-		color:white;
-		height:100%;
-}
-	.contact-card{
-		background: linear-gradient(
-		rgba(8,46,59,0.75),
-		rgba(8,46,59,0.55)
-  );
-}
-	.contact-form{
-  background: rgba(255,255,255,0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-radius:22px;
-  padding:26px;
-  border:1px solid rgba(255,255,255,0.6);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-}
-
-   #contact .sec-head h2{
-	color:white;
-}
-	#contact .sec-head p{
-  color:rgba(255,255,255,0.75);
-}  
-.contact-card h3{
-      font-size:24px;
-      font-weight:900;
-      margin-bottom:10px;
-      color:white;
+    #contact{
+      background: linear-gradient(
+        135deg,
+        #0a1628 0%,
+        #0e1e2e 40%,
+        #111820 70%,
+        #1a1208 100%
+      );
+      position: relative;
+      padding: 75px 22px;
     }
 
-    .contact-card p{
-      color:rgba(255,255,255,0.75);
-      line-height:1.7;
-      margin-bottom:16px;
-      font-size:15px;
-      font-weight:700;
+    /* Gold vein overlay */
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+        linear-gradient(135deg, rgba(185,148,116,0.06) 0%, transparent 50%),
+        linear-gradient(315deg, rgba(185,148,116,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    #contact .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    #contact .sec-head {
+      margin-bottom: 12px;
+    }
+
+    .contact-sublabel {
+      color: #b99474;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .contact-sublabel::before,
+    .contact-sublabel::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: #b99474;
+      display: block;
+    }
+
+    #contact .sec-head h2{
+      color: white;
+      font-size: 44px;
+      font-weight: 900;
+    }
+
+    #contact .sec-head h2 span {
+      color: #b99474;
+    }
+
+    #contact .sec-head p{
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 30px auto 0;
+    }
+
+    /* LEFT CARD */
+    .contact-card{
+      background: rgba(8,46,59,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 22px;
+      padding: 32px 28px;
+      border: 1px solid rgba(185,148,116,0.25);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+      color: white;
+    }
+
+    .contact-card-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(185,148,116,0.2);
+    }
+
+    .contact-card-logo-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      border: 1.5px solid #b99474;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #b99474;
+      background: rgba(185,148,116,0.1);
+    }
+
+    .contact-card-logo-text h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 3px;
+    }
+
+    .contact-card-logo-text p {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .contact-card .info{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
-      padding:14px;
-      border-radius:16px;
-      margin-bottom:12px;
-      font-size:15px;
-      font-weight:900;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(185,148,116,0.2);
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: 0.2s;
+      cursor: pointer;
     }
-	
-#contact{
-  background: linear-gradient(
-    rgba(0,0,0,0.3),
-    rgba(0,0,0,0.3)
-  ), url("images/contact-bg.jpg") center/cover no-repeat;
-}
 
+    .contact-card .info:hover {
+      background: rgba(185,148,116,0.12);
+      border-color: rgba(185,148,116,0.4);
+    }
 
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1.5px solid #b99474;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #b99474;
+      flex-shrink: 0;
+    }
+
+    .info-text-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .info-text-val {
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+    }
+
+    /* RIGHT CARD */
+    .contact-right{
+      background: rgba(245,237,226,0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 24px;
+      border: 1px solid rgba(185,148,116,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .contact-right-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .map-heading{
+      color: #082e3b;
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .map-heading-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #b99474;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .get-directions-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #082e3b;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .get-directions-btn:hover {
+      background: #b99474;
+      transform: scale(1.03);
+    }
+
+    /* MAP FULL HEIGHT */
+    .contact-right iframe{
+      width: 100%;
+      height: 220px;
+      border: 0;
+      border-radius: 14px;
+      flex-shrink: 0;
+    }
 
     /* SOCIAL LINKS */
     .social-links{
-	justify-content:center;
-      display:flex;
-      gap:14px;
-      margin-top:18px;
-      flex-wrap:wrap;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .social-links a{
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      background:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--brand);
-      font-size:20px;
-      transition:0.3s;
-      border:2px solid var(--brand);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #082e3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b99474;
+      font-size: 18px;
+      transition: 0.3s;
+      border: 2px solid rgba(185,148,116,0.3);
     }
 
     .social-links a:hover{
-      background:var(--brand);
-      color:white;
-      transform:scale(1.1);
-    }
-    .contact-form h3{
-      font-size:22px;
-      font-weight:900;
-      margin-bottom:14px;
-      color:#0f172a;
+      background: #b99474;
+      color: white;
+      transform: scale(1.12);
     }
 
-    .contact-form input,
-    .contact-form textarea{
-      width:100%;
-      padding:12px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.15);
-      outline:none;
-      margin-bottom:12px;
-      font-size:15px;
-      font-weight:700;
+    .social-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
 
-    .contact-form button{
-      width:100%;
-      padding:12px;
-      border-radius:12px;
-      border:none;
-      background:var(--brand);
-      font-weight:900;
-      font-size:15px;
-      cursor:pointer;
-      transition:0.2s;
-      color:white;
+    .social-item span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #082e3b;
     }
 
-    .contact-form button:hover{
-      background:#06292f;
+    /* CONTACT FOOTER STRIP */
+    .contact-footer-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 28px auto 0;
+      padding: 20px 28px;
+      background: rgba(8,46,59,0.6);
+      border-radius: 16px;
+      border: 1px solid rgba(185,148,116,0.2);
+      gap: 20px;
+      flex-wrap: wrap;
     }
-	
-	.contact-card:hover{
-		transform: translateY(-4px);
-		transition: 0.3s;
-	}
-	
-	#contact::before{
-  background: rgba(255,255,255,0.4);
-}
+
+    .cfs-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cfs-logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      border: 1.5px solid #b99474;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #b99474;
+    }
+
+    .cfs-logo-text h4 {
+      color: white;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .cfs-logo-text p {
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .cfs-items {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .cfs-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .cfs-item i {
+      font-size: 16px;
+      color: #b99474;
+    }
+
+    .cfs-copy {
+      color: rgba(255,255,255,0.55);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .contact-card:hover{
+      transform: translateY(-4px);
+      transition: 0.3s;
+    }
 
     /* ===========================
        FOOTER
@@ -1369,35 +1873,7 @@ onload="this.onload=null;this.rel='stylesheet'">
 		transform:translateY(0);
 	}
 	
-.contact-right{
-  background: rgba(8, 46, 59, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius:22px;
-  padding:20px;
-  border:1px solid rgba(255,255,255,0.2);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  height:100%;
-}
-
-/* MAP FULL HEIGHT */
-.contact-right iframe{
-  width:100%;
-  height:100%;
-  min-height:250px;
-  border:0;
-  border-radius:12px;
-}
-
-/* MAP HEADING */
-.map-heading{
-  color:white;
-  font-size:20px;
-  font-weight:900;
-  margin-bottom:10px;
-}
+/* contact-right handled in new contact CSS above */
 
 #about{
   position: relative;
@@ -1608,10 +2084,10 @@ html {
   transform: translateX(4px);
 }
 
-/* EXPLORE BUTTON — NAVY DEFAULT, GOLD HOVER */
+/* EXPLORE BUTTON — NAVY FILL DEFAULT, GOLD HOVER */
 .explore-btn {
-  background: transparent;
-  color: #082e3b;
+  background: #082e3b;
+  color: #ffffff;
   border: 2px solid #082e3b;
 
   border-radius: 999px;
@@ -1650,7 +2126,7 @@ html {
    WHY CHOOSE - NEW DESIGN
 =========================== */
 .trust-premium{
-  background: #f4efe9;
+  background: #ffffff;
   padding: 70px 20px 80px;
   text-align: center;
 }
@@ -2131,82 +2607,131 @@ html {
   <section id="pricing">
     <div class="container">
       <div class="sec-head">
-        <h2>Interior Packages</h2>
-        <p>Choose best package for your budget. Contact us for exact quotation.</p>
+        <h2>Interior <span style="color:#b99474;">Packages</span></h2>
+        <p>Choose the perfect package for your budget. Contact us for exact quotation.</p>
       </div>
 
       <div class="pricing fade-up">
+
+        <!-- BASIC -->
         <div class="plan">
+          <div class="plan-icon-wrap"><i class="fa-solid fa-couch"></i></div>
           <h3>Basic Package</h3>
-          <p>Affordable Interiors for budget homes.</p>
-          <div class="price">₹ 1.5L+ <span>(Approx)</span></div>
+          <div class="plan-divider"></div>
+          <p>Affordable interiors for budget homes.</p>
+          <div class="price">₹ 1.5L+ <span>( Approx )</span></div>
           <ul>
-            <li>✔ Simple Wardrobe</li>
-            <li>✔ Basic Kitchen Setup</li>
-            <li>✔ Basic False Ceiling</li>
-            <li>✔ Painting Works</li>
+            <li>Simple Wardrobe</li>
+            <li>Basic Kitchen Setup</li>
+            <li>Basic False Ceiling</li>
+            <li>Painting Works</li>
           </ul>
-          <a href="#contact">Get Quote</a>
+          <a href="#contact">GET QUOTE &nbsp;→</a>
         </div>
 
+        <!-- PREMIUM (FEATURED) -->
         <div class="plan featured">
-          <div class="tag">Most Popular</div>
+          <div class="tag">MOST<br>POPULAR</div>
+          <div class="plan-icon-wrap"><i class="fa-solid fa-star"></i></div>
           <h3>Premium Package</h3>
-          <p>Modern Interiors with premium finishing.</p>
-          <div class="price">₹ 3L+ <span>(Approx)</span></div>
+          <div class="plan-divider"></div>
+          <p>Modern interiors with premium finishing.</p>
+          <div class="price">₹ 3L+ <span>( Approx )</span></div>
           <ul>
-            <li>✔ Modular Kitchen</li>
-            <li>✔ Premium Wardrobe</li>
-            <li>✔ Designer TV Unit</li>
-            <li>✔ False Ceiling + Lights</li>
-            <li>✔ Full Painting</li>
+            <li>Modular Kitchen</li>
+            <li>Premium Wardrobe</li>
+            <li>Designer TV Unit</li>
+            <li>False Ceiling + Lights</li>
+            <li>Full Painting</li>
           </ul>
-          <a href="#contact" class="btn-gold">Book Consultation</a>
+          <a href="#contact">BOOK CONSULTATION &nbsp;→</a>
         </div>
 
+        <!-- LUXURY -->
         <div class="plan">
+          <div class="plan-icon-wrap"><i class="fa-solid fa-crown"></i></div>
           <h3>Luxury Package</h3>
-          <p>High-end Interiors for premium homes.</p>
-          <div class="price">₹ 6L+ <span>(Approx)</span></div>
+          <div class="plan-divider"></div>
+          <p>High-end interiors for premium homes.</p>
+          <div class="price">₹ 6L+ <span>( Approx )</span></div>
           <ul>
-            <li>✔ Complete Home Interiors</li>
-            <li>✔ Luxury Modular Kitchen</li>
-            <li>✔ Custom Furniture</li>
-            <li>✔ Premium Ceiling Design</li>
-            <li>✔ Designer Lighting</li>
+            <li>Complete Home Interiors</li>
+            <li>Luxury Modular Kitchen</li>
+            <li>Custom Furniture</li>
+            <li>Premium Ceiling Design</li>
+            <li>Designer Lighting</li>
           </ul>
-          <a href="#contact">Get Luxury Quote</a>
+          <a href="#contact">GET LUXURY QUOTE &nbsp;→</a>
         </div>
+
       </div>
+
+      <!-- TRUST BAR -->
+      <div class="pricing-trust-bar">
+        <div class="ptb-item"><i class="fa-solid fa-shield-halved"></i><span>100% Quality<br>Assurance</span></div>
+        <div class="ptb-item"><i class="fa-solid fa-pen-ruler"></i><span>Customized Designs<br>for Your Space</span></div>
+        <div class="ptb-item"><i class="fa-solid fa-users"></i><span>Expert Team of<br>Professionals</span></div>
+        <div class="ptb-item"><i class="fa-solid fa-truck-fast"></i><span>On-time Delivery<br>Guaranteed</span></div>
+      </div>
+
     </div>
   </section>
 
   <!-- REVIEWS -->
-  <section id="reviews" style="background:#f8fafc;">
+  <section id="reviews">
     <div class="container">
       <div class="sec-head">
-        <h2>Customer Reviews</h2>
+        <h2>Customer <span style="color:#b99474;">Reviews</span></h2>
         <p>Our clients trust DGLV Interior for quality and finishing.</p>
       </div>
 
       <div class="test-grid fade-up">
+
         <div class="test">
+          <div class="test-quote-wrap">
+            <div class="test-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          </div>
           <div class="stars">★★★★★</div>
           <p>Excellent modular kitchen work. Very clean finishing and on-time delivery. Highly recommended.</p>
-          <h4>- Customer Naveen</h4>
+          <div class="test-reviewer">
+            <div class="test-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="test-reviewer-info">
+              <h4>Customer Naveen</h4>
+              <span>Hyderabad</span>
+            </div>
+          </div>
         </div>
 
-        <div class="test">
+        <div class="test featured-review">
+          <div class="test-quote-wrap">
+            <div class="test-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          </div>
           <div class="stars">★★★★★</div>
           <p>Wardrobe and TV unit work is super. Quality materials used and good support.</p>
-          <h4>- Customer Sai Krishna</h4>
+          <div class="test-reviewer">
+            <div class="test-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="test-reviewer-info">
+              <h4>Customer Sai Krishna</h4>
+              <span>Hyderabad</span>
+            </div>
+          </div>
         </div>
 
         <div class="test">
+          <div class="test-quote-wrap">
+            <div class="test-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          </div>
           <div class="stars">★★★★★</div>
           <p>False ceiling design is beautiful. Lighting setup is very professional. Great work!</p>
-          <h4>- Customer Sathyanarayana</h4>
+          <div class="test-reviewer">
+            <div class="test-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="test-reviewer-info">
+              <h4>Customer Sathyanarayana</h4>
+              <span>Hyderabad</span>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -2274,44 +2799,119 @@ html {
   <section id="contact">
     <div class="container">
       <div class="sec-head">
-        <h2 style="color:white;">Contact DGLV Interior</h2>
-        <p style="color:rgba(255,255,255,0.75);">
-          Book your free design consultation today. We will call you back quickly.
-        </p>
+        <div class="contact-sublabel">DESIGNING SPACES. DEFINING LIFESTYLES.</div>
+        <h2>Contact <span>DGLV</span> Interior</h2>
+        <p>Book your free design consultation today. We will call you back quickly.</p>
       </div>
-<div class="contact-wrap">
 
-  <!-- LEFT SIDE (INFO CARD) -->
-  <div class="contact-card">
+      <div class="contact-wrap">
 
-    <h3>DGLV Interior</h3>
-    <p>Premium home Interior solutions in BHEL & Hyderabad.</p>
+        <!-- LEFT SIDE (INFO CARD) -->
+        <div class="contact-card">
 
-    <div class="info"><b>📍 Location:</b> BHEL, Hyderabad</div>
-    <div class="info"><b>📞 Phone:</b> 9666141369</div>
-    <div class="info"><b>📧 Email:</b> info@dglvinterior.com</div>
-    <div class="info"><b>⏰ Working Hours:</b> Mon - Sun (9AM - 9PM)</div>
+          <div class="contact-card-logo">
+            <div class="contact-card-logo-icon"><i class="fa-solid fa-house"></i></div>
+            <div class="contact-card-logo-text">
+              <h3>DGLV Interior</h3>
+              <p>Premium interior solutions in HBL & Hyderabad.</p>
+            </div>
+          </div>
 
-  </div>
+          <div class="info">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="info-text-label">Location</div>
+              <div class="info-text-val">HBL, Hyderabad</div>
+            </div>
+          </div>
 
-  <!-- RIGHT SIDE (MAP + SOCIAL) -->
-  <div class="contact-right">
+          <div class="info">
+            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="info-text-label">Phone</div>
+              <div class="info-text-val">9966143669</div>
+            </div>
+          </div>
 
-    <h3 class="map-heading">Reach Us – Your Design Destination</h3>
+          <div class="info">
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <div class="info-text-label">Email</div>
+              <div class="info-text-val">info@dglvinterior.com</div>
+            </div>
+          </div>
 
-    <iframe 
-      src="https://www.google.com/maps?q=DGLV%20Interior%20BHEL%20Hyderabad&output=embed"
-		loading="lazy">
-    </iframe>
+          <div class="info">
+            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <div class="info-text-label">Working Hours</div>
+              <div class="info-text-val">Mon - Sun (9AM - 9PM)</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE (MAP + SOCIAL) -->
+        <div class="contact-right">
+
+          <div class="contact-right-header">
+            <div class="map-heading">
+              <div class="map-heading-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+              Reach Us – Your Design Destination
+            </div>
+            <a href="https://maps.google.com/?q=DGLV+Interior+BHEL+Hyderabad" target="_blank" class="get-directions-btn">
+              <i class="fa-solid fa-location-arrow"></i> Get Directions
+            </a>
+          </div>
+
+          <iframe
+            src="https://www.google.com/maps?q=DGLV%20Interior%20BHEL%20Hyderabad&output=embed"
+            loading="lazy">
+          </iframe>
 
           <div class="social-links">
-            <a href="https://www.facebook.com/share/17tZ4QPw8g/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/dglv.interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/Dglv_interior" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <div class="social-item">
+              <a href="https://www.facebook.com/share/17tZ4QPw8g/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <span>Facebook</span>
+            </div>
+            <div class="social-item">
+              <a href="https://www.instagram.com/dglv.interior?utm_source=qr&igsh=MW5iamJpY29pazh4cw==" target="_blank"><i class="fab fa-instagram"></i></a>
+              <span>Instagram</span>
+            </div>
+            <div class="social-item">
+              <a href="https://x.com/Dglv_interior" target="_blank"><i class="fab fa-x-twitter"></i></a>
+              <span>X (Twitter)</span>
+            </div>
+            <div class="social-item">
+              <a href="https://youtube.com/@dglvinterior-p7s9x?si=u_TjGvdPU_LEhCs-" target="_blank"><i class="fab fa-youtube"></i></a>
+              <span>YouTube</span>
+            </div>
+            <div class="social-item">
+              <a href="https://www.linkedin.com/in/dglv-interior-b3b103381" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <span>LinkedIn</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FOOTER STRIP -->
+      <div class="contact-footer-strip">
+        <div class="cfs-logo">
+          <div class="cfs-logo-icon"><i class="fa-solid fa-house"></i></div>
+          <div class="cfs-logo-text">
+            <h4>DGLV Interior</h4>
+            <p>Designing Spaces, Defining Lifestyles.</p>
           </div>
         </div>
+        <div class="cfs-items">
+          <div class="cfs-item"><i class="fa-solid fa-shield-halved"></i> Premium Quality Assured</div>
+          <div class="cfs-item"><i class="fa-solid fa-pen-ruler"></i> Bespoke Designs Just For You</div>
+          <div class="cfs-item"><i class="fa-solid fa-user-tie"></i> Personalized Service Every Step</div>
+        </div>
+        <div class="cfs-copy">© 2024 DGLV Interior<br>All Rights Reserved</div>
+      </div>
+
     </div>
   </section>
 
