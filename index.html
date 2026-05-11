@@ -532,11 +532,12 @@ onload="this.onload=null;this.rel='stylesheet'">
 /* SERVICES */
 
 
-.grid{
+
+#services .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(6, 1fr); /* 🔥 FIXED 6 COLUMNS */
+  gap: 25px;
   justify-items: center;
-  gap: 20px;
 }
 .service{
   border: none;
@@ -560,6 +561,10 @@ onload="this.onload=null;this.rel='stylesheet'">
 .service:hover{
   transform: translateY(-5px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+#moreServices{
+  display: contents; /* 🔥 layout same untadi */
 }
 
 .icon{
@@ -2494,8 +2499,8 @@ window.addEventListener("load", () => {
   const more = document.getElementById("moreServices");
 
   btn.addEventListener("click", function () {
-    if (more.style.display === "none") {
-      more.style.display = "contents";
+    if (more.style.display === "none" || more.style.display === "") {
+      more.style.display = "block";
       btn.innerText = "View Less";
     } else {
       more.style.display = "none";
