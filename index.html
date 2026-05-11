@@ -2490,14 +2490,16 @@ window.addEventListener("load", () => {
 }
 </script>
 
-<!-- JS -->
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+
   const btn = document.getElementById("viewMoreBtn");
   const items = document.querySelectorAll(".more-service");
 
   let open = false;
 
-  btn.onclick = () => {
+  btn.addEventListener("click", function () {
+
     open = !open;
 
     items.forEach(el => {
@@ -2505,7 +2507,10 @@ window.addEventListener("load", () => {
     });
 
     btn.innerText = open ? "View Less" : "View More Services";
-  };
+
+  });
+
+});
 </script>
 
 </script>
