@@ -45,7 +45,7 @@ body{
   height:55px;
 }
 
-/* BUTTON COMMON STYLE */
+/* COMMON BUTTON */
 .header-btn,
 .cat-btn,
 .back-btn{
@@ -81,7 +81,6 @@ body{
   margin-bottom:25px;
 }
 
-/* CATEGORY BUTTON */
 .cat-btn{
   padding:10px 18px;
   border-radius:999px;
@@ -96,13 +95,6 @@ body{
   margin-right:6px;
 }
 
-/* ACTIVE */
-.cat-btn.active{
-  background:var(--navy);
-  color:#fff;
-}
-
-/* HOVER EFFECT */
 .cat-btn:hover{
   background:var(--gold);
   border-color:var(--gold);
@@ -116,6 +108,7 @@ body{
   box-shadow:0 15px 60px rgba(0,0,0,0.2);
 }
 
+/* 🔥 FIXED IMAGE ZOOM ISSUE */
 .slider-track{
   display:flex;
   transition:.5s;
@@ -123,6 +116,10 @@ body{
 
 .slide{
   min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#000; /* side fill */
 }
 
 .slide img{
@@ -130,7 +127,7 @@ body{
   height:65vh;
   min-height:420px;
   max-height:700px;
-  object-fit:cover;
+  object-fit:contain; /* 🔥 MAIN FIX */
 }
 
 /* ARROWS */
@@ -145,7 +142,6 @@ body{
   color:#fff;
   border:none;
   cursor:pointer;
-  transition:.3s;
 }
 
 .nav-arrow:hover{
@@ -178,7 +174,7 @@ body{
   background:var(--navy);
 }
 
-/* BACK BUTTON */
+/* BACK */
 .back-row{
   text-align:center;
   margin:30px 0;
