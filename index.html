@@ -60,6 +60,8 @@ onload="this.onload=null;this.rel='stylesheet'">
   grid-template-columns: repeat(6, 140px);
   justify-content: center;
   gap: 25px;
+  overflow: visible;
+  padding-bottom: 50px;
 }
 
 
@@ -76,8 +78,9 @@ onload="this.onload=null;this.rel='stylesheet'">
       --muted:#64748b;
       --light:#f8fafc;
 
-      --brand:#0E3A43;
-      --brand2:#0E3A43;
+      --brand:#082e3b;
+      --brand2:#082e3b;
+      --gold:#b99474;
 
       --shadow: 0 18px 60px rgba(0,0,0,0.35);
       --shadow2: 0 10px 25px rgba(0,0,0,0.08);
@@ -295,8 +298,6 @@ onload="this.onload=null;this.rel='stylesheet'">
       background-repeat:no-repeat;
       padding:60px 0;
     }
-	
-
 
 	.hero-inner{
 		width:100%;
@@ -487,7 +488,6 @@ onload="this.onload=null;this.rel='stylesheet'">
   box-shadow: none;          /* 🔥 remove shadow */
 }
 
-
 /* Tablet */
 @media(max-width: 900px){
   .trust-card{
@@ -511,10 +511,6 @@ onload="this.onload=null;this.rel='stylesheet'">
 
   transition: all 0.3s ease;
   cursor: pointer;
-}
-
-	  section {
-  background: #ffffff !important;
 }
 
 /* HOVER (pressed effect) */
@@ -556,11 +552,11 @@ onload="this.onload=null;this.rel='stylesheet'">
 .service{
   border: none;
   border-radius: 18px;
-  padding: 12px;              /* 👈 tagginchu */
+  padding: 12px;
   text-align: center;
 
-  width: 140px;               /* 👈 IMPORTANT (size control) */
-  height: 140px;              /* 👈 IMPORTANT */
+  width: 140px;
+  height: 130px;
 
   display: flex;
   flex-direction: column;
@@ -568,6 +564,7 @@ onload="this.onload=null;this.rel='stylesheet'">
   align-items: center;
 
   gap: 6px;
+  overflow: visible;
 
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
@@ -1441,7 +1438,7 @@ html {
 
 /* SECTION BG */
 #services {
-  background: #ffffff;
+  background: #eae6df;
   padding: 60px 20px;
 }
 
@@ -1452,29 +1449,29 @@ html {
 }
 
 /* ICON BOX (🔥 MAIN DESIGN) */
-
-
 #services .icon {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin: auto;
   border-radius: 20px;
-  background: #ffffff;
+  background: #eae6df;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  /* 🔥 SOFT 3D EFFECT */
   box-shadow:
     6px 6px 12px rgba(0,0,0,0.08),
     -6px -6px 12px rgba(255,255,255,0.9);
+
+  transition: 0.3s;
 }
 
-
+/* ICON IMAGE */
 #services .icon img {
-  width: 65px;
-  height: 65px;
-}
+  width: 42px;
+  height: 42px;
 
   /* 🔥 GOLD COLOR (#b99474 look) */
   filter: brightness(0) saturate(100%) 
@@ -1498,12 +1495,6 @@ html {
 .service-item img {
   width: 60px;
   margin-bottom: 10px;
-}
-
-#services,
-.trust-premium {
-  position: relative;
-  z-index: 2;
 }
 
 .service-item p {
@@ -1599,149 +1590,176 @@ html {
 }
 
 
+/* ===========================
+   WHY CHOOSE - NEW DESIGN
+=========================== */
 .trust-premium{
-  background: #ffffff; 
-  padding: 80px 20px;
+  background: #f4efe9;
+  padding: 70px 20px 80px;
   text-align: center;
 }
 
-/* HEADING */
 .trust-premium h2{
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 900;
-  color: #2b2b2b;
+  color: #082e3b;
+  margin-bottom: 0;
 }
 
 .trust-premium h2 span{
   color: #b99474;
 }
 
-/* LINE */
-.trust-line{
-  width: 200px;
-  height: 2px;
-  background: #b99474;
-  margin: 20px auto 50px;
-  position: relative;
+/* ORNAMENT DIVIDER */
+.wc-ornament{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px auto 0;
 }
 
-.trust-line::before,
-.trust-line::after{
-  content: "";
-  width: 8px;
-  height: 8px;
+.wc-line{
+  display: block;
+  width: 80px;
+  height: 1.5px;
   background: #b99474;
-  border-radius: 50%;
-  position: absolute;
-  top: -3px;
 }
 
-.trust-line::before{ left: 0; }
-.trust-line::after{ right: 0; }
+.wc-diamond{
+  color: #b99474;
+  font-size: 22px;
+  line-height: 1;
+}
 
-/* GRID */
-.trust-grid{
+/* CONNECTOR SVG */
+.wc-connector{
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 90px;
+}
+
+.wc-connector svg{
+  width: 100%;
+  height: 100%;
+}
+
+/* 4-CARD GRID */
+.wc-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 24px;
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-/* BOX */
-.trust-box{
+/* EACH CARD */
+.wc-card{
   background: #ffffff;
   border-radius: 20px;
-  padding: 30px 20px;
-
+  padding: 36px 22px 30px;
   box-shadow:
-    8px 8px 18px #d1c7bb,
-    -8px -8px 18px #ffffff;
+    6px 6px 16px rgba(185,148,116,0.15),
+    -6px -6px 16px #ffffff;
+  transition: 0.3s;
+  text-align: center;
+}
 
+.wc-card:hover{
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 40px rgba(8,46,59,0.12);
+}
+
+/* ICON CIRCLE */
+.wc-icon{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid #b99474;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  background: #fdf9f5;
   transition: 0.3s;
 }
 
-/* ICON */
-.trust-box img{
-  width: 70px;
-  margin-bottom: 15px;
-
-  filter: none !important;
-  box-shadow: none !important;
+.wc-card:hover .wc-icon{
+  background: #b99474;
 }
 
-/* TEXT */
-.trust-box p{
-  font-weight: 800;
-  color: #333;
+.wc-card:hover .wc-icon img{
+  filter: brightness(0) invert(1);
 }
 
-/* HOVER */
-.trust-box:hover{
-  transform: translateY(-6px);
-
-  box-shadow:
-    inset 6px 6px 12px #d1c7bb,
-    inset -6px -6px 12px #ffffff;
+.wc-icon img{
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: 0.3s;
 }
 
-/* MOBILE */
-@media(max-width: 768px){
-  .trust-grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* TITLE */
+.wc-card h3{
+  font-size: 13px;
+  font-weight: 900;
+  color: #082e3b;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
-@media(max-width: 480px){
-  .trust-grid{
-    grid-template-columns: 1fr;
-  }
+/* DESC */
+.wc-card p{
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+  font-weight: 700;
 }
 
-.trust-lines{
-  width:100%;
-  height:120px;
-  position:relative;
-  margin-top:20px;
+/* RESPONSIVE */
+@media(max-width: 900px){
+  .wc-grid{ grid-template-columns: repeat(2,1fr); }
+  .wc-connector{ display:none; }
+}
+@media(max-width: 520px){
+  .wc-grid{ grid-template-columns: 1fr; }
 }
 
-.trust-lines svg{
-  width:100%;
-  height:100%;
-}
-
-.trust-lines path{
-  fill:none;
-  stroke:#b99474;   /* GOLD COLOR */
-  stroke-width:2;
-}
-
-.trust-lines {
-  height: 140px;
-  margin-bottom: -60px; /* 🔥 very important */
-}
-
-.trust-cards {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-}
-
-.trust-card {
+/* ===========================
+   SERVICE ICON — NAME ON HOVER TOOLTIP
+=========================== */
+.service{
   position: relative;
 }
 
-.trust-card::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: #b99474;
-  border-radius: 50%;
+/* HIDE the h3 below icon by default */
+.service h3{
   position: absolute;
-  top: -25px;
+  bottom: -38px;
   left: 50%;
   transform: translateX(-50%);
+  white-space: nowrap;
+  background: #082e3b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 5px 12px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, bottom 0.25s ease;
+  z-index: 10;
 }
+
+/* SHOW on hover */
+.service:hover h3{
+  opacity: 1;
+  bottom: -34px;
+}
+
+
 
 
 /* 🔥 HIDE EXTRA SERVICES FIRST */
@@ -1752,10 +1770,20 @@ html {
 #viewMoreBtn {
   background: #082e3b;
   color: white;
-  padding: 10px 20px;
-  border: none;
+  padding: 12px 32px;
+  border: 2px solid #082e3b;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+#viewMoreBtn:hover {
+  background: #ffffff;
+  color: #082e3b;
+  border: 2px solid #082e3b;
+  transform: scale(1.05);
 }
 /* hide only extra */
 .more-service {
@@ -1849,40 +1877,62 @@ html {
     </div>
   </div>
 
-  <!-- TRUST -->
-  
-  
-	<div class="trust-premium">
+  <!-- TRUST / WHY CHOOSE -->
+  <div class="trust-premium">
 
-  <h2>Why Choose <span>DGLV Interior</span></h2>
-  
+    <h2>Why Choose <span>DGLV Interior</span></h2>
 
-  <div class="trust-line"></div>
-
-  <div class="trust-grid">
-
-    <div class="trust-box">
-      <img src="images/premium.png">
-      <p>Premium Quality</p>
+    <!-- ORNAMENT DIVIDER -->
+    <div class="wc-ornament">
+      <span class="wc-line"></span>
+      <span class="wc-diamond">&#10022;</span>
+      <span class="wc-line"></span>
     </div>
 
-    <div class="trust-box">
-      <img src="images/custom.png">
-      <p>Custom Designs</p>
+    <!-- CONNECTOR SVG -->
+    <div class="wc-connector">
+      <svg viewBox="0 0 900 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- vertical drop from center -->
+        <line x1="450" y1="0" x2="450" y2="40" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <!-- horizontal bar -->
+        <line x1="112" y1="40" x2="788" y2="40" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <!-- drops to each card -->
+        <line x1="112" y1="40" x2="112" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="337" y1="40" x2="337" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="563" y1="40" x2="563" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="788" y1="40" x2="788" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
+      </svg>
     </div>
 
-    <div class="trust-box">
-      <img src="images/skilled.png">
-      <p>Skilled Team</p>
-    </div>
+    <!-- 4 CARDS -->
+    <div class="wc-grid">
 
-    <div class="trust-box">
-      <img src="images/affordable.png">
-      <p>Affordable Price</p>
-    </div>
+      <div class="wc-card">
+        <div class="wc-icon"><img src="images/premium.png" alt="High Quality Materials"></div>
+        <h3>HIGH QUALITY MATERIALS</h3>
+        <p>We use premium quality materials that ensure durability, elegance and a perfect finish.</p>
+      </div>
 
+      <div class="wc-card">
+        <div class="wc-icon"><img src="images/custom.png" alt="Smart Designs"></div>
+        <h3>SMART DESIGNS</h3>
+        <p>Our designs are space-efficient, functional and tailored to match your style and needs.</p>
+      </div>
+
+      <div class="wc-card">
+        <div class="wc-icon"><img src="images/skilled.png" alt="On-Time Delivery"></div>
+        <h3>ON-TIME DELIVERY</h3>
+        <p>We value your time and ensure timely delivery with seamless execution.</p>
+      </div>
+
+      <div class="wc-card">
+        <div class="wc-icon"><img src="images/affordable.png" alt="After Sales Service"></div>
+        <h3>AFTER SALES SERVICE</h3>
+        <p>Our dedicated support team is always ready to assist you even after project completion.</p>
+      </div>
+
+    </div>
   </div>
-</div>
 
 
 <section id="services">
@@ -1895,30 +1945,33 @@ html {
   <div class="grid">
 
     <!-- FIRST 12 -->
-
-
-    <div class="service"><div class="icon"><img src="images/icon-h.png"></div><h3>Home Interior</h3></div>
-	<div class="service"><div class="icon"><img src="images/icon-L.png"></div><h3>Living</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-p.png"></div><h3>Partitions</h3></div>	
-	<div class="service"><div class="icon"><img src="images/icon-po.png"></div><h3>Pooja</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-c.png"></div><h3>Crockery</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-k.png"></div><h3>Modular Kitchen</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-w.png"></div><h3>Wardrobe</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-d.png"></div><h3>Dressing</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-s.png"></div><h3>Study Tables</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-b.png"></div><h3>Kids Beds</h3></div>	
-    <div class="service"><div class="icon"><img src="images/icon-v.png"></div><h3>Vanity</h3></div>
-    <div class="service"><div class="icon"><img src="images/icon-sh.png"></div><h3>Shoe Rack</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-home.png"></div><h3>Home Interior</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-kitchen.png"></div><h3>Modular Kitchen</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-wardrobe.png"></div><h3>Wardrobe</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-bed.png"></div><h3>Beds</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-bunkbed.png"></div><h3>Kids Bunk Beds</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-study.png"></div><h3>Study Tables</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-dressing.png"></div><h3>Dressing Unit</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-crockery.png"></div><h3>Crockery Unit</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-vanity.png"></div><h3>Vanity</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-pooja.png"></div><h3>Pooja Unit</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-partion.png"></div><h3>Partitions</h3></div>
+    <div class="service"><div class="icon"><img src="images/icon-shoerack.png"></div><h3>Shoe Rack</h3></div>
 
     <!-- MORE SERVICES -->
-    <div class="service more-service"><div class="icon"><img src="images/icon-ceiling.png"></div><h3>False Ceiling</h3></div>	
-    <div class="service more-service"><div class="icon"><img src="images/icon-ele.png"></div><h3>Eletrical</h3></div>	
-    <div class="service more-service"><div class="icon"><img src="images/icon-paint.png"></div><h3>Painting</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-barunit.png"></div><h3>Bar Unit</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-stair.png"></div><h3>Wooden Staircase Design</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-office.png"></div><h3>Office Interior</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-custom.png"></div><h3>Custom Furniture</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-sliding.png"></div><h3>PVC Sliding Doors</h3></div>
     <div class="service more-service"><div class="icon"><img src="images/icon-curtains.png"></div><h3>Curtains</h3></div>
     <div class="service more-service"><div class="icon"><img src="images/icon-wallpaper.png"></div><h3>Wallpapers</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-ceiling.png"></div><h3>False Ceiling</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-smart.png"></div><h3>Smart Home</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-lights.png"></div><h3>Lighting</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-paint.png"></div><h3>Painting Works</h3></div>
     <div class="service more-service"><div class="icon"><img src="images/icon-cladding.png"></div><h3>Wall Cladding</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-ti.png"></div><h3>Tiles & Granite</h3></div>
-    <div class="service more-service"><div class="icon"><img src="images/icon-sliding.png"></div><h3>WPVC Sliding</h3></div>
+    <div class="service more-service"><div class="icon"><img src="images/icon-tiles-grainte.png"></div><h3>Tiles & Granite</h3></div>
     <div class="service more-service"><div class="icon"><img src="images/icon-plumb.png"></div><h3>Plumbing</h3></div>
 
   </div>
@@ -1927,8 +1980,6 @@ html {
   <div style="text-align:center; margin-top:25px;">
     <button id="viewMoreBtn">View More Services</button>
   </div>
-  
-
 
 </section>
 
