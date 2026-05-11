@@ -1733,7 +1733,7 @@ html {
 
 /* 🔥 HIDE EXTRA SERVICES FIRST */
 .more-service {
-  display: none !important;
+  display: none;
 }
 
 #viewMoreBtn {
@@ -2292,21 +2292,6 @@ html {
   
 <script>
 
-
-const viewMoreBtn = document.getElementById("viewMoreBtn");
-
-if(viewMoreBtn){
-  viewMoreBtn.addEventListener("click", () => {
-    const hiddenServices = document.querySelectorAll(".more-service");
-
-    hiddenServices.forEach(el => {
-      el.style.display = "block";
-    });
-
-    viewMoreBtn.style.display = "none";
-  });
-}
-
   // FAQ Toggle
   const faqItems = document.querySelectorAll(".faq-item");
   faqItems.forEach(item => {
@@ -2511,8 +2496,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
-</script>
-
 </script>
 
 </body>
