@@ -1395,10 +1395,6 @@ html {
   .trust-card{grid-template-columns:1fr;}
 }
 
-/* DESKTOP lo anni visible */
-.more-service{
-  display:block;
-}
 
 /* MOBILE lo matrame hide */
 @media(max-width:560px){
@@ -1747,6 +1743,11 @@ html {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+
+/* 🔥 FORCE HIDE AFTER 12 */
+#services .grid .service:nth-child(n+13) {
+  display: none !important;
 }
 
 
