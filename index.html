@@ -306,23 +306,33 @@ onload="this.onload=null;this.rel='stylesheet'">
     ============================ */
 .hero{
   width:100%;
-  min-height:92vh;
+  height:100vh; /* 🔥 full screen height */
   display:flex;
   align-items:flex-end;
   position:relative;
 
-  background: url("images/hero-bg.png") center/cover no-repeat;
+  background: url("images/hero-bg.png") no-repeat center top;
+  background-size: cover;
+
   padding:60px 0;
 
   filter: brightness(1.05) contrast(1.05);
 }
 
+/* LIGHT OVERLAY */
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
   background: rgba(0,0,0,0.15);
   z-index:0;
+}
+
+/* TEXT FRONT KI VACHETTUGA */
+.hero-inner,
+.hero-left{
+  position:relative;
+  z-index:2;
 }
 
 .hero-inner,
