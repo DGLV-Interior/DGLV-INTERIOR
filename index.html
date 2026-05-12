@@ -2500,21 +2500,77 @@ html {
   gap: 22px;
 }
 
-/* EACH CARD */
+/* EACH CARD WRAPPER — holds the glowing border + sparkles */
+.rp-card-wrap {
+  position: relative;
+  border-radius: 20px;
+  padding: 2.5px;                       /* space for the gold border */
+  background: linear-gradient(135deg,
+    #b99474 0%, #f0d5a8 25%, #b99474 50%, #e8c07a 75%, #b99474 100%
+  );
+  background-size: 300% 300%;
+  animation: goldShimmer 3s ease infinite;
+  box-shadow:
+    0 0 10px rgba(185,148,116,0.55),
+    0 0 22px rgba(185,148,116,0.30),
+    0 0 45px rgba(185,148,116,0.15);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.rp-card-wrap:hover {
+  transform: translateY(-7px);
+  box-shadow:
+    0 0 16px rgba(185,148,116,0.85),
+    0 0 36px rgba(185,148,116,0.55),
+    0 0 70px rgba(185,148,116,0.30);
+}
+
+@keyframes goldShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* SPARKLE STARS at corners */
+.rp-card-wrap::before,
+.rp-card-wrap::after {
+  content: "✦";
+  position: absolute;
+  font-size: 14px;
+  color: #f0d5a8;
+  text-shadow: 0 0 8px #b99474, 0 0 18px #e8c07a;
+  z-index: 10;
+  animation: sparklePulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+.rp-card-wrap::before { top: -8px;  left: -8px; }
+.rp-card-wrap::after  { bottom: -8px; right: -8px; animation-delay: 1s; }
+
+/* Extra sparkles via span injected by JS */
+.rp-sparkle {
+  position: absolute;
+  font-size: 11px;
+  color: #f0d5a8;
+  text-shadow: 0 0 6px #b99474, 0 0 14px #e8c07a;
+  z-index: 10;
+  pointer-events: none;
+  animation: sparklePulse 2.2s ease-in-out infinite;
+}
+.rp-sparkle.tr { top: -8px;  right: -8px; animation-delay: 0.5s; }
+.rp-sparkle.bl { bottom: -8px; left: -8px; animation-delay: 1.5s; }
+
+@keyframes sparklePulse {
+  0%, 100% { opacity: 1;  transform: scale(1)    rotate(0deg); }
+  50%       { opacity: 0.4; transform: scale(1.4) rotate(20deg); }
+}
+
+/* ACTUAL CARD inside the wrapper */
 .rp-card {
   display: block;
   text-decoration: none;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
   background: #fff;
-  transition: 0.3s ease;
   position: relative;
-}
-.rp-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 44px rgba(8,46,59,0.16);
 }
 .rp-card img {
   width: 100%;
@@ -2523,7 +2579,7 @@ html {
   display: block;
   transition: transform 0.4s ease;
 }
-.rp-card:hover img {
+.rp-card-wrap:hover .rp-card img {
   transform: scale(1.05);
 }
 
@@ -2577,7 +2633,7 @@ html {
   flex-shrink: 0;
   transition: 0.2s;
 }
-.rp-card:hover .rp-bar-arrow {
+.rp-card-wrap:hover .rp-bar-arrow {
   background: #b99474;
   border-color: #b99474;
 }
@@ -2849,77 +2905,101 @@ html {
         <!-- 2x3 GRID -->
         <div class="rp-grid fade-up">
 
-          <a href="/gallery.html" class="rp-card">
-            <img src="images/living1.jpg" alt="Living Room Interior Design Hyderabad">
-            <div class="rp-bar">
-              <div class="rp-bar-icon"><i class="fa-solid fa-couch"></i></div>
-              <div class="rp-bar-text">
-                <span class="rp-bar-title">Living Room</span>
-                <span class="rp-bar-sub">Elegant &amp; Modern</span>
+          <div class="rp-card-wrap">
+            <span class="rp-sparkle tr">✦</span>
+            <span class="rp-sparkle bl">✦</span>
+            <a href="/gallery.html" class="rp-card">
+              <img src="images/living1.jpg" alt="Living Room Interior Design Hyderabad">
+              <div class="rp-bar">
+                <div class="rp-bar-icon"><i class="fa-solid fa-couch"></i></div>
+                <div class="rp-bar-text">
+                  <span class="rp-bar-title">Living Room</span>
+                  <span class="rp-bar-sub">Elegant &amp; Modern</span>
+                </div>
+                <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
               </div>
-              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-          </a>
+            </a>
+          </div>
 
-          <a href="/gallery.html" class="rp-card">
-            <img src="images/kitchen1.jpg" alt="Modular Kitchen Design Hyderabad">
-            <div class="rp-bar">
-              <div class="rp-bar-icon"><i class="fa-solid fa-kitchen-set"></i></div>
-              <div class="rp-bar-text">
-                <span class="rp-bar-title">Modular Kitchen</span>
-                <span class="rp-bar-sub">Stylish &amp; Functional</span>
+          <div class="rp-card-wrap">
+            <span class="rp-sparkle tr">✦</span>
+            <span class="rp-sparkle bl">✦</span>
+            <a href="/gallery.html" class="rp-card">
+              <img src="images/kitchen1.jpg" alt="Modular Kitchen Design Hyderabad">
+              <div class="rp-bar">
+                <div class="rp-bar-icon"><i class="fa-solid fa-kitchen-set"></i></div>
+                <div class="rp-bar-text">
+                  <span class="rp-bar-title">Modular Kitchen</span>
+                  <span class="rp-bar-sub">Stylish &amp; Functional</span>
+                </div>
+                <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
               </div>
-              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-          </a>
+            </a>
+          </div>
 
-          <a href="/gallery.html" class="rp-card">
-            <img src="images/bedroom1.jpg" alt="Bedroom Interior Design Hyderabad">
-            <div class="rp-bar">
-              <div class="rp-bar-icon"><i class="fa-solid fa-bed"></i></div>
-              <div class="rp-bar-text">
-                <span class="rp-bar-title">Bedroom</span>
-                <span class="rp-bar-sub">Cozy &amp; Luxurious</span>
+          <div class="rp-card-wrap">
+            <span class="rp-sparkle tr">✦</span>
+            <span class="rp-sparkle bl">✦</span>
+            <a href="/gallery.html" class="rp-card">
+              <img src="images/bedroom1.jpg" alt="Bedroom Interior Design Hyderabad">
+              <div class="rp-bar">
+                <div class="rp-bar-icon"><i class="fa-solid fa-bed"></i></div>
+                <div class="rp-bar-text">
+                  <span class="rp-bar-title">Bedroom</span>
+                  <span class="rp-bar-sub">Cozy &amp; Luxurious</span>
+                </div>
+                <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
               </div>
-              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-          </a>
+            </a>
+          </div>
 
-          <a href="/gallery.html" class="rp-card">
-            <img src="images/wardrobe1.jpg" alt="Wardrobe Design Hyderabad">
-            <div class="rp-bar">
-              <div class="rp-bar-icon"><i class="fa-solid fa-door-closed"></i></div>
-              <div class="rp-bar-text">
-                <span class="rp-bar-title">Wardrobe</span>
-                <span class="rp-bar-sub">Organized &amp; Premium</span>
+          <div class="rp-card-wrap">
+            <span class="rp-sparkle tr">✦</span>
+            <span class="rp-sparkle bl">✦</span>
+            <a href="/gallery.html" class="rp-card">
+              <img src="images/wardrobe1.jpg" alt="Wardrobe Design Hyderabad">
+              <div class="rp-bar">
+                <div class="rp-bar-icon"><i class="fa-solid fa-door-closed"></i></div>
+                <div class="rp-bar-text">
+                  <span class="rp-bar-title">Wardrobe</span>
+                  <span class="rp-bar-sub">Organized &amp; Premium</span>
+                </div>
+                <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
               </div>
-              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-          </a>
+            </a>
+          </div>
 
-          <a href="/gallery.html" class="rp-card">
-            <img src="images/ceiling1.jpg" alt="False Ceiling Design Hyderabad">
-            <div class="rp-bar">
-              <div class="rp-bar-icon"><i class="fa-solid fa-layer-group"></i></div>
-              <div class="rp-bar-text">
-                <span class="rp-bar-title">False Ceiling</span>
-                <span class="rp-bar-sub">Modern &amp; Elegant</span>
+          <div class="rp-card-wrap">
+            <span class="rp-sparkle tr">✦</span>
+            <span class="rp-sparkle bl">✦</span>
+            <a href="/gallery.html" class="rp-card">
+              <img src="images/ceiling1.jpg" alt="False Ceiling Design Hyderabad">
+              <div class="rp-bar">
+                <div class="rp-bar-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="rp-bar-text">
+                  <span class="rp-bar-title">False Ceiling</span>
+                  <span class="rp-bar-sub">Modern &amp; Elegant</span>
+                </div>
+                <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
               </div>
-              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-          </a>
+            </a>
+          </div>
 
-          <a href="/gallery.html" class="rp-card">
-            <img src="images/office1.jpg" alt="Office Interior Design Hyderabad">
-            <div class="rp-bar">
-              <div class="rp-bar-icon"><i class="fa-solid fa-chair"></i></div>
-              <div class="rp-bar-text">
-                <span class="rp-bar-title">Office Interior</span>
-                <span class="rp-bar-sub">Productive &amp; Sophisticated</span>
+          <div class="rp-card-wrap">
+            <span class="rp-sparkle tr">✦</span>
+            <span class="rp-sparkle bl">✦</span>
+            <a href="/gallery.html" class="rp-card">
+              <img src="images/office1.jpg" alt="Office Interior Design Hyderabad">
+              <div class="rp-bar">
+                <div class="rp-bar-icon"><i class="fa-solid fa-chair"></i></div>
+                <div class="rp-bar-text">
+                  <span class="rp-bar-title">Office Interior</span>
+                  <span class="rp-bar-sub">Productive &amp; Sophisticated</span>
+                </div>
+                <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
               </div>
-              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-          </a>
+            </a>
+          </div>
 
         </div>
 
