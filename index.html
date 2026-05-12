@@ -2445,6 +2445,151 @@ html {
   display: none;
 }
 
+/* ===========================
+   RECENT PROJECTS — NEW DESIGN
+=========================== */
+#recent-projects-wrap {
+  background: #ffffff;
+  padding: 60px 20px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* SUBLABEL */
+.rp-sublabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #b99474;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.rp-sublabel::before,
+.rp-sublabel::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1.5px;
+  background: #b99474;
+}
+
+/* HEADING AREA */
+.rp-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.rp-title {
+  font-size: 46px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+.rp-white { color: #0f172a; }
+.rp-gold  { color: #b99474; }
+.rp-desc  { color: #555; font-size: 15px; font-weight: 700; }
+.rp-gold-text { color: #b99474; font-weight: 900; }
+
+/* 2x3 GRID */
+.rp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* EACH CARD */
+.rp-card {
+  display: block;
+  text-decoration: none;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+  background: #fff;
+  transition: 0.3s ease;
+  position: relative;
+}
+.rp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(8,46,59,0.16);
+}
+.rp-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.rp-card:hover img {
+  transform: scale(1.05);
+}
+
+/* BOTTOM BAR */
+.rp-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #082e3b;
+  padding: 14px 16px;
+}
+.rp-bar-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #b99474;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.rp-bar-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+}
+.rp-bar-title {
+  font-size: 15px;
+  font-weight: 900;
+  color: #ffffff;
+}
+.rp-bar-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 700;
+}
+.rp-bar-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: 0.2s;
+}
+.rp-card:hover .rp-bar-arrow {
+  background: #b99474;
+  border-color: #b99474;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .rp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width: 560px) {
+  .rp-grid { grid-template-columns: 1fr; }
+  .rp-title { font-size: 32px; }
+}
 
 </style>
 </head>
@@ -2691,45 +2836,97 @@ html {
         </div>
       </div>
 
-      <div class="sec-head" style="margin-top:50px;">
-        <h2>Our Recent <span style="color:#b99474;">Projects</span></h2>
-        <p>Some premium Interior designs and works completed by DGLV Interior.</p>
-      </div>
+      <!-- NEW PROJECTS SECTION -->
+      <div id="recent-projects-wrap">
 
-      <div class="gallery fade-up">
-        <div class="img-card">
-          <a href="/gallery.html"><img src="images/living1.jpg" alt="Living Room Interior Design Hyderabad"></a>
-          <div class="img-label">Living Room</div>
+        <!-- HEADING -->
+        <div class="rp-head">
+          <div class="rp-sublabel">OUR WORK</div>
+          <h2 class="rp-title"><span class="rp-white">Our Recent</span> <span class="rp-gold">Projects</span></h2>
+          <p class="rp-desc">Some premium interior designs and works completed by <span class="rp-gold-text">DGLV Interior</span>.</p>
         </div>
 
-        <div class="img-card">
-          <a href="/gallery.html"><img src="images/kitchen1.jpg" alt="Modular Kitchen Design Hyderabad"></a>
-          <div class="img-label">Modular Kitchen</div>
+        <!-- 2x3 GRID -->
+        <div class="rp-grid fade-up">
+
+          <a href="/gallery.html" class="rp-card">
+            <img src="images/living1.jpg" alt="Living Room Interior Design Hyderabad">
+            <div class="rp-bar">
+              <div class="rp-bar-icon"><i class="fa-solid fa-couch"></i></div>
+              <div class="rp-bar-text">
+                <span class="rp-bar-title">Living Room</span>
+                <span class="rp-bar-sub">Elegant &amp; Modern</span>
+              </div>
+              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </a>
+
+          <a href="/gallery.html" class="rp-card">
+            <img src="images/kitchen1.jpg" alt="Modular Kitchen Design Hyderabad">
+            <div class="rp-bar">
+              <div class="rp-bar-icon"><i class="fa-solid fa-kitchen-set"></i></div>
+              <div class="rp-bar-text">
+                <span class="rp-bar-title">Modular Kitchen</span>
+                <span class="rp-bar-sub">Stylish &amp; Functional</span>
+              </div>
+              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </a>
+
+          <a href="/gallery.html" class="rp-card">
+            <img src="images/bedroom1.jpg" alt="Bedroom Interior Design Hyderabad">
+            <div class="rp-bar">
+              <div class="rp-bar-icon"><i class="fa-solid fa-bed"></i></div>
+              <div class="rp-bar-text">
+                <span class="rp-bar-title">Bedroom</span>
+                <span class="rp-bar-sub">Cozy &amp; Luxurious</span>
+              </div>
+              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </a>
+
+          <a href="/gallery.html" class="rp-card">
+            <img src="images/wardrobe1.jpg" alt="Wardrobe Design Hyderabad">
+            <div class="rp-bar">
+              <div class="rp-bar-icon"><i class="fa-solid fa-door-closed"></i></div>
+              <div class="rp-bar-text">
+                <span class="rp-bar-title">Wardrobe</span>
+                <span class="rp-bar-sub">Organized &amp; Premium</span>
+              </div>
+              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </a>
+
+          <a href="/gallery.html" class="rp-card">
+            <img src="images/ceiling1.jpg" alt="False Ceiling Design Hyderabad">
+            <div class="rp-bar">
+              <div class="rp-bar-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <div class="rp-bar-text">
+                <span class="rp-bar-title">False Ceiling</span>
+                <span class="rp-bar-sub">Modern &amp; Elegant</span>
+              </div>
+              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </a>
+
+          <a href="/gallery.html" class="rp-card">
+            <img src="images/office1.jpg" alt="Office Interior Design Hyderabad">
+            <div class="rp-bar">
+              <div class="rp-bar-icon"><i class="fa-solid fa-chair"></i></div>
+              <div class="rp-bar-text">
+                <span class="rp-bar-title">Office Interior</span>
+                <span class="rp-bar-sub">Productive &amp; Sophisticated</span>
+              </div>
+              <div class="rp-bar-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+          </a>
+
         </div>
 
-        <div class="img-card">
-          <a href="/gallery.html"><img src="images/bedroom1.jpg" alt="Bedroom Interior Design Hyderabad"></a>
-          <div class="img-label">Bedroom</div>
+        <div class="gallery-view-all" style="margin-top:36px;">
+          <a href="/gallery.html">View All Projects &nbsp;→</a>
         </div>
 
-        <div class="img-card">
-          <a href="/gallery.html"><img src="images/wardrobe1.jpg" alt="Wardrobe Design Hyderabad"></a>
-          <div class="img-label">Wardrobe</div>
-        </div>
-
-        <div class="img-card">
-          <a href="/gallery.html"><img src="images/ceiling1.jpg" alt="False Ceiling Design Hyderabad"></a>
-          <div class="img-label">False Ceiling</div>
-        </div>
-
-        <div class="img-card">
-          <a href="/gallery.html"><img src="images/office1.jpg" alt="Office Interior Design Hyderabad"></a>
-          <div class="img-label">Office Interior</div>
-        </div>
-      </div>
-
-      <div class="gallery-view-all">
-        <a href="/gallery.html">View All Projects &nbsp;→</a>
       </div>
 
     </div>
