@@ -304,7 +304,7 @@ onload="this.onload=null;this.rel='stylesheet'">
     /* ===========================
        HERO SECTION
     ============================ */
-   .hero{
+.hero{
   width:100%;
   min-height:92vh;
   display:flex;
@@ -313,16 +313,22 @@ onload="this.onload=null;this.rel='stylesheet'">
 
   background: url("images/hero-bg.jpg") center/cover no-repeat;
   padding:60px 0;
+
+  filter: brightness(1.05) contrast(1.05);
 }
 
-/* LIGHT overlay */
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.15); /* 👈 adjust this */
-  filter: brightness(1.08) contrast(1.05);
-  
+  background: rgba(0,0,0,0.15);
+  z-index:0;
+}
+
+.hero-inner,
+.hero-left{
+  position:relative;
+  z-index:2;
 }
 
 	.hero-inner{
