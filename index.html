@@ -2311,6 +2311,7 @@ html {
 /* ===========================
    WHY CHOOSE — INFOGRAPHIC STYLE
 =========================== */
+/* ===== WHY CHOOSE — EXACT INFOGRAPHIC DESIGN ===== */
 .trust-premium{
   background: #ffffff;
   padding: 70px 20px 80px;
@@ -2351,10 +2352,7 @@ html {
   color: #082e3b;
   margin-bottom: 0;
 }
-
-.trust-premium h2 span{
-  color: #b99474;
-}
+.trust-premium h2 span{ color: #b99474; }
 
 /* BOTTOM ORNAMENT */
 .wc-ornament{
@@ -2364,29 +2362,20 @@ html {
   gap: 14px;
   margin: 14px auto 50px;
 }
-.wc-line{
-  display: block;
-  width: 80px;
-  height: 1.5px;
-  background: #b99474;
-}
-.wc-diamond{
-  color: #b99474;
-  font-size: 16px;
-  line-height: 1;
-}
+.wc-line{ display: block; width: 80px; height: 1.5px; background: #b99474; }
+.wc-diamond{ color: #b99474; font-size: 16px; line-height: 1; }
 
-/* INFOGRAPHIC ROW */
+/* ---- INFOGRAPHIC ROW ---- */
 .wc-infographic {
   display: flex;
-  align-items: flex-start;
+  align-items: center;          /* vertically centre everything at circle mid */
   justify-content: center;
-  max-width: 1120px;
+  max-width: 1160px;
   margin: 0 auto 50px;
   position: relative;
 }
 
-/* Each item wrapper */
+/* ---- Each item ---- */
 .wc-item {
   display: flex;
   flex-direction: column;
@@ -2394,46 +2383,47 @@ html {
   flex: 1;
   position: relative;
   text-align: center;
-  padding: 0 10px;
+  padding: 0 6px;
 }
 
-/* Number */
-.wc-num {
-  font-size: 36px;
-  font-weight: 900;
-  margin-bottom: 4px;
-  line-height: 1;
-}
-.wc-item:nth-child(odd) .wc-num { color: #082e3b; }
-.wc-item:nth-child(even) .wc-num { color: #b99474; }
+/* 3 dots ABOVE circle (replaces number) */
+.wc-num { display: none; }   /* NUMBERS HIDDEN */
 
-/* 3 dots below number */
 .wc-dots {
-  display: flex; gap: 4px; margin-bottom: 10px; justify-content: center;
+  display: flex; gap: 5px; margin-bottom: 8px; justify-content: center;
 }
 .wc-dots span {
-  width: 5px; height: 5px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   display: inline-block;
 }
-.wc-item:nth-child(odd) .wc-dots span { background: #082e3b; }
+.wc-item:nth-child(odd)  .wc-dots span { background: #082e3b; }
 .wc-item:nth-child(even) .wc-dots span { background: #b99474; }
 
-/* Small top pin circle */
+/* Small circle pin top (connector node above circle) */
 .wc-pin {
   width: 12px; height: 12px;
   border-radius: 50%;
   border: 2px solid #b99474;
   background: #fff;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* The big circle icon */
+/* Vertical dashed stem top */
+.wc-stem-top {
+  width: 2px; height: 20px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #b99474 0, #b99474 4px,
+    transparent 4px, transparent 8px
+  );
+  margin: 0 auto;
+}
+
+/* ---- BIG CIRCLE ---- */
 .wc-circle {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2441,98 +2431,117 @@ html {
   position: relative;
   margin: 0 auto;
   transition: transform 0.3s;
+  z-index: 2;
+  flex-shrink: 0;
 }
+
+/* Outer solid ring */
+.wc-circle::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid #b99474;
+  opacity: 0.6;
+}
+
+/* Outer DASHED ring (further out) */
 .wc-circle::before {
   content: "";
   position: absolute;
-  inset: -8px;
+  inset: -18px;
   border-radius: 50%;
   border: 2px dashed #b99474;
-  opacity: 0.5;
+  opacity: 0.55;
 }
-.wc-item:nth-child(odd) .wc-circle  { background: #082e3b; }
+
+.wc-item:nth-child(odd)  .wc-circle { background: #082e3b; }
 .wc-item:nth-child(even) .wc-circle { background: #b99474; }
 
 .wc-circle img {
-  width: 70px;
-  height: 70px;
+  width: 75px; height: 75px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
+.wc-item:hover .wc-circle { transform: scale(1.06); }
 
-.wc-item:hover .wc-circle { transform: scale(1.07); }
+/* Vertical dashed stem bottom */
+.wc-stem-bottom {
+  width: 2px; height: 20px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #b99474 0, #b99474 4px,
+    transparent 4px, transparent 8px
+  );
+  margin: 0 auto;
+}
 
-/* Bottom pin */
+/* Small circle pin bottom */
 .wc-pin-bottom {
   width: 12px; height: 12px;
   border-radius: 50%;
   border: 2px solid #b99474;
   background: #fff;
-  margin-top: 0;
-  position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* Vertical dashed stem (top) */
-.wc-stem-top {
-  width: 1.5px; height: 18px;
-  background: repeating-linear-gradient(to bottom, #b99474 0, #b99474 4px, transparent 4px, transparent 8px);
-  margin: 0 auto;
-}
-.wc-stem-bottom {
-  width: 1.5px; height: 18px;
-  background: repeating-linear-gradient(to bottom, #b99474 0, #b99474 4px, transparent 4px, transparent 8px);
-  margin: 0 auto;
-}
-
-/* Title below circle */
+/* Title */
 .wc-title {
-  font-size: 13px;
-  font-weight: 900;
+  font-size: 13px; font-weight: 900;
   letter-spacing: 0.5px;
-  margin-top: 16px;
-  margin-bottom: 10px;
+  margin-top: 18px; margin-bottom: 10px;
   text-transform: uppercase;
 }
-.wc-item:nth-child(odd) .wc-title  { color: #082e3b; }
+.wc-item:nth-child(odd)  .wc-title { color: #082e3b; }
 .wc-item:nth-child(even) .wc-title { color: #b99474; }
 
 .wc-desc {
-  font-size: 13.5px;
-  color: #555;
-  line-height: 1.7;
-  font-weight: 700;
-  max-width: 200px;
-  margin: 0 auto;
+  font-size: 13.5px; color: #555;
+  line-height: 1.7; font-weight: 700;
+  max-width: 200px; margin: 0 auto;
 }
 
-/* HORIZONTAL CONNECTOR between items */
-.wc-connector-h {
+/* Left & right endpoint dots on the connector row */
+.wc-endpoint-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b99474;
+  flex-shrink: 0;
+  align-self: center;
+  margin-top: -142px;
+}
+
+/* ---- CONNECTOR between items (the flow lines with arrow) ---- */
+.wc-conn {
   display: flex;
   align-items: center;
-  margin-top: 198px; /* align at circle center */
   flex-shrink: 0;
-  width: 40px;
   position: relative;
+  width: 56px;
+  /* push down so connector sits at circle vertical centre */
+  margin-top: -142px;   /* fine-tune: dots(14)+stem(20)+pin(12)+half circle(80) = 126 */
+  z-index: 1;
 }
-.wc-connector-h::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1.5px;
+.wc-conn-line-l {
+  width: 14px; height: 1.5px;
   background: #b99474;
+  flex-shrink: 0;
 }
-/* Arrow chevron */
+.wc-conn-line-r {
+  width: 14px; height: 1.5px;
+  background: #b99474;
+  flex-shrink: 0;
+}
 .wc-arrow {
   width: 28px; height: 28px;
   border-radius: 50%;
   background: #fff;
   border: 1.5px solid #b99474;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px;
-  color: #555;
+  font-size: 13px;
+  color: #888;
   flex-shrink: 0;
-  margin-left: -4px;
 }
 
 /* BOTTOM FOOTER ORNAMENT */
@@ -2540,7 +2549,7 @@ html {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 30px;
 }
-.wc-footer-ornament .fo-dot { width:8px; height:8px; border-radius:50%; background:#b99474; display:inline-block; }
+.wc-footer-ornament .fo-dot  { width:8px; height:8px; border-radius:50%; background:#b99474; display:inline-block; }
 .wc-footer-ornament .fo-diamond {
   width:18px; height:18px;
   background:#082e3b;
@@ -2550,11 +2559,11 @@ html {
 .wc-footer-ornament .fo-dot-sm { width:5px; height:5px; border-radius:50%; background:#b99474; display:inline-block; }
 
 /* RESPONSIVE */
-@media(max-width: 900px){
-  .wc-infographic { flex-wrap: wrap; gap: 30px; }
-  .wc-connector-h, .wc-arrow { display: none; }
-  .wc-item { flex: 0 0 45%; }
-  .wc-connector-h { display:none; }
+@media(max-width: 960px){
+  .wc-infographic { flex-wrap: wrap; gap: 36px; align-items: flex-start; }
+  .wc-conn { display: none; }
+  .wc-endpoint-dot { display: none; }
+  .wc-item { flex: 0 0 42%; }
 }
 @media(max-width: 520px){
   .wc-item { flex: 0 0 90%; }
@@ -2927,9 +2936,11 @@ html {
     <!-- INFOGRAPHIC ROW -->
     <div class="wc-infographic">
 
-      <!-- ITEM 1 — dark -->
+      <!-- LEFT ENDPOINT DOT -->
+      <div class="wc-endpoint-dot"></div>
+
+      <!-- ITEM 1 — dark blue -->
       <div class="wc-item">
-        <div class="wc-num">01</div>
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
@@ -2943,15 +2954,14 @@ html {
       </div>
 
       <!-- CONNECTOR 1→2 -->
-      <div style="display:flex;align-items:center;margin-top:198px;flex-shrink:0;">
-        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+      <div class="wc-conn">
+        <div class="wc-conn-line-l"></div>
         <div class="wc-arrow">&#8250;</div>
-        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+        <div class="wc-conn-line-r"></div>
       </div>
 
       <!-- ITEM 2 — gold -->
       <div class="wc-item">
-        <div class="wc-num">02</div>
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
@@ -2965,15 +2975,14 @@ html {
       </div>
 
       <!-- CONNECTOR 2→3 -->
-      <div style="display:flex;align-items:center;margin-top:198px;flex-shrink:0;">
-        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+      <div class="wc-conn">
+        <div class="wc-conn-line-l"></div>
         <div class="wc-arrow">&#8250;</div>
-        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+        <div class="wc-conn-line-r"></div>
       </div>
 
-      <!-- ITEM 3 — dark -->
+      <!-- ITEM 3 — dark blue -->
       <div class="wc-item">
-        <div class="wc-num">03</div>
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
@@ -2987,26 +2996,28 @@ html {
       </div>
 
       <!-- CONNECTOR 3→4 -->
-      <div style="display:flex;align-items:center;margin-top:198px;flex-shrink:0;">
-        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+      <div class="wc-conn">
+        <div class="wc-conn-line-l"></div>
         <div class="wc-arrow">&#8250;</div>
-        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+        <div class="wc-conn-line-r"></div>
       </div>
 
       <!-- ITEM 4 — gold -->
       <div class="wc-item">
-        <div class="wc-num">04</div>
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
         <div class="wc-circle">
-          <img src="images/affordable.png" alt="Affordable Price">
+          <img src="images/affordable.png" alt="After Sales Service">
         </div>
         <div class="wc-pin-bottom"></div>
         <div class="wc-stem-bottom"></div>
-        <div class="wc-title">AFFORDABLE PRICE</div>
-        <p class="wc-desc">We offer the best quality interiors at honest, budget-friendly prices for every home.</p>
+        <div class="wc-title">AFTER SALES SERVICE</div>
+        <p class="wc-desc">Our dedicated support team is always ready to assist you even after project completion.</p>
       </div>
+
+      <!-- RIGHT ENDPOINT DOT -->
+      <div class="wc-endpoint-dot"></div>
 
     </div>
 
