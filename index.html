@@ -3392,9 +3392,11 @@ html {
           <option>15 Lakhs - 20 Lakhs</option>
         </select>
 
-        <textarea name="Message" rows="4" placeholder="Your Requirement (Optional)"></textarea>
+		<textarea name="Message" rows="4" placeholder="Your Requirement (Optional)"></textarea>
 
-        <button type="submit">Submit Quote Request</button>
+		<button type="submit">Submit Quote</button>
+
+
       </form>
     </div>
   </div>
@@ -3516,6 +3518,7 @@ function closePopupFunc(){
 }
 
 setInterval(() => {
+  if (localStorage.getItem("formFilled") === "yes") return;
   if (!popupClosed && quotePopup.style.display !== "flex") {
     openPopup();
   }
@@ -3564,6 +3567,18 @@ window.addEventListener("load", () => {
 });
 
 </script>  
+
+<script>
+function handleFormSubmit() {
+  // 🟢 mark as filled
+  localStorage.setItem("formFilled", "yes");
+
+  // popup close
+  document.querySelector(".popup").style.display = "none";
+}
+</script>
+
+
 
 <script type="application/ld+json">
 {
