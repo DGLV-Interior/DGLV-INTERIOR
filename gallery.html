@@ -37,12 +37,11 @@ body{
   padding:12px 28px;
 }
 
-/* 🔥 INNER HEADER (LINE CONTROL) */
 .header-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:2px solid #dcdcdc; /* 🔥 logo → button width */
+  border-bottom:2px solid #dcdcdc;
   padding-bottom:6px;
 }
 
@@ -184,6 +183,25 @@ body{
   background:var(--navy);
 }
 
+/* BACK BUTTON */
+.back-row{
+  text-align:center;
+  margin:30px 0;
+}
+
+.back-btn{
+  padding:14px 36px;
+  background:var(--navy);
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+}
+
+.back-btn:hover{
+  background:var(--gold);
+}
+
 </style>
 </head>
 
@@ -235,6 +253,11 @@ body{
   </button>
 
   <div class="dots" id="dotsContainer"></div>
+</div>
+
+<!-- ✅ BACK BUTTON RESTORED -->
+<div class="back-row">
+  <a href="https://dglvinterior.com/" class="back-btn">Back to Home</a>
 </div>
 
 </div>
