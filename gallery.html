@@ -34,34 +34,36 @@ body{
 /* HEADER */
 .header{
   background:#efefef;
-  padding:12px 28px;
+  padding:6px 28px;
+  border-top:4px solid #0b3c48;
 }
 
 .header-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:2px solid #dcdcdc;
-  padding-bottom:6px;
 }
 
 .logo img{
-  height:58px;
+  height:48px;
+  display:block;
 }
 
 /* BUTTON */
 .header-btn{
-  padding:10px 24px;
+  padding:12px 28px;
   border-radius:999px;
-  background:var(--navy);
+  background:#b99474;
   color:#fff;
   border:none;
+  font-size:18px;
   font-weight:900;
   cursor:pointer;
+  transition:.3s;
 }
 
 .header-btn:hover{
-  background:var(--gold);
+  background:var(--navy);
 }
 
 /* MAIN */
@@ -86,13 +88,15 @@ body{
   color:#fff;
   font-weight:900;
   cursor:pointer;
+  transition:.3s;
 }
 
 .cat-btn i{
   margin-right:6px;
 }
 
-.cat-btn:hover{
+.cat-btn:hover,
+.cat-btn.active{
   background:var(--gold);
   border-color:var(--gold);
 }
@@ -101,7 +105,7 @@ body{
 .slider-wrap{
   position:relative;
   overflow:hidden;
-  border-radius:20px;
+  border-radius:22px;
   box-shadow:0 15px 60px rgba(0,0,0,0.2);
 }
 
@@ -117,6 +121,7 @@ body{
   justify-content:center;
   align-items:center;
   overflow:hidden;
+  background:#000;
 }
 
 .slide::before{
@@ -144,13 +149,15 @@ body{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:50px;
-  height:50px;
+  width:52px;
+  height:52px;
   border-radius:50%;
   background:var(--navy);
   color:#fff;
   border:none;
   cursor:pointer;
+  z-index:5;
+  transition:.3s;
 }
 
 .nav-arrow:hover{
@@ -173,33 +180,67 @@ body{
 .dot{
   width:10px;
   height:10px;
+  border:none;
   border-radius:50%;
   background:rgba(255,255,255,0.5);
+  cursor:pointer;
 }
 
 .dot.active{
   width:28px;
   border-radius:20px;
-  background:var(--navy);
+  background:var(--gold);
 }
 
 /* BACK BUTTON */
 .back-row{
   text-align:center;
-  margin:30px 0;
+  margin:35px 0 15px;
 }
 
 .back-btn{
-  padding:14px 36px;
+  padding:14px 38px;
   background:var(--navy);
   color:#fff;
   border-radius:999px;
   text-decoration:none;
   font-weight:900;
+  transition:.3s;
 }
 
 .back-btn:hover{
   background:var(--gold);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .header{
+    padding:8px 15px;
+  }
+
+  .logo img{
+    height:40px;
+  }
+
+  .header-btn{
+    padding:10px 18px;
+    font-size:14px;
+  }
+
+  .slide img{
+    height:45vh;
+  }
+
+  .categories{
+    gap:8px;
+  }
+
+  .cat-btn{
+    font-size:14px;
+    padding:8px 14px;
+  }
+
 }
 
 </style>
@@ -210,55 +251,70 @@ body{
 <!-- HEADER -->
 <div class="header">
   <div class="header-inner">
+
     <div class="logo">
-      <img src="images/logo-full.png">
+      <img src="images/logo-full.png" alt="">
     </div>
-    <button class="header-btn" onclick="goToHome()">Get Free Consultation</button>
+
+    <button class="header-btn" onclick="goToHome()">
+      Get Free Consultation →
+    </button>
+
   </div>
 </div>
 
 <!-- MAIN -->
 <div class="main-content">
 
-<div class="categories">
-  <button class="cat-btn active" onclick="changeCategory(0,this)">
-    <i class="fa-solid fa-couch"></i> Living Room
-  </button>
-  <button class="cat-btn" onclick="changeCategory(1,this)">
-    <i class="fa-solid fa-kitchen-set"></i> Modular Kitchen
-  </button>
-  <button class="cat-btn" onclick="changeCategory(2,this)">
-    <i class="fa-solid fa-bed"></i> Bedroom
-  </button>
-  <button class="cat-btn" onclick="changeCategory(3,this)">
-    <i class="fa-solid fa-door-closed"></i> Wardrobe
-  </button>
-  <button class="cat-btn" onclick="changeCategory(4,this)">
-    <i class="fa-solid fa-layer-group"></i> False Ceiling
-  </button>
-  <button class="cat-btn" onclick="changeCategory(5,this)">
-    <i class="fa-solid fa-building"></i> Office Interior
-  </button>
-</div>
+  <div class="categories">
 
-<div class="slider-wrap">
-  <div class="slider-track" id="sliderTrack"></div>
+    <button class="cat-btn active" onclick="changeCategory(0,this)">
+      <i class="fa-solid fa-couch"></i> Living Room
+    </button>
 
-  <button class="nav-arrow prev" onclick="prevSlide()">
-    <i class="fa fa-chevron-left"></i>
-  </button>
+    <button class="cat-btn" onclick="changeCategory(1,this)">
+      <i class="fa-solid fa-kitchen-set"></i> Modular Kitchen
+    </button>
 
-  <button class="nav-arrow next" onclick="nextSlide()">
-    <i class="fa fa-chevron-right"></i>
-  </button>
+    <button class="cat-btn" onclick="changeCategory(2,this)">
+      <i class="fa-solid fa-bed"></i> Bedroom
+    </button>
 
-  <div class="dots" id="dotsContainer"></div>
-</div>
+    <button class="cat-btn" onclick="changeCategory(3,this)">
+      <i class="fa-solid fa-door-closed"></i> Wardrobe
+    </button>
 
-<!-- ✅ BACK BUTTON RESTORED -->
-<div class="back-row">
-  <a href="https://dglvinterior.com/" class="back-btn">Back to Home</a>
-</div>
+    <button class="cat-btn" onclick="changeCategory(4,this)">
+      <i class="fa-solid fa-layer-group"></i> False Ceiling
+    </button>
+
+    <button class="cat-btn" onclick="changeCategory(5,this)">
+      <i class="fa-solid fa-building"></i> Office Interior
+    </button>
+
+  </div>
+
+  <div class="slider-wrap">
+
+    <div class="slider-track" id="sliderTrack"></div>
+
+    <button class="nav-arrow prev" onclick="prevSlide()">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+
+    <button class="nav-arrow next" onclick="nextSlide()">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+
+    <div class="dots" id="dotsContainer"></div>
+
+  </div>
+
+  <div class="back-row">
+    <a href="https://dglvinterior.com/" class="back-btn">
+      Back to Home
+    </a>
+  </div>
 
 </div>
 
@@ -271,28 +327,39 @@ function goToHome(){
 
 /* SLIDER */
 const images=[
+
 ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
+
 ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
+
 ["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
+
 ["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
+
 ["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
+
 ["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
+
 ];
 
 let currentCategory=0;
 let currentSlide=0;
 
 function changeCategory(i,btn){
+
   currentCategory=i;
   currentSlide=0;
 
-  document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".cat-btn")
+  .forEach(b=>b.classList.remove("active"));
+
   btn.classList.add("active");
 
   buildSlider();
 }
 
 function buildSlider(){
+
   const track=document.getElementById("sliderTrack");
   const dots=document.getElementById("dotsContainer");
 
@@ -300,12 +367,18 @@ function buildSlider(){
   dots.innerHTML="";
 
   images[currentCategory].forEach((img,i)=>{
+
     track.innerHTML+=`
       <div class="slide" style="background-image:url('${img}')">
-        <img src="${img}">
+        <img src="${img}" alt="">
       </div>
     `;
-    dots.innerHTML+=`<button class="dot ${i==0?"active":""}" onclick="goToSlide(${i})"></button>`;
+
+    dots.innerHTML+=`
+      <button class="dot ${i==0?"active":""}" 
+      onclick="goToSlide(${i})"></button>
+    `;
+
   });
 
   updateSlider();
@@ -316,18 +389,30 @@ function goToSlide(i){
   updateSlider();
 }
 
-function prevSlide(){ goToSlide(currentSlide-1); }
-function nextSlide(){ goToSlide(currentSlide+1); }
+function prevSlide(){
+  goToSlide(currentSlide-1);
+}
+
+function nextSlide(){
+  goToSlide(currentSlide+1);
+}
 
 function updateSlider(){
+
   const total=images[currentCategory].length;
+
   currentSlide=(currentSlide+total)%total;
 
-  document.getElementById("sliderTrack").style.transform=`translateX(-${currentSlide*100}%)`;
+  document.getElementById("sliderTrack")
+  .style.transform=`translateX(-${currentSlide*100}%)`;
 
-  document.querySelectorAll(".dot").forEach((d,i)=>{
+  document.querySelectorAll(".dot")
+  .forEach((d,i)=>{
+
     d.classList.toggle("active",i===currentSlide);
+
   });
+
 }
 
 buildSlider();
