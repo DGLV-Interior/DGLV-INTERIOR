@@ -2308,10 +2308,41 @@ html {
 /* ===========================
    WHY CHOOSE - NEW DESIGN
 =========================== */
+/* ===========================
+   WHY CHOOSE — INFOGRAPHIC STYLE
+=========================== */
 .trust-premium{
   background: #ffffff;
   padding: 70px 20px 80px;
   text-align: center;
+}
+
+/* OUR COMMITMENT sublabel */
+.wc-sublabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #b99474;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.wc-sublabel::before,
+.wc-sublabel::after {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 1.5px;
+  background: #b99474;
+}
+.wc-sublabel .wc-dot {
+  width: 5px; height: 5px;
+  background: #b99474;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .trust-premium h2{
@@ -2325,121 +2356,209 @@ html {
   color: #b99474;
 }
 
-/* ORNAMENT DIVIDER */
+/* BOTTOM ORNAMENT */
 .wc-ornament{
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin: 18px auto 0;
+  margin: 14px auto 50px;
 }
-
 .wc-line{
   display: block;
   width: 80px;
   height: 1.5px;
   background: #b99474;
 }
-
 .wc-diamond{
   color: #b99474;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 1;
 }
 
-/* CONNECTOR SVG */
-.wc-connector{
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  height: 90px;
+/* INFOGRAPHIC ROW */
+.wc-infographic {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1120px;
+  margin: 0 auto 50px;
+  position: relative;
 }
 
-.wc-connector svg{
-  width: 100%;
-  height: 100%;
-}
-
-/* 4-CARD GRID */
-.wc-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* EACH CARD */
-.wc-card{
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 36px 22px 30px;
-  box-shadow:
-    6px 6px 16px rgba(185,148,116,0.15),
-    -6px -6px 16px #ffffff;
-  transition: 0.3s;
+/* Each item wrapper */
+.wc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
   text-align: center;
+  padding: 0 10px;
 }
 
-.wc-card:hover{
-  transform: translateY(-8px);
-  box-shadow:
-    0 16px 40px rgba(8,46,59,0.12);
+/* Number */
+.wc-num {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 4px;
+  line-height: 1;
 }
+.wc-item:nth-child(odd) .wc-num { color: #082e3b; }
+.wc-item:nth-child(even) .wc-num { color: #b99474; }
 
-/* ICON CIRCLE */
-.wc-icon{
-  width: 90px;
-  height: 90px;
+/* 3 dots below number */
+.wc-dots {
+  display: flex; gap: 4px; margin-bottom: 10px; justify-content: center;
+}
+.wc-dots span {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.wc-item:nth-child(odd) .wc-dots span { background: #082e3b; }
+.wc-item:nth-child(even) .wc-dots span { background: #b99474; }
+
+/* Small top pin circle */
+.wc-pin {
+  width: 12px; height: 12px;
   border-radius: 50%;
   border: 2px solid #b99474;
+  background: #fff;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* The big circle icon */
+.wc-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
-  background: #fdf9f5;
-  transition: 0.3s;
+  position: relative;
+  margin: 0 auto;
+  transition: transform 0.3s;
 }
-
-.wc-card:hover .wc-icon{
-  background: #b99474;
+.wc-circle::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px dashed #b99474;
+  opacity: 0.5;
 }
+.wc-item:nth-child(odd) .wc-circle  { background: #082e3b; }
+.wc-item:nth-child(even) .wc-circle { background: #b99474; }
 
-.wc-card:hover .wc-icon img{
+.wc-circle img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
-.wc-icon img{
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  transition: 0.3s;
+.wc-item:hover .wc-circle { transform: scale(1.07); }
+
+/* Bottom pin */
+.wc-pin-bottom {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid #b99474;
+  background: #fff;
+  margin-top: 0;
+  position: relative;
+  z-index: 2;
 }
 
-/* TITLE */
-.wc-card h3{
+/* Vertical dashed stem (top) */
+.wc-stem-top {
+  width: 1.5px; height: 18px;
+  background: repeating-linear-gradient(to bottom, #b99474 0, #b99474 4px, transparent 4px, transparent 8px);
+  margin: 0 auto;
+}
+.wc-stem-bottom {
+  width: 1.5px; height: 18px;
+  background: repeating-linear-gradient(to bottom, #b99474 0, #b99474 4px, transparent 4px, transparent 8px);
+  margin: 0 auto;
+}
+
+/* Title below circle */
+.wc-title {
   font-size: 13px;
   font-weight: 900;
-  color: #082e3b;
   letter-spacing: 0.5px;
-  margin-bottom: 12px;
+  margin-top: 16px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
+.wc-item:nth-child(odd) .wc-title  { color: #082e3b; }
+.wc-item:nth-child(even) .wc-title { color: #b99474; }
 
-/* DESC */
-.wc-card p{
-  font-size: 14px;
-  color: #666;
+.wc-desc {
+  font-size: 13.5px;
+  color: #555;
   line-height: 1.7;
   font-weight: 700;
+  max-width: 200px;
+  margin: 0 auto;
 }
+
+/* HORIZONTAL CONNECTOR between items */
+.wc-connector-h {
+  display: flex;
+  align-items: center;
+  margin-top: 198px; /* align at circle center */
+  flex-shrink: 0;
+  width: 40px;
+  position: relative;
+}
+.wc-connector-h::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: #b99474;
+}
+/* Arrow chevron */
+.wc-arrow {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #b99474;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: #555;
+  flex-shrink: 0;
+  margin-left: -4px;
+}
+
+/* BOTTOM FOOTER ORNAMENT */
+.wc-footer-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 30px;
+}
+.wc-footer-ornament .fo-dot { width:8px; height:8px; border-radius:50%; background:#b99474; display:inline-block; }
+.wc-footer-ornament .fo-diamond {
+  width:18px; height:18px;
+  background:#082e3b;
+  transform: rotate(45deg);
+  display:inline-block;
+}
+.wc-footer-ornament .fo-dot-sm { width:5px; height:5px; border-radius:50%; background:#b99474; display:inline-block; }
 
 /* RESPONSIVE */
 @media(max-width: 900px){
-  .wc-grid{ grid-template-columns: repeat(2,1fr); }
-  .wc-connector{ display:none; }
+  .wc-infographic { flex-wrap: wrap; gap: 30px; }
+  .wc-connector-h, .wc-arrow { display: none; }
+  .wc-item { flex: 0 0 45%; }
+  .wc-connector-h { display:none; }
 }
 @media(max-width: 520px){
-  .wc-grid{ grid-template-columns: 1fr; }
+  .wc-item { flex: 0 0 90%; }
+  .trust-premium h2 { font-size: 30px; }
 }
 
 
@@ -2786,61 +2905,121 @@ html {
     </div>
   </div>
 
-  <!-- TRUST / WHY CHOOSE -->
+  <!-- TRUST / WHY CHOOSE — INFOGRAPHIC STYLE -->
   <div class="trust-premium">
+
+    <!-- OUR COMMITMENT sublabel -->
+    <div class="wc-sublabel">
+      <span class="wc-dot"></span>
+      OUR COMMITMENT
+      <span class="wc-dot"></span>
+    </div>
 
     <h2><span style="color:#082e3b;">Why Choose</span> <span style="color:#b99474;">DGLV Interior</span></h2>
 
     <!-- ORNAMENT DIVIDER -->
     <div class="wc-ornament">
       <span class="wc-line"></span>
-      <span class="wc-diamond">&#10022;</span>
+      <span class="wc-diamond">&#9670;</span>
       <span class="wc-line"></span>
     </div>
 
-    <!-- CONNECTOR SVG -->
-    <div class="wc-connector">
-      <svg viewBox="0 0 900 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- vertical drop from center -->
-        <line x1="450" y1="0" x2="450" y2="40" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
-        <!-- horizontal bar -->
-        <line x1="112" y1="40" x2="788" y2="40" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
-        <!-- drops to each card -->
-        <line x1="112" y1="40" x2="112" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
-        <line x1="337" y1="40" x2="337" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
-        <line x1="563" y1="40" x2="563" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
-        <line x1="788" y1="40" x2="788" y2="90" stroke="#b99474" stroke-width="1.5" stroke-dasharray="5,4"/>
-      </svg>
+    <!-- INFOGRAPHIC ROW -->
+    <div class="wc-infographic">
+
+      <!-- ITEM 1 — dark -->
+      <div class="wc-item">
+        <div class="wc-num">01</div>
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/premium.png" alt="High Quality Materials">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">HIGH QUALITY MATERIALS</div>
+        <p class="wc-desc">We use premium quality materials that ensure durability, elegance and a perfect finish.</p>
+      </div>
+
+      <!-- CONNECTOR 1→2 -->
+      <div style="display:flex;align-items:center;margin-top:198px;flex-shrink:0;">
+        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+        <div class="wc-arrow">&#8250;</div>
+        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+      </div>
+
+      <!-- ITEM 2 — gold -->
+      <div class="wc-item">
+        <div class="wc-num">02</div>
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/custom.png" alt="Smart Designs">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">SMART DESIGNS</div>
+        <p class="wc-desc">Our designs are space-efficient, functional and tailored to match your style and needs.</p>
+      </div>
+
+      <!-- CONNECTOR 2→3 -->
+      <div style="display:flex;align-items:center;margin-top:198px;flex-shrink:0;">
+        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+        <div class="wc-arrow">&#8250;</div>
+        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+      </div>
+
+      <!-- ITEM 3 — dark -->
+      <div class="wc-item">
+        <div class="wc-num">03</div>
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/skilled.png" alt="On-Time Delivery">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">ON-TIME DELIVERY</div>
+        <p class="wc-desc">We value your time and ensure timely delivery with seamless execution.</p>
+      </div>
+
+      <!-- CONNECTOR 3→4 -->
+      <div style="display:flex;align-items:center;margin-top:198px;flex-shrink:0;">
+        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+        <div class="wc-arrow">&#8250;</div>
+        <div style="width:18px;height:1.5px;background:#b99474;"></div>
+      </div>
+
+      <!-- ITEM 4 — gold -->
+      <div class="wc-item">
+        <div class="wc-num">04</div>
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/affordable.png" alt="Affordable Price">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">AFFORDABLE PRICE</div>
+        <p class="wc-desc">We offer the best quality interiors at honest, budget-friendly prices for every home.</p>
+      </div>
+
     </div>
 
-    <!-- 4 CARDS -->
-    <div class="wc-grid">
-
-      <div class="wc-card">
-        <div class="wc-icon"><img src="images/premium.png" alt="High Quality Materials"></div>
-        <h3>HIGH QUALITY MATERIALS</h3>
-        <p>We use premium quality materials that ensure durability, elegance and a perfect finish.</p>
-      </div>
-
-      <div class="wc-card">
-        <div class="wc-icon"><img src="images/custom.png" alt="Smart Designs"></div>
-        <h3>SMART DESIGNS</h3>
-        <p>Our designs are space-efficient, functional and tailored to match your style and needs.</p>
-      </div>
-
-      <div class="wc-card">
-        <div class="wc-icon"><img src="images/skilled.png" alt="On-Time Delivery"></div>
-        <h3>ON-TIME DELIVERY</h3>
-        <p>We value your time and ensure timely delivery with seamless execution.</p>
-      </div>
-
-      <div class="wc-card">
-        <div class="wc-icon"><img src="images/affordable.png" alt="After Sales Service"></div>
-        <h3>AFTER SALES SERVICE</h3>
-        <p>Our dedicated support team is always ready to assist you even after project completion.</p>
-      </div>
-
+    <!-- BOTTOM ORNAMENT -->
+    <div class="wc-footer-ornament">
+      <span class="fo-dot"></span>
+      <span class="fo-dot"></span>
+      <span class="fo-dot"></span>
+      <span class="fo-diamond"></span>
+      <span class="fo-dot"></span>
+      <span class="fo-dot"></span>
     </div>
+
   </div>
 
 
