@@ -31,30 +31,29 @@ body{
   background:var(--bg);
 }
 
-/* HEADER */
+/* 🔥 HEADER FIX */
 .header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 24px;
+  padding:8px 20px; /* reduced */
   background:#fff;
-  box-shadow:0 2px 14px rgba(0,0,0,0.07);
+  border-bottom:1px solid #e5e5e5; /* clean line */
+}
+
+.logo{
+  display:flex;
+  align-items:center;
 }
 
 .logo img{
-  height:55px;
+  height:65px; /* increased */
+  object-fit:contain;
 }
 
-/* BUTTONS */
-.header-btn,
-.cat-btn,
-.back-btn{
-  transition:.3s;
-}
-
-/* HEADER BUTTON */
+/* BUTTON */
 .header-btn{
-  padding:12px 28px;
+  padding:10px 24px;
   border-radius:999px;
   background:var(--navy);
   color:#fff;
@@ -113,7 +112,6 @@ body{
   transition:.5s;
 }
 
-/* 🔥 PREMIUM IMAGE FIX */
 .slide{
   min-width:100%;
   position:relative;
@@ -123,7 +121,6 @@ body{
   overflow:hidden;
 }
 
-/* Blur background */
 .slide::before{
   content:'';
   position:absolute;
@@ -136,7 +133,6 @@ body{
   z-index:0;
 }
 
-/* Main image */
 .slide img{
   position:relative;
   z-index:1;
@@ -238,6 +234,19 @@ body{
 
 /* MOBILE */
 @media(max-width:768px){
+  .logo img{
+    height:55px;
+  }
+
+  .header{
+    padding:8px 12px;
+  }
+
+  .header-btn{
+    padding:8px 18px;
+    font-size:12px;
+  }
+
   .slide img{
     height:40vh;
   }
