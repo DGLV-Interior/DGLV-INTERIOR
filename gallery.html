@@ -31,24 +31,23 @@ body{
   background:var(--bg);
 }
 
-/* 🔥 HEADER LINTEL STYLE */
+/* ✅ SAFE HEADER */
 .header{
   display:flex;
   justify-content:space-between;
-  align-items:flex-end; /* 🔥 key for alignment */
-  padding:10px 28px 0 28px; /* 🔥 bottom padding removed */
+  align-items:center;
+  padding:12px 28px;
   background:#efefef;
-  border-bottom:2px solid #dcdcdc; /* 🔥 lintel line */
+  border-bottom:2px solid #dcdcdc;
 }
 
 .logo img{
-  height:60px; /* tuned for perfect touch */
+  height:58px;
   display:block;
 }
 
 /* BUTTON */
 .header-btn{
-  margin-bottom:10px; /* align with logo bottom */
   padding:10px 24px;
   border-radius:999px;
   background:var(--navy);
@@ -233,11 +232,10 @@ body{
   }
 
   .header{
-    padding:8px 16px 0 16px;
+    padding:10px 16px;
   }
 
   .header-btn{
-    margin-bottom:8px;
     padding:8px 16px;
     font-size:12px;
   }
@@ -252,6 +250,7 @@ body{
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="logo">
     <img src="images/logo-full.png">
@@ -259,13 +258,133 @@ body{
   <button class="header-btn" onclick="goToHome()">Get Free Consultation</button>
 </div>
 
-<!-- REMAINING CODE SAME (no changes) -->
+<!-- MAIN -->
+<div class="main-content">
+
+<div class="categories">
+  <button class="cat-btn active" onclick="changeCategory(0,this)">
+    <i class="fa-solid fa-couch"></i> Living Room
+  </button>
+  <button class="cat-btn" onclick="changeCategory(1,this)">
+    <i class="fa-solid fa-kitchen-set"></i> Modular Kitchen
+  </button>
+  <button class="cat-btn" onclick="changeCategory(2,this)">
+    <i class="fa-solid fa-bed"></i> Bedroom
+  </button>
+  <button class="cat-btn" onclick="changeCategory(3,this)">
+    <i class="fa-solid fa-door-closed"></i> Wardrobe
+  </button>
+  <button class="cat-btn" onclick="changeCategory(4,this)">
+    <i class="fa-solid fa-layer-group"></i> False Ceiling
+  </button>
+  <button class="cat-btn" onclick="changeCategory(5,this)">
+    <i class="fa-solid fa-building"></i> Office Interior
+  </button>
+</div>
+
+<div class="slider-wrap">
+  <div class="slider-track" id="sliderTrack"></div>
+
+  <button class="nav-arrow prev" onclick="prevSlide()">
+    <i class="fa fa-chevron-left"></i>
+  </button>
+
+  <button class="nav-arrow next" onclick="nextSlide()">
+    <i class="fa fa-chevron-right"></i>
+  </button>
+
+  <div class="dots" id="dotsContainer"></div>
+</div>
+
+<div class="back-row">
+  <a href="https://dglvinterior.com/" class="back-btn">Back to Home</a>
+</div>
+
+</div>
+
+<div class="trust-bar">
+<div class="trust-inner">
+  <div class="trust-item">
+    <i class="fa fa-gem"></i>
+    <div class="trust-text"><h4>Premium Quality</h4></div>
+  </div>
+  <div class="trust-item">
+    <i class="fa fa-clock"></i>
+    <div class="trust-text"><h4>On Time Delivery</h4></div>
+  </div>
+</div>
+</div>
 
 <script>
+
+/* ✅ FORM OPEN FIX */
 function goToHome(){
   localStorage.setItem("openForm","yes");
   window.location.href="https://dglvinterior.com/";
 }
+
+const images=[
+["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
+["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
+["images/bedroom1.jpg","images/bedroom2.jpg","images/bedroom3.jpg"],
+["images/wardrobe1.jpg","images/wardrobe2.jpg","images/wardrobe3.jpg"],
+["images/ceiling1.jpg","images/ceiling2.jpg","images/ceiling3.jpg"],
+["images/office1.jpg","images/office2.jpg","images/office3.jpg"]
+];
+
+let currentCategory=0;
+let currentSlide=0;
+
+function changeCategory(i,btn){
+  currentCategory=i;
+  currentSlide=0;
+
+  document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+
+  buildSlider();
+}
+
+function buildSlider(){
+  const track=document.getElementById("sliderTrack");
+  const dots=document.getElementById("dotsContainer");
+
+  track.innerHTML="";
+  dots.innerHTML="";
+
+  images[currentCategory].forEach((img,i)=>{
+    track.innerHTML+=`
+      <div class="slide" style="background-image:url('${img}')">
+        <img src="${img}">
+      </div>
+    `;
+    dots.innerHTML+=`<button class="dot ${i==0?"active":""}" onclick="goToSlide(${i})"></button>`;
+  });
+
+  updateSlider();
+}
+
+function goToSlide(i){
+  currentSlide=i;
+  updateSlider();
+}
+
+function prevSlide(){ goToSlide(currentSlide-1); }
+function nextSlide(){ goToSlide(currentSlide+1); }
+
+function updateSlider(){
+  const total=images[currentCategory].length;
+  currentSlide=(currentSlide+total)%total;
+
+  document.getElementById("sliderTrack").style.transform=`translateX(-${currentSlide*100}%)`;
+
+  document.querySelectorAll(".dot").forEach((d,i)=>{
+    d.classList.toggle("active",i===currentSlide);
+  });
+}
+
+buildSlider();
+
 </script>
 
 </body>
