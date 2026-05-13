@@ -2368,7 +2368,7 @@ html {
 /* ---- INFOGRAPHIC ROW ---- */
 .wc-infographic {
   display: flex;
-  align-items: center;          /* vertically centre everything at circle mid */
+  align-items: flex-start;
   justify-content: center;
   max-width: 1160px;
   margin: 0 auto 50px;
@@ -2386,11 +2386,12 @@ html {
   padding: 0 6px;
 }
 
-/* 3 dots ABOVE circle (replaces number) */
-.wc-num { display: none; }   /* NUMBERS HIDDEN */
+/* Numbers HIDDEN */
+.wc-num { display: none; }
 
+/* 3 dots ABOVE circle */
 .wc-dots {
-  display: flex; gap: 5px; margin-bottom: 8px; justify-content: center;
+  display: flex; gap: 5px; margin-bottom: 10px; justify-content: center;
 }
 .wc-dots span {
   width: 6px; height: 6px;
@@ -2402,22 +2403,20 @@ html {
 
 /* Small circle pin top (connector node above circle) */
 .wc-pin {
-  width: 12px; height: 12px;
+  width: 14px; height: 14px;
   border-radius: 50%;
   border: 2px solid #b99474;
   background: #fff;
   z-index: 3;
+  flex-shrink: 0;
 }
 
-/* Vertical dashed stem top */
+/* Vertical stem top — solid line */
 .wc-stem-top {
-  width: 2px; height: 20px;
-  background: repeating-linear-gradient(
-    to bottom,
-    #b99474 0, #b99474 4px,
-    transparent 4px, transparent 8px
-  );
+  width: 2px; height: 22px;
+  background: #b99474;
   margin: 0 auto;
+  flex-shrink: 0;
 }
 
 /* ---- BIG CIRCLE ---- */
@@ -2439,20 +2438,20 @@ html {
 .wc-circle::after {
   content: "";
   position: absolute;
-  inset: -6px;
+  inset: -7px;
   border-radius: 50%;
-  border: 1.5px solid #b99474;
-  opacity: 0.6;
+  border: 2px solid #b99474;
+  opacity: 0.8;
 }
 
 /* Outer DASHED ring (further out) */
 .wc-circle::before {
   content: "";
   position: absolute;
-  inset: -18px;
+  inset: -20px;
   border-radius: 50%;
   border: 2px dashed #b99474;
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 .wc-item:nth-child(odd)  .wc-circle { background: #082e3b; }
@@ -2465,24 +2464,22 @@ html {
 }
 .wc-item:hover .wc-circle { transform: scale(1.06); }
 
-/* Vertical dashed stem bottom */
+/* Vertical stem bottom — solid line */
 .wc-stem-bottom {
-  width: 2px; height: 20px;
-  background: repeating-linear-gradient(
-    to bottom,
-    #b99474 0, #b99474 4px,
-    transparent 4px, transparent 8px
-  );
+  width: 2px; height: 22px;
+  background: #b99474;
   margin: 0 auto;
+  flex-shrink: 0;
 }
 
 /* Small circle pin bottom */
 .wc-pin-bottom {
-  width: 12px; height: 12px;
+  width: 14px; height: 14px;
   border-radius: 50%;
   border: 2px solid #b99474;
   background: #fff;
   z-index: 3;
+  flex-shrink: 0;
 }
 
 /* Title */
@@ -2509,7 +2506,8 @@ html {
   background: #b99474;
   flex-shrink: 0;
   align-self: center;
-  margin-top: -142px;
+  /* offset: dots(16) + stem(22) + pin(14) + half-circle(80) = 132 */
+  margin-top: -132px;
 }
 
 /* ---- CONNECTOR between items (the flow lines with arrow) ---- */
@@ -2518,30 +2516,40 @@ html {
   align-items: center;
   flex-shrink: 0;
   position: relative;
-  width: 56px;
-  /* push down so connector sits at circle vertical centre */
-  margin-top: -142px;   /* fine-tune: dots(14)+stem(20)+pin(12)+half circle(80) = 126 */
-  z-index: 1;
+  /* offset: dots(16) + stem(22) + pin(14) + half-circle(80) = 132 */
+  margin-top: -132px;
+  z-index: 4;
+  gap: 0;
 }
+
+/* Left line from circle edge to arrow */
 .wc-conn-line-l {
-  width: 14px; height: 1.5px;
+  height: 2px;
+  width: 18px;
   background: #b99474;
   flex-shrink: 0;
 }
+
+/* Right line from arrow to circle edge */
 .wc-conn-line-r {
-  width: 14px; height: 1.5px;
+  height: 2px;
+  width: 18px;
   background: #b99474;
   flex-shrink: 0;
 }
+
+/* Arrow chevron circle — matches reference image */
 .wc-arrow {
-  width: 28px; height: 28px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   background: #fff;
-  border: 1.5px solid #b99474;
+  border: 2px solid #b99474;
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px;
-  color: #888;
+  font-size: 15px;
+  font-weight: 900;
+  color: #b99474;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 /* BOTTOM FOOTER ORNAMENT */
@@ -2956,7 +2964,7 @@ html {
       <!-- CONNECTOR 1→2 -->
       <div class="wc-conn">
         <div class="wc-conn-line-l"></div>
-        <div class="wc-arrow">&#8250;</div>
+        <div class="wc-arrow">&#10095;</div>
         <div class="wc-conn-line-r"></div>
       </div>
 
@@ -2977,7 +2985,7 @@ html {
       <!-- CONNECTOR 2→3 -->
       <div class="wc-conn">
         <div class="wc-conn-line-l"></div>
-        <div class="wc-arrow">&#8250;</div>
+        <div class="wc-arrow">&#10095;</div>
         <div class="wc-conn-line-r"></div>
       </div>
 
@@ -2998,7 +3006,7 @@ html {
       <!-- CONNECTOR 3→4 -->
       <div class="wc-conn">
         <div class="wc-conn-line-l"></div>
-        <div class="wc-arrow">&#8250;</div>
+        <div class="wc-arrow">&#10095;</div>
         <div class="wc-conn-line-r"></div>
       </div>
 
