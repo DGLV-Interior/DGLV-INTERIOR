@@ -31,7 +31,7 @@ body{
   background:var(--bg);
 }
 
-/* ✅ SAFE HEADER */
+/* HEADER */
 .header{
   display:flex;
   justify-content:space-between;
@@ -43,7 +43,6 @@ body{
 
 .logo img{
   height:58px;
-  display:block;
 }
 
 /* BUTTON */
@@ -199,52 +198,6 @@ body{
   background:var(--gold);
 }
 
-/* TRUST */
-.trust-bar{
-  background:#fff;
-  padding:20px;
-}
-
-.trust-inner{
-  display:flex;
-  justify-content:space-around;
-  flex-wrap:wrap;
-}
-
-.trust-item{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.trust-item i{
-  color:var(--gold);
-}
-
-.trust-text h4{
-  color:var(--navy);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .logo img{
-    height:50px;
-  }
-
-  .header{
-    padding:10px 16px;
-  }
-
-  .header-btn{
-    padding:8px 16px;
-    font-size:12px;
-  }
-
-  .slide img{
-    height:40vh;
-  }
-}
-
 </style>
 </head>
 
@@ -296,33 +249,17 @@ body{
   <div class="dots" id="dotsContainer"></div>
 </div>
 
-<div class="back-row">
-  <a href="https://dglvinterior.com/" class="back-btn">Back to Home</a>
-</div>
-
-</div>
-
-<div class="trust-bar">
-<div class="trust-inner">
-  <div class="trust-item">
-    <i class="fa fa-gem"></i>
-    <div class="trust-text"><h4>Premium Quality</h4></div>
-  </div>
-  <div class="trust-item">
-    <i class="fa fa-clock"></i>
-    <div class="trust-text"><h4>On Time Delivery</h4></div>
-  </div>
-</div>
 </div>
 
 <script>
 
-/* ✅ FORM OPEN FIX */
+/* ✅ FINAL FIX */
 function goToHome(){
   localStorage.setItem("openForm","yes");
   window.location.href="https://dglvinterior.com/";
 }
 
+/* SLIDER */
 const images=[
 ["images/living1.jpg","images/living2.jpg","images/living3.jpg"],
 ["images/kitchen1.jpg","images/kitchen2.jpg","images/kitchen3.jpg"],
