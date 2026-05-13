@@ -33,23 +33,21 @@ body{
 
 /* HEADER */
 .header{
+  background:#efefef;
+  padding:12px 28px;
+}
+
+/* 🔥 INNER HEADER (LINE CONTROL) */
+.header-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 28px;
-  background:#efefef;
-}
-
-/* 🔥 LOGO LINTEL LINE ONLY */
-.logo{
-  display:inline-block;
-  border-bottom:2px solid #dcdcdc;
-  padding-bottom:4px;
+  border-bottom:2px solid #dcdcdc; /* 🔥 logo → button width */
+  padding-bottom:6px;
 }
 
 .logo img{
   height:58px;
-  display:block;
 }
 
 /* BUTTON */
@@ -193,10 +191,12 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <div class="logo">
-    <img src="images/logo-full.png">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="images/logo-full.png">
+    </div>
+    <button class="header-btn" onclick="goToHome()">Get Free Consultation</button>
   </div>
-  <button class="header-btn" onclick="goToHome()">Get Free Consultation</button>
 </div>
 
 <!-- MAIN -->
@@ -241,7 +241,6 @@ body{
 
 <script>
 
-/* FORM REDIRECT FIX */
 function goToHome(){
   localStorage.setItem("openForm","yes");
   window.location.href="https://dglvinterior.com/";
