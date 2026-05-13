@@ -2460,8 +2460,18 @@ html {
 .wc-circle img {
   width: 75px; height: 75px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
+
+/* Icon on navy circle → gold */
+.wc-item:nth-child(odd) .wc-circle img {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(95%);
+}
+
+/* Icon on gold circle → navy */
+.wc-item:nth-child(even) .wc-circle img {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(40%) saturate(800%) hue-rotate(165deg) brightness(55%);
+}
+
 .wc-item:hover .wc-circle { transform: scale(1.06); }
 
 /* Vertical stem bottom — solid line */
