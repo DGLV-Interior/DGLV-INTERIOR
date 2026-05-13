@@ -38,11 +38,18 @@ body{
   align-items:center;
   padding:12px 28px;
   background:#efefef;
+}
+
+/* 🔥 LOGO LINTEL LINE ONLY */
+.logo{
+  display:inline-block;
   border-bottom:2px solid #dcdcdc;
+  padding-bottom:4px;
 }
 
 .logo img{
   height:58px;
+  display:block;
 }
 
 /* BUTTON */
@@ -179,25 +186,6 @@ body{
   background:var(--navy);
 }
 
-/* BACK */
-.back-row{
-  text-align:center;
-  margin:30px 0;
-}
-
-.back-btn{
-  padding:14px 36px;
-  background:var(--navy);
-  color:#fff;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:900;
-}
-
-.back-btn:hover{
-  background:var(--gold);
-}
-
 </style>
 </head>
 
@@ -253,7 +241,7 @@ body{
 
 <script>
 
-/* ✅ FINAL FIX */
+/* FORM REDIRECT FIX */
 function goToHome(){
   localStorage.setItem("openForm","yes");
   window.location.href="https://dglvinterior.com/";
