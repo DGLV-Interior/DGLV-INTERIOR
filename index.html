@@ -3392,11 +3392,9 @@ html {
           <option>15 Lakhs - 20 Lakhs</option>
         </select>
 
-		<textarea name="Message" rows="4" placeholder="Your Requirement (Optional)"></textarea>
+        <textarea name="Message" rows="4" placeholder="Your Requirement (Optional)"></textarea>
 
-		<button type="submit">Submit Quote</button>
-
-
+        <button type="submit">Submit Quote Request</button>
       </form>
     </div>
   </div>
@@ -3506,19 +3504,26 @@ window.addEventListener("scroll", () => {
   
 // AUTO POPUP REPEAT AFTER 15 SECONDS (SMART)
 let popupClosed = false;
+let formSubmitted = false; // ✅ Track if user already submitted
 
 function closePopupFunc(){
   quotePopup.style.display = "none";
+
+  // If form was submitted, never show again
+  if(formSubmitted) return;
+
   popupClosed = true;
 
-  // 15 sec tarvata malli allow avvali
+  // Allow popup again after 15 sec (only if not submitted)
   setTimeout(() => {
     popupClosed = false;
   }, 15000);
 }
 
 setInterval(() => {
-  if (localStorage.getItem("formFilled") === "yes") return;
+  // ✅ Don't show if form already submitted
+  if (formSubmitted) return;
+
   if (!popupClosed && quotePopup.style.display !== "flex") {
     openPopup();
   }
@@ -3551,6 +3556,10 @@ Message: ${message}`;
     let whatsappURL =
 		`https://wa.me/919666141369?text=${encodeURIComponent(text)}`;
 		window.open(whatsappURL, "_blank");
+
+    // ✅ Mark form as submitted — popup will NEVER show again this session
+    formSubmitted = true;
+    quotePopup.style.display = "none";
   }
   
 window.addEventListener("load", () => {
@@ -3567,18 +3576,6 @@ window.addEventListener("load", () => {
 });
 
 </script>  
-
-<script>
-function handleFormSubmit() {
-  // 🟢 mark as filled
-  localStorage.setItem("formFilled", "yes");
-
-  // popup close
-  document.querySelector(".popup").style.display = "none";
-}
-</script>
-
-
 
 <script type="application/ld+json">
 {
