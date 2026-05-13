@@ -1433,17 +1433,18 @@ onload="this.onload=null;this.rel='stylesheet'">
     ============================ */
     #contact{
       background: url("images/footer-bg.png") no-repeat center center;
-      background-size: 110%;
+      background-size: cover;
+      background-attachment: local;
       position: relative;
       padding: 75px 22px;
     }
 
-    /* Lighter overlay - preserve original image quality and colour */
+    /* Very subtle overlay - just enough for text contrast, image shows full quality */
     #contact::before {
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.38);
+      background: rgba(0, 0, 0, 0.18);
       pointer-events: none;
     }
 
