@@ -31,14 +31,13 @@ body{
   background:var(--bg);
 }
 
-/* 🔥 HEADER FIX */
+/* ✅ HEADER (MATCHED WITH INDEX) */
 .header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:8px 20px; /* reduced */
-  background:#fff;
-  border-bottom:1px solid #e5e5e5; /* clean line */
+  padding:14px 28px;
+  background:#efefef;
 }
 
 .logo{
@@ -47,8 +46,7 @@ body{
 }
 
 .logo img{
-  height:65px; /* increased */
-  object-fit:contain;
+  height:58px;
 }
 
 /* BUTTON */
@@ -235,15 +233,15 @@ body{
 /* MOBILE */
 @media(max-width:768px){
   .logo img{
-    height:55px;
+    height:50px;
   }
 
   .header{
-    padding:8px 12px;
+    padding:10px 16px;
   }
 
   .header-btn{
-    padding:8px 18px;
+    padding:8px 16px;
     font-size:12px;
   }
 
@@ -268,7 +266,6 @@ body{
 <!-- MAIN -->
 <div class="main-content">
 
-<!-- SERVICES -->
 <div class="categories">
   <button class="cat-btn active" onclick="changeCategory(0,this)">
     <i class="fa-solid fa-couch"></i> Living Room
@@ -290,31 +287,26 @@ body{
   </button>
 </div>
 
-<!-- SLIDER -->
 <div class="slider-wrap">
+  <div class="slider-track" id="sliderTrack"></div>
 
-<div class="slider-track" id="sliderTrack"></div>
+  <button class="nav-arrow prev" onclick="prevSlide()">
+    <i class="fa fa-chevron-left"></i>
+  </button>
 
-<button class="nav-arrow prev" onclick="prevSlide()">
-  <i class="fa fa-chevron-left"></i>
-</button>
+  <button class="nav-arrow next" onclick="nextSlide()">
+    <i class="fa fa-chevron-right"></i>
+  </button>
 
-<button class="nav-arrow next" onclick="nextSlide()">
-  <i class="fa fa-chevron-right"></i>
-</button>
-
-<div class="dots" id="dotsContainer"></div>
-
+  <div class="dots" id="dotsContainer"></div>
 </div>
 
-<!-- BACK -->
 <div class="back-row">
   <a href="https://dglvinterior.com/" class="back-btn">Back to Home</a>
 </div>
 
 </div>
 
-<!-- TRUST -->
 <div class="trust-bar">
 <div class="trust-inner">
   <div class="trust-item">
