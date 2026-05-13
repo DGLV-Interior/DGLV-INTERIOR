@@ -307,17 +307,17 @@ onload="this.onload=null;this.rel='stylesheet'">
     ============================ */
 .hero{
   width:100%;
-  height:100vh; /* 🔥 full screen height */
+  height:100vh;
   display:flex;
   align-items:flex-end;
   position:relative;
 
-  background: url("images/hero-bg.png") no-repeat center top;
+  background: url("images/hero-bg.png") no-repeat center center;
   background-size: cover;
 
   padding:60px 0;
 
-  filter: brightness(1.05) contrast(1.05);
+  filter: brightness(1.18) contrast(1.12) saturate(1.08);
 }
 
 /* LIGHT OVERLAY */
@@ -2398,9 +2398,10 @@ html {
   border-radius: 50%;
   display: inline-block;
 }
-.wc-item:nth-child(odd)  .wc-dots span { background: #082e3b; }
-.wc-item:nth-child(even) .wc-dots span { background: #b99474; }
-
+.wc-item.wc-dark .wc-dots span { background: #082e3b; }
+.wc-item.wc-gold .wc-dots span { background: #b99474; }
+.wc-item.wc-dark .wc-title { color: #082e3b; }
+.wc-item.wc-gold .wc-title { color: #b99474; }
 /* Small circle pin top (connector node above circle) */
 .wc-pin {
   width: 14px; height: 14px;
@@ -2454,8 +2455,8 @@ html {
   opacity: 0.6;
 }
 
-.wc-item:nth-child(odd)  .wc-circle { background: #082e3b; }
-.wc-item:nth-child(even) .wc-circle { background: #b99474; }
+.wc-item.wc-dark  .wc-circle { background: #082e3b; }
+.wc-item.wc-gold  .wc-circle { background: #b99474; }
 
 .wc-circle img {
   width: 75px; height: 75px;
@@ -2463,12 +2464,12 @@ html {
 }
 
 /* Icon on navy circle → gold */
-.wc-item:nth-child(odd) .wc-circle img {
+.wc-item.wc-dark .wc-circle img {
   filter: brightness(0) saturate(100%) invert(72%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(95%);
 }
 
 /* Icon on gold circle → navy */
-.wc-item:nth-child(even) .wc-circle img {
+.wc-item.wc-gold .wc-circle img {
   filter: brightness(0) saturate(100%) invert(15%) sepia(40%) saturate(800%) hue-rotate(165deg) brightness(55%);
 }
 
@@ -2499,8 +2500,7 @@ html {
   margin-top: 18px; margin-bottom: 10px;
   text-transform: uppercase;
 }
-.wc-item:nth-child(odd)  .wc-title { color: #082e3b; }
-.wc-item:nth-child(even) .wc-title { color: #b99474; }
+
 
 .wc-desc {
   font-size: 13.5px; color: #555;
@@ -2515,9 +2515,9 @@ html {
   border-radius: 50%;
   background: #b99474;
   flex-shrink: 0;
-  align-self: center;
-  /* offset: dots(16) + stem(22) + pin(14) + half-circle(80) = 132 */
-  margin-top: -132px;
+  align-self: flex-start;
+  /* dots(16) + gap(10) + stem(22) + pin(14) + half-circle(80) - half-dot(5) = 137 */
+  margin-top: 137px;
 }
 
 /* ---- CONNECTOR between items (the flow lines with arrow) ---- */
@@ -2526,8 +2526,9 @@ html {
   align-items: center;
   flex-shrink: 0;
   position: relative;
-  /* offset: dots(16) + stem(22) + pin(14) + half-circle(80) = 132 */
-  margin-top: -132px;
+  align-self: flex-start;
+  /* same offset to sit at circle vertical centre */
+  margin-top: 121px;
   z-index: 4;
   gap: 0;
 }
@@ -2958,7 +2959,7 @@ html {
       <div class="wc-endpoint-dot"></div>
 
       <!-- ITEM 1 — dark blue -->
-      <div class="wc-item">
+      <div class="wc-item wc-dark">
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
@@ -2979,7 +2980,7 @@ html {
       </div>
 
       <!-- ITEM 2 — gold -->
-      <div class="wc-item">
+      <div class="wc-item wc-gold">
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
@@ -3000,7 +3001,7 @@ html {
       </div>
 
       <!-- ITEM 3 — dark blue -->
-      <div class="wc-item">
+      <div class="wc-item wc-dark">
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
@@ -3021,7 +3022,7 @@ html {
       </div>
 
       <!-- ITEM 4 — gold -->
-      <div class="wc-item">
+      <div class="wc-item wc-gold">
         <div class="wc-dots"><span></span><span></span><span></span></div>
         <div class="wc-stem-top"></div>
         <div class="wc-pin"></div>
