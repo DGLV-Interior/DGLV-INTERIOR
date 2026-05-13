@@ -1432,25 +1432,18 @@ onload="this.onload=null;this.rel='stylesheet'">
        CONTACT — NEW DARK IMAGE DESIGN
     ============================ */
     #contact{
-      background: linear-gradient(
-        135deg,
-        #0a1628 0%,
-        #0e1e2e 40%,
-        #111820 70%,
-        #1a1208 100%
-      );
+      background: url("images/footer-bg.png") no-repeat center center;
+      background-size: cover;
       position: relative;
       padding: 75px 22px;
     }
 
-    /* Gold vein overlay */
+    /* Dark overlay so text stays readable */
     #contact::before {
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background-image:
-        linear-gradient(135deg, rgba(185,148,116,0.06) 0%, transparent 50%),
-        linear-gradient(315deg, rgba(185,148,116,0.04) 0%, transparent 60%);
+      background: rgba(0, 0, 0, 0.62);
       pointer-events: none;
     }
 
@@ -1510,13 +1503,13 @@ onload="this.onload=null;this.rel='stylesheet'">
 
     /* LEFT CARD */
     .contact-card{
-      background: rgba(8,46,59,0.6);
+      background: rgba(10,10,10,0.72);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-radius: 22px;
       padding: 32px 28px;
-      border: 1px solid rgba(185,148,116,0.25);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+      border: 1.5px solid rgba(185,148,116,0.55);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(185,148,116,0.08);
       color: white;
     }
 
@@ -1530,16 +1523,18 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .contact-card-logo-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      border: 1.5px solid #b99474;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      border: 2px solid #b99474;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 24px;
       color: #b99474;
-      background: rgba(185,148,116,0.1);
+      background: rgba(20,14,6,0.75);
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(185,148,116,0.12);
     }
 
     .contact-card-logo-text h3 {
@@ -1556,8 +1551,8 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .contact-card .info{
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(185,148,116,0.2);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(185,148,116,0.30);
       padding: 14px 16px;
       border-radius: 14px;
       margin-bottom: 12px;
@@ -1572,21 +1567,23 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .contact-card .info:hover {
-      background: rgba(185,148,116,0.12);
-      border-color: rgba(185,148,116,0.4);
+      background: rgba(185,148,116,0.10);
+      border-color: rgba(185,148,116,0.55);
     }
 
     .info-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      border: 1.5px solid #b99474;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #b99474;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
       color: #b99474;
       flex-shrink: 0;
+      background: rgba(20,14,6,0.75);
+      box-shadow: 0 0 0 3px rgba(185,148,116,0.10);
     }
 
     .info-text-label {
@@ -1604,16 +1601,16 @@ onload="this.onload=null;this.rel='stylesheet'">
 
     /* RIGHT CARD */
     .contact-right{
-      background: rgba(245,237,226,0.95);
+      background: rgba(10,10,10,0.72);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-radius: 22px;
       padding: 24px;
-      border: 1px solid rgba(185,148,116,0.3);
+      border: 1.5px solid rgba(185,148,116,0.55);
       display: flex;
       flex-direction: column;
       gap: 16px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(185,148,116,0.08);
     }
 
     .contact-right-header {
@@ -1624,7 +1621,7 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .map-heading{
-      color: #082e3b;
+      color: white;
       font-size: 16px;
       font-weight: 900;
       display: flex;
@@ -1633,35 +1630,38 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     .map-heading-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       background: #b99474;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      color: white;
+      font-size: 18px;
+      color: #1a0f00;
       flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(185,148,116,0.22);
     }
 
     .get-directions-btn {
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #082e3b;
-      color: white;
-      padding: 10px 16px;
+      background: transparent;
+      color: #b99474;
+      padding: 10px 18px;
       border-radius: 10px;
       font-size: 13px;
       font-weight: 900;
       text-decoration: none;
       transition: 0.2s;
       white-space: nowrap;
+      border: 1.5px solid #b99474;
     }
 
     .get-directions-btn:hover {
       background: #b99474;
+      color: #1a0f00;
       transform: scale(1.03);
     }
 
@@ -1675,31 +1675,34 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     /* SOCIAL LINKS */
+    /* SOCIAL LINKS */
     .social-links{
       display: flex;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
     }
 
     .social-links a{
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: #082e3b;
+      background: rgba(10,10,10,0.75);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #b99474;
-      font-size: 18px;
+      font-size: 20px;
       transition: 0.3s;
-      border: 2px solid rgba(185,148,116,0.3);
+      border: 2px solid #b99474;
+      box-shadow: 0 0 0 3px rgba(185,148,116,0.10);
     }
 
     .social-links a:hover{
       background: #b99474;
-      color: white;
+      color: #1a0f00;
       transform: scale(1.12);
+      box-shadow: 0 4px 18px rgba(185,148,116,0.35);
     }
 
     .social-item {
@@ -1712,7 +1715,7 @@ onload="this.onload=null;this.rel='stylesheet'">
     .social-item span {
       font-size: 11px;
       font-weight: 700;
-      color: #082e3b;
+      color: rgba(255,255,255,0.75);
     }
 
     /* CONTACT FOOTER STRIP */
@@ -1723,9 +1726,9 @@ onload="this.onload=null;this.rel='stylesheet'">
       max-width: 1100px;
       margin: 28px auto 0;
       padding: 20px 28px;
-      background: rgba(8,46,59,0.6);
+      background: rgba(10,10,10,0.72);
       border-radius: 16px;
-      border: 1px solid rgba(185,148,116,0.2);
+      border: 1.5px solid rgba(185,148,116,0.40);
       gap: 20px;
       flex-wrap: wrap;
     }
@@ -1739,13 +1742,14 @@ onload="this.onload=null;this.rel='stylesheet'">
     .cfs-logo-icon {
       width: 42px;
       height: 42px;
-      border-radius: 10px;
-      border: 1.5px solid #b99474;
+      border-radius: 50%;
+      border: 2px solid #b99474;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
       color: #b99474;
+      background: rgba(20,14,6,0.75);
     }
 
     .cfs-logo-text h4 {
@@ -1789,6 +1793,32 @@ onload="this.onload=null;this.rel='stylesheet'">
     .contact-card:hover{
       transform: translateY(-4px);
       transition: 0.3s;
+    }
+
+    /* ORNAMENT DIVIDER */
+    .contact-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 14px auto 0;
+    }
+    .co-line {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: #b99474;
+    }
+    .co-diamond {
+      color: #b99474;
+      font-size: 11px;
+      line-height: 1;
+    }
+    .co-arrow {
+      color: #b99474;
+      font-size: 9px;
+      line-height: 1;
+      opacity: 0.7;
     }
 
     /* ===========================
@@ -3234,6 +3264,13 @@ html {
         <div class="contact-sublabel">DESIGNING SPACES. DEFINING LIFESTYLES.</div>
         <h2>Contact <span>DGLV</span> Interior</h2>
         <p>Book your free design consultation today. We will call you back quickly.</p>
+        <div class="contact-ornament">
+          <span class="co-line"></span>
+          <span class="co-arrow">&#9658;</span>
+          <span class="co-diamond">&#9670;</span>
+          <span class="co-arrow" style="transform:scaleX(-1);display:inline-block;">&#9658;</span>
+          <span class="co-line"></span>
+        </div>
       </div>
 
       <div class="contact-wrap">
