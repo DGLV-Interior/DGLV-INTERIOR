@@ -2365,31 +2365,14 @@ html {
 .wc-line{ display: block; width: 80px; height: 1.5px; background: #b99474; }
 .wc-diamond{ color: #b99474; font-size: 16px; line-height: 1; }
 
-/* ---- INFOGRAPHIC ROW WRAPPER ---- */
-.wc-infographic-wrap {
-  position: relative;
-  max-width: 1160px;
-  margin: 0 auto 50px;
-  overflow: visible;
-}
-
-/* Connecting wave SVG sits behind everything */
-.wc-wave-svg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: visible;
-}
-
 /* ---- INFOGRAPHIC ROW ---- */
 .wc-infographic {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  max-width: 1160px;
+  margin: 0 auto 50px;
   position: relative;
-  z-index: 2;
 }
 
 /* ---- Each item ---- */
@@ -2419,8 +2402,7 @@ html {
 .wc-item.wc-gold .wc-dots span { background: #b99474; }
 .wc-item.wc-dark .wc-title { color: #082e3b; }
 .wc-item.wc-gold .wc-title { color: #b99474; }
-
-/* Small circle pin top */
+/* Small circle pin top (connector node above circle) */
 .wc-pin {
   width: 14px; height: 14px;
   border-radius: 50%;
@@ -2430,7 +2412,7 @@ html {
   flex-shrink: 0;
 }
 
-/* Vertical stem top */
+/* Vertical stem top — solid line */
 .wc-stem-top {
   width: 2px; height: 22px;
   background: #b99474;
@@ -2463,7 +2445,7 @@ html {
   opacity: 0.8;
 }
 
-/* Outer DASHED ring */
+/* Outer DASHED ring (further out) */
 .wc-circle::before {
   content: "";
   position: absolute;
@@ -2493,7 +2475,7 @@ html {
 
 .wc-item:hover .wc-circle { transform: scale(1.06); }
 
-/* Vertical stem bottom */
+/* Vertical stem bottom — solid line */
 .wc-stem-bottom {
   width: 2px; height: 22px;
   background: #b99474;
@@ -2519,52 +2501,66 @@ html {
   text-transform: uppercase;
 }
 
+
 .wc-desc {
   font-size: 13.5px; color: #555;
   line-height: 1.7; font-weight: 700;
   max-width: 200px; margin: 0 auto;
 }
 
-/* Left & right endpoint dots */
+/* Left & right endpoint dots on the connector row */
 .wc-endpoint-dot {
-  width: 10px; height: 10px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #b99474;
   flex-shrink: 0;
   align-self: flex-start;
+  /* dots(16) + gap(10) + stem(22) + pin(14) + half-circle(80) - half-dot(5) = 137 */
   margin-top: 137px;
 }
 
-/* ---- CONNECTOR between items ---- */
+/* ---- CONNECTOR between items (the flow lines with arrow) ---- */
 .wc-conn {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   position: relative;
   align-self: flex-start;
+  /* same offset to sit at circle vertical centre */
   margin-top: 121px;
   z-index: 4;
   gap: 0;
 }
 
+/* Left line from circle edge to arrow */
 .wc-conn-line-l {
-  height: 2px; width: 18px;
-  background: #b99474; flex-shrink: 0;
-}
-.wc-conn-line-r {
-  height: 2px; width: 18px;
-  background: #b99474; flex-shrink: 0;
+  height: 2px;
+  width: 18px;
+  background: #b99474;
+  flex-shrink: 0;
 }
 
-/* Arrow chevron circle */
+/* Right line from arrow to circle edge */
+.wc-conn-line-r {
+  height: 2px;
+  width: 18px;
+  background: #b99474;
+  flex-shrink: 0;
+}
+
+/* Arrow chevron circle — matches reference image */
 .wc-arrow {
   width: 32px; height: 32px;
   border-radius: 50%;
   background: #fff;
   border: 2px solid #b99474;
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 900;
-  color: #b99474; flex-shrink: 0; line-height: 1;
+  font-size: 15px;
+  font-weight: 900;
+  color: #b99474;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 /* BOTTOM FOOTER ORNAMENT */
@@ -2574,8 +2570,10 @@ html {
 }
 .wc-footer-ornament .fo-dot  { width:8px; height:8px; border-radius:50%; background:#b99474; display:inline-block; }
 .wc-footer-ornament .fo-diamond {
-  width:18px; height:18px; background:#082e3b;
-  transform: rotate(45deg); display:inline-block;
+  width:18px; height:18px;
+  background:#082e3b;
+  transform: rotate(45deg);
+  display:inline-block;
 }
 .wc-footer-ornament .fo-dot-sm { width:5px; height:5px; border-radius:50%; background:#b99474; display:inline-block; }
 
@@ -2585,8 +2583,6 @@ html {
   .wc-conn { display: none; }
   .wc-endpoint-dot { display: none; }
   .wc-item { flex: 0 0 42%; }
-  .wc-wave-svg { display: none; }
-  .wc-infographic-wrap { overflow: visible; }
 }
 @media(max-width: 520px){
   .wc-item { flex: 0 0 90%; }
@@ -2957,159 +2953,91 @@ html {
     </div>
 
     <!-- INFOGRAPHIC ROW -->
-    <div class="wc-infographic-wrap">
+    <div class="wc-infographic">
 
-      <!-- CONNECTING LINE SVG — snakes through all 4 circles in brand colors -->
-      <svg class="wc-wave-svg" viewBox="0 0 1160 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <!--
-          The line runs at y=170 (vertical center of circles).
-          Around each circle it bows outward (above circle 1&3, below circle 2&4)
-          creating the S-curve "hug" effect seen in the reference image.
-          Circle centers approx at x: 105, 355, 615, 865 (each item ~200px wide + connectors)
-          Circle radius ~100px including outer rings
-        -->
+      <!-- LEFT ENDPOINT DOT -->
+      <div class="wc-endpoint-dot"></div>
 
-        <!-- Segment: left endpoint → bow above circle 1 → back to midline → arrow 1 -->
-        <path d="
-          M 5,170
-          L 50,170
-          C 70,170 75,120 85,100
-          C 95,80 115,70 130,80
-          C 155,95 165,140 175,160
-          C 178,165 182,168 188,170
-          L 215,170
-          C 225,170 232,170 240,170
-        " stroke="#082e3b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Segment: arrow 1 → bow below circle 2 → back to midline → arrow 2 -->
-        <path d="
-          M 280,170
-          L 310,170
-          C 320,170 325,175 330,185
-          C 340,205 355,230 370,240
-          C 385,250 400,240 410,225
-          C 422,208 428,185 435,172
-          C 438,170 442,170 450,170
-          L 480,170
-          C 492,170 500,170 508,170
-        " stroke="#b99474" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Segment: arrow 2 → bow above circle 3 → back to midline → arrow 3 -->
-        <path d="
-          M 548,170
-          L 575,170
-          C 585,170 588,165 595,152
-          C 605,132 618,108 633,100
-          C 648,92 663,102 672,118
-          C 682,136 688,158 694,170
-          L 720,170
-          C 730,170 738,170 748,170
-        " stroke="#082e3b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Segment: arrow 3 → bow below circle 4 → right endpoint -->
-        <path d="
-          M 788,170
-          L 812,170
-          C 822,170 826,175 832,188
-          C 842,210 856,232 872,240
-          C 888,248 902,236 912,218
-          C 922,200 928,180 934,170
-          L 960,170
-          L 1155,170
-        " stroke="#b99474" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-        <!-- Left endpoint filled dot -->
-        <circle cx="5" cy="170" r="5" fill="#082e3b"/>
-        <!-- Right endpoint filled dot -->
-        <circle cx="1155" cy="170" r="5" fill="#b99474"/>
-      </svg>
-
-      <div class="wc-infographic">
-
-        <!-- LEFT ENDPOINT DOT -->
-        <div class="wc-endpoint-dot"></div>
-
-        <!-- ITEM 1 — dark blue -->
-        <div class="wc-item wc-dark">
-          <div class="wc-dots"><span></span><span></span><span></span></div>
-          <div class="wc-stem-top"></div>
-          <div class="wc-pin"></div>
-          <div class="wc-circle">
-            <img src="images/premium.png" alt="High Quality Materials">
-          </div>
-          <div class="wc-pin-bottom"></div>
-          <div class="wc-stem-bottom"></div>
-          <div class="wc-title">HIGH QUALITY MATERIALS</div>
-          <p class="wc-desc">We use premium quality materials that ensure durability, elegance and a perfect finish.</p>
+      <!-- ITEM 1 — dark blue -->
+      <div class="wc-item wc-dark">
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/premium.png" alt="High Quality Materials">
         </div>
-
-        <!-- CONNECTOR 1→2 -->
-        <div class="wc-conn">
-          <div class="wc-conn-line-l"></div>
-          <div class="wc-arrow">&#10095;</div>
-          <div class="wc-conn-line-r"></div>
-        </div>
-
-        <!-- ITEM 2 — gold -->
-        <div class="wc-item wc-gold">
-          <div class="wc-dots"><span></span><span></span><span></span></div>
-          <div class="wc-stem-top"></div>
-          <div class="wc-pin"></div>
-          <div class="wc-circle">
-            <img src="images/custom.png" alt="Smart Designs">
-          </div>
-          <div class="wc-pin-bottom"></div>
-          <div class="wc-stem-bottom"></div>
-          <div class="wc-title">SMART DESIGNS</div>
-          <p class="wc-desc">Our designs are space-efficient, functional and tailored to match your style and needs.</p>
-        </div>
-
-        <!-- CONNECTOR 2→3 -->
-        <div class="wc-conn">
-          <div class="wc-conn-line-l"></div>
-          <div class="wc-arrow">&#10095;</div>
-          <div class="wc-conn-line-r"></div>
-        </div>
-
-        <!-- ITEM 3 — dark blue -->
-        <div class="wc-item wc-dark">
-          <div class="wc-dots"><span></span><span></span><span></span></div>
-          <div class="wc-stem-top"></div>
-          <div class="wc-pin"></div>
-          <div class="wc-circle">
-            <img src="images/skilled.png" alt="On-Time Delivery">
-          </div>
-          <div class="wc-pin-bottom"></div>
-          <div class="wc-stem-bottom"></div>
-          <div class="wc-title">ON-TIME DELIVERY</div>
-          <p class="wc-desc">We value your time and ensure timely delivery with seamless execution.</p>
-        </div>
-
-        <!-- CONNECTOR 3→4 -->
-        <div class="wc-conn">
-          <div class="wc-conn-line-l"></div>
-          <div class="wc-arrow">&#10095;</div>
-          <div class="wc-conn-line-r"></div>
-        </div>
-
-        <!-- ITEM 4 — gold -->
-        <div class="wc-item wc-gold">
-          <div class="wc-dots"><span></span><span></span><span></span></div>
-          <div class="wc-stem-top"></div>
-          <div class="wc-pin"></div>
-          <div class="wc-circle">
-            <img src="images/affordable.png" alt="Affordable prices">
-          </div>
-          <div class="wc-pin-bottom"></div>
-          <div class="wc-stem-bottom"></div>
-          <div class="wc-title">AFFORDABLE</div>
-          <p class="wc-desc">We deliver premium-quality interiors with budget-friendly pricing, helping you create beautiful spaces without overspending.</p>
-        </div>
-
-        <!-- RIGHT ENDPOINT DOT -->
-        <div class="wc-endpoint-dot"></div>
-
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">HIGH QUALITY MATERIALS</div>
+        <p class="wc-desc">We use premium quality materials that ensure durability, elegance and a perfect finish.</p>
       </div>
+
+      <!-- CONNECTOR 1→2 -->
+      <div class="wc-conn">
+        <div class="wc-conn-line-l"></div>
+        <div class="wc-arrow">&#10095;</div>
+        <div class="wc-conn-line-r"></div>
+      </div>
+
+      <!-- ITEM 2 — gold -->
+      <div class="wc-item wc-gold">
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/custom.png" alt="Smart Designs">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">SMART DESIGNS</div>
+        <p class="wc-desc">Our designs are space-efficient, functional and tailored to match your style and needs.</p>
+      </div>
+
+      <!-- CONNECTOR 2→3 -->
+      <div class="wc-conn">
+        <div class="wc-conn-line-l"></div>
+        <div class="wc-arrow">&#10095;</div>
+        <div class="wc-conn-line-r"></div>
+      </div>
+
+      <!-- ITEM 3 — dark blue -->
+      <div class="wc-item wc-dark">
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/skilled.png" alt="On-Time Delivery">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">ON-TIME DELIVERY</div>
+        <p class="wc-desc">We value your time and ensure timely delivery with seamless execution.</p>
+      </div>
+
+      <!-- CONNECTOR 3→4 -->
+      <div class="wc-conn">
+        <div class="wc-conn-line-l"></div>
+        <div class="wc-arrow">&#10095;</div>
+        <div class="wc-conn-line-r"></div>
+      </div>
+
+      <!-- ITEM 4 — gold -->
+      <div class="wc-item wc-gold">
+        <div class="wc-dots"><span></span><span></span><span></span></div>
+        <div class="wc-stem-top"></div>
+        <div class="wc-pin"></div>
+        <div class="wc-circle">
+          <img src="images/affordable.png" alt="Affordable prices">
+        </div>
+        <div class="wc-pin-bottom"></div>
+        <div class="wc-stem-bottom"></div>
+        <div class="wc-title">AFFORDABLE</div>
+        <p class="wc-desc"> We deliver premium-quality interiors with budget-friendly pricing, helping you create beautiful spaces without overspending.</p>
+      </div>
+
+      <!-- RIGHT ENDPOINT DOT -->
+      <div class="wc-endpoint-dot"></div>
+
     </div>
 
     <!-- BOTTOM ORNAMENT -->
