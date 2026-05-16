@@ -3842,9 +3842,9 @@ html {
         <div class="quiz-result-style" id="quizResultStyle">Your Style: <span id="quizStyleName">Modern Minimal</span></div>
         <p class="quiz-result-desc" id="quizResultDesc"></p>
         <div class="quiz-result-rooms" id="quizResultRooms"></div>
-        <button class="quiz-result-btn" onclick="document.getElementById('quotePopup').style.display='flex'">
-          <i class="fa-solid fa-paper-plane"></i> Get Free Consultation
-        </button>
+        <a class="quiz-result-btn" id="quizWaBtn" href="#" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Chat with Us on WhatsApp
+        </a>
         <button class="quiz-restart" onclick="quizRestart()">&#8635; Take quiz again</button>
       </div>
     </div>
@@ -3924,9 +3924,7 @@ html {
             </div>
           </div>
 
-          <button class="ce-calc-btn" onclick="ceCalc()">
-            <i class="fa-solid fa-calculator"></i> &nbsp;Calculate Estimate
-          </button>
+
         </div>
       </div>
 
@@ -3947,9 +3945,9 @@ html {
             <div class="ce-est-note">* Actual cost depends on materials, area size &amp; design complexity</div>
           </div>
           <div class="ce-breakdown" id="ceBreakdown"></div>
-          <button class="ce-result-cta" onclick="document.getElementById('quotePopup').style.display='flex'">
-            <i class="fa-solid fa-paper-plane"></i> Get Exact Quote on WhatsApp
-          </button>
+          <a class="ce-result-cta" id="ceWhatsappBtn" href="#" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Get Exact Quote on WhatsApp
+          </a>
         </div>
       </div>
     </div>
@@ -4822,9 +4820,6 @@ function quizPrev(){
 
 function quizShowResult(){
   /* Determine dominant style from answers */
-  const freq = {};
-  quizAnswers.forEach(a => { freq[a] = (freq[a]||0)+1; });
-  // map budget answers to style
   const budgetMap = { basic:'modern', premium:'warm', luxury:'luxury', bespoke:'luxury' };
   const styleVotes = {};
   quizAnswers.forEach((a,i) => {
@@ -4851,6 +4846,32 @@ function quizShowResult(){
   });
   document.getElementById('quizHeaderTitle').textContent = 'Your Style Result!';
   document.getElementById('quizHeaderSub').textContent = 'Perfect match found 🎉';
+
+  /* Map question answers to readable labels */
+  const q1Labels = { modern:'Clean & Sleek', luxury:'Grand & Classic', warm:'Warm & Natural', contemporary:'Bold & Creative' };
+  const q2Labels = { modern:'Handle-less Gloss Kitchen', warm:'Wooden Finish Kitchen', luxury:'Dark & Dramatic Kitchen', contemporary:'Colourful Kitchen' };
+  const q3Labels = { basic:'Under ₹3 Lakhs', premium:'₹3L – ₹6L', luxury:'₹6L – ₹12L', bespoke:'₹12L+' };
+
+  const ans0 = q1Labels[quizAnswers[0]] || quizAnswers[0] || 'Not answered';
+  const ans1 = q2Labels[quizAnswers[1]] || quizAnswers[1] || 'Not answered';
+  const ans2 = q3Labels[quizAnswers[2]] || quizAnswers[2] || 'Not answered';
+
+  /* Build WhatsApp message */
+  const waText =
+    `Hello DGLV Interior Team! 👋\n\n` +
+    `I took your Interior Style Quiz and got my results!\n\n` +
+    `🎨 My Interior Style: ${result.name} ${result.icon}\n\n` +
+    `My Answers:\n` +
+    `1️⃣ Dream Home Feel: ${ans0}\n` +
+    `2️⃣ Kitchen Style: ${ans1}\n` +
+    `3️⃣ Budget Range: ${ans2}\n\n` +
+    `Recommended Rooms for me: ${result.rooms.join(', ')}\n\n` +
+    `Please help me design my home in this style. Thank you!`;
+
+  const waBtn = document.getElementById('quizWaBtn');
+  if(waBtn){
+    waBtn.href = 'https://wa.me/919666141369?text=' + encodeURIComponent(waText);
+  }
 }
 
 function quizRestart(){
@@ -4907,22 +4928,42 @@ function ceCalc(){
   /* Breakdown */
   const bkEl = document.getElementById('ceBreakdown');
   bkEl.innerHTML = '';
+  const breakdownLines = [];
   if(type && pkg){
     const row = document.createElement('div');
     row.className = 'ce-break-row';
     row.innerHTML = `<span>${typeMap(type)} Base (${pkgLabel[pkg]})</span><span>${fmt(base*mul)}</span>`;
     bkEl.appendChild(row);
+    breakdownLines.push(`${typeMap(type)} Base (${pkgLabel[pkg]}): ${fmt(base*mul)}`);
   }
   Object.entries(ceRooms).forEach(([room, price]) => {
     const row = document.createElement('div');
     row.className = 'ce-break-row';
     row.innerHTML = `<span>${room}</span><span>${fmt(price * mul)}</span>`;
     bkEl.appendChild(row);
+    breakdownLines.push(`${room}: ${fmt(price * mul)}`);
   });
 
   document.getElementById('cePlaceholder').style.display = 'none';
   const rc = document.getElementById('ceResultContent');
   rc.style.display = 'flex';
+
+  /* Build WhatsApp message */
+  const selectedRooms = Object.keys(ceRooms).join(', ') || 'Not selected';
+  const waText =
+    `Hello DGLV Interior Team! 👋\n\n` +
+    `I used your Cost Estimator and here are my details:\n\n` +
+    `🏠 Home Type: ${typeMap(type) || 'Not selected'}\n` +
+    `📦 Package: ${pkgLabel[pkg] || 'Not selected'}\n` +
+    `🛋️ Rooms Selected: ${selectedRooms}\n\n` +
+    `💰 My Estimated Budget: ${fmt(lo)} – ${fmt(hi)}\n\n` +
+    `Breakdown:\n${breakdownLines.join('\n')}\n\n` +
+    `Please provide an exact quotation. Thank you!`;
+
+  const waBtn = document.getElementById('ceWhatsappBtn');
+  if(waBtn){
+    waBtn.href = 'https://wa.me/919666141369?text=' + encodeURIComponent(waText);
+  }
 }
 
 function typeMap(t){ return {
