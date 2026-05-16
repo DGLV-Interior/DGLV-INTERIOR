@@ -1888,12 +1888,14 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
 
     /* Left image panel */
-    .popup-img-side{
-      width:160px;
-      flex-shrink:0;
-      background:url('images/Quote-bg.png') center/cover no-repeat;
-      position:relative;
-    }
+	.popup-img-side{
+     width:160px;
+     flex-shrink:0;
+     background:url('images/Quote-bg.png') center center no-repeat;
+     background-size: contain; /* clear image */
+     background-color:#fff;
+     position:relative;
+   }
     .popup-img-side::after{
       content:'';
       position:absolute;inset:0;
