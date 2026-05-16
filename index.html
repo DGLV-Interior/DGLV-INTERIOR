@@ -2852,6 +2852,433 @@ html {
   .rp-title { font-size: 32px; }
 }
 
+/* ===========================
+   1. ANIMATED STATS COUNTER
+=========================== */
+#stats-section {
+  background: linear-gradient(135deg, #082e3b 0%, #0d3d4e 50%, #082e3b 100%);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b99474' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.stats-sublabel {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  color: #b99474; font-size: 11px; font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 10px; position: relative; z-index: 2;
+}
+.stats-sublabel::before, .stats-sublabel::after {
+  content: ""; display: block; width: 35px; height: 1.5px; background: #b99474;
+}
+#stats-section h2 {
+  color: #ffffff; font-size: 36px; font-weight: 900; margin-bottom: 8px;
+  position: relative; z-index: 2;
+}
+#stats-section h2 span { color: #b99474; }
+.stats-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 8px auto 40px; position: relative; z-index: 2;
+}
+.stats-ornament .so-line { display: block; width: 50px; height: 1.5px; background: #b99474; }
+.stats-ornament .so-diamond { color: #b99474; font-size: 14px; }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1100px; margin: 0 auto; position: relative; z-index: 2;
+}
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(185,148,116,0.35);
+  border-radius: 22px; padding: 32px 20px;
+  transition: 0.3s ease; cursor: default;
+  backdrop-filter: blur(8px);
+}
+.stat-card:hover {
+  background: rgba(185,148,116,0.12);
+  border-color: rgba(185,148,116,0.7);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(185,148,116,0.2);
+}
+.stat-icon {
+  width: 62px; height: 62px; border-radius: 50%;
+  background: rgba(185,148,116,0.15); border: 2px solid #b99474;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: #b99474; margin: 0 auto 18px;
+  box-shadow: 0 0 0 6px rgba(185,148,116,0.08);
+  transition: 0.3s;
+}
+.stat-card:hover .stat-icon {
+  background: #b99474; color: #ffffff;
+  box-shadow: 0 0 0 8px rgba(185,148,116,0.15);
+}
+.stat-number {
+  font-size: 52px; font-weight: 900; color: #ffffff;
+  line-height: 1; margin-bottom: 8px;
+  font-family: "kitamiw01", Arial, sans-serif;
+}
+.stat-number .stat-suffix { color: #b99474; }
+.stat-label {
+  font-size: 13px; font-weight: 900; color: rgba(255,255,255,0.75);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.stat-divider {
+  width: 30px; height: 2px; background: #b99474;
+  margin: 10px auto; border-radius: 2px; opacity: 0.6;
+}
+@media(max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 500px) { .stats-grid { grid-template-columns: 1fr 1fr; gap: 14px; } .stat-number { font-size: 38px; } }
+
+/* ===========================
+   2. BEFORE / AFTER SLIDER
+=========================== */
+#before-after-section {
+  background: #f8fafc; padding: 75px 20px;
+}
+.ba-sublabel {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  color: #b99474; font-size: 11px; font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.ba-sublabel::before, .ba-sublabel::after {
+  content: ""; display: block; width: 35px; height: 1.5px; background: #b99474;
+}
+#before-after-section .sec-head h2 { color: #082e3b; }
+#before-after-section .sec-head h2 span { color: #b99474; }
+.ba-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 8px auto 40px;
+}
+.ba-ornament .ba-line { display: block; width: 50px; height: 1.5px; background: #b99474; }
+.ba-ornament .ba-diamond { color: #b99474; font-size: 14px; }
+.ba-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+  max-width: 1100px; margin: 0 auto;
+}
+.ba-card {
+  border-radius: 22px; overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  border: 1.5px solid rgba(185,148,116,0.3);
+  background: #fff;
+}
+.ba-title-bar {
+  background: #082e3b; padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ba-title-bar i { color: #b99474; font-size: 16px; }
+.ba-title-bar span {
+  color: #ffffff; font-size: 14px; font-weight: 900;
+}
+.ba-slider-wrap {
+  position: relative; overflow: hidden; cursor: ew-resize;
+  user-select: none; touch-action: none;
+  height: 300px;
+}
+.ba-after-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.ba-before-layer {
+  position: absolute; inset: 0; overflow: hidden;
+  width: 50%;
+}
+.ba-before-img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; /* width relative to slider-wrap set by JS */
+  height: 100%; object-fit: cover; object-position: center;
+}
+.ba-divider {
+  position: absolute; top: 0; bottom: 0;
+  width: 3px; background: #b99474;
+  left: 50%; transform: translateX(-50%);
+  z-index: 10; pointer-events: none;
+}
+.ba-handle {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #b99474; border: 3px solid #ffffff;
+  display: flex; align-items: center; justify-content: center;
+  color: #ffffff; font-size: 16px; font-weight: 900;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+  z-index: 11; pointer-events: none;
+  transition: transform 0.15s ease;
+}
+.ba-handle:hover { transform: translate(-50%,-50%) scale(1.1); }
+.ba-labels {
+  display: flex; justify-content: space-between; padding: 10px 16px;
+  background: #f8fafc;
+}
+.ba-label-before, .ba-label-after {
+  font-size: 12px; font-weight: 900; letter-spacing: 1px;
+  text-transform: uppercase; padding: 5px 14px;
+  border-radius: 999px;
+}
+.ba-label-before { background: #082e3b; color: #ffffff; }
+.ba-label-after  { background: #b99474; color: #ffffff; }
+@media(max-width: 760px) { .ba-grid { grid-template-columns: 1fr; } }
+
+/* ===========================
+   3. WHATSAPP CHAT BUBBLE
+=========================== */
+.wa-chat-bubble {
+  position: fixed; left: 18px; bottom: 18px; z-index: 9998;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+}
+.wa-chat-btn {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366; color: #ffffff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; box-shadow: 0 4px 18px rgba(37,211,102,0.45);
+  cursor: pointer; text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: waPulse 2.5s ease-in-out infinite;
+  position: relative;
+}
+.wa-chat-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.6);
+  animation: none;
+}
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 18px rgba(37,211,102,0.45), 0 0 0 12px rgba(37,211,102,0); }
+}
+.wa-badge {
+  position: absolute; top: -4px; right: -4px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #ff3b3b; color: #fff; font-size: 10px;
+  font-weight: 900; display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  animation: waBadge 1.5s ease-in-out infinite;
+}
+@keyframes waBadge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.wa-chat-popup {
+  background: #ffffff; border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  width: 290px; overflow: hidden;
+  display: none; animation: waPopupOpen 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+@keyframes waPopupOpen {
+  from { opacity:0; transform: scale(0.85) translateY(10px); }
+  to { opacity:1; transform: scale(1) translateY(0); }
+}
+.wa-popup-header {
+  background: #075E54; padding: 16px 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.wa-popup-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #fff; flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.wa-popup-info h4 { color: #fff; font-size: 14px; font-weight: 900; margin-bottom: 2px; }
+.wa-popup-info span { color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 700; }
+.wa-online-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4CAF50;
+  display: inline-block; margin-right: 4px;
+  animation: waBadge 1.5s ease-in-out infinite;
+}
+.wa-popup-body { padding: 16px 16px 12px; }
+.wa-bubble {
+  background: #f0f4f7; border-radius: 0 14px 14px 14px;
+  padding: 12px 14px; font-size: 13px; font-weight: 700;
+  color: #333; line-height: 1.6; margin-bottom: 14px;
+  position: relative;
+}
+.wa-bubble::before {
+  content: ""; position: absolute; top: 0; left: -8px;
+  border: 8px solid transparent; border-right-color: #f0f4f7; border-top-color: #f0f4f7;
+}
+.wa-start-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: #25D366; color: #ffffff;
+  padding: 12px 18px; border-radius: 12px;
+  text-decoration: none; font-size: 13px; font-weight: 900;
+  transition: 0.2s; width: 100%; justify-content: center;
+}
+.wa-start-btn:hover { background: #1da851; transform: scale(1.02); }
+.wa-powered { text-align: center; font-size: 10px; color: #aaa; font-weight: 700; margin-top: 8px; }
+
+/* ===========================
+   4. STYLE QUIZ
+=========================== */
+#style-quiz-section {
+  background: #ffffff; padding: 75px 20px;
+}
+#style-quiz-section .sec-head h2 { color: #082e3b; }
+#style-quiz-section .sec-head h2 span { color: #b99474; }
+.quiz-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 8px auto 40px;
+}
+.quiz-ornament .q-line { display: block; width: 50px; height: 1.5px; background: #b99474; }
+.quiz-ornament .q-diamond { color: #b99474; font-size: 14px; }
+.quiz-box {
+  max-width: 800px; margin: 0 auto;
+  background: #fff;
+  border: 1.5px solid rgba(185,148,116,0.3);
+  border-radius: 26px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.quiz-header {
+  background: linear-gradient(135deg, #082e3b 0%, #0d3d4e 100%);
+  padding: 28px 32px;
+  text-align: center;
+}
+.quiz-header h3 { color: #fff; font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+.quiz-header p { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 700; }
+.quiz-progress-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 16px; }
+.quiz-progress-fill { height: 100%; background: #b99474; border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+.quiz-body { padding: 32px; }
+.quiz-question { font-size: 18px; font-weight: 900; color: #082e3b; margin-bottom: 22px; text-align: center; }
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.quiz-option {
+  border: 2px solid rgba(0,0,0,0.1); border-radius: 16px;
+  padding: 18px 16px; text-align: center; cursor: pointer;
+  transition: 0.25s; background: #f8fafc;
+}
+.quiz-option:hover { border-color: #b99474; background: rgba(185,148,116,0.06); transform: translateY(-2px); }
+.quiz-option.selected { border-color: #082e3b; background: rgba(8,46,59,0.07); }
+.quiz-option .q-opt-icon { font-size: 28px; margin-bottom: 8px; }
+.quiz-option .q-opt-title { font-size: 14px; font-weight: 900; color: #082e3b; margin-bottom: 4px; }
+.quiz-option .q-opt-desc { font-size: 12px; color: #888; font-weight: 700; }
+.quiz-nav { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
+.quiz-nav-btn {
+  padding: 12px 28px; border-radius: 999px;
+  font-size: 14px; font-weight: 900; cursor: pointer;
+  border: 2px solid #082e3b; transition: 0.2s;
+}
+.quiz-nav-btn.primary { background: #082e3b; color: #fff; }
+.quiz-nav-btn.primary:hover { background: #b99474; border-color: #b99474; }
+.quiz-nav-btn.secondary { background: #fff; color: #082e3b; }
+.quiz-nav-btn.secondary:hover { background: rgba(8,46,59,0.08); }
+/* RESULT */
+.quiz-result { display: none; padding: 32px; text-align: center; }
+.quiz-result-icon { font-size: 52px; margin-bottom: 12px; }
+.quiz-result-style { font-size: 26px; font-weight: 900; color: #082e3b; margin-bottom: 8px; }
+.quiz-result-style span { color: #b99474; }
+.quiz-result-desc { font-size: 15px; color: #555; font-weight: 700; line-height: 1.7; margin-bottom: 10px; }
+.quiz-result-rooms { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 22px; }
+.quiz-result-room { background: rgba(8,46,59,0.08); color: #082e3b; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 900; border: 1px solid rgba(8,46,59,0.2); }
+.quiz-result-btn { display: inline-flex; align-items: center; gap: 8px; background: #b99474; color: #fff; padding: 14px 28px; border-radius: 999px; font-size: 14px; font-weight: 900; text-decoration: none; cursor: pointer; border: none; transition: 0.2s; }
+.quiz-result-btn:hover { background: #082e3b; transform: scale(1.04); }
+.quiz-restart { background: none; border: none; color: #888; font-size: 13px; cursor: pointer; font-weight: 700; margin-top: 12px; display: block; margin-left: auto; margin-right: auto; text-decoration: underline; }
+@media(max-width: 560px) { .quiz-options { grid-template-columns: 1fr; } .quiz-body { padding: 20px; } }
+
+/* ===========================
+   5. COST ESTIMATOR CALCULATOR
+=========================== */
+#cost-estimator-section {
+  background: #f8fafc; padding: 75px 20px;
+}
+#cost-estimator-section .sec-head h2 { color: #082e3b; }
+#cost-estimator-section .sec-head h2 span { color: #b99474; }
+.ce-ornament {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 8px auto 40px;
+}
+.ce-ornament .ce-line { display: block; width: 50px; height: 1.5px; background: #b99474; }
+.ce-ornament .ce-diamond { color: #b99474; font-size: 14px; }
+.ce-wrap {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  align-items: start;
+}
+.ce-form-card {
+  background: #fff; border-radius: 22px;
+  border: 1.5px solid rgba(185,148,116,0.3);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+.ce-form-header {
+  background: #082e3b; padding: 20px 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ce-form-header i { color: #b99474; font-size: 22px; }
+.ce-form-header span { color: #fff; font-size: 15px; font-weight: 900; }
+.ce-form-body { padding: 24px; }
+.ce-field { margin-bottom: 18px; }
+.ce-label { font-size: 12px; font-weight: 900; color: #082e3b; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; display: block; }
+.ce-select, .ce-input {
+  width: 100%; padding: 12px 16px; border-radius: 12px;
+  border: 1.5px solid rgba(0,0,0,0.12); font-size: 14px; font-weight: 700;
+  outline: none; transition: 0.2s; background: #f8fafc;
+  font-family: "kitamiw01", Arial, sans-serif;
+}
+.ce-select:focus, .ce-input:focus { border-color: #b99474; background: #fff; }
+.ce-checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ce-checkbox-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px; border-radius: 10px;
+  border: 1.5px solid rgba(0,0,0,0.10); cursor: pointer;
+  transition: 0.2s; background: #f8fafc;
+}
+.ce-checkbox-item:hover { border-color: #b99474; background: rgba(185,148,116,0.05); }
+.ce-checkbox-item.active { border-color: #082e3b; background: rgba(8,46,59,0.07); }
+.ce-checkbox-item input { display: none; }
+.ce-checkbox-item span { font-size: 13px; font-weight: 900; color: #082e3b; }
+.ce-check-icon { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.2s; }
+.ce-checkbox-item.active .ce-check-icon { background: #082e3b; border-color: #082e3b; }
+.ce-checkbox-item.active .ce-check-icon::after { content: "✓"; color: #fff; font-size: 11px; font-weight: 900; }
+.ce-calc-btn {
+  width: 100%; padding: 14px; border-radius: 999px;
+  background: #b99474; color: #fff; border: 2px solid #b99474;
+  font-size: 15px; font-weight: 900; cursor: pointer;
+  transition: 0.3s; margin-top: 6px; font-family: "kitamiw01", Arial, sans-serif;
+}
+.ce-calc-btn:hover { background: #082e3b; border-color: #082e3b; transform: scale(1.02); }
+/* RESULT CARD */
+.ce-result-card {
+  background: #082e3b; border-radius: 22px;
+  border: 1.5px solid rgba(185,148,116,0.4);
+  box-shadow: 0 8px 30px rgba(8,46,59,0.25);
+  padding: 28px; display: flex; flex-direction: column; gap: 16px;
+}
+.ce-result-title { color: #b99474; font-size: 13px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; text-align: center; }
+.ce-estimate-box {
+  background: rgba(185,148,116,0.12); border: 1.5px solid rgba(185,148,116,0.4);
+  border-radius: 18px; padding: 22px; text-align: center;
+}
+.ce-est-label { font-size: 12px; font-weight: 900; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.ce-est-range { font-size: 34px; font-weight: 900; color: #b99474; line-height: 1.1; }
+.ce-est-note { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 6px; font-weight: 700; }
+.ce-breakdown { display: flex; flex-direction: column; gap: 8px; }
+.ce-break-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; background: rgba(255,255,255,0.05); border-radius: 10px;
+}
+.ce-break-row span:first-child { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 700; }
+.ce-break-row span:last-child { font-size: 13px; color: #b99474; font-weight: 900; }
+.ce-result-cta {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #b99474; color: #fff; padding: 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 900; text-decoration: none; cursor: pointer;
+  border: none; width: 100%; font-family: "kitamiw01", Arial, sans-serif;
+  transition: 0.3s;
+}
+.ce-result-cta:hover { background: #a07d60; transform: scale(1.02); }
+.ce-placeholder {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; min-height: 340px; text-align: center;
+}
+.ce-placeholder-icon { font-size: 52px; opacity: 0.4; }
+.ce-placeholder-text { color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 700; line-height: 1.6; }
+@media(max-width: 760px) {
+  .ce-wrap { grid-template-columns: 1fr; }
+  .ce-result-card { order: -1; }
+}
+
 </style>
 </head>
 
@@ -3051,6 +3478,43 @@ html {
 
   </div>
 
+
+<!-- ===== 1. ANIMATED STATS COUNTER ===== -->
+<section id="stats-section">
+  <div class="stats-sublabel">OUR ACHIEVEMENTS</div>
+  <h2>Our Numbers <span>Speak</span></h2>
+  <div class="stats-ornament">
+    <span class="so-line"></span>
+    <span class="so-diamond">&#9670;</span>
+    <span class="so-line"></span>
+  </div>
+  <div class="stats-grid fade-up">
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-house-circle-check"></i></div>
+      <div class="stat-number"><span class="count-up" data-target="200">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-face-smile"></i></div>
+      <div class="stat-number"><span class="count-up" data-target="180">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+      <div class="stat-number"><span class="count-up" data-target="10">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+      <div class="stat-number"><span class="count-up" data-target="49" data-decimal="true">0</span><span class="stat-suffix">/5</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+  </div>
+</section>
 
 <section id="services">
 
@@ -3273,6 +3737,224 @@ html {
     </div>
   </section>
 
+  <!-- ===== 2. BEFORE / AFTER SLIDER ===== -->
+  <section id="before-after-section">
+    <div class="sec-head">
+      <div class="ba-sublabel">THE TRANSFORMATION</div>
+      <h2><span style="color:#082e3b;">Before</span> <span style="color:#b99474;">&amp; After</span></h2>
+      <p>See how we transform ordinary spaces into extraordinary interiors.</p>
+      <div class="ba-ornament">
+        <span class="ba-line"></span>
+        <span class="ba-diamond">&#9670;</span>
+        <span class="ba-line"></span>
+      </div>
+    </div>
+    <div class="ba-grid">
+
+      <!-- SLIDER 1 — Living Room -->
+      <div class="ba-card">
+        <div class="ba-title-bar">
+          <i class="fa-solid fa-couch"></i>
+          <span>Living Room Transformation</span>
+        </div>
+        <div class="ba-slider-wrap" data-ba="1">
+          <!-- AFTER (full width bg) -->
+          <img class="ba-after-img" src="images/living1.jpg" alt="Living Room After">
+          <!-- BEFORE (clipped left) -->
+          <div class="ba-before-layer" id="ba-before-layer-1">
+            <img class="ba-before-img" id="ba-before-img-1" src="images/ba-living-before.jpg" alt="Living Room Before">
+          </div>
+          <div class="ba-divider" id="ba-divider-1"></div>
+          <div class="ba-handle" id="ba-handle-1">
+            <i class="fa-solid fa-arrows-left-right"></i>
+          </div>
+        </div>
+        <div class="ba-labels">
+          <span class="ba-label-before">&#9664; Before</span>
+          <span class="ba-label-after">After &#9654;</span>
+        </div>
+      </div>
+
+      <!-- SLIDER 2 — Modular Kitchen -->
+      <div class="ba-card">
+        <div class="ba-title-bar">
+          <i class="fa-solid fa-kitchen-set"></i>
+          <span>Modular Kitchen Transformation</span>
+        </div>
+        <div class="ba-slider-wrap" data-ba="2">
+          <img class="ba-after-img" src="images/kitchen1.jpg" alt="Kitchen After">
+          <div class="ba-before-layer" id="ba-before-layer-2">
+            <img class="ba-before-img" id="ba-before-img-2" src="images/ba-kitchen-before.jpg" alt="Kitchen Before">
+          </div>
+          <div class="ba-divider" id="ba-divider-2"></div>
+          <div class="ba-handle" id="ba-handle-2">
+            <i class="fa-solid fa-arrows-left-right"></i>
+          </div>
+        </div>
+        <div class="ba-labels">
+          <span class="ba-label-before">&#9664; Before</span>
+          <span class="ba-label-after">After &#9654;</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- NOTE for image names -->
+    <p style="text-align:center;color:#aaa;font-size:12px;font-weight:700;margin-top:16px;">
+      ✦ Add your before photos as <strong>ba-living-before.jpg</strong> &amp; <strong>ba-kitchen-before.jpg</strong> in your <code>images/</code> folder
+    </p>
+  </section>
+
+  <!-- ===== 4. STYLE QUIZ ===== -->
+  <section id="style-quiz-section">
+    <div class="sec-head">
+      <div class="ba-sublabel">DISCOVER YOUR STYLE</div>
+      <h2><span style="color:#082e3b;">What's Your</span> <span style="color:#b99474;">Interior Style?</span></h2>
+      <p>Answer 3 quick questions and we'll show you matching designs from our portfolio.</p>
+      <div class="quiz-ornament">
+        <span class="q-line"></span>
+        <span class="q-diamond">&#9670;</span>
+        <span class="q-line"></span>
+      </div>
+    </div>
+
+    <div class="quiz-box" id="quizBox">
+      <div class="quiz-header">
+        <h3 id="quizHeaderTitle">Find Your Interior Style</h3>
+        <p id="quizHeaderSub">Question <span id="quizQNum">1</span> of 3</p>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizProgressFill"></div>
+        </div>
+      </div>
+
+      <!-- QUIZ QUESTIONS -->
+      <div class="quiz-body" id="quizBody">
+        <div class="quiz-question" id="quizQuestion">What best describes your dream home feel?</div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-nav">
+          <button class="quiz-nav-btn secondary" id="quizPrevBtn" style="display:none;" onclick="quizPrev()">&#8592; Back</button>
+          <button class="quiz-nav-btn primary" id="quizNextBtn" onclick="quizNext()">Next &#8594;</button>
+        </div>
+      </div>
+
+      <!-- QUIZ RESULT -->
+      <div class="quiz-result" id="quizResult">
+        <div class="quiz-result-icon" id="quizResultIcon">🏡</div>
+        <div class="quiz-result-style" id="quizResultStyle">Your Style: <span id="quizStyleName">Modern Minimal</span></div>
+        <p class="quiz-result-desc" id="quizResultDesc"></p>
+        <div class="quiz-result-rooms" id="quizResultRooms"></div>
+        <button class="quiz-result-btn" onclick="document.getElementById('quotePopup').style.display='flex'">
+          <i class="fa-solid fa-paper-plane"></i> Get Free Consultation
+        </button>
+        <button class="quiz-restart" onclick="quizRestart()">&#8635; Take quiz again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. COST ESTIMATOR ===== -->
+  <section id="cost-estimator-section">
+    <div class="sec-head">
+      <div class="ba-sublabel">PLAN YOUR BUDGET</div>
+      <h2><span style="color:#082e3b;">Cost</span> <span style="color:#b99474;">Estimator</span></h2>
+      <p>Get an instant rough estimate for your interior project. Contact us for exact quotation.</p>
+      <div class="ce-ornament">
+        <span class="ce-line"></span>
+        <span class="ce-diamond">&#9670;</span>
+        <span class="ce-line"></span>
+      </div>
+    </div>
+
+    <div class="ce-wrap">
+      <!-- FORM CARD -->
+      <div class="ce-form-card">
+        <div class="ce-form-header">
+          <i class="fa-solid fa-calculator"></i>
+          <span>Fill Your Details</span>
+        </div>
+        <div class="ce-form-body">
+
+          <div class="ce-field">
+            <label class="ce-label">Home / Office Type</label>
+            <select class="ce-select" id="ce_type" onchange="ceCalc()">
+              <option value="">Select Type</option>
+              <option value="1bhk">1 BHK Home</option>
+              <option value="2bhk">2 BHK Home</option>
+              <option value="3bhk">3 BHK Home</option>
+              <option value="villa">Villa / Duplex</option>
+              <option value="office">Office Space</option>
+            </select>
+          </div>
+
+          <div class="ce-field">
+            <label class="ce-label">Package Preference</label>
+            <select class="ce-select" id="ce_package" onchange="ceCalc()">
+              <option value="">Select Package</option>
+              <option value="basic">Basic (₹1.5L+)</option>
+              <option value="premium">Premium (₹3L+)</option>
+              <option value="luxury">Luxury (₹6L+)</option>
+            </select>
+          </div>
+
+          <div class="ce-field">
+            <label class="ce-label">Select Rooms / Areas</label>
+            <div class="ce-checkbox-grid" id="ceRoomsGrid">
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'Living Room',25000)">
+                <div class="ce-check-icon"></div><span>🛋️ Living Room</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'Modular Kitchen',40000)">
+                <div class="ce-check-icon"></div><span>🍳 Modular Kitchen</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'Master Bedroom',30000)">
+                <div class="ce-check-icon"></div><span>🛏️ Master Bedroom</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'2nd Bedroom',25000)">
+                <div class="ce-check-icon"></div><span>🛏️ 2nd Bedroom</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'Wardrobe',20000)">
+                <div class="ce-check-icon"></div><span>🚪 Wardrobe</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'False Ceiling',18000)">
+                <div class="ce-check-icon"></div><span>✨ False Ceiling</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'Painting Works',15000)">
+                <div class="ce-check-icon"></div><span>🎨 Painting</span>
+              </label>
+              <label class="ce-checkbox-item" onclick="ceToggleRoom(this,'Bathroom',12000)">
+                <div class="ce-check-icon"></div><span>🚿 Bathroom</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="ce-calc-btn" onclick="ceCalc()">
+            <i class="fa-solid fa-calculator"></i> &nbsp;Calculate Estimate
+          </button>
+        </div>
+      </div>
+
+      <!-- RESULT CARD -->
+      <div class="ce-result-card">
+        <!-- PLACEHOLDER -->
+        <div class="ce-placeholder" id="cePlaceholder">
+          <div class="ce-placeholder-icon">🏠</div>
+          <div class="ce-result-title" style="opacity:1;">Your Estimate</div>
+          <div class="ce-placeholder-text">Select your home type, package and rooms above to get an instant cost estimate.</div>
+        </div>
+        <!-- RESULT (hidden until calc) -->
+        <div id="ceResultContent" style="display:none; flex-direction:column; gap:16px;">
+          <div class="ce-result-title">Your Estimated Cost</div>
+          <div class="ce-estimate-box">
+            <div class="ce-est-label">APPROXIMATE RANGE</div>
+            <div class="ce-est-range" id="ceEstRange">₹0</div>
+            <div class="ce-est-note">* Actual cost depends on materials, area size &amp; design complexity</div>
+          </div>
+          <div class="ce-breakdown" id="ceBreakdown"></div>
+          <button class="ce-result-cta" onclick="document.getElementById('quotePopup').style.display='flex'">
+            <i class="fa-solid fa-paper-plane"></i> Get Exact Quote on WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section id="pricing">
     <div class="container">
@@ -3480,24 +4162,6 @@ html {
       From concept to completion, DGLV Interior transforms your home into a stylish and functional living space,
       making us a preferred choice for interior works in BHEL and across Hyderabad.
     </p>
-    <div style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
-      <div style="text-align:center;">
-        <div style="font-size:36px;font-weight:900;color:#b99474;">500+</div>
-        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);">Happy Families</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:36px;font-weight:900;color:#b99474;">10+</div>
-        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);">Years Experience</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:36px;font-weight:900;color:#b99474;">20+</div>
-        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);">Services Offered</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:36px;font-weight:900;color:#b99474;">5★</div>
-        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);">Customer Rating</div>
-      </div>
-    </div>
   </div>
 
 </section>
@@ -3620,14 +4284,41 @@ html {
     </div>
   </footer>
 
+  <!-- ===== 3. WHATSAPP FLOATING CHAT BUBBLE ===== -->
+  <div class="wa-chat-bubble" id="waChatBubble">
+    <!-- POPUP -->
+    <div class="wa-chat-popup" id="waChatPopup">
+      <div class="wa-popup-header">
+        <div class="wa-popup-avatar"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="wa-popup-info">
+          <h4>DGLV Interior</h4>
+          <span><span class="wa-online-dot"></span>Typically replies instantly</span>
+        </div>
+      </div>
+      <div class="wa-popup-body">
+        <div class="wa-bubble">
+          👋 Hi! Welcome to <strong>DGLV Interior</strong>.<br><br>
+          Looking for premium interiors in Hyderabad? Chat with us — we'll help you get started! 🏠
+        </div>
+        <a class="wa-start-btn"
+           href="https://wa.me/919666141369?text=Hello%20DGLV%20Interior!%20I%20am%20interested%20in%20your%20interior%20design%20services.%20Please%20guide%20me."
+           target="_blank">
+          <i class="fa-brands fa-whatsapp" style="font-size:18px;"></i>
+          Start Chat on WhatsApp
+        </a>
+        <div class="wa-powered">Powered by WhatsApp Business</div>
+      </div>
+    </div>
+    <!-- TRIGGER BUTTON -->
+    <div class="wa-chat-btn" id="waChatTrigger" onclick="toggleWaChat()">
+      <span class="wa-badge">1</span>
+      <i class="fa-brands fa-whatsapp"></i>
+    </div>
+  </div>
+
   <!-- FLOAT ICONS -->
   <div class="float-icons">
     <a class="call-icon" href="tel:9666141369"><i class="fa-solid fa-phone"></i></a>
-
-    <a class="whatsapp-icon" target="_blank"
-       href="https://wa.me/919666141369?text=Hello%20DGLV%20Interior,%20I%20need%20Interior%20work%20details">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
   </div>
 
   <!-- POPUP GET QUOTE -->
@@ -3938,6 +4629,305 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+</script>
+
+<!-- =============================================
+     FEATURE SCRIPTS: Stats, BA Slider, WA Chat, Quiz, Estimator
+============================================== -->
+<script>
+
+/* ===== 1. ANIMATED STATS COUNTER ===== */
+function animateCounters(){
+  document.querySelectorAll('.count-up').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const isDecimal = el.dataset.decimal === 'true';
+    const duration = 1800;
+    const step = duration / 60;
+    let current = 0;
+    const increment = target / (duration / step);
+    const timer = setInterval(() => {
+      current += increment;
+      if(current >= target){
+        current = target;
+        clearInterval(timer);
+      }
+      if(isDecimal){
+        el.textContent = (current / 10).toFixed(1);
+      } else {
+        el.textContent = Math.floor(current);
+      }
+    }, step);
+  });
+}
+
+/* Trigger counter when stats section is visible */
+let statsAnimated = false;
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting && !statsAnimated){
+      statsAnimated = true;
+      animateCounters();
+    }
+  });
+}, { threshold: 0.3 });
+
+window.addEventListener('load', () => {
+  const statsEl = document.getElementById('stats-section');
+  if(statsEl) statsObserver.observe(statsEl);
+});
+
+
+/* ===== 2. BEFORE / AFTER SLIDER ===== */
+function initBASlider(id) {
+  const wrap  = document.querySelector(`.ba-slider-wrap[data-ba="${id}"]`);
+  const layer = document.getElementById(`ba-before-layer-${id}`);
+  const img   = document.getElementById(`ba-before-img-${id}`);
+  const div   = document.getElementById(`ba-divider-${id}`);
+  const hand  = document.getElementById(`ba-handle-${id}`);
+  if(!wrap) return;
+
+  let dragging = false;
+
+  function setPos(x){
+    const rect = wrap.getBoundingClientRect();
+    let pct = (x - rect.left) / rect.width;
+    pct = Math.max(0.05, Math.min(0.95, pct));
+    const pxLeft = pct * 100;
+    layer.style.width = pxLeft + '%';
+    img.style.width   = (100 / pct) + '%';
+    div.style.left    = pxLeft + '%';
+    hand.style.left   = pxLeft + '%';
+  }
+
+  /* Mouse */
+  wrap.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+  window.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
+  window.addEventListener('mouseup',  () => { dragging = false; });
+
+  /* Touch */
+  wrap.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend',  () => { dragging = false; });
+}
+
+window.addEventListener('load', () => { initBASlider(1); initBASlider(2); });
+
+
+/* ===== 3. WHATSAPP CHAT BUBBLE ===== */
+function toggleWaChat(){
+  const popup = document.getElementById('waChatPopup');
+  const badge = document.querySelector('.wa-badge');
+  const isOpen = popup.style.display === 'block';
+  popup.style.display = isOpen ? 'none' : 'block';
+  if(!isOpen && badge){ badge.style.display = 'none'; }
+}
+
+/* Auto-open after 6 seconds (once) */
+setTimeout(() => {
+  const popup = document.getElementById('waChatPopup');
+  if(popup && popup.style.display !== 'block'){
+    popup.style.display = 'block';
+  }
+}, 6000);
+
+/* Close chat bubble if clicking outside */
+document.addEventListener('click', function(e){
+  const bubble = document.getElementById('waChatBubble');
+  if(bubble && !bubble.contains(e.target)){
+    const popup = document.getElementById('waChatPopup');
+    if(popup) popup.style.display = 'none';
+  }
+});
+
+
+/* ===== 4. STYLE QUIZ ===== */
+const quizData = [
+  {
+    question: "What best describes your dream home feel?",
+    options: [
+      { icon: "🏙️", title: "Clean & Sleek",    desc: "Minimal clutter, open spaces", value: "modern" },
+      { icon: "🏛️", title: "Grand & Classic",  desc: "Rich textures, elegant details", value: "luxury" },
+      { icon: "🌿", title: "Warm & Natural",    desc: "Wood tones, earthy colours", value: "warm" },
+      { icon: "🎨", title: "Bold & Creative",   desc: "Pops of colour, unique accents", value: "contemporary" }
+    ]
+  },
+  {
+    question: "Which kitchen style appeals to you most?",
+    options: [
+      { icon: "⬜", title: "Handle-less Gloss", desc: "Smooth, ultra-modern finish", value: "modern" },
+      { icon: "🪵", title: "Wooden Finish",     desc: "Warm, traditional kitchen", value: "warm" },
+      { icon: "🖤", title: "Dark &amp; Dramatic",  desc: "Matte black with gold accents", value: "luxury" },
+      { icon: "🌈", title: "Colourful Pops",    desc: "Bright cabinets, fun look", value: "contemporary" }
+    ]
+  },
+  {
+    question: "What's your budget range for the full project?",
+    options: [
+      { icon: "💼", title: "Under ₹3 Lakhs",   desc: "Basic, smart interiors", value: "basic" },
+      { icon: "⭐", title: "₹3L – ₹6L",        desc: "Premium quality finishes", value: "premium" },
+      { icon: "👑", title: "₹6L – ₹12L",       desc: "Luxury end interiors", value: "luxury" },
+      { icon: "🏰", title: "₹12L+",             desc: "High-end bespoke design", value: "bespoke" }
+    ]
+  }
+];
+
+const styleResults = {
+  modern:       { name:"Modern Minimal",    icon:"🏙️", desc:"Clean lines, neutral tones and smart storage define your perfect space. We recommend handle-less kitchens, white/grey palettes, and concealed lighting.", rooms:["Living Room","Modular Kitchen","Wardrobe","False Ceiling"] },
+  luxury:       { name:"Luxury Classic",    icon:"👑", desc:"You appreciate grandeur, fine materials and statement pieces. Rich textures, marble finishes and designer lighting will make your home truly royal.", rooms:["Living Room","Master Bedroom","Modular Kitchen","False Ceiling","Bathroom"] },
+  warm:         { name:"Warm & Earthy",     icon:"🌿", desc:"Wood tones, warm lighting and natural textures create a welcoming home. We'll design cosy nooks and functional spaces that feel like a hug.", rooms:["Living Room","Bedroom","Modular Kitchen","Wardrobe"] },
+  contemporary: { name:"Contemporary Bold", icon:"🎨", desc:"Your style mixes modern forms with bold colour accents and creative furniture choices. We'll curate a space that's trendy, expressive and uniquely you.", rooms:["Living Room","Study Table","TV Unit","Wall Cladding","Painting"] }
+};
+
+let quizAnswers = [];
+let quizCurrentQ = 0;
+
+function quizRender(){
+  const q = quizData[quizCurrentQ];
+  document.getElementById('quizQuestion').textContent = q.question;
+  document.getElementById('quizQNum').textContent = quizCurrentQ + 1;
+  document.getElementById('quizProgressFill').style.width = ((quizCurrentQ / quizData.length) * 100) + '%';
+  const prev = document.getElementById('quizPrevBtn');
+  if(prev) prev.style.display = quizCurrentQ > 0 ? 'inline-block' : 'none';
+
+  const optEl = document.getElementById('quizOptions');
+  optEl.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-option' + (quizAnswers[quizCurrentQ] === opt.value ? ' selected' : '');
+    div.innerHTML = `<div class="q-opt-icon">${opt.icon}</div><div class="q-opt-title">${opt.title}</div><div class="q-opt-desc">${opt.desc}</div>`;
+    div.onclick = () => {
+      quizAnswers[quizCurrentQ] = opt.value;
+      optEl.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+      div.classList.add('selected');
+    };
+    optEl.appendChild(div);
+  });
+}
+
+function quizNext(){
+  if(!quizAnswers[quizCurrentQ]){ alert('Please select an option to continue.'); return; }
+  quizCurrentQ++;
+  if(quizCurrentQ >= quizData.length){
+    quizShowResult();
+  } else {
+    document.getElementById('quizNextBtn').textContent = quizCurrentQ === quizData.length - 1 ? 'See My Style ✨' : 'Next →';
+    quizRender();
+  }
+}
+
+function quizPrev(){
+  if(quizCurrentQ > 0){ quizCurrentQ--; quizRender(); }
+}
+
+function quizShowResult(){
+  /* Determine dominant style from answers */
+  const freq = {};
+  quizAnswers.forEach(a => { freq[a] = (freq[a]||0)+1; });
+  // map budget answers to style
+  const budgetMap = { basic:'modern', premium:'warm', luxury:'luxury', bespoke:'luxury' };
+  const styleVotes = {};
+  quizAnswers.forEach((a,i) => {
+    let s = i === 2 ? budgetMap[a]||'modern' : a;
+    styleVotes[s] = (styleVotes[s]||0)+1;
+  });
+  const dominant = Object.keys(styleVotes).sort((a,b)=>styleVotes[b]-styleVotes[a])[0] || 'modern';
+  const result = styleResults[dominant] || styleResults['modern'];
+
+  document.getElementById('quizBody').style.display = 'none';
+  document.getElementById('quizResult').style.display = 'block';
+  document.getElementById('quizProgressFill').style.width = '100%';
+  document.getElementById('quizResultIcon').textContent = result.icon;
+  document.getElementById('quizStyleName').textContent = result.name;
+  document.getElementById('quizResultDesc').textContent = result.desc;
+
+  const roomsEl = document.getElementById('quizResultRooms');
+  roomsEl.innerHTML = '';
+  result.rooms.forEach(r => {
+    const span = document.createElement('span');
+    span.className = 'quiz-result-room';
+    span.textContent = '✓ ' + r;
+    roomsEl.appendChild(span);
+  });
+  document.getElementById('quizHeaderTitle').textContent = 'Your Style Result!';
+  document.getElementById('quizHeaderSub').textContent = 'Perfect match found 🎉';
+}
+
+function quizRestart(){
+  quizAnswers = []; quizCurrentQ = 0;
+  document.getElementById('quizBody').style.display = 'block';
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizNextBtn').textContent = 'Next →';
+  document.getElementById('quizHeaderTitle').textContent = 'Find Your Interior Style';
+  quizRender();
+}
+
+window.addEventListener('load', quizRender);
+
+
+/* ===== 5. COST ESTIMATOR ===== */
+let ceRooms = {};  // { roomName: basePrice }
+
+function ceToggleRoom(labelEl, name, basePrice){
+  labelEl.classList.toggle('active');
+  if(labelEl.classList.contains('active')){
+    ceRooms[name] = basePrice;
+  } else {
+    delete ceRooms[name];
+  }
+  ceCalc();
+}
+
+function ceCalc(){
+  const type    = document.getElementById('ce_type').value;
+  const pkg     = document.getElementById('ce_package').value;
+  if(!type && !pkg && Object.keys(ceRooms).length === 0){ return; }
+
+  /* Base by type */
+  const typeBase = { '1bhk':80000,'2bhk':130000,'3bhk':200000,'villa':350000,'office':150000 };
+  /* Multiplier by package */
+  const pkgMul   = { 'basic':1,'premium':2,'luxury':4 };
+  /* Package label */
+  const pkgLabel = { 'basic':'Basic','premium':'Premium','luxury':'Luxury' };
+
+  const base = typeBase[type] || 0;
+  const mul  = pkgMul[pkg] || 1;
+  let roomTotal = Object.values(ceRooms).reduce((s,v) => s + v, 0) * mul;
+  let total = (base * mul) + roomTotal;
+
+  if(total === 0){ return; }
+
+  const lo = Math.round(total * 0.9 / 1000) * 1000;
+  const hi = Math.round(total * 1.3 / 1000) * 1000;
+
+  function fmt(n){ return n >= 100000 ? '₹' + (n/100000).toFixed(1) + 'L' : '₹' + (n/1000).toFixed(0) + 'K'; }
+
+  document.getElementById('ceEstRange').textContent = fmt(lo) + ' – ' + fmt(hi);
+
+  /* Breakdown */
+  const bkEl = document.getElementById('ceBreakdown');
+  bkEl.innerHTML = '';
+  if(type && pkg){
+    const row = document.createElement('div');
+    row.className = 'ce-break-row';
+    row.innerHTML = `<span>${typeMap(type)} Base (${pkgLabel[pkg]})</span><span>${fmt(base*mul)}</span>`;
+    bkEl.appendChild(row);
+  }
+  Object.entries(ceRooms).forEach(([room, price]) => {
+    const row = document.createElement('div');
+    row.className = 'ce-break-row';
+    row.innerHTML = `<span>${room}</span><span>${fmt(price * mul)}</span>`;
+    bkEl.appendChild(row);
+  });
+
+  document.getElementById('cePlaceholder').style.display = 'none';
+  const rc = document.getElementById('ceResultContent');
+  rc.style.display = 'flex';
+}
+
+function typeMap(t){ return {
+  '1bhk':'1 BHK Home','2bhk':'2 BHK Home','3bhk':'3 BHK Home','villa':'Villa/Duplex','office':'Office'
+}[t] || t; }
 
 </script>
 
