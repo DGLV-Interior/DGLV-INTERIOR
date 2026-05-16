@@ -1871,13 +1871,15 @@ onload="this.onload=null;this.rel='stylesheet'">
 
     .popup-box{
       width:100%;
-      max-width:480px;
-      background:white;
+      max-width:520px;
+      background:transparent;
       border-radius:22px;
-      padding:22px;
-      box-shadow: var(--shadow);
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,0.6);
       position:relative;
-      animation: popupOpen 0.3s ease;
+      animation: popupOpen 0.35s ease;
+      display:flex;
+      flex-direction:row;
     }
 
     @keyframes popupOpen{
@@ -1885,62 +1887,154 @@ onload="this.onload=null;this.rel='stylesheet'">
       to{transform:scale(1); opacity:1;}
     }
 
+    /* Left image panel */
+    .popup-img-side{
+      width:160px;
+      flex-shrink:0;
+      background:url('images/living1.jpg') center/cover no-repeat;
+      position:relative;
+    }
+    .popup-img-side::after{
+      content:'';
+      position:absolute;inset:0;
+      background:linear-gradient(to right,rgba(8,20,28,0.3),rgba(8,20,28,0.6));
+    }
+
+    /* Right form panel */
+    .popup-form-side{
+      flex:1;
+      background:#0d1e27;
+      padding:28px 26px 24px;
+      position:relative;
+    }
+
     .popup-box h3{
-      font-size:22px;
+      font-size:26px;
       font-weight:900;
-      margin-bottom:10px;
-      color:#0f172a;
+      margin-bottom:6px;
+      color:#ffffff;
+      font-family:"kitamiw01",Georgia,serif;
     }
 
     .popup-box p{
-      font-size:14px;
-      color:var(--muted);
+      font-size:13px;
+      color:rgba(255,255,255,0.55);
       font-weight:700;
-      margin-bottom:12px;
+      margin-bottom:18px;
     }
 
-    .popup-box input,
-    .popup-box select,
-    .popup-box textarea{
+    /* Input & select & textarea */
+    .popup-form-side input,
+    .popup-form-side select,
+    .popup-form-side textarea{
       width:100%;
-      padding:12px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.15);
+      padding:11px 14px 11px 40px;
+      border-radius:10px;
+      border:1px solid rgba(185,148,116,0.3);
+      background:rgba(255,255,255,0.06);
+      color:#ffffff;
       outline:none;
-      margin-bottom:12px;
-      font-size:15px;
+      margin-bottom:10px;
+      font-size:14px;
       font-weight:700;
+      font-family:"kitamiw01",Arial,sans-serif;
+      transition:border-color 0.2s;
+    }
+    .popup-form-side input::placeholder,
+    .popup-form-side textarea::placeholder{
+      color:rgba(255,255,255,0.4);
+    }
+    .popup-form-side select{
+      appearance:none;
+      -webkit-appearance:none;
+      color:rgba(255,255,255,0.55);
+      cursor:pointer;
+    }
+    .popup-form-side select option{
+      background:#0d1e27;
+      color:#fff;
+    }
+    .popup-form-side input:focus,
+    .popup-form-side select:focus,
+    .popup-form-side textarea:focus{
+      border-color:#b99474;
+      background:rgba(185,148,116,0.08);
+    }
+    .popup-form-side textarea{
+      resize:vertical;
+      min-height:70px;
     }
 
-  .popup-box button{
-	width:100%;
-	padding:12px;
-	border-radius:999px;
-	font-weight:900;
-	font-size:15px;
-	cursor:pointer;
+    /* Field wrapper with icon */
+    .pf-field{
+      position:relative;
+      margin-bottom:0;
+    }
+    .pf-field i{
+      position:absolute;left:13px;top:50%;transform:translateY(-50%);
+      color:rgba(185,148,116,0.7);font-size:14px;pointer-events:none;
+    }
+    .pf-field.pf-textarea-wrap i{
+      top:14px;transform:none;
+    }
 
-	background:#b99474;
-	color:#fff;
-	border:2px solid #b99474;
+    /* Row of 3 selects */
+    .pf-row{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:8px;
+      margin-bottom:0;
+    }
+    .pf-row .pf-field input,
+    .pf-row .pf-field select{
+      padding:11px 10px 11px 34px;
+      font-size:12px;
+    }
+    .pf-row .pf-field i{
+      font-size:13px;left:10px;
+    }
 
-	transition: all 0.3s ease;
-}
+    /* Submit button */
+    .popup-form-side button[type="submit"]{
+      width:100%;
+      padding:14px;
+      border-radius:12px;
+      font-weight:900;
+      font-size:15px;
+      cursor:pointer;
+      background:linear-gradient(135deg,#c9a97a,#b99474,#a07d60);
+      color:#fff;
+      border:none;
+      transition:0.3s ease;
+      letter-spacing:0.5px;
+      font-family:"kitamiw01",Arial,sans-serif;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      margin-top:4px;
+    }
+    .popup-form-side button[type="submit"]:hover{
+      background:linear-gradient(135deg,#a07d60,#b99474,#c9a97a);
+      transform:scale(1.02);
+      box-shadow:0 8px 24px rgba(185,148,116,0.4);
+    }
 
- .popup-box button:hover{
-	background:#082e3b;
-	color:#ffffff;
-	border:2px solid #082e3b;
-	transform:scale(1.05);
-}
     .close-popup{
       position:absolute;
       top:12px;
       right:14px;
-      font-size:22px;
-      color:#0f172a;
+      font-size:20px;
+      color:rgba(255,255,255,0.5);
       cursor:pointer;
       font-weight:900;
+      z-index:10;
+      transition:0.2s;
+      line-height:1;
+    }
+    .close-popup:hover{color:#ffffff;}
+
+    @media(max-width:560px){
+      .popup-box{flex-direction:column;}
+      .popup-img-side{width:100%;height:120px;}
+      .pf-row{grid-template-columns:1fr;}
     }
 
     /* ===========================
@@ -3818,33 +3912,6 @@ html {
 
   </div>
 
-
-<!-- ===== YOUTUBE VIDEO SECTION ===== -->
-  <section id="video-section">
-    <div class="sec-head">
-      <div class="ba-sublabel">WATCH OUR WORK</div>
-      <h2><span style="color:#082e3b;">Our Projects</span> <span style="color:#b99474;">in Action</span></h2>
-      <p>Watch how we transform spaces into stunning interiors — real projects, real results.</p>
-      <div class="video-ornament">
-        <span class="v-line"></span>
-        <span class="v-diamond">&#9670;</span>
-        <span class="v-line"></span>
-      </div>
-    </div>
-    <div class="video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed?listType=user_uploads&list=dglvinterior-p7s9x&rel=0&modestbranding=1&showinfo=0"
-        title="DGLV Interior Projects"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <p class="video-sub">
-      ▶ Watch more of our projects on
-      <a href="https://youtube.com/@dglvinterior-p7s9x" target="_blank">YouTube @DGLVInterior</a>
-    </p>
-  </section>
-
 <!-- ===== 1. ANIMATED STATS COUNTER ===== -->
 <section id="stats-section">
   <div class="stats-sublabel">OUR ACHIEVEMENTS</div>
@@ -4734,15 +4801,6 @@ html {
     </div>
   </div>
 
-  <!-- STICKY CTA BAR -->
-  <div id="sticky-cta">
-    <p>🏠 Ready to transform your home? <span>Book a FREE site visit today!</span></p>
-    <button class="sticky-cta-btn" onclick="document.getElementById('quotePopup').style.display='flex'">
-      Get Free Quote &#8594;
-    </button>
-    <button class="sticky-cta-close" onclick="document.getElementById('sticky-cta').style.display='none'">✕</button>
-  </div>
-
   <!-- JUST BOOKED TOAST CONTAINER -->
   <div id="toast-wrap"></div>
 
@@ -4770,51 +4828,89 @@ html {
   <!-- POPUP GET QUOTE -->
   <div class="popup" id="quotePopup">
     <div class="popup-box">
-      <div class="close-popup" id="closePopup">&times;</div>
 
-      <h3>Get Quote</h3>
-      <p>Fill details. We will contact you quickly.</p>
+      <!-- LEFT IMAGE PANEL -->
+      <div class="popup-img-side"></div>
 
-      
-	  <form onsubmit="sendToWhatsApp(event)">
+      <!-- RIGHT FORM PANEL -->
+      <div class="popup-form-side">
+        <div class="close-popup" id="closePopup">&times;</div>
 
-        <input type="hidden" name="_next" value="https://dglvinterior.com/">
-        <input type="hidden" name="_subject" value="New Quote Request - DGLV Interior">
+        <h3>Get Quote</h3>
+        <p>Fill details. We will contact you quickly.</p>
 
-        <input type="text" name="Full Name" placeholder="Full Name" required>
-        <input type="tel" name="Mobile Number" placeholder="Mobile Number" required>
-        <input type="text" name="Location" placeholder="Location (BHEL / Hyderabad)" required>
+        <form onsubmit="sendToWhatsApp(event)">
+          <input type="hidden" name="_next" value="https://dglvinterior.com/">
+          <input type="hidden" name="_subject" value="New Quote Request - DGLV Interior">
 
-        <select name="BHK" required>
-          <option value="">Select BHK</option>
-          <option>1 BHK</option>
-          <option>2 BHK</option>
-          <option>3 BHK</option>
-        </select>
+          <!-- Full Name -->
+          <div class="pf-field">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="Full Name" placeholder="Full Name" required>
+          </div>
 
-        <select name="Service" required>
-          <option value="">Select Service</option>
-          <option>Home Interior</option>
-          <option>Modular Kitchen</option>
-          <option>Wardrobe</option>
-          <option>False Ceiling</option>
-          <option>Painting Works</option>
-          <option>Office Interior</option>
-        </select>
+          <!-- Mobile Number -->
+          <div class="pf-field">
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" name="Mobile Number" placeholder="Mobile Number" required>
+          </div>
 
-        <select name="Budget" required>
-          <option value="">Select Budget</option>
-          <option>2 Lakhs - 5 Lakhs</option>
-          <option>5 Lakhs - 8 Lakhs</option>
-          <option>8 Lakhs - 12 Lakhs</option>
-          <option>12 Lakhs - 15 Lakhs</option>
-          <option>15 Lakhs - 20 Lakhs</option>
-        </select>
+          <!-- Location -->
+          <div class="pf-field">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" name="Location" placeholder="Location (BHEL / Hyderabad)" required>
+          </div>
 
-        <textarea name="Message" rows="4" placeholder="Your Requirement (Optional)"></textarea>
+          <!-- BHK + Service + Budget row -->
+          <div class="pf-row">
+            <div class="pf-field">
+              <i class="fa-solid fa-house"></i>
+              <select name="BHK" required>
+                <option value="">Select BHK</option>
+                <option>1 BHK</option>
+                <option>2 BHK</option>
+                <option>3 BHK</option>
+                <option>Villa</option>
+              </select>
+            </div>
+            <div class="pf-field">
+              <i class="fa-solid fa-table-cells-large"></i>
+              <select name="Service" required>
+                <option value="">Select Service</option>
+                <option>Home Interior</option>
+                <option>Modular Kitchen</option>
+                <option>Wardrobe</option>
+                <option>False Ceiling</option>
+                <option>Painting Works</option>
+                <option>Office Interior</option>
+              </select>
+            </div>
+            <div class="pf-field">
+              <i class="fa-solid fa-wallet"></i>
+              <select name="Budget" required>
+                <option value="">Select Budget</option>
+                <option>2L – 5L</option>
+                <option>5L – 8L</option>
+                <option>8L – 12L</option>
+                <option>12L – 15L</option>
+                <option>15L – 20L</option>
+                <option>20L+</option>
+              </select>
+            </div>
+          </div>
 
-        <button type="submit">Submit Quote Request</button>
-      </form>
+          <!-- Message -->
+          <div class="pf-field pf-textarea-wrap">
+            <i class="fa-solid fa-pencil"></i>
+            <textarea name="Message" rows="3" placeholder="Your Requirement (Optional)"></textarea>
+          </div>
+
+          <button type="submit">
+            Submit Quote Request &nbsp;&#8594;
+          </button>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -5454,15 +5550,6 @@ function typeMap(t){ return {
     if(el) el.textContent = cur;
   }, rand(4000,8000));
 })();
-
-/* ===== STICKY CTA BAR ===== */
-window.addEventListener('scroll', function(){
-  var bar = document.getElementById('sticky-cta');
-  if(!bar) return;
-  if(window.scrollY > 400 && bar.style.display !== 'flex'){
-    bar.style.display = 'flex';
-  }
-});
 
 /* ===== JUST BOOKED TOASTS ===== */
 var toastNames = [
