@@ -1942,14 +1942,9 @@ onload="this.onload=null;this.rel='stylesheet'">
     }
     .popup-form-side input::placeholder,
     .popup-form-side textarea::placeholder{
-      color:rgba(255,255,255,0.4);
-    }
-    .popup-form-side select{
-      appearance:none;
-      -webkit-appearance:none;
       color:rgba(255,255,255,0.55);
-      cursor:pointer;
     }
+    /* select appearance handled in pf-row block above */
     .popup-form-side select option{
       background:#0d1e27;
       color:#fff;
@@ -1978,20 +1973,34 @@ onload="this.onload=null;this.rel='stylesheet'">
       top:14px;transform:none;
     }
 
-    /* Row of 3 selects */
+    /* Row of 3 selects — 2 on top, 1 full-width below */
     .pf-row{
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:8px;
       margin-bottom:0;
     }
+    /* Budget select spans full width */
+    .pf-row .pf-field:last-child{
+      grid-column:1 / -1;
+    }
     .pf-row .pf-field input,
     .pf-row .pf-field select{
-      padding:11px 10px 11px 34px;
-      font-size:12px;
+      padding:11px 14px 11px 36px;
+      font-size:13px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     .pf-row .pf-field i{
-      font-size:13px;left:10px;
+      font-size:13px;left:11px;
+    }
+    /* Make select options text clearly visible */
+    .popup-form-side select{
+      appearance:none;
+      -webkit-appearance:none;
+      color:rgba(255,255,255,0.75);
+      cursor:pointer;
     }
 
     /* Submit button */
