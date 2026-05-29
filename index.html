@@ -89,18 +89,22 @@ onload="this.onload=null;this.rel='stylesheet'">
 }
 
   /* ===========================
-     VIDEO PRELOADER — Circular Glass
+     VIDEO PRELOADER — Premium Interior
   ============================ */
   #video-preloader {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: #082e3b;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: opacity 0.9s ease, visibility 0.9s ease;
+    transition: opacity 1s ease, visibility 1s ease;
+    /* Rich layered background */
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(185,148,116,0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 70% at 80% 90%, rgba(185,148,116,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, #0d3d4f 0%, #082e3b 55%, #051e27 100%);
   }
 
   #video-preloader.hide {
@@ -109,173 +113,218 @@ onload="this.onload=null;this.rel='stylesheet'">
     pointer-events: none;
   }
 
-  /* Ambient glow blobs */
-  #video-preloader::before {
-    content: "";
+  /* ── Decorative corner ornaments ── */
+  .pl-corner {
     position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(185,148,116,0.18) 0%, transparent 70%);
-    top: -150px; left: -150px;
-    animation: blobFloat 8s ease-in-out infinite alternate;
+    width: 80px; height: 80px;
     pointer-events: none;
+    z-index: 1;
+    opacity: 0.45;
   }
-  #video-preloader::after {
-    content: "";
+  .pl-corner svg { width: 100%; height: 100%; }
+  .pl-corner.tl { top: 28px;    left: 28px; }
+  .pl-corner.tr { top: 28px;    right: 28px;  transform: scaleX(-1); }
+  .pl-corner.bl { bottom: 28px; left: 28px;   transform: scaleY(-1); }
+  .pl-corner.br { bottom: 28px; right: 28px;  transform: scale(-1,-1); }
+
+  /* ── Floating subtle particles ── */
+  .pl-particle {
     position: absolute;
-    width: 500px; height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(8,46,59,0.6) 0%, rgba(185,148,116,0.10) 60%, transparent 80%);
-    bottom: -100px; right: -100px;
-    animation: blobFloat 10s ease-in-out infinite alternate-reverse;
+    background: rgba(185,148,116,0.18);
     pointer-events: none;
+    animation: particleDrift linear infinite;
   }
 
-  @keyframes blobFloat {
-    from { transform: translate(0,0) scale(1); }
-    to   { transform: translate(40px, 30px) scale(1.12); }
+  @keyframes particleDrift {
+    0%   { transform: translateY(0) scale(1);   opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 0.6; }
+    100% { transform: translateY(-120px) scale(0.6); opacity: 0; }
   }
 
-  /* Outer ring */
-  .preloader-ring-outer {
+  /* ── Centre stage ── */
+  .pl-stage {
     position: relative;
-    width: 340px; height: 340px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    border: 1.5px solid rgba(185,148,116,0.25);
-    backdrop-filter: blur(2px);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow:
-      0 0 0 18px rgba(185,148,116,0.05),
-      0 0 60px rgba(185,148,116,0.12),
-      inset 0 0 40px rgba(8,46,59,0.4);
-    animation: ringPulse 3s ease-in-out infinite;
     z-index: 2;
-  }
-
-  @keyframes ringPulse {
-    0%,100% { box-shadow: 0 0 0 18px rgba(185,148,116,0.05), 0 0 60px rgba(185,148,116,0.12), inset 0 0 40px rgba(8,46,59,0.4); }
-    50%      { box-shadow: 0 0 0 28px rgba(185,148,116,0.08), 0 0 90px rgba(185,148,116,0.22), inset 0 0 40px rgba(8,46,59,0.4); }
-  }
-
-  /* Spinning arc on outer ring */
-  .preloader-ring-outer::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 50%;
-    border: 2.5px solid transparent;
-    border-top-color: #b99474;
-    border-right-color: rgba(185,148,116,0.4);
-    animation: spinArc 2.2s linear infinite;
-  }
-
-  @keyframes spinArc {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-
-  /* Inner glass circle */
-  .preloader-ring-inner {
-    width: 230px; height: 230px;
-    border-radius: 50%;
-    background: rgba(8,46,59,0.55);
-    border: 1px solid rgba(185,148,116,0.30);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow:
-      inset 0 2px 20px rgba(255,255,255,0.06),
-      0 8px 32px rgba(0,0,0,0.4);
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  /* Video inside the circle */
-  #preload-video {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    position: absolute;
-    opacity: 0.92;
+    gap: 32px;
   }
 
   /* Logo above */
   #preloader-logo {
-    position: absolute;
-    top: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 44px;
+    height: 48px;
     width: auto;
     object-fit: contain;
     filter: brightness(10) saturate(0);
-    opacity: 0.9;
-    z-index: 3;
-    animation: fadeDown 0.7s ease 0.3s both;
+    opacity: 0;
+    animation: plFadeUp 0.8s ease 0.3s forwards;
   }
 
-  /* Brand name below circle */
-  .preloader-brand {
+  /* ── Concentric rings wrapper ── */
+  .pl-rings {
+    position: relative;
+    width: 320px; height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ring 1 – outermost faint */
+  .pl-rings::before {
+    content: "";
     position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(185,148,116,0.85);
-    font-family: "kitamiw01", Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 3;
-    animation: fadeDown 0.7s ease 0.6s both;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(185,148,116,0.18);
+    animation: ringBreath 4s ease-in-out infinite;
   }
 
-  /* Skip button */
+  /* Ring 2 – gold spinning arc */
+  .pl-spin-ring {
+    position: absolute;
+    inset: 14px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    border-top-color: #b99474;
+    border-right-color: rgba(185,148,116,0.35);
+    animation: spinCW 3s linear infinite;
+  }
+
+  /* Ring 3 – counter-spin dotted */
+  .pl-spin-ring2 {
+    position: absolute;
+    inset: 26px;
+    border-radius: 50%;
+    border: 1px dashed rgba(185,148,116,0.22);
+    animation: spinCCW 6s linear infinite;
+  }
+
+  /* ── Video circle ── */
+  .pl-video-wrap {
+    position: relative;
+    width: 230px; height: 230px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* glass ring */
+    box-shadow:
+      0 0 0 2px rgba(185,148,116,0.50),
+      0 0 0 8px rgba(185,148,116,0.08),
+      0 0 40px rgba(185,148,116,0.20),
+      0 0 80px rgba(185,148,116,0.10),
+      inset 0 0 30px rgba(8,46,59,0.6);
+    animation: ringBreath 4s ease-in-out infinite;
+  }
+
+  #preload-video {
+    position: absolute;
+    /* Centre the 16:9 video and crop to fill the circle */
+    top: 50%; left: 50%;
+    /* 16:9: if height = 230px, width = 409px; use width and crop height */
+    width: 410px;
+    height: auto;
+    min-height: 230px;
+    transform: translate(-50%, -50%);
+    border-radius: 0;   /* parent clips it */
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    animation: plFadeUp 0.8s ease 0.8s forwards;
+  }
+
+  /* Gold shimmer overlay on video */
+  .pl-video-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,0.08) 0%,
+      transparent 55%),
+      linear-gradient(135deg,
+        rgba(185,148,116,0.10) 0%,
+        transparent 50%,
+        rgba(8,46,59,0.25) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Tagline below rings ── */
+  .pl-tagline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    animation: plFadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .pl-tagline-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pl-tagline-line span.bar {
+    display: block;
+    width: 36px; height: 1px;
+    background: linear-gradient(90deg, transparent, #b99474, transparent);
+  }
+
+  .pl-tagline-text {
+    color: rgba(185,148,116,0.80);
+    font-family: "kitamiw01", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  /* ── Skip button ── */
   #preloader-skip {
     position: absolute;
-    bottom: 32px;
-    right: 32px;
-    background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(185,148,116,0.40);
-    color: rgba(255,255,255,0.80);
+    bottom: 36px; right: 36px;
+    background: rgba(8,46,59,0.55);
+    border: 1px solid rgba(185,148,116,0.35);
+    color: rgba(255,255,255,0.70);
     font-family: "kitamiw01", Arial, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 900;
-    padding: 9px 22px;
+    padding: 8px 20px;
     border-radius: 999px;
     cursor: pointer;
-    letter-spacing: 0.5px;
-    backdrop-filter: blur(8px);
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: background 0.3s, border-color 0.3s, transform 0.2s, color 0.2s;
     opacity: 0;
-    z-index: 3;
-    animation: skipFadeIn 0.5s ease 2s forwards;
+    z-index: 4;
+    animation: plFadeUp 0.5s ease 2.5s forwards;
   }
 
   #preloader-skip:hover {
-    background: rgba(185,148,116,0.30);
+    background: rgba(185,148,116,0.25);
     border-color: #b99474;
     color: #fff;
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
 
-  @keyframes skipFadeIn {
-    from { opacity: 0; transform: translateY(8px); }
+  /* ── Animations ── */
+  @keyframes plFadeUp {
+    from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translate(-50%, -10px); }
-    to   { opacity: 1; transform: translate(-50%, 0); }
+  @keyframes ringBreath {
+    0%,100% { box-shadow: 0 0 0 2px rgba(185,148,116,0.50), 0 0 0 8px rgba(185,148,116,0.08), 0 0 40px rgba(185,148,116,0.20), 0 0 80px rgba(185,148,116,0.10), inset 0 0 30px rgba(8,46,59,0.6); }
+    50%      { box-shadow: 0 0 0 2px rgba(185,148,116,0.70), 0 0 0 12px rgba(185,148,116,0.12), 0 0 60px rgba(185,148,116,0.30), 0 0 110px rgba(185,148,116,0.14), inset 0 0 30px rgba(8,46,59,0.6); }
   }
+
+  @keyframes spinCW  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)}  }
+  @keyframes spinCCW { from{transform:rotate(0deg)}   to{transform:rotate(-360deg)} }
 
   body.preloader-active { overflow: hidden; }
 
@@ -3903,34 +3952,74 @@ html {
 <body class="preloader-active">
 
   <!-- ==============================
-       VIDEO PRELOADER — Circular Glass
-       Video: images/dglv.mp4 (1280×720 / 16:9)
+       VIDEO PRELOADER — Premium Interior
   =============================== -->
   <div id="video-preloader">
-    <img id="preloader-logo" src="images/logo-full.png" alt="DGLV Interior">
 
-    <!-- Circular frame -->
-    <div class="preloader-ring-outer">
-      <div class="preloader-ring-inner">
-        <video
-          id="preload-video"
-          src="https://raw.githubusercontent.com/DGLV-Interior/DGLV-INTERIOR/main/images/dglv.mp4"
-          autoplay
-          muted
-          playsinline
-          preload="auto"
-        ></video>
+    <!-- Corner ornaments -->
+    <div class="pl-corner tl"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 76 L4 4 L76 4" stroke="#b99474" stroke-width="1.5" fill="none"/><path d="M4 4 L22 4" stroke="#b99474" stroke-width="1.5"/><path d="M4 4 L4 22" stroke="#b99474" stroke-width="1.5"/><circle cx="4" cy="4" r="2.5" fill="#b99474"/></svg></div>
+    <div class="pl-corner tr"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 76 L4 4 L76 4" stroke="#b99474" stroke-width="1.5" fill="none"/><path d="M4 4 L22 4" stroke="#b99474" stroke-width="1.5"/><path d="M4 4 L4 22" stroke="#b99474" stroke-width="1.5"/><circle cx="4" cy="4" r="2.5" fill="#b99474"/></svg></div>
+    <div class="pl-corner bl"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 76 L4 4 L76 4" stroke="#b99474" stroke-width="1.5" fill="none"/><path d="M4 4 L22 4" stroke="#b99474" stroke-width="1.5"/><path d="M4 4 L4 22" stroke="#b99474" stroke-width="1.5"/><circle cx="4" cy="4" r="2.5" fill="#b99474"/></svg></div>
+    <div class="pl-corner br"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 76 L4 4 L76 4" stroke="#b99474" stroke-width="1.5" fill="none"/><path d="M4 4 L22 4" stroke="#b99474" stroke-width="1.5"/><path d="M4 4 L4 22" stroke="#b99474" stroke-width="1.5"/><circle cx="4" cy="4" r="2.5" fill="#b99474"/></svg></div>
+
+    <!-- Floating particles (injected by JS) -->
+
+    <!-- Centre stage -->
+    <div class="pl-stage">
+
+      <!-- Logo -->
+      <img id="preloader-logo" src="images/logo-full.png" alt="DGLV Interior">
+
+      <!-- Concentric rings + video -->
+      <div class="pl-rings">
+        <div class="pl-spin-ring"></div>
+        <div class="pl-spin-ring2"></div>
+
+        <!-- Video circle -->
+        <div class="pl-video-wrap">
+          <video
+            id="preload-video"
+            src="https://raw.githubusercontent.com/DGLV-Interior/DGLV-INTERIOR/main/images/dglv.mp4"
+            autoplay muted playsinline preload="auto"
+          ></video>
+        </div>
       </div>
-    </div>
 
-    <div class="preloader-brand">DGLV Interior</div>
-    <button id="preloader-skip" onclick="closePreloader()">Skip ›</button>
-  </div>
+      <!-- Tagline -->
+      <div class="pl-tagline">
+        <div class="pl-tagline-line">
+          <span class="bar"></span>
+          <span class="pl-tagline-text">Crafting Premium Spaces</span>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+    </div><!-- /pl-stage -->
+
+    <button id="preloader-skip" onclick="closePreloader()">SKIP &rsaquo;</button>
+
+  </div><!-- /video-preloader -->
 
   <script>
     (function(){
       var preloader = document.getElementById('video-preloader');
       var video     = document.getElementById('preload-video');
+
+      /* Inject floating particles */
+      for(var i = 0; i < 10; i++){
+        var p = document.createElement('div');
+        p.className = 'pl-particle';
+        var size = Math.random()*4+2;
+        p.style.cssText = [
+          'width:'+size+'px','height:'+size+'px',
+          'left:'+(Math.random()*100)+'%',
+          'bottom:'+(Math.random()*30)+'%',
+          'animation-duration:'+(Math.random()*6+5)+'s',
+          'animation-delay:'+(Math.random()*6)+'s',
+          'opacity:0'
+        ].join(';');
+        preloader.appendChild(p);
+      }
 
       function closePreloader(){
         preloader.classList.add('hide');
@@ -3938,19 +4027,15 @@ html {
         video.pause();
       }
 
-      /* Close when video ends */
       video.addEventListener('ended', closePreloader);
 
-      /* Safety fallback — close after 15s even if video stalls */
       var fallback = setTimeout(closePreloader, 15000);
 
-      /* Expose globally for skip button */
       window.closePreloader = function(){
         clearTimeout(fallback);
         closePreloader();
       };
 
-      /* If video fails to load, close immediately */
       video.addEventListener('error', closePreloader);
     })();
   </script>
