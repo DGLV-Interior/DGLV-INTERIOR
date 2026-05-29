@@ -89,18 +89,18 @@ onload="this.onload=null;this.rel='stylesheet'">
 }
 
   /* ===========================
-     VIDEO PRELOADER
+     VIDEO PRELOADER — Circular Glass
   ============================ */
   #video-preloader {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: #000;
+    background: #082e3b;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
   }
 
   #video-preloader.hide {
@@ -109,38 +109,161 @@ onload="this.onload=null;this.rel='stylesheet'">
     pointer-events: none;
   }
 
-  #preload-video {
-    /* 16:9 video — cover the full screen maintaining aspect ratio */
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: block;
+  /* Ambient glow blobs */
+  #video-preloader::before {
+    content: "";
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(185,148,116,0.18) 0%, transparent 70%);
+    top: -150px; left: -150px;
+    animation: blobFloat 8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  #video-preloader::after {
+    content: "";
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(8,46,59,0.6) 0%, rgba(185,148,116,0.10) 60%, transparent 80%);
+    bottom: -100px; right: -100px;
+    animation: blobFloat 10s ease-in-out infinite alternate-reverse;
+    pointer-events: none;
   }
 
-  /* Skip button — appears after 2s */
+  @keyframes blobFloat {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(40px, 30px) scale(1.12); }
+  }
+
+  /* Outer ring */
+  .preloader-ring-outer {
+    position: relative;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(185,148,116,0.25);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 0 0 18px rgba(185,148,116,0.05),
+      0 0 60px rgba(185,148,116,0.12),
+      inset 0 0 40px rgba(8,46,59,0.4);
+    animation: ringPulse 3s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  @keyframes ringPulse {
+    0%,100% { box-shadow: 0 0 0 18px rgba(185,148,116,0.05), 0 0 60px rgba(185,148,116,0.12), inset 0 0 40px rgba(8,46,59,0.4); }
+    50%      { box-shadow: 0 0 0 28px rgba(185,148,116,0.08), 0 0 90px rgba(185,148,116,0.22), inset 0 0 40px rgba(8,46,59,0.4); }
+  }
+
+  /* Spinning arc on outer ring */
+  .preloader-ring-outer::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2.5px solid transparent;
+    border-top-color: #b99474;
+    border-right-color: rgba(185,148,116,0.4);
+    animation: spinArc 2.2s linear infinite;
+  }
+
+  @keyframes spinArc {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Inner glass circle */
+  .preloader-ring-inner {
+    width: 230px; height: 230px;
+    border-radius: 50%;
+    background: rgba(8,46,59,0.55);
+    border: 1px solid rgba(185,148,116,0.30);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      inset 0 2px 20px rgba(255,255,255,0.06),
+      0 8px 32px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Video inside the circle */
+  #preload-video {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    opacity: 0.92;
+  }
+
+  /* Logo above */
+  #preloader-logo {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(10) saturate(0);
+    opacity: 0.9;
+    z-index: 3;
+    animation: fadeDown 0.7s ease 0.3s both;
+  }
+
+  /* Brand name below circle */
+  .preloader-brand {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(185,148,116,0.85);
+    font-family: "kitamiw01", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 3;
+    animation: fadeDown 0.7s ease 0.6s both;
+  }
+
+  /* Skip button */
   #preloader-skip {
     position: absolute;
     bottom: 32px;
     right: 32px;
-    background: rgba(255,255,255,0.12);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    color: #fff;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(185,148,116,0.40);
+    color: rgba(255,255,255,0.80);
     font-family: "kitamiw01", Arial, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 900;
-    padding: 10px 22px;
+    padding: 9px 22px;
     border-radius: 999px;
     cursor: pointer;
     letter-spacing: 0.5px;
-    backdrop-filter: blur(6px);
-    transition: background 0.3s, border-color 0.3s, transform 0.2s;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s, border-color 0.3s, transform 0.2s, color 0.2s;
     opacity: 0;
+    z-index: 3;
     animation: skipFadeIn 0.5s ease 2s forwards;
   }
 
   #preloader-skip:hover {
-    background: rgba(185,148,116,0.55);
+    background: rgba(185,148,116,0.30);
     border-color: #b99474;
+    color: #fff;
     transform: scale(1.06);
   }
 
@@ -149,24 +272,12 @@ onload="this.onload=null;this.rel='stylesheet'">
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* DGLV logo watermark on preloader */
-  #preloader-logo {
-    position: absolute;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 50px;
-    width: auto;
-    object-fit: contain;
-    opacity: 0.85;
-    filter: brightness(10) saturate(0);  /* white logo */
-    animation: skipFadeIn 0.6s ease 0.3s both;
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to   { opacity: 1; transform: translate(-50%, 0); }
   }
 
-  /* Prevent body scroll while preloader is active */
-  body.preloader-active {
-    overflow: hidden;
-  }
+  body.preloader-active { overflow: hidden; }
 
   </style>
 
@@ -3792,19 +3903,27 @@ html {
 <body class="preloader-active">
 
   <!-- ==============================
-       VIDEO PRELOADER
+       VIDEO PRELOADER — Circular Glass
        Video: images/dglv.mp4 (1280×720 / 16:9)
   =============================== -->
   <div id="video-preloader">
     <img id="preloader-logo" src="images/logo-full.png" alt="DGLV Interior">
-    <video
-      id="preload-video"
-      src="https://raw.githubusercontent.com/DGLV-Interior/DGLV-INTERIOR/main/images/dglv.mp4"
-      autoplay
-      muted
-      playsinline
-      preload="auto"
-    ></video>
+
+    <!-- Circular frame -->
+    <div class="preloader-ring-outer">
+      <div class="preloader-ring-inner">
+        <video
+          id="preload-video"
+          src="https://raw.githubusercontent.com/DGLV-Interior/DGLV-INTERIOR/main/images/dglv.mp4"
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+        ></video>
+      </div>
+    </div>
+
+    <div class="preloader-brand">DGLV Interior</div>
     <button id="preloader-skip" onclick="closePreloader()">Skip ›</button>
   </div>
 
@@ -3837,15 +3956,6 @@ html {
   </script>
 
   <!-- COUNTDOWN TIMER BAR -->
-  <div id="countdown-bar">
-    <span>🎉 Special Offer:</span> Free Site Visit &amp; Design Consultation —
-    Ends in:
-    <span class="cd-time-box" id="cd-h">02</span> :
-    <span class="cd-time-box" id="cd-m">59</span> :
-    <span class="cd-time-box" id="cd-s">59</span>
-    <button class="cd-close" onclick="document.getElementById('countdown-bar').style.display='none'">✕</button>
-  </div>
-
   <!-- LIVE VISITOR BAR -->
   <div id="visitor-bar">
     <span class="visitor-dot"></span>
@@ -4372,51 +4482,6 @@ html {
   </section>
 
   <!-- ===== 4. STYLE QUIZ ===== -->
-  <section id="style-quiz-section">
-    <div class="sec-head">
-      <div class="ba-sublabel">DISCOVER YOUR STYLE</div>
-      <h2><span style="color:#082e3b;">What's Your</span> <span style="color:#b99474;">Interior Style?</span></h2>
-      <p>Answer 3 quick questions and we'll show you matching designs from our portfolio.</p>
-      <div class="quiz-ornament">
-        <span class="q-line"></span>
-        <span class="q-diamond">&#9670;</span>
-        <span class="q-line"></span>
-      </div>
-    </div>
-
-    <div class="quiz-box" id="quizBox">
-      <div class="quiz-header">
-        <h3 id="quizHeaderTitle">Find Your Interior Style</h3>
-        <p id="quizHeaderSub">Question <span id="quizQNum">1</span> of 3</p>
-        <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" id="quizProgressFill"></div>
-        </div>
-      </div>
-
-      <!-- QUIZ QUESTIONS -->
-      <div class="quiz-body" id="quizBody">
-        <div class="quiz-question" id="quizQuestion">What best describes your dream home feel?</div>
-        <div class="quiz-options" id="quizOptions"></div>
-        <div class="quiz-nav">
-          <button class="quiz-nav-btn secondary" id="quizPrevBtn" style="display:none;" onclick="quizPrev()">&#8592; Back</button>
-          <button class="quiz-nav-btn primary" id="quizNextBtn" onclick="quizNext()">Next &#8594;</button>
-        </div>
-      </div>
-
-      <!-- QUIZ RESULT -->
-      <div class="quiz-result" id="quizResult">
-        <div class="quiz-result-icon" id="quizResultIcon">🏡</div>
-        <div class="quiz-result-style" id="quizResultStyle">Your Style: <span id="quizStyleName">Modern Minimal</span></div>
-        <p class="quiz-result-desc" id="quizResultDesc"></p>
-        <div class="quiz-result-rooms" id="quizResultRooms"></div>
-        <a class="quiz-result-btn" id="quizWaBtn" href="#" target="_blank">
-          <i class="fa-brands fa-whatsapp"></i> Chat with Us on WhatsApp
-        </a>
-        <button class="quiz-restart" onclick="quizRestart()">&#8635; Take quiz again</button>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== 5. COST ESTIMATOR ===== -->
   <section id="cost-estimator-section">
     <div class="sec-head">
