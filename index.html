@@ -211,20 +211,13 @@ onload="this.onload=null;this.rel='stylesheet'">
   }
 
   #preload-video {
-    /* Force the video to cover the entire circle — no black bars */
     position: absolute;
-    top: 50%;
-    left: 50%;
-    /* Make it at least as wide AND tall as the container */
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    /* For 16:9 source: if circle=230px, height=230 → width=409; set both */
-    width: 410px;
-    height: 410px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    transform: translate(-50%, -50%);
+    object-position: center center;
     display: block;
     opacity: 0;
     animation: plFadeUp 0.8s ease 0.8s forwards;
