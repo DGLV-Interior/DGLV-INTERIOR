@@ -4008,6 +4008,16 @@ html {
         preloader.appendChild(p);
       }
 
+      /* Skip first 4 seconds */
+      video.addEventListener('loadedmetadata', function(){
+        video.currentTime = 4;
+      });
+
+      /* Also set on canplay in case loadedmetadata already fired */
+      video.addEventListener('canplay', function(){
+        if(video.currentTime < 4) video.currentTime = 4;
+      }, { once: true });
+
       function closePreloader(){
         preloader.classList.add('hide');
         document.body.classList.remove('preloader-active');
