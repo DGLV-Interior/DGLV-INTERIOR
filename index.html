@@ -88,6 +88,86 @@ onload="this.onload=null;this.rel='stylesheet'">
   display: none;
 }
 
+  /* ===========================
+     VIDEO PRELOADER
+  ============================ */
+  #video-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  #video-preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #preload-video {
+    /* 16:9 video — cover the full screen maintaining aspect ratio */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Skip button — appears after 2s */
+  #preloader-skip {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-family: "kitamiw01", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(6px);
+    transition: background 0.3s, border-color 0.3s, transform 0.2s;
+    opacity: 0;
+    animation: skipFadeIn 0.5s ease 2s forwards;
+  }
+
+  #preloader-skip:hover {
+    background: rgba(185,148,116,0.55);
+    border-color: #b99474;
+    transform: scale(1.06);
+  }
+
+  @keyframes skipFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DGLV logo watermark on preloader */
+  #preloader-logo {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.85;
+    filter: brightness(10) saturate(0);  /* white logo */
+    animation: skipFadeIn 0.6s ease 0.3s both;
+  }
+
+  /* Prevent body scroll while preloader is active */
+  body.preloader-active {
+    overflow: hidden;
+  }
+
   </style>
 
   <style>
@@ -3709,7 +3789,52 @@ html {
 </style>
 </head>
 
-<body>
+<body class="preloader-active">
+
+  <!-- ==============================
+       VIDEO PRELOADER
+       Video: images/dglv.mp4 (1280×720 / 16:9)
+  =============================== -->
+  <div id="video-preloader">
+    <img id="preloader-logo" src="images/logo-full.png" alt="DGLV Interior">
+    <video
+      id="preload-video"
+      src="https://raw.githubusercontent.com/DGLV-Interior/DGLV-INTERIOR/main/images/dglv.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    ></video>
+    <button id="preloader-skip" onclick="closePreloader()">Skip ›</button>
+  </div>
+
+  <script>
+    (function(){
+      var preloader = document.getElementById('video-preloader');
+      var video     = document.getElementById('preload-video');
+
+      function closePreloader(){
+        preloader.classList.add('hide');
+        document.body.classList.remove('preloader-active');
+        video.pause();
+      }
+
+      /* Close when video ends */
+      video.addEventListener('ended', closePreloader);
+
+      /* Safety fallback — close after 15s even if video stalls */
+      var fallback = setTimeout(closePreloader, 15000);
+
+      /* Expose globally for skip button */
+      window.closePreloader = function(){
+        clearTimeout(fallback);
+        closePreloader();
+      };
+
+      /* If video fails to load, close immediately */
+      video.addEventListener('error', closePreloader);
+    })();
+  </script>
 
   <!-- COUNTDOWN TIMER BAR -->
   <div id="countdown-bar">
