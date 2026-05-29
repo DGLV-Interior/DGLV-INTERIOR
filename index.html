@@ -154,16 +154,6 @@ onload="this.onload=null;this.rel='stylesheet'">
     gap: 32px;
   }
 
-  /* Logo above */
-  #preloader-logo {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(10) saturate(0);
-    opacity: 0;
-    animation: plFadeUp 0.8s ease 0.3s forwards;
-  }
-
   /* ── Concentric rings wrapper ── */
   .pl-rings {
     position: relative;
@@ -209,7 +199,6 @@ onload="this.onload=null;this.rel='stylesheet'">
     width: 230px; height: 230px;
     border-radius: 50%;
     overflow: hidden;
-    /* glass ring */
     box-shadow:
       0 0 0 2px rgba(185,148,116,0.50),
       0 0 0 8px rgba(185,148,116,0.08),
@@ -217,19 +206,25 @@ onload="this.onload=null;this.rel='stylesheet'">
       0 0 80px rgba(185,148,116,0.10),
       inset 0 0 30px rgba(8,46,59,0.6);
     animation: ringBreath 4s ease-in-out infinite;
+    /* fill background while video loads */
+    background: #082e3b;
   }
 
   #preload-video {
+    /* Force the video to cover the entire circle — no black bars */
     position: absolute;
-    /* Centre the 16:9 video and crop to fill the circle */
-    top: 50%; left: 50%;
-    /* 16:9: if height = 230px, width = 409px; use width and crop height */
-    width: 410px;
+    top: 50%;
+    left: 50%;
+    /* Make it at least as wide AND tall as the container */
+    width: auto;
     height: auto;
-    min-height: 230px;
-    transform: translate(-50%, -50%);
-    border-radius: 0;   /* parent clips it */
+    min-width: 100%;
+    min-height: 100%;
+    /* For 16:9 source: if circle=230px, height=230 → width=409; set both */
+    width: 410px;
+    height: 410px;
     object-fit: cover;
+    transform: translate(-50%, -50%);
     display: block;
     opacity: 0;
     animation: plFadeUp 0.8s ease 0.8s forwards;
@@ -3967,8 +3962,7 @@ html {
     <!-- Centre stage -->
     <div class="pl-stage">
 
-      <!-- Logo -->
-      <img id="preloader-logo" src="images/logo-full.png" alt="DGLV Interior">
+
 
       <!-- Concentric rings + video -->
       <div class="pl-rings">
