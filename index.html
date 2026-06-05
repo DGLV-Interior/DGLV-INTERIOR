@@ -100,11 +100,8 @@ onload="this.onload=null;this.rel='stylesheet'">
     justify-content: center;
     overflow: hidden;
     transition: opacity 1s ease, visibility 1s ease;
-    /* Rich layered background */
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(185,148,116,0.13) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 70% at 80% 90%, rgba(185,148,116,0.10) 0%, transparent 55%),
-      radial-gradient(ellipse 100% 100% at 50% 50%, #0d3d4f 0%, #082e3b 55%, #051e27 100%);
+    /* Pure black background */
+    background: #000000;
   }
 
   #video-preloader.hide {
@@ -4008,15 +4005,8 @@ html {
         preloader.appendChild(p);
       }
 
-      /* Skip first 4 seconds */
-      video.addEventListener('loadedmetadata', function(){
-        video.currentTime = 4;
-      });
-
-      /* Also set on canplay in case loadedmetadata already fired */
-      video.addEventListener('canplay', function(){
-        if(video.currentTime < 4) video.currentTime = 4;
-      }, { once: true });
+      /* Play from beginning */
+      video.currentTime = 0;
 
       function closePreloader(){
         preloader.classList.add('hide');
@@ -4024,9 +4014,8 @@ html {
         video.pause();
       }
 
-      video.addEventListener('ended', closePreloader);
-
-      var fallback = setTimeout(closePreloader, 15000);
+      /* Close after exactly 6 seconds */
+      var fallback = setTimeout(closePreloader, 6000);
 
       window.closePreloader = function(){
         clearTimeout(fallback);
