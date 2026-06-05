@@ -4014,8 +4014,11 @@ html {
         video.pause();
       }
 
-      /* Close after exactly 6 seconds */
-      var fallback = setTimeout(closePreloader, 6000);
+      /* Close when video finishes naturally */
+      video.addEventListener('ended', closePreloader);
+
+      /* Fallback: close after 30 seconds if video fails to end */
+      var fallback = setTimeout(closePreloader, 30000);
 
       window.closePreloader = function(){
         clearTimeout(fallback);
