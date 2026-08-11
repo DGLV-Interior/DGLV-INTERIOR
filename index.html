@@ -2117,22 +2117,9 @@ onload="this.onload=null;this.rel='stylesheet'">
       to{transform:scale(1); opacity:1;}
     }
 
-    /* Left image panel */
-    .popup-img-side{
-      width:160px;
-      flex-shrink:0;
-      background:url('images/Quote-bg.png') center/cover no-repeat;
-      position:relative;
-    }
-    .popup-img-side::after{
-      content:'';
-      position:absolute;inset:0;
-      background:linear-gradient(to right,rgba(8,20,28,0.3),rgba(8,20,28,0.6));
-    }
-
-    /* Right form panel */
+    /* Right form panel (now full width — left image panel removed) */
     .popup-form-side{
-      flex:1;
+      width:100%;
       background:#0d1e27;
       padding:28px 26px 24px;
       position:relative;
@@ -2272,7 +2259,6 @@ onload="this.onload=null;this.rel='stylesheet'">
 
     @media(max-width:560px){
       .popup-box{flex-direction:column;}
-      .popup-img-side{width:100%;height:120px;}
       .pf-row{grid-template-columns:1fr;}
     }
 
@@ -4247,19 +4233,19 @@ html {
   <div class="stats-grid fade-up">
     <div class="stat-card">
       <div class="stat-icon"><i class="fa-solid fa-house-circle-check"></i></div>
-      <div class="stat-number"><span class="count-up" data-target="200">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-number"><span class="count-up" data-target="2000">0</span><span class="stat-suffix">+</span></div>
       <div class="stat-divider"></div>
       <div class="stat-label">Projects Completed</div>
     </div>
     <div class="stat-card">
       <div class="stat-icon"><i class="fa-solid fa-face-smile"></i></div>
-      <div class="stat-number"><span class="count-up" data-target="180">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-number"><span class="count-up" data-target="1850">0</span><span class="stat-suffix">+</span></div>
       <div class="stat-divider"></div>
       <div class="stat-label">Happy Clients</div>
     </div>
     <div class="stat-card">
       <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
-      <div class="stat-number"><span class="count-up" data-target="10">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-number"><span class="count-up" data-target="20">0</span><span class="stat-suffix">+</span></div>
       <div class="stat-divider"></div>
       <div class="stat-label">Years Experience</div>
     </div>
@@ -4938,6 +4924,7 @@ html {
             <div>
               <div class="info-text-label">Phone</div>
               <div class="info-text-val">9666141369</div>
+              <div class="info-text-val">+91 9666041369</div>
             </div>
           </div>
 
@@ -5107,10 +5094,7 @@ html {
   <div class="popup" id="quotePopup">
     <div class="popup-box">
 
-      <!-- LEFT IMAGE PANEL -->
-      <div class="popup-img-side"></div>
-
-      <!-- RIGHT FORM PANEL -->
+      <!-- FORM PANEL (full width) -->
       <div class="popup-form-side">
         <div class="close-popup" id="closePopup">&times;</div>
 
